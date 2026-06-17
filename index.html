@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Stampzer — digitale klantenkaarten in Apple &amp; Google Wallet</title>
+  <meta name="description" content="Stampzer zet de spaarkaart van jouw zaak direct in Apple Wallet en Google Wallet. Klanten verliezen nooit meer een kaart en komen vaker terug. Schrijf je in voor de wachtlijst." />
+  <link rel="canonical" href="https://stampzer.com/" />
+  <meta name="theme-color" content="#181f10" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stampzer.com/" />
+  <meta property="og:site_name" content="Stampzer" />
+  <meta property="og:title" content="Digitale klantenkaarten in Apple &amp; Google Wallet" />
+  <meta property="og:description" content="De stempelkaart die je klanten nooit meer kwijtraken. Direct in hun telefoon, meer terugkerende klanten voor jou." />
+  <meta property="og:image" content="https://stampzer.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Stampzer — digitale klantenkaarten in Apple &amp; Google Wallet" />
+  <meta name="twitter:description" content="De stempelkaart die je klanten nooit meer kwijtraken. Meer terugkerende klanten, zonder app." />
+  <meta name="twitter:image" content="https://stampzer.com/assets/og-image.png" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/seatren.woff2" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://stampzer.com/#org",
+        "name": "Stampzer",
+        "url": "https://stampzer.com/",
+        "logo": "https://stampzer.com/assets/favicon-256.png",
+        "email": "hallo@stampzer.com",
+        "description": "Digitale klantenkaarten voor lokale ondernemers, direct in Apple Wallet en Google Wallet."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://stampzer.com/#website",
+        "url": "https://stampzer.com/",
+        "name": "Stampzer",
+        "inLanguage": "nl-NL",
+        "publisher": { "@id": "https://stampzer.com/#org" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Stampzer",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "iOS, Android",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Gratis tijdens de bèta" },
+        "description": "Digitale spaarkaarten in Apple Wallet en Google Wallet voor lokale ondernemers."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Moeten mijn klanten een app downloaden?", "acceptedAnswer": { "@type": "Answer", "text": "Nee. De kaart komt rechtstreeks in de Apple Wallet of Google Wallet die al op elke telefoon staat. Je klant scant één QR-code en klaar." } },
+          { "@type": "Question", "name": "Werkt het op iPhone én Android?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Stampzer ondersteunt zowel Apple Wallet (iPhone) als Google Wallet (Android)." } },
+          { "@type": "Question", "name": "Hoe deel ik stempels uit?", "acceptedAnswer": { "@type": "Answer", "text": "Jij of je medewerker tikt in het stampzer-dashboard op 'stempel' bij het bezoek. Zo kan niemand zichzelf stempelen." } },
+          { "@type": "Question", "name": "Heb ik speciale apparatuur nodig?", "acceptedAnswer": { "@type": "Answer", "text": "Nee. Een telefoon, tablet of computer met internet is genoeg." } },
+          { "@type": "Question", "name": "Wat gaat het kosten?", "acceptedAnswer": { "@type": "Answer", "text": "We werken aan een eerlijk abonnement voor lokale ondernemers. Schrijf je in op de wachtlijst voor vroege toegang en een introkorting." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Naar inhoud</a>
+
+  <!-- Announcement -->
+  <div class="announce">
+    <div class="container announce__inner">
+      <span class="announce__dot" aria-hidden="true"></span>
+      Stampzer is in besloten bèta — <a href="#wachtlijst">schrijf je gratis in voor vroege toegang →</a>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="#top" aria-label="stampzer.com home">
+        <img src="assets/logo-dark.png" alt="stampzer.com" width="150" height="54" />
+      </a>
+      <nav class="nav__links" aria-label="Hoofdmenu">
+        <a href="#hoe-het-werkt">Hoe het werkt</a>
+        <a href="#kaarten">Voorbeelden</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#faq">Vragen</a>
+      </nav>
+      <a href="#wachtlijst" class="btn btn--green nav__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> Digitale klantenkaarten</span>
+        <h1 class="hero__title">De stempelkaart die klanten <span class="mark">nooit kwijtraken</span>.</h1>
+        <p class="hero__sub">
+          Stampzer zet de spaarkaart van jouw zaak direct in Apple&nbsp;Wallet en Google&nbsp;Wallet.
+          Elk bezoek een stempel, elke stempel een reden om terug te komen — zonder app, zonder kaartjes, zonder gedoe.
+        </p>
+
+        <form class="waitlist-form" novalidate>
+          <label class="sr-only" for="email-hero">E-mailadres</label>
+          <input class="waitlist-form__input" type="email" id="email-hero" name="email" placeholder="jouw@zaak.nl" required autocomplete="email" />
+          <button class="btn btn--green" type="submit">Zet mij op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></button>
+          <p class="waitlist-form__note" role="status">Gratis tijdens de bèta · iOS &amp; Android · Geen app nodig</p>
+        </form>
+      </div>
+
+      <div class="hero__visual">
+        <div class="blob" aria-hidden="true"></div>
+
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="wallet-top"><span>Wallet</span><span class="wallet-top__dots">•••</span></div>
+            <div class="pass pass--coffee">
+              <div class="pass__head">
+                <div class="pass__avatar">K</div>
+                <div class="pass__biz"><strong>Koffiehoek</strong><span>Koffiebar · Utrecht</span></div>
+              </div>
+              <div class="pass__reward">
+                <span class="pass__reward-label">Jouw beloning</span>
+                <span class="pass__reward-value">10ᵉ koffie gratis</span>
+              </div>
+              <div class="pass__stamps" data-on="7" data-total="10" data-icon="coffee"></div>
+              <div class="pass__progress">Nog 3 stempels tot je gratis koffie</div>
+              <div class="pass__barcode" aria-hidden="true"></div>
+              <div class="pass__by"><img src="assets/stamp-green.png" alt="" width="10" height="20" /> via stampzer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="float-card float-card--toast" aria-hidden="true">
+          <span class="float-card__check">✓</span>
+          <div><strong>Stempel toegevoegd</strong><span>Koffiehoek · zojuist</span></div>
+        </div>
+        <div class="float-card float-card--wallet" aria-hidden="true">
+          <span class="float-card__pill">Apple Wallet</span>
+          <span class="float-card__pill">Google Wallet</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container trust">
+      <span class="trust__label">Gemaakt voor lokale ondernemers</span>
+      <ul class="trust__list">
+        <li>Koffiebars</li><li>Kappers</li><li>Nagelstudio's</li><li>Sportscholen</li><li>Lunchrooms</li><li>Bakkers</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Stat band -->
+  <section class="statband reveal">
+    <div class="container statband__grid">
+      <div class="statband__num">5×</div>
+      <div class="statband__body">
+        <h2>Een bestaande klant behouden kost tot vijf keer minder dan een nieuwe winnen.</h2>
+        <p>Daarom draait bij stampzer alles om terugkomen. Een volle kaart is geen spaaractie — het is een klant die wéér binnenloopt.</p>
+        <ul class="chips">
+          <li>iOS &amp; Android</li><li>Geen app nodig</li><li>Klaar in 2 minuten</li><li>Eigen huisstijl</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="hoe-het-werkt">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Hoe het werkt</span>
+        <h2>In drie stappen live</h2>
+        <p class="section__lead">Geen techniek nodig. Jij stelt je kaart samen, je klant voegt 'm toe, jij deelt de stempels uit.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step reveal">
+          <span class="step__num">01</span>
+          <h3>Ontwerp je kaart</h3>
+          <p>Stel je spaarkaart samen in je eigen huisstijl: jouw logo, kleuren en de beloning die jij bepaalt — van een gratis koffie tot 10% korting.</p>
+        </article>
+        <article class="step reveal">
+          <span class="step__num">02</span>
+          <h3>Klant voegt 'm toe</h3>
+          <p>Je klant scant één QR-code en de kaart staat meteen in z'n Apple Wallet of Google Wallet. Geen app downloaden, geen account aanmaken.</p>
+        </article>
+        <article class="step reveal">
+          <span class="step__num">03</span>
+          <h3>Stempel bij elk bezoek</h3>
+          <p>Jij of je medewerker zet met één tik een stempel. Klanten kunnen zichzelf niet stempelen — dus geen vals spel. Bij de laatste stempel volgt de beloning.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample cards showcase -->
+  <section class="section section--paper2" id="kaarten">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Voorbeelden</span>
+        <h2>Voor elke zaak een eigen kaart</h2>
+        <p class="section__lead">Dezelfde slimme techniek, helemaal in jouw stijl. Zo ziet een stampzer-kaart eruit in de Wallet van je klant.</p>
+      </div>
+
+      <div class="showcase">
+        <div class="pass pass--sm pass--coffee reveal">
+          <div class="pass__head">
+            <div class="pass__avatar">K</div>
+            <div class="pass__biz"><strong>Koffiehoek</strong><span>Koffiebar</span></div>
+          </div>
+          <div class="pass__reward"><span class="pass__reward-label">Beloning</span><span class="pass__reward-value">10ᵉ koffie gratis</span></div>
+          <div class="pass__stamps" data-on="7" data-total="10" data-icon="coffee"></div>
+          <div class="pass__progress">Nog 3 stempels</div>
+          <div class="pass__by"><img src="assets/stamp-green.png" alt="" width="9" height="18" /> via stampzer</div>
+        </div>
+
+        <div class="pass pass--sm pass--barber reveal">
+          <div class="pass__head">
+            <div class="pass__avatar">B</div>
+            <div class="pass__biz"><strong>Barber Fade</strong><span>Kapper</span></div>
+          </div>
+          <div class="pass__reward"><span class="pass__reward-label">Beloning</span><span class="pass__reward-value">6ᵉ knipbeurt gratis</span></div>
+          <div class="pass__stamps" data-on="4" data-total="6" data-icon="scissors"></div>
+          <div class="pass__progress">Nog 2 stempels</div>
+          <div class="pass__by"><img src="assets/stamp-green.png" alt="" width="9" height="18" /> via stampzer</div>
+        </div>
+
+        <div class="pass pass--sm pass--nails reveal">
+          <div class="pass__head">
+            <div class="pass__avatar">N</div>
+            <div class="pass__biz"><strong>Studio Bloom</strong><span>Nagelstudio</span></div>
+          </div>
+          <div class="pass__reward"><span class="pass__reward-label">Beloning</span><span class="pass__reward-value">Gratis behandeling</span></div>
+          <div class="pass__stamps" data-on="5" data-total="8" data-icon="flower"></div>
+          <div class="pass__progress">Nog 3 stempels</div>
+          <div class="pass__by"><img src="assets/stamp-green.png" alt="" width="9" height="18" /> via stampzer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Functies</span>
+        <h2>Alles om klanten te laten terugkomen</h2>
+      </div>
+
+      <div class="features">
+        <article class="feature feature--green reveal">
+          <h3>Eigen huisstijl</h3>
+          <p>Jouw logo, kleuren en beloning. De kaart voelt als die van jou — niet als een generiek systeem.</p>
+        </article>
+        <article class="feature reveal">
+          <h3>Direct in de Wallet</h3>
+          <p>Werkt rechtstreeks in Apple Wallet en Google Wallet. Niets te installeren voor jou of je klant.</p>
+        </article>
+        <article class="feature reveal">
+          <h3>Stempelen met één tik</h3>
+          <p>Jij houdt de controle. Alleen jij en je team delen stempels uit, dus niemand speelt vals.</p>
+        </article>
+        <article class="feature feature--peach reveal">
+          <h3>Slimme beloningen</h3>
+          <p>Van een gratis koffie tot korting of een cadeautje — jij bepaalt wat klanten verdienen.</p>
+        </article>
+        <article class="feature reveal">
+          <h3>Klantinzicht</h3>
+          <p>Zie hoeveel klanten terugkomen en wie bijna een beloning heeft verdiend.</p>
+        </article>
+        <article class="feature feature--ink reveal">
+          <h3>Nooit meer kwijt</h3>
+          <p>De kaart zit veilig in de telefoon — niet in een la vol vergeten kaartjes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta reveal" id="wachtlijst">
+    <div class="container cta__inner">
+      <h2>Wees erbij vanaf de start</h2>
+      <p>We leggen de laatste hand aan stampzer. Schrijf je in op de wachtlijst en krijg als eerste toegang — plus een introkorting bij de lancering.</p>
+      <form class="waitlist-form waitlist-form--center" novalidate>
+        <label class="sr-only" for="email-cta">E-mailadres</label>
+        <input class="waitlist-form__input" type="email" id="email-cta" name="email" placeholder="jouw@zaak.nl" required autocomplete="email" />
+        <button class="btn btn--ink" type="submit">Zet mij op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></button>
+        <p class="waitlist-form__note" role="status">We mailen je zodra we live gaan. Geen spam, beloofd.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--paper2" id="faq">
+    <div class="container container--narrow">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Veelgestelde vragen</span>
+        <h2>Goed om te weten</h2>
+      </div>
+      <div class="faq reveal">
+        <details class="faq__item"><summary>Moeten mijn klanten een app downloaden?</summary><p>Nee. De kaart komt rechtstreeks in de Apple Wallet of Google Wallet die al op elke telefoon staat. Je klant scant één QR-code en klaar.</p></details>
+        <details class="faq__item"><summary>Werkt het op iPhone én Android?</summary><p>Ja. Stampzer ondersteunt zowel Apple Wallet (iPhone) als Google Wallet (Android), dus al je klanten kunnen meedoen.</p></details>
+        <details class="faq__item"><summary>Hoe deel ik stempels uit?</summary><p>Jij of je medewerker tikt in het stampzer-dashboard op 'stempel' bij het bezoek. Zo houd jij de controle en kan niemand zichzelf stempelen.</p></details>
+        <details class="faq__item"><summary>Heb ik speciale apparatuur nodig?</summary><p>Nee. Een telefoon, tablet of computer met internet is genoeg. Geen dure scanners of hardware.</p></details>
+        <details class="faq__item"><summary>Wat gaat het kosten?</summary><p>We werken aan een eerlijk abonnement voor lokale ondernemers. Schrijf je in op de wachtlijst voor vroege toegang en een introkorting bij de lancering.</p></details>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img src="assets/logo-cream.png" alt="stampzer.com" width="150" height="54" />
+        <p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p>
+      </div>
+      <nav class="footer__col" aria-label="Product">
+        <h4>Product</h4>
+        <a href="#hoe-het-werkt">Hoe het werkt</a>
+        <a href="#kaarten">Voorbeelden</a>
+        <a href="#features">Functies</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#wachtlijst">Wachtlijst</a>
+      </nav>
+      <nav class="footer__col" aria-label="Bedrijf">
+        <h4>Bedrijf</h4>
+        <a href="#faq">Veelgestelde vragen</a>
+        <a href="mailto:hallo@stampzer.com">Contact</a>
+      </nav>
+      <div class="footer__col">
+        <h4>Blijf op de hoogte</h4>
+        <a href="mailto:hallo@stampzer.com">hallo@stampzer.com</a>
+        <a href="#wachtlijst" class="btn btn--green footer__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© 2026 stampzer.com — Alle rechten voorbehouden.</span>
+      <span>Gemaakt in Nederland 🇳🇱</span>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="motion.js"></script>
+</body>
+</html>

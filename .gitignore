@@ -1,0 +1,13 @@
+# Local build tooling — kept on disk, never deployed to the live site
+build_assets.py
+recolor_assets.py
+build_og.py
+
+# Packaged uploads
+*.zip
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+desktop.ini
+*.log

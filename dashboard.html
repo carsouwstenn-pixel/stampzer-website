@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Het dashboard — stampzer | Inzicht in klanten, kaarten en beloningen</title>
+  <meta name="description" content="Het stampzer-dashboard geeft lokale ondernemers één overzicht van klanten, stempels, beloningen en terugkeer. Beheer je spaarprogramma en zie precies wie er terugkomt." />
+  <link rel="canonical" href="https://stampzer.com/dashboard.html" />
+  <meta name="theme-color" content="#181f10" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stampzer.com/dashboard.html" />
+  <meta property="og:site_name" content="Stampzer" />
+  <meta property="og:title" content="Het stampzer-dashboard — al je klanten in één overzicht" />
+  <meta property="og:description" content="Volg klanten, kaarten en beloningen, en zie precies wie er terugkomt. Een sleek dashboard voor lokale ondernemers." />
+  <meta property="og:image" content="https://stampzer.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Het stampzer-dashboard" />
+  <meta name="twitter:description" content="Al je klanten, kaarten en beloningen in één sleek overzicht." />
+  <meta name="twitter:image" content="https://stampzer.com/assets/og-image.png" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/seatren.woff2" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>if(!window.matchMedia||!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('js-anim');}</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Het stampzer-dashboard",
+    "url": "https://stampzer.com/dashboard.html",
+    "inLanguage": "nl-NL",
+    "description": "Het stampzer-dashboard geeft lokale ondernemers één overzicht van klanten, stempels, beloningen en terugkeer.",
+    "isPartOf": { "@type": "WebSite", "name": "Stampzer", "url": "https://stampzer.com/" }
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Naar inhoud</a>
+
+  <div class="announce">
+    <div class="container announce__inner">
+      <span class="announce__dot" aria-hidden="true"></span>
+      Stampzer is in besloten bèta — <a href="index.html#wachtlijst">schrijf je gratis in voor vroege toegang →</a>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="index.html" aria-label="stampzer.com home">
+        <img src="assets/logo-dark.png" alt="stampzer.com" width="150" height="54" />
+      </a>
+      <nav class="nav__links" aria-label="Hoofdmenu">
+        <a href="index.html#hoe-het-werkt">Hoe het werkt</a>
+        <a href="index.html#kaarten">Voorbeelden</a>
+        <a href="dashboard.html" aria-current="page">Dashboard</a>
+        <a href="index.html#faq">Vragen</a>
+      </nav>
+      <a href="index.html#wachtlijst" class="btn btn--green nav__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+
+  <!-- Hero -->
+  <section class="dhero">
+    <div class="container dhero__inner">
+      <span class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> Het dashboard</span>
+      <h1>Al je klanten in <span class="mark">één overzicht</span>.</h1>
+      <p class="dhero__sub">
+        Met het stampzer-dashboard zie je precies wie er terugkomt, hoeveel stempels je uitdeelt en welke beloningen werken.
+        Beheer je kaarten, coupons en klanten — alles op één plek, op elk apparaat.
+      </p>
+      <div class="dhero__cta">
+        <a href="index.html#wachtlijst" class="btn btn--green">Vroege toegang aanvragen <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a href="#functies" class="btn btn--ghost">Bekijk de functies</a>
+      </div>
+    </div>
+
+    <div class="container dhero__appwrap reveal">
+      <div class="appwin">
+        <aside class="app-side">
+          <div class="app-logo"><img src="assets/logo-cream.png" alt="stampzer" width="130" height="47" /></div>
+          <nav class="app-nav" aria-label="Dashboardmenu">
+            <a href="#functies" class="is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Overzicht</span></a>
+            <a href="#klanten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.5a3 3 0 0 1 0 5M21 20a6 6 0 0 0-5-5.9"/></svg><span>Klanten</span></a>
+            <a href="#klanten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg><span>Kaarten</span></a>
+            <a href="#beloningen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8C12 5 9 3 7 5s0 3 5 3zM12 8c0-3 3-5 5-3s0 3-5 3z"/></svg><span>Beloningen</span></a>
+            <a href="#inzichten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 16v-4M12 16V8M16 16v-6"/></svg><span>Inzichten</span></a>
+            <a href="#functies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.3l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2.2-1.3L13.9 2h-3.8l-.3 2.2a7 7 0 0 0-2.2 1.3l-2.3-1-2 3.4 2 1.5a7 7 0 0 0 0 2.6l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2.2 1.3l.3 2.2h3.8l.3-2.2a7 7 0 0 0 2.2-1.3l2.3 1 2-3.4-2-1.5A7 7 0 0 0 19 12z"/></svg><span>Instellingen</span></a>
+          </nav>
+          <div class="app-side__foot">
+            <div class="app-side__av">K</div>
+            <div><strong>Koffiehoek</strong><small>Eigenaar</small></div>
+          </div>
+        </aside>
+
+        <div class="app-main">
+          <div class="app-top">
+            <div>
+              <h3>Overzicht</h3>
+              <p class="app-top__sub">Koffiehoek · 9 – 15 juni 2026</p>
+            </div>
+            <div class="app-top__right">
+              <span class="app-pill">Deze week <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+              <button class="app-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg> Nieuwe beloning</button>
+            </div>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi"><span class="kpi__label">Actieve klanten</span><div class="kpi__num">1.248</div><span class="kpi__delta">+8% deze week</span></div>
+            <div class="kpi"><span class="kpi__label">Stempels deze week</span><div class="kpi__num">312</div><span class="kpi__delta">+14%</span></div>
+            <div class="kpi"><span class="kpi__label">Volle kaarten</span><div class="kpi__num">27</div><span class="kpi__delta">+5</span></div>
+            <div class="kpi"><span class="kpi__label">Terugkeer</span><div class="kpi__num">68%</div><span class="kpi__delta">+6%</span></div>
+          </div>
+
+          <div class="panel-grid panel-grid--2">
+            <div class="panel">
+              <div class="panel__head"><span class="panel__title">Bezoeken per week</span><span class="panel__hint">Laatste 8 weken</span></div>
+              <svg class="chart" viewBox="0 0 340 140" role="img" aria-label="Lijngrafiek van bezoeken per week, stijgende trend">
+                <line x1="10" y1="115" x2="330" y2="115" stroke="rgba(24,31,16,.1)" stroke-width="1"/>
+                <line x1="10" y1="78" x2="330" y2="78" stroke="rgba(24,31,16,.07)" stroke-width="1"/>
+                <line x1="10" y1="41" x2="330" y2="41" stroke="rgba(24,31,16,.07)" stroke-width="1"/>
+                <path class="chart-area" d="M10,98 L56,88 L102,92 L148,66 L194,72 L240,50 L286,40 L330,26 L330,115 L10,115 Z" fill="rgba(41,199,0,.14)"/>
+                <path class="chart-line" d="M10,98 L56,88 L102,92 L148,66 L194,72 L240,50 L286,40 L330,26" fill="none" stroke="#29c700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle class="chart-dot" cx="330" cy="26" r="4.5" fill="#29c700" stroke="#fff" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><span class="panel__title">Beloningen ingewisseld</span></div>
+              <div class="donut">
+                <svg class="donut__svg" width="118" height="118" viewBox="0 0 120 120" role="img" aria-label="68 procent terugkerende klanten">
+                  <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(24,31,16,.1)" stroke-width="16"/>
+                  <circle class="donut-arc" cx="60" cy="60" r="48" fill="none" stroke="#29c700" stroke-width="16" stroke-linecap="round" stroke-dasharray="205 302" transform="rotate(-90 60 60)"/>
+                  <text class="donut__center" x="60" y="66" text-anchor="middle">180</text>
+                </svg>
+                <div class="donut__legend">
+                  <span><i class="dot-key" style="background:#29c700"></i> Gratis koffie · 142</span>
+                  <span><i class="dot-key" style="background:rgba(24,31,16,.25)"></i> 10% korting · 38</span>
+                  <span class="panel__hint">Deze maand ingewisseld</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-grid panel-grid--2" style="margin-top:14px">
+            <div class="panel">
+              <div class="panel__head"><span class="panel__title">Recente activiteit</span><span class="panel__hint">Live</span></div>
+              <div class="feed">
+                <div class="feed__item"><span class="feed__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Sanne</b> kreeg een stempel · kaart 7/10<div class="feed__time">2 minuten geleden</div></div></div>
+                <div class="feed__item"><span class="feed__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18"/></svg></span><div><b>Tom</b> wisselde <b>gratis koffie</b> in<div class="feed__time">18 minuten geleden</div></div></div>
+                <div class="feed__item"><span class="feed__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/></svg></span><div><b>Nieuwe klant</b> · Lisa voegde de kaart toe<div class="feed__time">1 uur geleden</div></div></div>
+                <div class="feed__item"><span class="feed__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Daan</b> kreeg een stempel · kaart 10/10 vol<div class="feed__time">2 uur geleden</div></div></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><span class="panel__title">Trouwste klanten</span></div>
+              <div class="toplist">
+                <div class="toplist__row"><span class="av av--a">S</span><span class="toplist__name">Sanne</span><span class="toplist__bar"><i style="width:100%"></i></span><span class="toplist__val">34×</span></div>
+                <div class="toplist__row"><span class="av av--b">T</span><span class="toplist__name">Tom</span><span class="toplist__bar"><i style="width:82%"></i></span><span class="toplist__val">28×</span></div>
+                <div class="toplist__row"><span class="av av--c">L</span><span class="toplist__name">Lisa</span><span class="toplist__bar"><i style="width:64%"></i></span><span class="toplist__val">22×</span></div>
+                <div class="toplist__row"><span class="av av--d">D</span><span class="toplist__name">Daan</span><span class="toplist__bar"><i style="width:50%"></i></span><span class="toplist__val">17×</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro / what it is -->
+  <section class="section" id="functies">
+    <div class="container">
+      <div class="section__head reveal" style="max-width:720px;margin:0 auto 0;text-align:center">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Wat je ermee kunt</span>
+        <h2>Je hele spaarprogramma, onder controle</h2>
+        <p class="section__lead" style="margin-left:auto;margin-right:auto">
+          Het dashboard werkt in je browser en op je telefoon. Geen installatie, geen handleiding nodig —
+          je medewerkers stempelen met één tik, jij houdt het overzicht.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Klanten -->
+  <section class="dsection dsection--alt" id="klanten">
+    <div class="container dsection__grid">
+      <div class="dsection__copy reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Klanten &amp; kaarten</span>
+        <h2>Ken elke klant</h2>
+        <p>Elke kaart die wordt toegevoegd, verschijnt in je klantenlijst. Zie hoeveel stempels iemand heeft, wanneer ze voor het laatst langskwamen en wie er bijna een beloning verdient.</p>
+        <ul class="checks">
+          <li><span class="check" aria-hidden="true">✓</span> Volg stempels en voortgang per klant, in realtime</li>
+          <li><span class="check" aria-hidden="true">✓</span> Zie wie bijna een volle kaart heeft en bijna terugkomt</li>
+          <li><span class="check" aria-hidden="true">✓</span> Filter op nieuw, actief of inactief om gericht te bedanken</li>
+          <li><span class="check" aria-hidden="true">✓</span> Exporteer je klantenlijst wanneer je wilt</li>
+        </ul>
+      </div>
+      <div class="dsection__media reveal">
+        <div class="panel">
+          <div class="panel__head"><span class="panel__title">Klanten</span><span class="app-pill">1.248 totaal</span></div>
+          <div class="table-wrap">
+            <table class="dtable">
+              <thead><tr><th>Klant</th><th>Stempels</th><th>Laatste bezoek</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><span class="dtable__klant"><span class="av av--a">S</span><b>Sanne de Vries</b></span></td><td><span class="prog"><span class="prog__track"><i style="width:70%"></i></span><span class="prog__txt">7/10</span></span></td><td>2 dagen geleden</td><td><span class="badge badge--active">Actief</span></td></tr>
+                <tr><td><span class="dtable__klant"><span class="av av--b">T</span><b>Tom Jansen</b></span></td><td><span class="prog"><span class="prog__track"><i style="width:90%"></i></span><span class="prog__txt">9/10</span></span></td><td>gisteren</td><td><span class="badge badge--almost">Bijna vol</span></td></tr>
+                <tr><td><span class="dtable__klant"><span class="av av--c">L</span><b>Lisa Bakker</b></span></td><td><span class="prog"><span class="prog__track"><i style="width:40%"></i></span><span class="prog__txt">4/10</span></span></td><td>5 dagen geleden</td><td><span class="badge badge--active">Actief</span></td></tr>
+                <tr><td><span class="dtable__klant"><span class="av av--d">D</span><b>Daan Smit</b></span></td><td><span class="prog"><span class="prog__track"><i style="width:100%"></i></span><span class="prog__txt">10/10</span></span></td><td>2 uur geleden</td><td><span class="badge badge--ready">Beloning klaar</span></td></tr>
+                <tr><td><span class="dtable__klant"><span class="av av--e">M</span><b>Mila Koster</b></span></td><td><span class="prog"><span class="prog__track"><i style="width:20%"></i></span><span class="prog__txt">2/10</span></span></td><td>1 week geleden</td><td><span class="badge badge--active">Actief</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beloningen -->
+  <section class="dsection" id="beloningen">
+    <div class="container dsection__grid dsection--flip">
+      <div class="dsection__copy reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Beloningen &amp; coupons</span>
+        <h2>Beloningen die werken</h2>
+        <p>Stel zelf in wat klanten verdienen en na hoeveel stempels. Zie meteen welke beloning het vaakst wordt ingewisseld — en dus het beste werkt om klanten terug te laten komen.</p>
+        <ul class="checks">
+          <li><span class="check" aria-hidden="true">✓</span> Maak meerdere beloningen aan, van gratis product tot korting</li>
+          <li><span class="check" aria-hidden="true">✓</span> Bepaal zelf het aantal stempels per beloning</li>
+          <li><span class="check" aria-hidden="true">✓</span> Zie hoe vaak elke coupon wordt ingewisseld</li>
+          <li><span class="check" aria-hidden="true">✓</span> Pas je kaart en regels aan zonder gedoe</li>
+        </ul>
+      </div>
+      <div class="dsection__media reveal">
+        <div class="panel">
+          <div class="panel__head"><span class="panel__title">Beloningen</span><button class="app-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg> Nieuw</button></div>
+          <div class="rewards">
+            <div class="reward">
+              <span class="reward__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h11v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M15 9h2.4a2.4 2.4 0 0 1 0 4.8H15"/><path d="M7 3.4v1.6M11 3.4v1.6"/></svg></span>
+              <div class="reward__meta"><b>Gratis koffie</b><small>Na 10 stempels · actief</small></div>
+              <div class="reward__stat"><b>142</b><small>ingewisseld</small></div>
+            </div>
+            <div class="reward">
+              <span class="reward__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H4v5M20 16v5h-5M21 3 3 21"/></svg></span>
+              <div class="reward__meta"><b>10% korting</b><small>Na 5 stempels · actief</small></div>
+              <div class="reward__stat"><b>38</b><small>ingewisseld</small></div>
+            </div>
+            <div class="reward">
+              <span class="reward__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8C12 5 9 3 7.5 4.5S9 8 12 8z"/></svg></span>
+              <div class="reward__meta"><b>Gratis gebakje</b><small>Na 8 stempels · concept</small></div>
+              <div class="reward__stat"><b>—</b><small>nog niet live</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inzichten -->
+  <section class="dsection dsection--alt" id="inzichten">
+    <div class="container dsection__grid">
+      <div class="dsection__copy reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Inzichten</span>
+        <h2>Inzichten die terugbetalen</h2>
+        <p>Zie in één oogopslag hoe je zaak het doet. Hoeveel klanten komen terug, wanneer is het druk en groeit je vaste klantenkring? Slimmer plannen, gerichter belonen.</p>
+        <ul class="checks">
+          <li><span class="check" aria-hidden="true">✓</span> Volg je terugkeerpercentage week na week</li>
+          <li><span class="check" aria-hidden="true">✓</span> Ontdek je drukste dagen en momenten om slimmer te plannen</li>
+          <li><span class="check" aria-hidden="true">✓</span> Vergelijk nieuwe versus terugkerende klanten</li>
+        </ul>
+      </div>
+      <div class="dsection__media reveal">
+        <div class="panel">
+          <div class="panel__head"><span class="panel__title">Terugkeer</span><span class="panel__hint">Deze maand</span></div>
+          <div class="donut">
+            <svg class="donut__svg" width="108" height="108" viewBox="0 0 120 120" role="img" aria-label="68 procent terugkerende klanten">
+              <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(24,31,16,.1)" stroke-width="16"/>
+              <circle class="donut-arc" cx="60" cy="60" r="48" fill="none" stroke="#29c700" stroke-width="16" stroke-linecap="round" stroke-dasharray="205 302" transform="rotate(-90 60 60)"/>
+              <text class="donut__center" x="60" y="66" text-anchor="middle">68%</text>
+            </svg>
+            <div class="donut__legend">
+              <span><i class="dot-key" style="background:#29c700"></i> Terugkerend · 68%</span>
+              <span><i class="dot-key" style="background:rgba(24,31,16,.25)"></i> Nieuw · 32%</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel__head"><span class="panel__title">Drukste momenten</span><span class="panel__hint">Stempels per dagdeel</span></div>
+          <div class="heat">
+            <span class="heat__corner"></span>
+            <span class="heat__col">Ma</span><span class="heat__col">Di</span><span class="heat__col">Wo</span><span class="heat__col">Do</span><span class="heat__col">Vr</span><span class="heat__col">Za</span><span class="heat__col">Zo</span>
+            <span class="heat__rowlabel">Ochtend</span>
+            <span class="heat-cell" style="opacity:.55"></span><span class="heat-cell" style="opacity:.5"></span><span class="heat-cell" style="opacity:.6"></span><span class="heat-cell" style="opacity:.65"></span><span class="heat-cell" style="opacity:.8"></span><span class="heat-cell" style="opacity:1"></span><span class="heat-cell" style="opacity:.9"></span>
+            <span class="heat__rowlabel">Middag</span>
+            <span class="heat-cell" style="opacity:.3"></span><span class="heat-cell" style="opacity:.35"></span><span class="heat-cell" style="opacity:.4"></span><span class="heat-cell" style="opacity:.45"></span><span class="heat-cell" style="opacity:.6"></span><span class="heat-cell" style="opacity:.85"></span><span class="heat-cell" style="opacity:.7"></span>
+            <span class="heat__rowlabel">Avond</span>
+            <span class="heat-cell" style="opacity:.12"></span><span class="heat-cell" style="opacity:.15"></span><span class="heat-cell" style="opacity:.18"></span><span class="heat-cell" style="opacity:.2"></span><span class="heat-cell" style="opacity:.35"></span><span class="heat-cell" style="opacity:.5"></span><span class="heat-cell" style="opacity:.4"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature grid -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Alles inbegrepen</span>
+        <h2>Eén dashboard, alles erin</h2>
+      </div>
+      <div class="features">
+        <article class="feature feature--green reveal"><h3>Realtime overzicht</h3><p>Stempels, kaarten en beloningen werken direct bij — je ziet alles live gebeuren.</p></article>
+        <article class="feature reveal"><h3>Klantprofielen</h3><p>Elke klant met voortgang, bezoeken en geschiedenis op één plek.</p></article>
+        <article class="feature reveal"><h3>Stempelen met één tik</h3><p>Snel stempelen vanaf telefoon of tablet, ook door je medewerkers.</p></article>
+        <article class="feature feature--peach reveal"><h3>Meerdere vestigingen</h3><p>Beheer al je locaties vanuit hetzelfde account.</p></article>
+        <article class="feature reveal"><h3>Exporteren</h3><p>Haal je klant- en bezoekdata eruit wanneer je maar wilt.</p></article>
+        <article class="feature feature--ink reveal"><h3>Veilig &amp; AVG-proof</h3><p>Je data staat veilig en je voldoet aan de privacyregels.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta reveal">
+    <div class="container cta__inner">
+      <h2>Klaar om je klanten te leren kennen?</h2>
+      <p>Schrijf je in op de wachtlijst en krijg als eerste toegang tot het stampzer-dashboard — plus een introkorting bij de lancering.</p>
+      <a href="index.html#wachtlijst" class="btn btn--ink">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img src="assets/logo-cream.png" alt="stampzer.com" width="150" height="54" />
+        <p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p>
+      </div>
+      <nav class="footer__col" aria-label="Product">
+        <h4>Product</h4>
+        <a href="index.html#hoe-het-werkt">Hoe het werkt</a>
+        <a href="index.html#kaarten">Voorbeelden</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="index.html#wachtlijst">Wachtlijst</a>
+      </nav>
+      <nav class="footer__col" aria-label="Bedrijf">
+        <h4>Bedrijf</h4>
+        <a href="index.html#faq">Veelgestelde vragen</a>
+        <a href="mailto:hallo@stampzer.com">Contact</a>
+      </nav>
+      <div class="footer__col">
+        <h4>Blijf op de hoogte</h4>
+        <a href="mailto:hallo@stampzer.com">hallo@stampzer.com</a>
+        <a href="index.html#wachtlijst" class="btn btn--green footer__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© 2026 stampzer.com — Alle rechten voorbehouden.</span>
+      <span>Gemaakt in Nederland 🇳🇱</span>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="motion.js"></script>
+</body>
+</html>
