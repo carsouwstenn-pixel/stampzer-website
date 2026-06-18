@@ -98,7 +98,7 @@ document.querySelectorAll('.waitlist-form').forEach((form) => {
         const res = await fetch(ENDPOINT, {
           method: 'POST',
           headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ email, page: location.pathname }),
         });
         if (!res.ok) throw new Error('bad response');
       } catch (err) {

@@ -3,6 +3,10 @@
 _ogfont/
 _fontsrc/
 
+# Secrets — kept on disk + deployed in the zip, never in the public repo
+api/config.php
+phptest.php
+
 # Packaged uploads
 *.zip
 

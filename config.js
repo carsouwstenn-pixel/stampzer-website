@@ -6,5 +6,5 @@ window.STAMPZER_CONFIG = {
   // Paste a Formspree endpoint (or your own API URL) to start collecting e-mails.
   //   Example: "https://formspree.io/f/abcdwxyz"
   // Leave as null to just show the "Je staat op de lijst!" message without sending anywhere.
-  waitlistEndpoint: null,
+  waitlistEndpoint: "/lead.php",
 };

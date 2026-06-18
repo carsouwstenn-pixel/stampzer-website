@@ -1,11 +1,27 @@
-<!DOCTYPE html>
+<?php
+define('STAMPZER_APP', true);
+require __DIR__ . '/../api/db.php';
+require __DIR__ . '/auth.php';
+require_admin();
+
+$pdo = db();
+$leads = $pdo->query("SELECT email, page, created_at FROM leads ORDER BY created_at DESC LIMIT 500")->fetchAll();
+$total = (int) $pdo->query("SELECT COUNT(*) AS c FROM leads")->fetch()['c'];
+$week  = (int) $pdo->query("SELECT COUNT(*) AS c FROM leads WHERE created_at >= (NOW() - INTERVAL 7 DAY)")->fetch()['c'];
+
+function lead_page_label($p) {
+    $p = (string)$p;
+    if ($p === '' || $p === '/') return 'Homepage';
+    if (strpos($p, '/kapper') === 0) return 'Kapper';
+    return trim($p, '/');
+}
+?><!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Stampzer — CEO dashboard</title>
-
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +46,7 @@
       </nav>
       <div class="adm-side__foot">
         <div class="adm-side__av">S</div>
-        <div><strong>Stampzer</strong><small>CEO</small></div>
+        <div><strong>Stampzer</strong><a class="adm-logout" href="/admin/logout.php">Uitloggen</a></div>
       </div>
     </aside>
 
@@ -40,14 +56,14 @@
           <h1 id="adm-title">Overzicht</h1>
           <p>Welkom terug. Hier komt alles samen — leads, gedrag, SEO en straks je omzet.</p>
         </div>
-        <span class="adm-pill">Bèta · nog niet gekoppeld</span>
+        <span class="adm-pill" style="--dot:#29c700">Databron verbonden</span>
       </div>
 
       <!-- OVERZICHT -->
       <section class="adm-section is-active" data-panel="overzicht">
         <div class="kpi-grid">
-          <div class="kpi"><span class="kpi__label">Leads totaal</span><div class="kpi__num">—</div><span class="kpi__sub">verbind je databron</span></div>
-          <div class="kpi"><span class="kpi__label">Aanmeldingen deze week</span><div class="kpi__num">—</div><span class="kpi__sub">verbind je databron</span></div>
+          <div class="kpi"><span class="kpi__label">Leads totaal</span><div class="kpi__num"><?= $total ?></div><span class="kpi__sub">wachtlijst-aanmeldingen</span></div>
+          <div class="kpi"><span class="kpi__label">Aanmeldingen deze week</span><div class="kpi__num"><?= $week ?></div><span class="kpi__sub">laatste 7 dagen</span></div>
           <div class="kpi"><span class="kpi__label">Bezoekers</span><div class="kpi__num">—</div><span class="kpi__sub">via Microsoft Clarity</span></div>
           <div class="kpi"><span class="kpi__label">Conversie</span><div class="kpi__num">—</div><span class="kpi__sub">bezoekers → leads</span></div>
         </div>
@@ -55,13 +71,13 @@
         <div class="panel">
           <div class="panel__title">Verbindingen</div>
           <div class="conn">
-            <span class="conn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/></svg></span>
-            <div class="conn__meta"><strong>Microsoft Clarity — heatmaps</strong><span>Zien waar bezoekers kijken en klikken</span></div>
-            <div class="conn__right"><span class="badge badge--off">Niet verbonden</span></div>
+            <span class="conn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H4zM4 7l8 6 8-6"/></svg></span>
+            <div class="conn__meta"><strong>Databron — leads &amp; instellingen</strong><span>MySQL op Hostinger — slaat aanmeldingen op</span></div>
+            <div class="conn__right"><span class="badge badge--on">Verbonden</span></div>
           </div>
           <div class="conn">
-            <span class="conn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H4zM4 7l8 6 8-6"/></svg></span>
-            <div class="conn__meta"><strong>Databron — leads &amp; instellingen</strong><span>Slaat wachtlijst-aanmeldingen op (Supabase aanbevolen)</span></div>
+            <span class="conn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/></svg></span>
+            <div class="conn__meta"><strong>Microsoft Clarity — heatmaps</strong><span>Zien waar bezoekers kijken en klikken</span></div>
             <div class="conn__right"><span class="badge badge--off">Niet verbonden</span></div>
           </div>
           <div class="conn">
@@ -79,13 +95,21 @@
 
       <!-- LEADS -->
       <section class="adm-section" data-panel="leads">
-        <div class="adm-section__head"><h2>Leads</h2><p>Elke wachtlijst-aanmelding op de site komt hier binnen — met e-mail, vanaf welke pagina (bijv. /kapper) en wanneer.</p></div>
+        <div class="adm-section__head"><h2>Leads</h2><p>Elke wachtlijst-aanmelding op de site komt hier binnen — met e-mail, vanaf welke pagina en wanneer.</p></div>
         <div class="panel">
-          <div class="panel__title">Wachtlijst-aanmeldingen</div>
+          <div class="panel__title">Wachtlijst-aanmeldingen (<?= $total ?>)</div>
           <table class="dtable">
-            <thead><tr><th>E-mail</th><th>Pagina</th><th>Datum</th><th>Status</th></tr></thead>
-            <tbody id="adm-leads-body">
-              <tr><td colspan="4" class="dtable__empty">Nog geen databron verbonden — zodra we Supabase koppelen verschijnen hier al je aanmeldingen, en kun je ze exporteren.</td></tr>
+            <thead><tr><th>E-mail</th><th>Pagina</th><th>Datum</th></tr></thead>
+            <tbody>
+              <?php if (!$leads): ?>
+                <tr><td colspan="3" class="dtable__empty">Nog geen aanmeldingen. Zodra iemand zich op de site inschrijft, verschijnt het hier automatisch.</td></tr>
+              <?php else: foreach ($leads as $l): ?>
+                <tr>
+                  <td><strong style="color:var(--ink)"><?= adm_h($l['email']) ?></strong></td>
+                  <td><?= adm_h(lead_page_label($l['page'])) ?></td>
+                  <td><?= adm_h(date('d-m-Y H:i', strtotime($l['created_at']))) ?></td>
+                </tr>
+              <?php endforeach; endif; ?>
             </tbody>
           </table>
         </div>
@@ -104,7 +128,7 @@
               <li>Kopieer je <strong>Project ID</strong> (een code als <em>abcd1234</em>).</li>
               <li>Stuur 'm naar mij — ik plaats de tracking op alle pagina's. Vanaf dat moment vullen je heatmaps zich.</li>
             </ol>
-            <a href="https://clarity.microsoft.com/" class="btn btn--green" target="_blank" rel="noopener">Open Microsoft Clarity <span class="btn__arrow" aria-hidden="true">↗</span></a>
+            <a href="https://clarity.microsoft.com/" class="btn btn--green" target="_blank" rel="noopener">Open Microsoft Clarity ↗</a>
           </div>
         </div>
       </section>
@@ -126,7 +150,7 @@
               <li>Voeg stampzer.com toe op <strong>search.google.com/search-console</strong> en verifieer (ik help met de verificatie).</li>
               <li>Daarna tonen we hier je zoekposities, klikken en vertoningen per pagina.</li>
             </ol>
-            <a href="https://search.google.com/search-console" class="btn btn--ghost" target="_blank" rel="noopener">Open Search Console <span class="btn__arrow" aria-hidden="true">↗</span></a>
+            <a href="https://search.google.com/search-console" class="btn btn--ghost" target="_blank" rel="noopener">Open Search Console ↗</a>
           </div>
         </div>
       </section>
@@ -147,7 +171,7 @@
             <div class="field"><label>LinkedIn</label><input type="url" placeholder="https://linkedin.com/company/stampzer" /></div>
           </div>
           <button class="btn btn--green" disabled style="opacity:.55;cursor:not-allowed">Opslaan</button>
-          <div class="note-soon">Opslaan wordt actief zodra de databron (Supabase) is verbonden — dan worden deze velden direct live op de site doorgevoerd. Logo's vervangen kan dan ook hier met één klik.</div>
+          <div class="note-soon">Opslaan koppel ik als volgende stap aan de database — dan worden deze velden direct live doorgevoerd, inclusief het vervangen van logo's met één klik.</div>
         </div>
         <div class="panel">
           <div class="panel__title">SEO-kernteksten</div>
@@ -178,7 +202,8 @@
         <div class="adm-section__head"><h2>Instellingen</h2><p>Beveiliging en toegang tot dit dashboard.</p></div>
         <div class="panel">
           <div class="panel__title">Beveiliging</div>
-          <div class="conn"><span class="conn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><div class="conn__meta"><strong>Dashboard-login</strong><span>Wordt beveiligd met een echte login zodra Supabase is verbonden. Tot dan: bescherm /admin/ via je Hostinger map-wachtwoord.</span></div><div class="conn__right"><span class="badge badge--off">In te stellen</span></div></div>
+          <div class="conn"><span class="conn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><div class="conn__meta"><strong>Dashboard-login</strong><span>Actief — beveiligd met je eigen e-mail en wachtwoord (PHP-sessie).</span></div><div class="conn__right"><span class="badge badge--on">Beveiligd</span></div></div>
+          <p style="color:var(--muted);font-size:.9rem;margin-top:14px"><a href="/admin/logout.php" style="color:var(--green-700);font-weight:600">Uitloggen →</a></p>
         </div>
       </section>
 
