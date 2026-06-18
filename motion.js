@@ -2,6 +2,17 @@
 // Works on every page; each block is guarded so it only runs where it applies.
 // Reads settings from config.js (window.STAMPZER_CONFIG), which must load first.
 
+// ---- Microsoft Clarity (heatmaps & session recordings) ----
+(function () {
+  const id = window.STAMPZER_CONFIG && window.STAMPZER_CONFIG.clarityProjectId;
+  if (!id) return;
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", id);
+})();
+
 // ---- Custom stamp glyphs per business ----
 const STAMP_ICONS = {
   coffee: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h11v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M15 9h2.4a2.4 2.4 0 0 1 0 4.8H15"/><path d="M7 3.4v1.6M11 3.4v1.6"/></svg>',

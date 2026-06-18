@@ -7,4 +7,7 @@ window.STAMPZER_CONFIG = {
   //   Example: "https://formspree.io/f/abcdwxyz"
   // Leave as null to just show the "Je staat op de lijst!" message without sending anywhere.
   waitlistEndpoint: "/lead.php",
+
+  // Microsoft Clarity project ID — heatmaps + session recordings. Set to null to turn off.
+  clarityProjectId: "x951bddg9b",
 };

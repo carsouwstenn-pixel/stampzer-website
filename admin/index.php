@@ -77,8 +77,8 @@ function lead_page_label($p) {
           </div>
           <div class="conn">
             <span class="conn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/></svg></span>
-            <div class="conn__meta"><strong>Microsoft Clarity — heatmaps</strong><span>Zien waar bezoekers kijken en klikken</span></div>
-            <div class="conn__right"><span class="badge badge--off">Niet verbonden</span></div>
+            <div class="conn__meta"><strong>Microsoft Clarity — heatmaps</strong><span>Project x951bddg9b · tracking actief op de hele site</span></div>
+            <div class="conn__right"><span class="badge badge--on">Verbonden</span></div>
           </div>
           <div class="conn">
             <span class="conn__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
@@ -117,20 +117,40 @@ function lead_page_label($p) {
 
       <!-- HEATMAPS -->
       <section class="adm-section" data-panel="heatmaps">
-        <div class="adm-section__head"><h2>Heatmaps &amp; gedrag</h2><p>Zie precies waar bezoekers kijken, klikken en afhaken — zo weet je wat werkt en wat je moet aanpassen.</p></div>
-        <div class="connect">
-          <span class="connect__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM16 8h.01"/></svg></span>
-          <div>
-            <h3>Verbind Microsoft Clarity</h3>
-            <p style="color:var(--muted);font-size:.92rem;margin-top:4px">Gratis, en geeft heatmaps én sessie-opnames van echte bezoekers.</p>
-            <ol>
-              <li>Maak een gratis project aan op <strong>clarity.microsoft.com</strong> met je site <strong>stampzer.com</strong>.</li>
-              <li>Kopieer je <strong>Project ID</strong> (een code als <em>abcd1234</em>).</li>
-              <li>Stuur 'm naar mij — ik plaats de tracking op alle pagina's. Vanaf dat moment vullen je heatmaps zich.</li>
-            </ol>
-            <a href="https://clarity.microsoft.com/" class="btn btn--green" target="_blank" rel="noopener">Open Microsoft Clarity ↗</a>
+        <div class="adm-section__head"><h2>Heatmaps &amp; gedrag</h2><p>Zie precies waar bezoekers kijken, klikken en afhaken. Microsoft Clarity verzamelt dit automatisch op je hele site.</p></div>
+
+        <div class="panel">
+          <div class="hm-hero__row">
+            <span class="hm-hero__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM16 8h.01"/></svg></span>
+            <div class="hm-hero__meta"><strong>Microsoft Clarity</strong><span>Project <code>x951bddg9b</code> · tracking actief</span></div>
+            <span class="badge badge--on">Verbonden</span>
+          </div>
+          <div class="hm-hero__actions">
+            <a class="btn btn--green" href="https://clarity.microsoft.com/projects/view/x951bddg9b/dashboard" target="_blank" rel="noopener">Open Clarity dashboard ↗</a>
+            <a class="btn btn--ghost" href="https://clarity.microsoft.com/projects/view/x951bddg9b/heatmaps" target="_blank" rel="noopener">Bekijk heatmaps ↗</a>
+            <a class="btn btn--ghost" href="https://clarity.microsoft.com/projects/view/x951bddg9b/recordings" target="_blank" rel="noopener">Sessie-opnames ↗</a>
           </div>
         </div>
+
+        <div class="hm-grid">
+          <div class="hm-card">
+            <span class="hm-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3l11 5-5 2-2 5z"/></svg></span>
+            <strong>Heatmaps</strong>
+            <p>Waar klikken bezoekers en hoe ver scrollen ze? Klik- en scroll-heatmaps per pagina.</p>
+          </div>
+          <div class="hm-card">
+            <span class="hm-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></svg></span>
+            <strong>Sessie-opnames</strong>
+            <p>Kijk echte bezoeken terug en zie precies waar mensen twijfelen of afhaken.</p>
+          </div>
+          <div class="hm-card">
+            <span class="hm-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span>
+            <strong>Frustratie-signalen</strong>
+            <p>Rage clicks, dead clicks en snelle uitstap worden automatisch gemarkeerd.</p>
+          </div>
+        </div>
+
+        <div class="note-soon">De eerste data verschijnt zodra er bezoekers binnen zijn (meestal binnen ~2 uur). Clarity opent in een nieuw tabblad — inbedden kan niet vanwege privacy &amp; beveiliging.</div>
       </section>
 
       <!-- SEO -->
