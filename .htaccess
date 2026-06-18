@@ -1,0 +1,13 @@
+# Stampzer — caching policy
+<IfModule mod_headers.c>
+  # Always revalidate markup, styles and scripts so changes appear immediately.
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate, max-age=0"
+    Header unset Expires
+    Header unset Pragma
+  </FilesMatch>
+  # Fonts and images rarely change — cache them aggressively for speed.
+  <FilesMatch "\.(woff2?|ttf|otf|eot|png|jpe?g|gif|svg|ico|webp)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
