@@ -1,7 +1,7 @@
 # Local build tooling — kept on disk, never deployed to the live site
-build_assets.py
-recolor_assets.py
-build_og.py
+*.py
+_ogfont/
+_fontsrc/
 
 # Packaged uploads
 *.zip

@@ -587,3 +587,23 @@ ul { margin: 0; padding: 0; list-style: none; }
   .compare__cell, .compare__col-h { padding: 12px 16px; font-size: .9rem; }
   .compare__col-h { font-size: 1rem; }
 }
+
+/* =====================================================================
+   Niche landing pages (pain points, reward chips, clickable trust)
+   ===================================================================== */
+.trust__list a { color: inherit; transition: color .15s, opacity .15s; }
+.trust__list li:has(a) { opacity: 1; }
+.trust__list a:hover { color: var(--green); text-decoration: underline; }
+
+.pains { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+@media (max-width: 720px) { .pains { grid-template-columns: 1fr; } }
+
+.rewardlist { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.reward-chip { display: flex; flex-direction: column; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px; transition: transform .18s ease, box-shadow .18s ease; }
+.reward-chip:hover { transform: translateY(-5px); box-shadow: var(--shadow-sm); }
+.reward-chip__ico { width: 46px; height: 46px; border-radius: 13px; background: rgba(41, 199, 0, .12); color: var(--green-900); display: grid; place-items: center; }
+.reward-chip__ico svg { width: 24px; height: 24px; }
+.reward-chip strong { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; color: var(--ink); line-height: 1.1; }
+.reward-chip span { font-size: .88rem; color: var(--muted); }
+@media (max-width: 860px) { .rewardlist { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .rewardlist { grid-template-columns: 1fr; } }
