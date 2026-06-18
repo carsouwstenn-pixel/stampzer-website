@@ -209,3 +209,107 @@ document.querySelectorAll('.waitlist-form').forEach((form) => {
     else io.observe(c);
   });
 })();
+
+// ===== ROI calculator (only runs on the homepage) =====
+(function () {
+  const root = document.getElementById('roi');
+  if (!root) return;
+
+  const byId = (id) => document.getElementById(id);
+  const customers = byId('roi-customers');
+  const aov = byId('roi-aov');
+  const visits = byId('roi-visits');
+  const segBtns = root.querySelectorAll('.roi__seg-btn');
+  const elYear = byId('roi-year');
+  const elMonth = byId('roi-month');
+  const elOrders = byId('roi-orders');
+  const elCustVal = byId('roi-customers-val');
+  const elAovVal = byId('roi-aov-val');
+  const elVisitsVal = byId('roi-visits-val');
+  const barZonder = byId('roi-bar-zonder');
+  const barMetBase = byId('roi-bar-met-base');
+  const barMetExtra = byId('roi-bar-met-extra');
+  let uplift = 0.20;
+
+  const eur = (v) => '€' + Math.round(v).toLocaleString('nl-NL');
+  const num = (v) => Math.round(v).toLocaleString('nl-NL');
+
+  function animateTo(el, to, fmt) {
+    if (reduce) { el.textContent = fmt(to); el._cur = to; return; }
+    const from = typeof el._cur === 'number' ? el._cur : 0;
+    const start = performance.now();
+    const ease = (t) => 1 - Math.pow(1 - t, 3);
+    if (el._raf) cancelAnimationFrame(el._raf);
+    function frame(now) {
+      const p = Math.min((now - start) / 500, 1);
+      el.textContent = fmt(from + (to - from) * ease(p));
+      if (p < 1) el._raf = requestAnimationFrame(frame);
+      else { el.textContent = fmt(to); el._cur = to; }
+    }
+    el._raf = requestAnimationFrame(frame);
+  }
+
+  function pulse(el) {
+    if (reduce) return;
+    el.classList.remove('pulse');
+    void el.offsetWidth;
+    el.classList.add('pulse');
+  }
+
+  function fillTrack(el) {
+    const pct = (el.value - el.min) / (el.max - el.min) * 100;
+    el.style.setProperty('--pct', pct + '%');
+  }
+
+  function update(animate) {
+    fillTrack(customers); fillTrack(aov); fillTrack(visits);
+    const N = +customers.value, A = +aov.value, V = +visits.value;
+    elCustVal.textContent = num(N);
+    elAovVal.textContent = '€' + num(A);
+    elVisitsVal.textContent = V + '×';
+
+    const extraVisits = N * V * uplift;
+    const extraMonth = extraVisits * A;
+    const extraYear = extraMonth * 12;
+
+    if (animate) {
+      animateTo(elYear, extraYear, eur); pulse(elYear);
+      animateTo(elMonth, extraMonth, eur);
+      animateTo(elOrders, extraVisits, num);
+    } else {
+      elYear.textContent = eur(extraYear); elYear._cur = extraYear;
+      elMonth.textContent = eur(extraMonth); elMonth._cur = extraMonth;
+      elOrders.textContent = num(extraVisits); elOrders._cur = extraVisits;
+    }
+
+    const baseShare = (1 / (1 + uplift)) * 100;
+    const extraShare = (uplift / (1 + uplift)) * 100;
+    barZonder.style.width = baseShare.toFixed(1) + '%';
+    barMetBase.style.width = baseShare.toFixed(1) + '%';
+    barMetExtra.style.width = extraShare.toFixed(1) + '%';
+  }
+
+  [customers, aov, visits].forEach((s) => s.addEventListener('input', () => update(true)));
+  segBtns.forEach((btn) => btn.addEventListener('click', () => {
+    segBtns.forEach((b) => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    uplift = parseFloat(btn.dataset.uplift);
+    update(true);
+  }));
+
+  update(false);
+
+  // Count up from zero the first time the results scroll into view (a little reward).
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          elYear._cur = 0; elMonth._cur = 0; elOrders._cur = 0;
+          update(true);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.45 });
+    io.observe(root.querySelector('.roi__results'));
+  }
+})();

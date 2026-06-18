@@ -97,6 +97,7 @@
       <nav class="nav__links" aria-label="Hoofdmenu">
         <a href="#hoe-het-werkt">Hoe het werkt</a>
         <a href="#kaarten">Voorbeelden</a>
+        <a href="#roi">Opbrengst</a>
         <a href="dashboard.html">Dashboard</a>
         <a href="#faq">Vragen</a>
       </nav>
@@ -293,6 +294,71 @@
     </div>
   </section>
 
+  <!-- ROI calculator -->
+  <section class="section section--paper2" id="roi">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Wat het oplevert</span>
+        <h2>Reken uit wat terugkerende klanten jou opleveren</h2>
+        <p class="section__lead">Klanten met een digitale spaarkaart komen vaker terug — en dat is pure <em>extra</em> omzet. Zet je eigen cijfers en zie hoeveel je zaak er extra uit haalt.</p>
+      </div>
+
+      <div class="roi__grid reveal">
+        <div class="roi__panel roi__controls">
+          <h3>Jouw cijfers</h3>
+
+          <div class="roi__field">
+            <div class="roi__field-top"><label for="roi-customers">Klanten met je kaart</label><span class="roi__val" id="roi-customers-val">300</span></div>
+            <input type="range" id="roi-customers" min="50" max="2500" step="10" value="300" aria-describedby="roi-customers-val" />
+          </div>
+
+          <div class="roi__field">
+            <div class="roi__field-top"><label for="roi-aov">Gemiddelde besteding per bezoek</label><span class="roi__val" id="roi-aov-val">€10</span></div>
+            <input type="range" id="roi-aov" min="3" max="75" step="1" value="10" aria-describedby="roi-aov-val" />
+          </div>
+
+          <div class="roi__field">
+            <div class="roi__field-top"><label for="roi-visits">Bezoeken per klant per maand</label><span class="roi__val" id="roi-visits-val">3×</span></div>
+            <input type="range" id="roi-visits" min="1" max="12" step="1" value="3" aria-describedby="roi-visits-val" />
+          </div>
+
+          <div class="roi__scenario">
+            <span class="roi__scenario-label">Hoeveel vaker komen ze terug?</span>
+            <div class="roi__seg" role="group" aria-label="Verwachte stijging in herhaalbezoek">
+              <button type="button" class="roi__seg-btn" data-uplift="0.12">Voorzichtig<small>+12%</small></button>
+              <button type="button" class="roi__seg-btn is-active" data-uplift="0.20">Realistisch<small>+20%</small></button>
+              <button type="button" class="roi__seg-btn" data-uplift="0.30">Ambitieus<small>+30%</small></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="roi__panel roi__results" aria-live="polite">
+          <span class="roi__results-label">Extra omzet per jaar</span>
+          <div class="roi__big"><span class="roi__big-num" id="roi-year">€21.600</span></div>
+
+          <div class="roi__bars" aria-hidden="true">
+            <div class="roi__barrow">
+              <span class="roi__barrow-label">Zonder</span>
+              <div class="roi__track"><div class="roi__fill roi__fill--base" id="roi-bar-zonder"></div></div>
+            </div>
+            <div class="roi__barrow">
+              <span class="roi__barrow-label">Met stampzer</span>
+              <div class="roi__track"><div class="roi__fill roi__fill--base" id="roi-bar-met-base"></div><div class="roi__fill roi__fill--extra" id="roi-bar-met-extra"></div></div>
+            </div>
+          </div>
+
+          <div class="roi__subs">
+            <div class="roi__sub"><span class="roi__sub-num" id="roi-month">€1.800</span><span class="roi__sub-label">extra per maand</span></div>
+            <div class="roi__sub"><span class="roi__sub-num" id="roi-orders">180</span><span class="roi__sub-label">extra bezoeken / maand</span></div>
+          </div>
+
+          <a href="#wachtlijst" class="btn btn--green roi__cta">Dit wil ik ook — op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <p class="roi__note">Ruwe inschatting op basis van je eigen cijfers. Echte resultaten verschillen per zaak en hangen af van hoe je de kaart inzet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta reveal" id="wachtlijst">
     <div class="container cta__inner">
@@ -338,6 +404,7 @@
         <a href="#hoe-het-werkt">Hoe het werkt</a>
         <a href="#kaarten">Voorbeelden</a>
         <a href="#features">Functies</a>
+        <a href="#roi">Opbrengst</a>
         <a href="dashboard.html">Dashboard</a>
         <a href="#wachtlijst">Wachtlijst</a>
       </nav>
