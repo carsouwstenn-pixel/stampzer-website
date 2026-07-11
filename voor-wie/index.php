@@ -40,7 +40,7 @@ function hub_icon($name) {
   <header class="nav" id="nav">
     <div class="container nav__inner">
       <a class="nav__logo" href="/" aria-label="stampzer.com home"><img src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" /></a>
-      <nav class="nav__links" aria-label="Menu"><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/dashboard.html">Dashboard</a></nav>
+      <nav class="nav__links" aria-label="Menu"><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/gids/">Gids</a></nav>
       <a href="/#wachtlijst" class="btn btn--green nav__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
     </div>
   </header>
@@ -76,7 +76,7 @@ function hub_icon($name) {
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand"><img src="/assets/logo-cream.png" alt="stampzer.com" width="150" height="54" /><p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p></div>
-      <nav class="footer__col" aria-label="Product"><h4>Product</h4><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/dashboard.html">Dashboard</a><a href="/#wachtlijst">Wachtlijst</a></nav>
+      <nav class="footer__col" aria-label="Product"><h4>Product</h4><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/gids/">Gids</a><a href="/dashboard.html">Dashboard</a><a href="/#wachtlijst">Wachtlijst</a></nav>
       <nav class="footer__col" aria-label="Voor wie"><h4>Voor wie</h4><a href="/kapper/">Kappers</a><a href="/koffiebar/">Koffiebars</a><a href="/nagelstudio/">Nagelstudio's</a><a href="/sportschool/">Sportscholen</a></nav>
       <div class="footer__col"><h4>Blijf op de hoogte</h4><a href="mailto:hallo@stampzer.com">hallo@stampzer.com</a><a href="/#wachtlijst" class="btn btn--green footer__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a></div>
     </div>

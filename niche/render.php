@@ -46,6 +46,12 @@ $benefits = [
     ['feature--ink', 'Geen app, nooit kwijt', 'Werkt direct in de Wallet die je klant al heeft. De kaart zit veilig in de telefoon.'],
 ];
 
+$gidsPosts = [
+    ['digitale-klantenkaart-wallet', 'Uitleg · 6 min', 'Digitale klantenkaart in Apple & Google Wallet: hoe werkt het?', 'Wat een digitale klantenkaart is, hoe hij zonder app in de Wallet komt en waarom klanten hem niet meer kwijtraken.'],
+    ['papieren-vs-digitale-stempelkaart', 'Vergelijking · 7 min', 'Papieren stempelkaart vs. digitale klantenkaart', 'Kosten, gebruiksgemak, klantinzicht en herhaalbezoek van papier en digitaal, eerlijk naast elkaar in één tabel.'],
+    ['klantenbinding-lokale-ondernemers', 'Strategie · 8 min', 'Klantenbinding: 7 manieren die écht werken', 'Zeven concrete manieren om van eenmalige bezoekers vaste klanten te maken — en hoe je meet wat werkt.'],
+];
+
 $faqLd = [];
 foreach ($n['faq'] as $f) {
     $faqLd[] = ['@type' => 'Question', 'name' => $f[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f[1]]];
@@ -245,6 +251,26 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
     </div>
   </section>
 
+  <section class="section section--paper2">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Verder lezen</span>
+        <h2>Meer weten over digitale klantenkaarten?</h2>
+        <p class="section__lead">Praktische uitleg en tips uit onze gids — helder en zonder jargon.</p>
+      </div>
+      <div class="gids-grid reveal">
+        <?php foreach ($gidsPosts as $g): ?>
+        <a class="gidscard" href="/gids/<?= e($g[0]) ?>/">
+          <span class="gidscard__cat"><?= e($g[1]) ?></span>
+          <strong><?= e($g[2]) ?></strong>
+          <span class="gidscard__excerpt"><?= e($g[3]) ?></span>
+          <span class="gidscard__go">Lees de gids &rarr;</span>
+        </a>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
+
   <section class="cta reveal" id="wachtlijst">
     <div class="container cta__inner">
       <h2>Klaar voor meer vaste klanten?</h2>
@@ -263,7 +289,7 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand"><img src="/assets/logo-cream.png" alt="stampzer.com" width="150" height="54" /><p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p></div>
-      <nav class="footer__col" aria-label="Product"><h4>Product</h4><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/dashboard.html">Dashboard</a><a href="/#wachtlijst">Wachtlijst</a></nav>
+      <nav class="footer__col" aria-label="Product"><h4>Product</h4><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/gids/">Gids</a><a href="/dashboard.html">Dashboard</a><a href="/#wachtlijst">Wachtlijst</a></nav>
       <nav class="footer__col" aria-label="Voor wie"><h4>Voor wie</h4><a href="/voor-wie/">Alle branches</a><a href="/kapper/">Kappers</a><a href="/koffiebar/">Koffiebars</a></nav>
       <div class="footer__col"><h4>Blijf op de hoogte</h4><a href="mailto:hallo@stampzer.com">hallo@stampzer.com</a><a href="#wachtlijst" class="btn btn--green footer__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a></div>
     </div>
