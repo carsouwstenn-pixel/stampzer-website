@@ -27,7 +27,6 @@ if (!$exists && $_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="robots" content="noindex, nofollow" />
   <title>Account aanmaken — Stampzer dashboard</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/admin/admin.css" />
 </head>

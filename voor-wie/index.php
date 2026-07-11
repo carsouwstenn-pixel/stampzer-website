@@ -29,10 +29,8 @@ function hub_icon($name) {
   <meta property="og:description" content="Bekijk de stampzer-pagina voor jouw branche en zie wat een digitale klantenkaart voor je zaak doet." />
   <meta property="og:image" content="https://stampzer.com/assets/og-image.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/seatren.woff2" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-400-latin.woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
