@@ -43,8 +43,19 @@
         "name": "Stampzer",
         "url": "https://stampzer.com/",
         "logo": "https://stampzer.com/assets/favicon-256.png",
+        "image": "https://stampzer.com/assets/og-image.png",
         "email": "hallo@stampzer.com",
-        "description": "Digitale klantenkaarten voor lokale ondernemers, direct in Apple Wallet en Google Wallet."
+        "description": "Digitale klantenkaarten voor lokale ondernemers, direct in Apple Wallet en Google Wallet.",
+        "foundingLocation": { "@type": "Country", "name": "Nederland" },
+        "areaServed": { "@type": "Country", "name": "Nederland" },
+        "knowsLanguage": "nl-NL",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "hallo@stampzer.com",
+          "contactType": "customer support",
+          "areaServed": "NL",
+          "availableLanguage": ["Dutch"]
+        }
       },
       {
         "@type": "WebSite",
@@ -56,9 +67,22 @@
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://stampzer.com/#app",
         "name": "Stampzer",
+        "url": "https://stampzer.com/",
         "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Loyalty Program Software",
         "operatingSystem": "iOS, Android",
+        "provider": { "@id": "https://stampzer.com/#org" },
+        "areaServed": { "@type": "Country", "name": "Nederland" },
+        "inLanguage": "nl-NL",
+        "featureList": [
+          "Digitale spaarkaart in Apple Wallet en Google Wallet",
+          "Geen app nodig voor de klant",
+          "Stempels uitdelen via een simpel dashboard",
+          "Inzicht in terugkerende klanten",
+          "Meldingen sturen bij een bijna volle kaart"
+        ],
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Gratis tijdens de bèta" },
         "description": "Digitale spaarkaarten in Apple Wallet en Google Wallet voor lokale ondernemers."
       },

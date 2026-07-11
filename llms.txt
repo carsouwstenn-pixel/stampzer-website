@@ -1,0 +1,29 @@
+# Stampzer
+
+> Stampzer zet de spaarkaart van lokale ondernemers direct in de Apple Wallet en Google Wallet van hun klanten — zonder app. Klanten raken hun kaart nooit meer kwijt en komen vaker terug. Gemaakt in Nederland, momenteel in besloten bèta.
+
+Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyaliteitsprogramma's voor lokale ondernemers. Een ondernemer ontwerpt een spaarkaart in de eigen huisstijl; klanten voegen die met één QR-code toe aan de Wallet-app die al op hun telefoon staat (Apple Wallet op iPhone, Google Wallet op Android). Bij elk bezoek deelt de ondernemer een digitale stempel uit; een volle kaart geeft een zelfgekozen beloning. Zo krijgen lokale zaken meer terugkerende klanten, inzicht in wie hun vaste klanten zijn, en de mogelijkheid om klanten een herinnering te sturen.
+
+## Belangrijkste pagina's
+- [Homepage](https://stampzer.com/): Wat Stampzer is, hoe het werkt en inschrijven voor de wachtlijst.
+- [Voor wie is Stampzer](https://stampzer.com/voor-wie/): Overzicht van branches waarvoor Stampzer geschikt is.
+
+## Voor welke branches
+- [Koffiebars](https://stampzer.com/koffiebar/): Digitale klantenkaart voor koffiezaken en koffiebars.
+- [Kappers](https://stampzer.com/kapper/): Digitale klantenkaart voor kappers en barbershops.
+- [Nagelstudio's](https://stampzer.com/nagelstudio/): Digitale klantenkaart voor nagelstudio's en beautysalons.
+- [Lunchrooms](https://stampzer.com/lunchroom/): Digitale klantenkaart voor lunchrooms en broodjeszaken.
+- [Sportscholen](https://stampzer.com/sportschool/): Digitale klantenkaart voor sportscholen en studio's.
+
+## Gids en uitleg
+- [Digitale klantenkaart in Apple & Google Wallet: hoe werkt het?](https://stampzer.com/gids/digitale-klantenkaart-wallet/): Uitleg over hoe een digitale klantenkaart zonder app in de Wallet komt.
+- [Papieren stempelkaart vs. digitale klantenkaart](https://stampzer.com/gids/papieren-vs-digitale-stempelkaart/): Vergelijking van papier en digitaal op kosten, gemak en klantinzicht.
+- [Klantenbinding voor lokale ondernemers](https://stampzer.com/gids/klantenbinding-lokale-ondernemers/): Zeven manieren om van eenmalige bezoekers vaste klanten te maken.
+- [Alle gidsen](https://stampzer.com/gids/): De volledige kennisbank over digitale klantenkaarten en klantenbinding.
+
+## Kernfeiten
+- Werkt op zowel Apple Wallet (iPhone) als Google Wallet (Android).
+- Klanten hoeven geen app te downloaden of account aan te maken — alleen een QR-code scannen.
+- De ondernemer deelt stempels uit via een simpel dashboard; klanten kunnen zichzelf niet stempelen.
+- Gratis tijdens de bèta.
+- Contact: hallo@stampzer.com
