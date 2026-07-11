@@ -146,6 +146,42 @@ return [
     'hubTagline' => 'Spaar voor beloningen & blijf gemotiveerd', 'hubIcon' => 'dumbbell',
   ],
 
+  'bakker' => [
+    'name' => 'Bakker',
+    'title' => 'Digitale klantenkaart voor bakkers | Stampzer',
+    'desc' => 'Dé digitale spaarkaart voor je bakkerij. Klanten sparen bij elke aankoop voor een gratis brood of gebakje, direct in Apple & Google Wallet — nooit meer kwijt. Meer vaste klanten. Schrijf je in.',
+    'keywords' => 'digitale klantenkaart bakker, spaarkaart bakkerij, stempelkaart bakker, loyaliteitsprogramma bakkerij, klantenkaart bakkerij, klantenbinding bakker',
+    'eyebrow' => 'Voor bakkers & bakkerijen',
+    'h1a' => 'Digitale klantenkaart voor bakkers waar klanten ', 'mark' => 'blijven terugkomen', 'h1b' => '.',
+    'sub' => 'Geef je bakkerij een eigen digitale spaarkaart in Apple Wallet en Google Wallet. Klanten sparen bij elke aankoop voor een gratis brood of gebakje — en raken hun kaart nooit meer kwijt. Meer vaste klanten, elke ochtend opnieuw.',
+    'pass' => ['theme' => 'bakker', 'icon' => 'bread', 'biz' => 'Bakkerij Vers', 'sub' => 'Bakker · Haarlem', 'reward' => '10ᵉ brood gratis', 'on' => 6, 'total' => 10, 'progress' => 'Nog 4 broden tot je gratis brood'],
+    'trustLabel' => 'Gemaakt voor elke bakkerij',
+    'trust' => ['Ambachtelijke bakkers', 'Warme bakkers', 'Banketbakkers', 'Broodjeszaken', 'Bakkerijcafés'],
+    'place' => 'bakkerij', 'visit' => 'aankoop',
+    'pains' => [
+      ['Klanten kopen brood waar het uitkomt', 'Zonder reden om terug te komen halen ze hun brood net zo makkelijk bij de supermarkt of de bakker verderop.'],
+      ['Papieren stempelkaartjes raken kwijt', 'Verkreukeld tussen de bonnetjes of allang weg — en daarmee de reden om terug te komen.'],
+      ['Je weet niet wie je vaste klanten zijn', 'Je kent de ochtendgezichten, maar mist namen, cijfers en overzicht van wie er dagelijks komt.'],
+      ['Rustige middagen blijven rustig', 'Na de ochtendspits blijft er brood liggen, zonder manier om klanten juist dan binnen te trekken.'],
+    ],
+    'rewards' => [
+      ['bread', '10ᵉ brood gratis', 'De klassieker — spaar 9, het 10e is van de zaak.'],
+      ['gift', 'Gratis gebakje na 6 stempels', 'Koppel je brood aan iets lekkers erbij.'],
+      ['percent', '10% korting op je verjaardag', 'Een fijne attentie die klanten bindt.'],
+      ['star', 'Vers stokbrood in het weekend', 'Een extraatje voor je trouwste klanten.'],
+    ],
+    'statNum' => '€4.800',
+    'statLine' => '300 vaste klanten die door hun spaarkaart 1× per week extra langskomen, bij ongeveer €4 per aankoop.',
+    'statSub' => 'Een rekenvoorbeeld van zo\'n €4.800 extra omzet per maand — alleen van klanten die anders misschien niet waren teruggekomen. Ruwe inschatting; jouw cijfers bepalen het.',
+    'faq' => [
+      ['Werkt een digitale klantenkaart voor mijn bakkerij?', 'Ja. Of je nu een ambachtelijke bakker, warme bakker of banketbakker bent — je stelt je eigen spaarkaart en beloning in. Klanten sparen bij elke aankoop en komen vaker terug.'],
+      ['Hebben mijn klanten een app nodig?', 'Nee. De kaart komt in de Apple Wallet of Google Wallet die al op elke telefoon staat. Eén QR-code scannen en klaar.'],
+      ['Wat voor beloning kan ik instellen?', 'Alles wat past: een gratis brood na een aantal stempels, een gratis gebakje, korting of vers stokbrood in het weekend. Jij bepaalt het.'],
+      ['Werkt het op iPhone én Android?', 'Ja, zowel Apple Wallet als Google Wallet worden ondersteund.'],
+    ],
+    'hubTagline' => 'Spaar voor een gratis brood', 'hubIcon' => 'bread',
+  ],
+
   // Kapper is a standalone static page (/kapper/index.html); listed here only for the hub.
   'kapper' => [
     'name' => 'Kapper', 'hubOnly' => true,
