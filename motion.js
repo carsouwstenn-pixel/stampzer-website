@@ -182,6 +182,69 @@ document.querySelectorAll('.waitlist-form').forEach((form) => {
   });
 });
 
+// ===== Pilot-aanmelding (/pilot/) =====
+const PILOT_ENDPOINT = (window.STAMPZER_CONFIG && window.STAMPZER_CONFIG.pilotEndpoint) || null;
+document.querySelectorAll('.pilot-form').forEach((form) => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const emailEl = form.querySelector('[name="email"]');
+    const bizEl = form.querySelector('[name="business"]');
+    const brancheEl = form.querySelector('[name="branche"]');
+    const note = form.querySelector('.pilot-form__note');
+    const email = (emailEl && emailEl.value || '').trim();
+    const business = (bizEl && bizEl.value || '').trim();
+    const branche = (brancheEl && brancheEl.value || '').trim();
+
+    if (!business) { bizEl.focus(); bizEl.style.borderColor = '#e0552d'; if (note) note.textContent = 'Vul de naam van je zaak in.'; return; }
+    if (!isValidEmail(email)) { emailEl.focus(); emailEl.style.borderColor = '#e0552d'; if (note) note.textContent = 'Vul een geldig e-mailadres in.'; return; }
+
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Bezig…'; }
+
+    if (PILOT_ENDPOINT) {
+      try {
+        const res = await fetch(PILOT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, business, branche, page: location.pathname }),
+        });
+        if (!res.ok) throw new Error('bad response');
+      } catch (err) {
+        if (note) note.textContent = 'Er ging iets mis. Probeer het later opnieuw.';
+        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label; }
+        return;
+      }
+    }
+
+    form.classList.add('is-done');
+    form.innerHTML = '<div class="pilot-form__success" role="status"><span class="pilot-form__check">✓</span><strong>Je pilotplek is gereserveerd!</strong><p>We nemen persoonlijk contact met je op &mdash; meestal binnen 1 werkdag. Kijk vast in je inbox (en spam).</p></div>';
+  });
+});
+
+// ===== Subtiele count-up getallen ([data-count]) =====
+(function () {
+  const els = document.querySelectorAll('[data-count]');
+  if (!els.length || !('IntersectionObserver' in window)) return;
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  const run = (el) => {
+    const target = parseFloat(el.dataset.count) || 0;
+    const suffix = el.dataset.suffix || '';
+    if (reduce) { el.textContent = target + suffix; return; }
+    const dur = 1100; const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = Math.round(target * ease(p)) + suffix;
+      if (p < 1) requestAnimationFrame(step); else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(step);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); run(e.target); } });
+  }, { threshold: 0.6 });
+  els.forEach((el) => io.observe(el));
+})();
+
 // ===== Dashboard mockup animations (only runs on dashboard.html) =====
 // Numbers count up, donuts draw, the line chart traces itself, bars grow and
 // heatmap cells pop in — each triggered once when its container scrolls into view.

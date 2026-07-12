@@ -8,6 +8,9 @@ window.STAMPZER_CONFIG = {
   // Leave as null to just show the "Je staat op de lijst!" message without sending anywhere.
   waitlistEndpoint: "/lead.php",
 
+  // Where the pilot-aanmelding (/pilot/) sends sign-ups.
+  pilotEndpoint: "/pilot.php",
+
   // Microsoft Clarity project ID — heatmaps + session recordings. Set to null to turn off.
   clarityProjectId: "x951bddg9b",
 };
