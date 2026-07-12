@@ -9,6 +9,9 @@ $leads = $pdo->query("SELECT email, page, created_at FROM leads ORDER BY created
 $total = (int) $pdo->query("SELECT COUNT(*) AS c FROM leads")->fetch()['c'];
 $week  = (int) $pdo->query("SELECT COUNT(*) AS c FROM leads WHERE created_at >= (NOW() - INTERVAL 7 DAY)")->fetch()['c'];
 
+$pilots     = $pdo->query("SELECT business, branche, email, created_at FROM pilots ORDER BY created_at DESC LIMIT 500")->fetchAll();
+$pilotTotal = (int) $pdo->query("SELECT COUNT(*) AS c FROM pilots")->fetch()['c'];
+
 function lead_page_label($p) {
     $p = (string)$p;
     if ($p === '' || $p === '/') return 'Homepage';
@@ -36,6 +39,7 @@ function lead_page_label($p) {
       <nav class="adm-nav" aria-label="Dashboard">
         <button data-section="overzicht" class="is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Overzicht</span></button>
         <button data-section="leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5M21 20a6 6 0 0 0-5-5.9"/></svg><span>Leads</span></button>
+        <button data-section="pilots"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 3.5L16 11H5"/></svg><span>Pilots</span></button>
         <button data-section="heatmaps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM16 8h.01"/></svg><span>Heatmaps</span></button>
         <button data-section="seo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>SEO</span></button>
         <button data-section="branding"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 17.5 7.1 21.2 8 15.7l-4-3.9 5.5-.8z"/></svg><span>Branding &amp; teksten</span></button>
@@ -63,7 +67,7 @@ function lead_page_label($p) {
           <div class="kpi"><span class="kpi__label">Leads totaal</span><div class="kpi__num"><?= $total ?></div><span class="kpi__sub">wachtlijst-aanmeldingen</span></div>
           <div class="kpi"><span class="kpi__label">Aanmeldingen deze week</span><div class="kpi__num"><?= $week ?></div><span class="kpi__sub">laatste 7 dagen</span></div>
           <div class="kpi"><span class="kpi__label">Bezoekers</span><div class="kpi__num">—</div><span class="kpi__sub">via Microsoft Clarity</span></div>
-          <div class="kpi"><span class="kpi__label">Conversie</span><div class="kpi__num">—</div><span class="kpi__sub">bezoekers → leads</span></div>
+          <div class="kpi"><span class="kpi__label">Pilot-aanmeldingen</span><div class="kpi__num"><?= $pilotTotal ?> / 15</div><span class="kpi__sub">gratis pilotplekken</span></div>
         </div>
 
         <div class="panel">
@@ -106,6 +110,33 @@ function lead_page_label($p) {
                   <td><strong style="color:var(--ink)"><?= adm_h($l['email']) ?></strong></td>
                   <td><?= adm_h(lead_page_label($l['page'])) ?></td>
                   <td><?= adm_h(date('d-m-Y H:i', strtotime($l['created_at']))) ?></td>
+                </tr>
+              <?php endforeach; endif; ?>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PILOTS -->
+      <section class="adm-section" data-panel="pilots">
+        <div class="adm-section__head"><h2>Pilots</h2><p>Ondernemers die zich via de pitch-pagina (<a href="/pilot/" target="_blank" rel="noopener" style="color:var(--green-700);font-weight:600">/pilot/</a>) aanmelden voor het gratis pilotprogramma — met zaaknaam, branche en e-mail.</p></div>
+        <div class="kpi-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:540px">
+          <div class="kpi"><span class="kpi__label">Aangemeld</span><div class="kpi__num"><?= $pilotTotal ?></div><span class="kpi__sub">van 15 plekken</span></div>
+          <div class="kpi"><span class="kpi__label">Nog beschikbaar</span><div class="kpi__num"><?= max(0, 15 - $pilotTotal) ?></div><span class="kpi__sub">gratis plekken</span></div>
+        </div>
+        <div class="panel">
+          <div class="panel__title">Pilot-aanmeldingen (<?= $pilotTotal ?>)</div>
+          <table class="dtable">
+            <thead><tr><th>Zaak</th><th>Branche</th><th>E-mail</th><th>Datum</th></tr></thead>
+            <tbody>
+              <?php if (!$pilots): ?>
+                <tr><td colspan="4" class="dtable__empty">Nog geen pilot-aanmeldingen. Zodra iemand zich via /pilot/ aanmeldt, verschijnt het hier automatisch.</td></tr>
+              <?php else: foreach ($pilots as $p): ?>
+                <tr>
+                  <td><strong style="color:var(--ink)"><?= adm_h(($p['business'] !== null && $p['business'] !== '') ? $p['business'] : '—') ?></strong></td>
+                  <td><?= adm_h(($p['branche'] !== null && $p['branche'] !== '') ? $p['branche'] : '—') ?></td>
+                  <td><?= adm_h($p['email']) ?></td>
+                  <td><?= adm_h(date('d-m-Y H:i', strtotime($p['created_at']))) ?></td>
                 </tr>
               <?php endforeach; endif; ?>
             </tbody>
