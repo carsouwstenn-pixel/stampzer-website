@@ -1,5 +1,10 @@
-# Stampzer — caching policy
+# Stampzer — caching + security policy
+
+# Disable directory listing
+Options -Indexes
+
 <IfModule mod_headers.c>
+  # ===== Caching =====
   # Always revalidate markup, styles and scripts so changes appear immediately.
   <FilesMatch "\.(html|css|js)$">
     Header set Cache-Control "no-cache, must-revalidate, max-age=0"
@@ -10,4 +15,28 @@
   <FilesMatch "\.(woff2?|ttf|otf|eot|png|jpe?g|gif|svg|ico|webp)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
+
+  # ===== Security headers =====
+  # Force HTTPS for a year (HTTP already 301-redirects to HTTPS).
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  # Stop MIME-type sniffing.
+  Header always set X-Content-Type-Options "nosniff"
+  # Clickjacking protection.
+  Header always set X-Frame-Options "SAMEORIGIN"
+  # Limit referrer leakage.
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # Disable browser features the site never uses.
+  Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+  # Disable the legacy, buggy XSS auditor.
+  Header always set X-XSS-Protection "0"
+  # Content Security Policy — 'self' plus Microsoft Clarity (loads only after consent).
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://*.clarity.ms; connect-src 'self' https://*.clarity.ms; img-src 'self' data: https://*.clarity.ms; style-src 'self' 'unsafe-inline'; font-src 'self'; upgrade-insecure-requests"
+  # Don't advertise the tech stack.
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
 </IfModule>
+
+# Block direct access to non-web / sensitive file types (defense in depth).
+<FilesMatch "\.(py|ps1|sql|log|sh|ini|lock|bak|old|inc)$">
+  Require all denied
+</FilesMatch>
