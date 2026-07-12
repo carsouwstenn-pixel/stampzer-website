@@ -6,7 +6,7 @@
   <title>Pagina niet gevonden — Stampzer</title>
   <meta name="description" content="Deze pagina is kwijtgeraakt — net als een papieren stempelkaart. Stempel de kaart vol en verdien je weg terug." />
   <meta name="robots" content="noindex, follow" />
-  <meta name="theme-color" content="#181f10" />
+  <meta name="theme-color" content="#101408" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
@@ -17,94 +17,212 @@
   <link rel="stylesheet" href="/styles.css" />
 
   <style>
-    /* ===== 404 minigame (page-scoped) ===== */
-    .g-hero { padding: 56px 0 80px; text-align: center; }
-    .g-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.06; color: var(--ink); margin: 18px 0 0; }
-    .g-sub { color: var(--muted); font-size: 1.1rem; line-height: 1.65; max-width: 560px; margin: 16px auto 0; }
+    /* ================= 404 — "De verloren kaarten" ================= */
+    html, body { height: 100%; }
+    body.g-body { background: #101408; color: var(--paper); overflow-x: hidden; }
 
-    .g-card { max-width: 380px; margin: 38px auto 0; background: var(--ink); color: var(--paper); border-radius: 22px; padding: 24px 22px 26px; box-shadow: var(--shadow); text-align: left; }
+    /* --- minimal nav on dark --- */
+    .g-nav { position: relative; z-index: 5; }
+    .g-nav .container { display: flex; align-items: center; justify-content: space-between; padding-top: 22px; }
+    .g-home { font-weight: 600; font-size: .95rem; color: rgba(247,242,231,.75); text-decoration: none; border: 1px solid rgba(247,242,231,.22); padding: 10px 18px; border-radius: 999px; transition: border-color .2s ease, color .2s ease, transform .2s ease; }
+    .g-home:hover { color: #fff; border-color: rgba(247,242,231,.55); transform: translateY(-1px); }
+
+    /* --- scene --- */
+    .g-scene { position: relative; z-index: 1; min-height: calc(100svh - 90px); display: grid; align-content: start; padding: clamp(10px, 3vh, 40px) 0 90px; }
+    .g-spot { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(720px circle at var(--mx, 50%) var(--my, 38%), rgba(41,199,0,.09), transparent 62%),
+        radial-gradient(1200px circle at 50% 120%, rgba(41,199,0,.05), transparent 55%); }
+
+    /* --- drifting lost paper cards --- */
+    .g-float { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .g-paper { position: absolute; left: var(--x); top: var(--y); width: calc(84px * var(--s)); height: calc(112px * var(--s));
+      background: linear-gradient(160deg, rgba(247,242,231,.13), rgba(247,242,231,.035));
+      border: 1px solid rgba(247,242,231,.12); border-radius: 12px;
+      transform: translate3d(calc(var(--px, 0px) * var(--dp)), calc(var(--py, 0px) * var(--dp)), 0) rotate(var(--r));
+      filter: blur(calc((1 - var(--dp)) * 2.6px)); opacity: calc(.35 + var(--dp) * .55);
+      animation: gdrift var(--dur, 11s) ease-in-out infinite alternate; }
+    .g-paper::before, .g-paper::after { content: ""; position: absolute; left: 14%; width: 26%; aspect-ratio: 1; border: 1.5px dashed rgba(247,242,231,.3); border-radius: 50%; }
+    .g-paper::before { top: 16%; }
+    .g-paper::after { top: 52%; left: 46%; }
+    @keyframes gdrift { from { margin-top: 0; } to { margin-top: calc(-26px * var(--dp)); } }
+
+    /* --- headline --- */
+    .g-inner { position: relative; z-index: 2; text-align: center; }
+    .g-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: .78rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,242,231,.55); border: 1px solid rgba(247,242,231,.16); padding: 7px 16px; border-radius: 999px; margin-top: clamp(6px, 2vh, 26px); }
+    .g-eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px rgba(41,199,0,.9); }
+
+    .g-404 { display: flex; justify-content: center; align-items: center; gap: .05em; font-family: var(--font-display); font-weight: 400; font-size: clamp(5.4rem, 19vw, 11rem); line-height: .92; color: var(--paper); margin: clamp(8px, 2.4vh, 26px) 0 0; user-select: none; }
+    .g-zero { position: relative; width: .74em; height: .74em; border: .05em dashed rgba(41,199,0,.75); border-radius: 50%; display: grid; place-items: center; animation: gspin 26s linear infinite; }
+    .g-zero i { width: 58%; height: 58%; border-radius: 50%; background: var(--green); box-shadow: 0 0 34px rgba(41,199,0,.5); animation: gpulse 2.6s ease-in-out infinite; }
+    @keyframes gspin { to { transform: rotate(360deg); } }
+    @keyframes gpulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(.86); } }
+
+    .g-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 4.4vw, 2.3rem); color: var(--paper); margin: clamp(10px, 2vh, 22px) 0 0; word-spacing: .16em; }
+    .g-back h2, .g-reward strong { word-spacing: .14em; }
+    .g-sub { color: rgba(247,242,231,.6); font-size: 1.04rem; line-height: 1.65; max-width: 520px; margin: 12px auto 0; }
+    .g-sub strong { color: var(--paper); font-weight: 600; }
+
+    /* --- entrance stagger --- */
+    .g-in { opacity: 0; transform: translateY(26px); animation: genter .9s cubic-bezier(.2, .9, .3, 1) forwards; animation-delay: var(--del, 0s); }
+    @keyframes genter { to { opacity: 1; transform: none; } }
+
+    /* --- 3D stage --- */
+    .g-stage { position: relative; z-index: 2; width: min(350px, 86vw); margin: clamp(22px, 4.5vh, 44px) auto 0; perspective: 1150px; }
+    .g-bob { animation: gbob 6.5s ease-in-out infinite; transform-style: preserve-3d; }
+    @keyframes gbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .g-tilt { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .35s cubic-bezier(.2, .9, .3, 1); transform-style: preserve-3d; will-change: transform; }
+    .g-card3d { position: relative; transform: rotateY(var(--fy, 0deg)); transition: transform 1.05s cubic-bezier(.72, 0, .18, 1); transform-style: preserve-3d; cursor: pointer; border-radius: 26px; outline: none; }
+    .g-card3d:focus-visible { box-shadow: 0 0 0 3px rgba(41,199,0,.75); }
+    .g-card3d.is-press .g-front { transform: scale(.982) translateZ(0); }
+
+    .g-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 26px; padding: 24px 22px;
+      background: linear-gradient(168deg, #242c17 0%, #1a2010 55%, #151a0c 100%);
+      border: 1px solid rgba(247,242,231,.11);
+      box-shadow: 0 40px 90px -34px rgba(0,0,0,.85), inset 0 1px 0 rgba(247,242,231,.07);
+      transition: transform .12s ease; }
+    .g-back { position: absolute; inset: 0; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 28px 24px; }
+
+    .g-glare { position: absolute; inset: 0; border-radius: 26px; pointer-events: none; mix-blend-mode: soft-light;
+      background: radial-gradient(340px circle at var(--gx, 50%) var(--gy, 20%), rgba(255,255,255,.5), transparent 62%); opacity: .55; }
+
     .g-head { display: flex; align-items: center; gap: 12px; }
-    .g-ava { width: 44px; height: 44px; border-radius: 12px; background: var(--green); color: var(--ink); display: grid; place-items: center; font-family: var(--font-display); font-size: 1.4rem; flex-shrink: 0; }
-    .g-head strong { display: block; font-size: 1.05rem; color: #fff; }
-    .g-head span { font-size: .82rem; color: rgba(247,242,231,.6); }
-    .g-reward { margin: 18px 0 6px; background: rgba(247,242,231,.08); border-radius: 12px; padding: 12px 14px; }
-    .g-reward span { display: block; font-size: .68rem; font-weight: 600; letter-spacing: .1em; color: rgba(247,242,231,.55); }
-    .g-reward strong { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; color: #fff; }
+    .g-ava { width: 44px; height: 44px; border-radius: 12px; background: var(--green); color: var(--ink); display: grid; place-items: center; font-family: var(--font-display); font-size: 1.4rem; flex-shrink: 0; box-shadow: 0 6px 18px -6px rgba(41,199,0,.55); }
+    .g-head strong { display: block; font-size: 1.02rem; color: #fff; }
+    .g-head span { font-size: .8rem; color: rgba(247,242,231,.55); }
 
-    .g-stamps { display: grid; grid-template-columns: repeat(4, 46px); gap: 12px; justify-content: center; margin: 18px auto 6px; }
-    .g-dot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed rgba(247,242,231,.35); display: grid; place-items: center; color: var(--ink); }
-    .g-dot.is-on { border-style: solid; border-color: var(--green); background: var(--green); animation: gpop .32s cubic-bezier(.2,1.4,.4,1); }
-    .g-dot svg { width: 22px; height: 22px; }
-    @keyframes gpop { 0% { transform: scale(.2); } 70% { transform: scale(1.18); } 100% { transform: scale(1); } }
+    .g-reward { margin: 16px 0 4px; background: rgba(247,242,231,.07); border: 1px solid rgba(247,242,231,.07); border-radius: 12px; padding: 11px 14px; }
+    .g-reward span { display: block; font-size: .64rem; font-weight: 700; letter-spacing: .12em; color: rgba(247,242,231,.5); }
+    .g-reward strong { font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; color: #fff; }
 
-    .g-progress { text-align: center; font-size: .9rem; color: rgba(247,242,231,.7); margin: 10px 0 14px; min-height: 1.3em; }
-    .g-zone { position: relative; height: 86px; display: grid; place-items: center; }
-    .g-stampbtn { transition: transform .18s ease; touch-action: manipulation; }
-    .g-stampbtn:active { transform: scale(.96); }
+    .g-stamps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 4px 4px; }
+    .g-dot { position: relative; aspect-ratio: 1; border-radius: 50%; border: 2px dashed rgba(247,242,231,.32); display: grid; place-items: center; color: var(--ink); transition: border-color .2s ease; }
+    .g-dot svg { width: 46%; height: 46%; }
+    .g-dot.is-on { border-style: solid; border-color: var(--green); background: var(--green); box-shadow: 0 4px 16px -4px rgba(41,199,0,.6); animation: gstamp .38s cubic-bezier(.2, 1.5, .4, 1); }
+    .g-dot.is-on::after { content: ""; position: absolute; inset: -7px; border: 2px solid var(--green); border-radius: 50%; opacity: 0; animation: gring .55s ease-out; }
+    @keyframes gstamp { 0% { transform: scale(.2) rotate(-14deg); } 65% { transform: scale(1.16) rotate(3deg); } 100% { transform: scale(1) rotate(0); } }
+    @keyframes gring { 0% { opacity: .85; transform: scale(.7); } 100% { opacity: 0; transform: scale(1.45); } }
 
-    .g-done { max-width: 420px; margin: 30px auto 0; }
-    .g-done h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; color: var(--ink); margin: 0; }
-    .g-done p { color: var(--muted); margin: 10px 0 18px; }
-    .g-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .g-skip { display: inline-block; margin-top: 26px; font-size: .92rem; color: var(--muted); }
-    .g-skip a { color: var(--green-700); font-weight: 600; }
+    .g-spark { position: absolute; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; z-index: 3; animation: gspark .6s ease-out forwards; }
+    @keyframes gspark { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(.3); } }
 
-    .g-conf { position: fixed; inset: 0; pointer-events: none; z-index: 400; }
-    .g-conf i { position: absolute; top: 28%; width: 10px; height: 14px; border-radius: 3px; opacity: 0; animation: gfall linear forwards; }
-    @keyframes gfall { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 100% { opacity: 0; transform: translate(var(--dx), 54vh) rotate(var(--rot)); } }
+    .g-prog { text-align: center; font-size: .88rem; color: rgba(247,242,231,.6); margin: 14px 0 4px; min-height: 1.3em; }
+    .g-prog b { color: var(--green); font-weight: 700; }
+
+    .g-shadow { width: 78%; height: 26px; margin: 26px auto 0; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(18px); transform: scale(var(--sh, 1)); transition: transform .35s ease; }
+
+    /* back face */
+    .g-back h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.8rem; color: #fff; margin: 0; }
+    .g-back p { color: rgba(247,242,231,.62); font-size: .95rem; line-height: 1.55; margin: 10px 0 18px; }
+    .g-back .btn { width: 100%; justify-content: center; }
+    .g-back .btn + .btn { margin-top: 10px; }
+    .g-btn-ghost { background: transparent; color: var(--paper); border: 1px solid rgba(247,242,231,.28); }
+    .g-btn-ghost:hover { border-color: rgba(247,242,231,.6); }
+    .g-medal { width: 56px; height: 56px; border-radius: 50%; background: var(--green); display: grid; place-items: center; margin-bottom: 14px; font-size: 1.5rem; box-shadow: 0 0 0 8px rgba(41,199,0,.16), 0 0 40px rgba(41,199,0,.4); animation: gpulse 2.4s ease-in-out infinite; }
+
+    .g-hint { position: relative; z-index: 2; text-align: center; font-size: .9rem; color: rgba(247,242,231,.5); margin: 20px 0 0; }
+    .g-skip { position: relative; z-index: 2; text-align: center; font-size: .92rem; color: rgba(247,242,231,.45); margin: 26px 0 0; }
+    .g-skip a { color: var(--green); font-weight: 600; }
+
+    /* custom stamp cursor (fine pointers only) */
+    .g-cur { position: fixed; z-index: 90; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; pointer-events: none;
+      border: 2px solid rgba(41,199,0,.9); background: rgba(41,199,0,.14); display: none; align-items: center; justify-content: center;
+      transition: transform .12s ease, opacity .15s ease; opacity: 0; }
+    .g-cur::after { content: "✚"; color: var(--green); font-size: 1.05rem; font-weight: 700; }
+    .g-cur.is-vis { opacity: 1; }
+    .g-cur.is-hit { transform: scale(.72) rotate(-8deg); }
+    @media (pointer: fine) { .g-card3d { cursor: none; } .g-cur { display: flex; } }
+
+    /* 3D confetti */
+    .g-conf { position: fixed; inset: 0; pointer-events: none; z-index: 400; perspective: 800px; }
+    .g-conf i { position: absolute; top: 26%; width: 10px; height: 15px; border-radius: 3px; opacity: 0; animation: gfall var(--dur) cubic-bezier(.3, .4, .6, 1) var(--del) forwards; }
+    @keyframes gfall { 0% { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0) rotateZ(0); } 100% { opacity: 0; transform: translate3d(var(--dx), 58vh, 120px) rotateX(var(--r1)) rotateZ(var(--r2)); } }
+
+    /* footer on dark */
+    .g-foot { position: relative; z-index: 2; border-top: 1px solid rgba(247,242,231,.1); }
+    .g-foot .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 22px 20px; font-size: .85rem; color: rgba(247,242,231,.45); }
+    .g-foot a { color: rgba(247,242,231,.65); }
+
+    @media (max-width: 560px) {
+      .g-stage { width: min(320px, 88vw); }
+      .g-sub { font-size: .98rem; padding: 0 14px; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
+      .g-in { animation: none; opacity: 1; transform: none; }
+      .g-bob, .g-zero, .g-zero i, .g-paper, .g-medal { animation: none; }
+      .g-tilt { transition: none; }
       .g-dot.is-on { animation: none; }
-      .g-stampbtn { transition: none; }
+      .g-dot.is-on::after { animation: none; opacity: 0; }
     }
   </style>
 </head>
-<body>
+<body class="g-body">
   <a class="skip-link" href="#main">Naar inhoud</a>
 
-  <header class="nav" id="nav">
-    <div class="container nav__inner">
-      <a class="nav__logo" href="/" aria-label="stampzer.com home"><img src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" /></a>
-      <a href="/" class="btn btn--green nav__cta">Naar de homepage <span class="btn__arrow" aria-hidden="true">→</span></a>
+  <div class="g-spot" aria-hidden="true"></div>
+  <div class="g-float" aria-hidden="true">
+    <span class="g-paper" style="--x:6%;  --y:16%; --r:-14deg; --s:1;   --dp:.9;  --dur:10s"></span>
+    <span class="g-paper" style="--x:85%; --y:12%; --r:11deg;  --s:.8;  --dp:.7;  --dur:12s"></span>
+    <span class="g-paper" style="--x:12%; --y:66%; --r:8deg;   --s:.7;  --dp:.5;  --dur:14s"></span>
+    <span class="g-paper" style="--x:78%; --y:58%; --r:-7deg;  --s:.95; --dp:.8;  --dur:11s"></span>
+    <span class="g-paper" style="--x:45%; --y:8%;  --r:5deg;   --s:.55; --dp:.4;  --dur:16s"></span>
+    <span class="g-paper" style="--x:92%; --y:78%; --r:-18deg; --s:.6;  --dp:.45; --dur:13s"></span>
+    <span class="g-paper" style="--x:28%; --y:84%; --r:13deg;  --s:.5;  --dp:.35; --dur:15s"></span>
+  </div>
+
+  <header class="g-nav">
+    <div class="container">
+      <a href="/" aria-label="stampzer.com home"><img src="/assets/logo-cream.png" alt="stampzer.com" width="140" height="50" /></a>
+      <a class="g-home" href="/">Naar de homepage →</a>
     </div>
   </header>
 
-  <main id="main">
-    <section class="g-hero">
-      <div class="container">
-        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> 404 · Pagina niet gevonden</span>
-        <h1 class="g-title">Oeps — deze pagina is <span class="mark">kwijtgeraakt</span>.</h1>
-        <p class="g-sub">Typisch iets voor papier, hè? Een digitale spaarkaart was dit nooit overkomen. Maar nu je er toch bent: <strong>stempel de kaart vol en verdien je weg terug.</strong></p>
+  <main id="main" class="g-scene">
+    <div class="container g-inner">
+      <span class="g-eyebrow g-in" style="--del:.05s"><i aria-hidden="true"></i> Fout 404 · pagina kwijt</span>
 
-        <div class="g-card" id="gcard" aria-label="Mini-spel: stempel de spaarkaart vol">
-          <div class="g-head">
-            <div class="g-ava">S</div>
-            <div><strong>Stampzer</strong><span>Verdwaalde bezoeker · kaart nr. 404</span></div>
-          </div>
-          <div class="g-reward"><span>JOUW BELONING</span><strong>De weg terug 🏠</strong></div>
-          <div class="g-stamps" id="gstamps"></div>
-          <p class="g-progress" id="gprog" role="status">Nog 8 stempels tot je beloning</p>
-          <div class="g-zone">
-            <button type="button" class="btn btn--green g-stampbtn" id="gbtn">Stempel! ✚</button>
+      <h1 class="g-404 g-in" style="--del:.15s" aria-label="404"><span>4</span><span class="g-zero" aria-hidden="true"><i></i></span><span>4</span></h1>
+
+      <h2 class="g-title g-in" style="--del:.28s">Deze pagina is kwijtgeraakt. Typisch papier.</h2>
+      <p class="g-sub g-in" style="--del:.38s">Digitale spaarkaarten raken nooit kwijt — deze pagina had er duidelijk geen. Maar nu je hier toch bent: <strong>stempel de kaart vol en verdien je weg terug.</strong></p>
+
+      <div class="g-stage g-in" style="--del:.5s">
+        <div class="g-bob">
+          <div class="g-tilt" id="gtilt">
+            <div class="g-card3d" id="gcard" role="button" tabindex="0" aria-label="Stempelkaart: klik of druk op enter om te stempelen">
+              <div class="g-face g-front" id="gfront">
+                <div class="g-head">
+                  <div class="g-ava">S</div>
+                  <div><strong>Stampzer</strong><span>Verdwaalde bezoeker · kaart nr. 404</span></div>
+                </div>
+                <div class="g-reward"><span>JOUW BELONING</span><strong>De weg terug 🏠</strong></div>
+                <div class="g-stamps" id="gstamps"></div>
+                <p class="g-prog" id="gprog">Nog <b>8</b> stempels tot je beloning</p>
+                <div class="g-glare" id="gglare" aria-hidden="true"></div>
+              </div>
+              <div class="g-face g-back" aria-hidden="true">
+                <div class="g-medal">🎉</div>
+                <h2>Volle kaart!</h2>
+                <p>Zo hoort dat — een volle kaart is een beloning waard. En dit kaartje raakte tenminste niet kwijt.</p>
+                <a href="/" class="btn btn--green">Verzilver: naar de homepage <span class="btn__arrow" aria-hidden="true">→</span></a>
+                <a href="/gids/" class="btn g-btn-ghost">Of lees de gids</a>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="g-done" id="gdone" hidden>
-          <h2>🎉 Volle kaart!</h2>
-          <p>Zo hoort dat — een volle kaart is een beloning waard. En zeg nou zelf: dit kaartje raakte tenminste niet kwijt.</p>
-          <div class="g-actions">
-            <a href="/" class="btn btn--green">Verzilver: naar de homepage <span class="btn__arrow" aria-hidden="true">→</span></a>
-            <a href="/gids/" class="btn btn--ink">Of lees de gids</a>
-          </div>
-        </div>
-
-        <p class="g-skip">Geen zin in spelletjes? <a href="/">Rechtstreeks naar de homepage →</a></p>
+        <div class="g-shadow" aria-hidden="true"></div>
       </div>
-    </section>
+
+      <p class="g-hint g-in" id="ghint" style="--del:.62s">Klik op de kaart om te stempelen</p>
+      <p class="g-skip g-in" style="--del:.72s">Geen zin in spelletjes? <a href="/">Rechtstreeks naar de homepage →</a></p>
+    </div>
   </main>
 
-  <footer class="footer">
-    <div class="container footer__bottom" style="border-top:none;">
+  <div class="g-cur" id="gcur" aria-hidden="true"></div>
+
+  <footer class="g-foot">
+    <div class="container">
       <span>© 2026 stampzer.com — Gemaakt in Nederland 🇳🇱</span>
       <span><a href="/privacy/">Privacybeleid</a> · <a href="mailto:hallo@stampzer.com">hallo@stampzer.com</a></span>
     </div>
@@ -112,69 +230,6 @@
 
   <script src="/config.js"></script>
   <script src="/motion.js"></script>
-  <script>
-    (function () {
-      var TOTAL = 8, on = 0;
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var stamps = document.getElementById('gstamps');
-      var prog = document.getElementById('gprog');
-      var btn = document.getElementById('gbtn');
-      var done = document.getElementById('gdone');
-      var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
-
-      var dots = [];
-      for (var i = 0; i < TOTAL; i++) {
-        var d = document.createElement('span');
-        d.className = 'g-dot';
-        stamps.appendChild(d);
-        dots.push(d);
-      }
-
-      function hop() {
-        if (reduce) return;
-        var x = Math.round(Math.random() * 120 - 60);
-        var y = Math.round(Math.random() * 26 - 8);
-        btn.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-      }
-
-      function confetti() {
-        if (reduce) return;
-        var c = document.createElement('div');
-        c.className = 'g-conf';
-        var colors = ['#29c700', '#f3d8c9', '#f7f2e7', '#1f9b00'];
-        for (var i = 0; i < 28; i++) {
-          var p = document.createElement('i');
-          p.style.left = (50 + (Math.random() * 44 - 22)) + '%';
-          p.style.background = colors[i % colors.length];
-          p.style.animationDuration = (0.9 + Math.random() * 0.9) + 's';
-          p.style.animationDelay = (Math.random() * 0.15) + 's';
-          p.style.setProperty('--dx', (Math.random() * 170 - 85) + 'px');
-          p.style.setProperty('--rot', (Math.random() * 540 - 270) + 'deg');
-          c.appendChild(p);
-        }
-        document.body.appendChild(c);
-        setTimeout(function () { c.remove(); }, 2300);
-      }
-
-      btn.addEventListener('click', function () {
-        if (on >= TOTAL) return;
-        dots[on].classList.add('is-on');
-        dots[on].innerHTML = CHECK;
-        on++;
-        var left = TOTAL - on;
-        if (left > 1) { prog.textContent = 'Nog ' + left + ' stempels tot je beloning'; hop(); }
-        else if (left === 1) { prog.textContent = 'Nog maar 1 stempel…!'; hop(); }
-        else {
-          prog.textContent = 'Volle kaart! 🎉';
-          btn.disabled = true;
-          btn.style.transform = 'none';
-          btn.textContent = 'Kaart vol ✓';
-          done.hidden = false;
-          confetti();
-          done.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
-        }
-      });
-    })();
-  </script>
+  <script src="/404.js"></script>
 </body>
 </html>
