@@ -1,5 +1,8 @@
 # Stampzer — caching + security policy
 
+# Custom 404 page (with stamp minigame)
+ErrorDocument 404 /404.html
+
 # Disable directory listing
 Options -Indexes
 

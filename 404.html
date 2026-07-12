@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagina niet gevonden — Stampzer</title>
+  <meta name="description" content="Deze pagina is kwijtgeraakt — net als een papieren stempelkaart. Stempel de kaart vol en verdien je weg terug." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#181f10" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/seatren.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-400-latin.woff2" crossorigin />
+  <link rel="stylesheet" href="/styles.css" />
+
+  <style>
+    /* ===== 404 minigame (page-scoped) ===== */
+    .g-hero { padding: 56px 0 80px; text-align: center; }
+    .g-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.06; color: var(--ink); margin: 18px 0 0; }
+    .g-sub { color: var(--muted); font-size: 1.1rem; line-height: 1.65; max-width: 560px; margin: 16px auto 0; }
+
+    .g-card { max-width: 380px; margin: 38px auto 0; background: var(--ink); color: var(--paper); border-radius: 22px; padding: 24px 22px 26px; box-shadow: var(--shadow); text-align: left; }
+    .g-head { display: flex; align-items: center; gap: 12px; }
+    .g-ava { width: 44px; height: 44px; border-radius: 12px; background: var(--green); color: var(--ink); display: grid; place-items: center; font-family: var(--font-display); font-size: 1.4rem; flex-shrink: 0; }
+    .g-head strong { display: block; font-size: 1.05rem; color: #fff; }
+    .g-head span { font-size: .82rem; color: rgba(247,242,231,.6); }
+    .g-reward { margin: 18px 0 6px; background: rgba(247,242,231,.08); border-radius: 12px; padding: 12px 14px; }
+    .g-reward span { display: block; font-size: .68rem; font-weight: 600; letter-spacing: .1em; color: rgba(247,242,231,.55); }
+    .g-reward strong { font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; color: #fff; }
+
+    .g-stamps { display: grid; grid-template-columns: repeat(4, 46px); gap: 12px; justify-content: center; margin: 18px auto 6px; }
+    .g-dot { width: 46px; height: 46px; border-radius: 50%; border: 2px dashed rgba(247,242,231,.35); display: grid; place-items: center; color: var(--ink); }
+    .g-dot.is-on { border-style: solid; border-color: var(--green); background: var(--green); animation: gpop .32s cubic-bezier(.2,1.4,.4,1); }
+    .g-dot svg { width: 22px; height: 22px; }
+    @keyframes gpop { 0% { transform: scale(.2); } 70% { transform: scale(1.18); } 100% { transform: scale(1); } }
+
+    .g-progress { text-align: center; font-size: .9rem; color: rgba(247,242,231,.7); margin: 10px 0 14px; min-height: 1.3em; }
+    .g-zone { position: relative; height: 86px; display: grid; place-items: center; }
+    .g-stampbtn { transition: transform .18s ease; touch-action: manipulation; }
+    .g-stampbtn:active { transform: scale(.96); }
+
+    .g-done { max-width: 420px; margin: 30px auto 0; }
+    .g-done h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; color: var(--ink); margin: 0; }
+    .g-done p { color: var(--muted); margin: 10px 0 18px; }
+    .g-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .g-skip { display: inline-block; margin-top: 26px; font-size: .92rem; color: var(--muted); }
+    .g-skip a { color: var(--green-700); font-weight: 600; }
+
+    .g-conf { position: fixed; inset: 0; pointer-events: none; z-index: 400; }
+    .g-conf i { position: absolute; top: 28%; width: 10px; height: 14px; border-radius: 3px; opacity: 0; animation: gfall linear forwards; }
+    @keyframes gfall { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 100% { opacity: 0; transform: translate(var(--dx), 54vh) rotate(var(--rot)); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .g-dot.is-on { animation: none; }
+      .g-stampbtn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Naar inhoud</a>
+
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="/" aria-label="stampzer.com home"><img src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" /></a>
+      <a href="/" class="btn btn--green nav__cta">Naar de homepage <span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="g-hero">
+      <div class="container">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> 404 · Pagina niet gevonden</span>
+        <h1 class="g-title">Oeps — deze pagina is <span class="mark">kwijtgeraakt</span>.</h1>
+        <p class="g-sub">Typisch iets voor papier, hè? Een digitale spaarkaart was dit nooit overkomen. Maar nu je er toch bent: <strong>stempel de kaart vol en verdien je weg terug.</strong></p>
+
+        <div class="g-card" id="gcard" aria-label="Mini-spel: stempel de spaarkaart vol">
+          <div class="g-head">
+            <div class="g-ava">S</div>
+            <div><strong>Stampzer</strong><span>Verdwaalde bezoeker · kaart nr. 404</span></div>
+          </div>
+          <div class="g-reward"><span>JOUW BELONING</span><strong>De weg terug 🏠</strong></div>
+          <div class="g-stamps" id="gstamps"></div>
+          <p class="g-progress" id="gprog" role="status">Nog 8 stempels tot je beloning</p>
+          <div class="g-zone">
+            <button type="button" class="btn btn--green g-stampbtn" id="gbtn">Stempel! ✚</button>
+          </div>
+        </div>
+
+        <div class="g-done" id="gdone" hidden>
+          <h2>🎉 Volle kaart!</h2>
+          <p>Zo hoort dat — een volle kaart is een beloning waard. En zeg nou zelf: dit kaartje raakte tenminste niet kwijt.</p>
+          <div class="g-actions">
+            <a href="/" class="btn btn--green">Verzilver: naar de homepage <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a href="/gids/" class="btn btn--ink">Of lees de gids</a>
+          </div>
+        </div>
+
+        <p class="g-skip">Geen zin in spelletjes? <a href="/">Rechtstreeks naar de homepage →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__bottom" style="border-top:none;">
+      <span>© 2026 stampzer.com — Gemaakt in Nederland 🇳🇱</span>
+      <span><a href="/privacy/">Privacybeleid</a> · <a href="mailto:hallo@stampzer.com">hallo@stampzer.com</a></span>
+    </div>
+  </footer>
+
+  <script src="/config.js"></script>
+  <script src="/motion.js"></script>
+  <script>
+    (function () {
+      var TOTAL = 8, on = 0;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var stamps = document.getElementById('gstamps');
+      var prog = document.getElementById('gprog');
+      var btn = document.getElementById('gbtn');
+      var done = document.getElementById('gdone');
+      var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+
+      var dots = [];
+      for (var i = 0; i < TOTAL; i++) {
+        var d = document.createElement('span');
+        d.className = 'g-dot';
+        stamps.appendChild(d);
+        dots.push(d);
+      }
+
+      function hop() {
+        if (reduce) return;
+        var x = Math.round(Math.random() * 120 - 60);
+        var y = Math.round(Math.random() * 26 - 8);
+        btn.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      }
+
+      function confetti() {
+        if (reduce) return;
+        var c = document.createElement('div');
+        c.className = 'g-conf';
+        var colors = ['#29c700', '#f3d8c9', '#f7f2e7', '#1f9b00'];
+        for (var i = 0; i < 28; i++) {
+          var p = document.createElement('i');
+          p.style.left = (50 + (Math.random() * 44 - 22)) + '%';
+          p.style.background = colors[i % colors.length];
+          p.style.animationDuration = (0.9 + Math.random() * 0.9) + 's';
+          p.style.animationDelay = (Math.random() * 0.15) + 's';
+          p.style.setProperty('--dx', (Math.random() * 170 - 85) + 'px');
+          p.style.setProperty('--rot', (Math.random() * 540 - 270) + 'deg');
+          c.appendChild(p);
+        }
+        document.body.appendChild(c);
+        setTimeout(function () { c.remove(); }, 2300);
+      }
+
+      btn.addEventListener('click', function () {
+        if (on >= TOTAL) return;
+        dots[on].classList.add('is-on');
+        dots[on].innerHTML = CHECK;
+        on++;
+        var left = TOTAL - on;
+        if (left > 1) { prog.textContent = 'Nog ' + left + ' stempels tot je beloning'; hop(); }
+        else if (left === 1) { prog.textContent = 'Nog maar 1 stempel…!'; hop(); }
+        else {
+          prog.textContent = 'Volle kaart! 🎉';
+          btn.disabled = true;
+          btn.style.transform = 'none';
+          btn.textContent = 'Kaart vol ✓';
+          done.hidden = false;
+          confetti();
+          done.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
