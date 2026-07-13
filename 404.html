@@ -17,9 +17,10 @@
   <link rel="stylesheet" href="/styles.css" />
 
   <style>
-    /* ================= 404 — "De verloren kaarten" ================= */
+    /* ================= 404 — "De verloren kaarten" v2 =================
+       All continuous motion is transform-only (GPU-composited). */
     html, body { height: 100%; }
-    body.g-body { background: #101408; color: var(--paper); overflow-x: hidden; }
+    body.g-body { background: #101408 radial-gradient(1200px circle at 50% 118%, rgba(41,199,0,.055), transparent 55%); color: var(--paper); overflow-x: hidden; }
 
     /* --- minimal nav on dark --- */
     .g-nav { position: relative; z-index: 5; }
@@ -27,39 +28,57 @@
     .g-home { font-weight: 600; font-size: .95rem; color: rgba(247,242,231,.75); text-decoration: none; border: 1px solid rgba(247,242,231,.22); padding: 10px 18px; border-radius: 999px; transition: border-color .2s ease, color .2s ease, transform .2s ease; }
     .g-home:hover { color: #fff; border-color: rgba(247,242,231,.55); transform: translateY(-1px); }
 
-    /* --- scene --- */
-    .g-scene { position: relative; z-index: 1; min-height: calc(100svh - 90px); display: grid; align-content: start; padding: clamp(10px, 3vh, 40px) 0 90px; }
-    .g-spot { position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background:
-        radial-gradient(720px circle at var(--mx, 50%) var(--my, 38%), rgba(41,199,0,.09), transparent 62%),
-        radial-gradient(1200px circle at 50% 120%, rgba(41,199,0,.05), transparent 55%); }
+    /* --- cursor spotlight: fixed-size circle moved with transform (no repaint) --- */
+    .g-spot { position: fixed; left: 0; top: 0; width: 1100px; height: 1100px; margin: -550px 0 0 -550px; border-radius: 50%; z-index: 0; pointer-events: none;
+      background: radial-gradient(circle, rgba(41,199,0,.09) 0%, transparent 62%);
+      transform: translate3d(50vw, 38vh, 0); will-change: transform; }
 
-    /* --- drifting lost paper cards --- */
+    /* --- floating 3D scene layer --- */
     .g-float { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-    .g-paper { position: absolute; left: var(--x); top: var(--y); width: calc(84px * var(--s)); height: calc(112px * var(--s));
-      background: linear-gradient(160deg, rgba(247,242,231,.13), rgba(247,242,231,.035));
-      border: 1px solid rgba(247,242,231,.12); border-radius: 12px;
-      transform: translate3d(calc(var(--px, 0px) * var(--dp)), calc(var(--py, 0px) * var(--dp)), 0) rotate(var(--r));
-      filter: blur(calc((1 - var(--dp)) * 2.6px)); opacity: calc(.35 + var(--dp) * .55);
-      animation: gdrift var(--dur, 11s) ease-in-out infinite alternate; }
-    .g-paper::before, .g-paper::after { content: ""; position: absolute; left: 14%; width: 26%; aspect-ratio: 1; border: 1.5px dashed rgba(247,242,231,.3); border-radius: 50%; }
-    .g-paper::before { top: 16%; }
-    .g-paper::after { top: 52%; left: 46%; }
-    @keyframes gdrift { from { margin-top: 0; } to { margin-top: calc(-26px * var(--dp)); } }
+
+    /* 3D stamp-coins with local-business icons */
+    .g-obj { position: absolute; left: var(--x); top: var(--y);
+      transform: translate3d(calc(var(--px, 0px) * var(--dp)), calc(var(--py, 0px) * var(--dp)), 0);
+      will-change: transform; }
+    .g-coin { display: block; width: calc(80px * var(--s, 1)); aspect-ratio: 1; perspective: 520px;
+      opacity: calc(.3 + var(--dp) * .62); animation: gfloat var(--fd, 9s) ease-in-out infinite alternate; }
+    .g-spin { position: absolute; inset: 0; transform-style: preserve-3d; animation: gtumble var(--sd, 20s) linear infinite; }
+    .g-spin.g-rev { animation-direction: reverse; }
+    .g-cf, .g-cb { position: absolute; inset: 0; border-radius: 50%; display: grid; place-items: center; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+    .g-cf { transform: translateZ(6px);
+      background: radial-gradient(circle at 32% 26%, rgba(41,199,0,.32), rgba(41,199,0,.07) 62%);
+      border: 1.6px dashed rgba(41,199,0,.62); box-shadow: inset 0 0 24px rgba(41,199,0,.16); }
+    .g-cf svg { width: 46%; height: 46%; color: #dcf0cd; }
+    .g-cb { transform: rotateY(180deg) translateZ(6px); background: #151b0c; border: 1.6px solid rgba(41,199,0,.3); }
+    .g-cb::after { content: ""; width: 30%; aspect-ratio: 1; border-radius: 50%; background: rgba(41,199,0,.45); box-shadow: 0 0 18px rgba(41,199,0,.35); }
+    @keyframes gfloat { from { transform: translateY(0); } to { transform: translateY(-24px); } }
+    @keyframes gtumble { from { transform: rotateX(var(--tx, 12deg)) rotateY(0deg); } to { transform: rotateX(var(--tx, 12deg)) rotateY(360deg); } }
+
+    /* a few lost paper cards for the story (transform-only drift) */
+    .g-paper { position: absolute; left: var(--x); top: var(--y);
+      transform: translate3d(calc(var(--px, 0px) * var(--dp)), calc(var(--py, 0px) * var(--dp)), 0);
+      will-change: transform; opacity: calc(.22 + var(--dp) * .4); }
+    .g-paper i { display: block; width: calc(84px * var(--s)); height: calc(112px * var(--s));
+      background: linear-gradient(160deg, rgba(247,242,231,.13), rgba(247,242,231,.03));
+      border: 1px solid rgba(247,242,231,.12); border-radius: 12px; position: relative;
+      transform: rotate(var(--r)); animation: gfloat var(--fd, 12s) ease-in-out infinite alternate; }
+    .g-paper i::before, .g-paper i::after { content: ""; position: absolute; left: 14%; width: 26%; aspect-ratio: 1; border: 1.5px dashed rgba(247,242,231,.28); border-radius: 50%; }
+    .g-paper i::before { top: 16%; }
+    .g-paper i::after { top: 52%; left: 46%; }
 
     /* --- headline --- */
+    .g-scene { position: relative; z-index: 1; min-height: calc(100svh - 90px); display: grid; align-content: start; padding: clamp(10px, 3vh, 40px) 0 90px; }
     .g-inner { position: relative; z-index: 2; text-align: center; }
     .g-eyebrow { display: inline-flex; align-items: center; gap: 9px; font-size: .78rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,242,231,.55); border: 1px solid rgba(247,242,231,.16); padding: 7px 16px; border-radius: 999px; margin-top: clamp(6px, 2vh, 26px); }
     .g-eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px rgba(41,199,0,.9); }
 
     .g-404 { display: flex; justify-content: center; align-items: center; gap: .05em; font-family: var(--font-display); font-weight: 400; font-size: clamp(5.4rem, 19vw, 11rem); line-height: .92; color: var(--paper); margin: clamp(8px, 2.4vh, 26px) 0 0; user-select: none; }
-    .g-zero { position: relative; width: .74em; height: .74em; border: .05em dashed rgba(41,199,0,.75); border-radius: 50%; display: grid; place-items: center; animation: gspin 26s linear infinite; }
+    .g-zero { position: relative; width: .74em; height: .74em; border: .05em dashed rgba(41,199,0,.75); border-radius: 50%; display: grid; place-items: center; animation: gspinz 26s linear infinite; }
     .g-zero i { width: 58%; height: 58%; border-radius: 50%; background: var(--green); box-shadow: 0 0 34px rgba(41,199,0,.5); animation: gpulse 2.6s ease-in-out infinite; }
-    @keyframes gspin { to { transform: rotate(360deg); } }
+    @keyframes gspinz { to { transform: rotate(360deg); } }
     @keyframes gpulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(.86); } }
 
     .g-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 4.4vw, 2.3rem); color: var(--paper); margin: clamp(10px, 2vh, 22px) 0 0; word-spacing: .16em; }
-    .g-back h2, .g-reward strong { word-spacing: .14em; }
     .g-sub { color: rgba(247,242,231,.6); font-size: 1.04rem; line-height: 1.65; max-width: 520px; margin: 12px auto 0; }
     .g-sub strong { color: var(--paper); font-weight: 600; }
 
@@ -71,10 +90,10 @@
     .g-stage { position: relative; z-index: 2; width: min(350px, 86vw); margin: clamp(22px, 4.5vh, 44px) auto 0; perspective: 1150px; }
     .g-bob { animation: gbob 6.5s ease-in-out infinite; transform-style: preserve-3d; }
     @keyframes gbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-    .g-tilt { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .35s cubic-bezier(.2, .9, .3, 1); transform-style: preserve-3d; will-change: transform; }
+    .g-tilt { transform-style: preserve-3d; will-change: transform; }
     .g-card3d { position: relative; transform: rotateY(var(--fy, 0deg)); transition: transform 1.05s cubic-bezier(.72, 0, .18, 1); transform-style: preserve-3d; cursor: pointer; border-radius: 26px; outline: none; }
     .g-card3d:focus-visible { box-shadow: 0 0 0 3px rgba(41,199,0,.75); }
-    .g-card3d.is-press .g-front { transform: scale(.982) translateZ(0); }
+    .g-card3d.is-press .g-front { transform: scale(.982); }
 
     .g-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 26px; padding: 24px 22px;
       background: linear-gradient(168deg, #242c17 0%, #1a2010 55%, #151a0c 100%);
@@ -93,17 +112,17 @@
 
     .g-reward { margin: 16px 0 4px; background: rgba(247,242,231,.07); border: 1px solid rgba(247,242,231,.07); border-radius: 12px; padding: 11px 14px; }
     .g-reward span { display: block; font-size: .64rem; font-weight: 700; letter-spacing: .12em; color: rgba(247,242,231,.5); }
-    .g-reward strong { font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; color: #fff; }
+    .g-reward strong { font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; color: #fff; word-spacing: .14em; }
 
     .g-stamps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 4px 4px; }
-    .g-dot { position: relative; aspect-ratio: 1; border-radius: 50%; border: 2px dashed rgba(247,242,231,.32); display: grid; place-items: center; color: var(--ink); transition: border-color .2s ease; }
+    .g-dot { position: relative; aspect-ratio: 1; border-radius: 50%; border: 2px dashed rgba(247,242,231,.32); display: grid; place-items: center; color: var(--ink); }
     .g-dot svg { width: 46%; height: 46%; }
     .g-dot.is-on { border-style: solid; border-color: var(--green); background: var(--green); box-shadow: 0 4px 16px -4px rgba(41,199,0,.6); animation: gstamp .38s cubic-bezier(.2, 1.5, .4, 1); }
     .g-dot.is-on::after { content: ""; position: absolute; inset: -7px; border: 2px solid var(--green); border-radius: 50%; opacity: 0; animation: gring .55s ease-out; }
     @keyframes gstamp { 0% { transform: scale(.2) rotate(-14deg); } 65% { transform: scale(1.16) rotate(3deg); } 100% { transform: scale(1) rotate(0); } }
     @keyframes gring { 0% { opacity: .85; transform: scale(.7); } 100% { opacity: 0; transform: scale(1.45); } }
 
-    .g-spark { position: absolute; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; z-index: 3; animation: gspark .6s ease-out forwards; }
+    .g-spark { position: fixed; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; z-index: 3; animation: gspark .6s ease-out forwards; }
     @keyframes gspark { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { opacity: 0; transform: translate(var(--sx), var(--sy)) scale(.3); } }
 
     .g-prog { text-align: center; font-size: .88rem; color: rgba(247,242,231,.6); margin: 14px 0 4px; min-height: 1.3em; }
@@ -112,7 +131,7 @@
     .g-shadow { width: 78%; height: 26px; margin: 26px auto 0; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(18px); transform: scale(var(--sh, 1)); transition: transform .35s ease; }
 
     /* back face */
-    .g-back h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.8rem; color: #fff; margin: 0; }
+    .g-back h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.8rem; color: #fff; margin: 0; word-spacing: .14em; }
     .g-back p { color: rgba(247,242,231,.62); font-size: .95rem; line-height: 1.55; margin: 10px 0 18px; }
     .g-back .btn { width: 100%; justify-content: center; }
     .g-back .btn + .btn { margin-top: 10px; }
@@ -125,12 +144,12 @@
     .g-skip a { color: var(--green); font-weight: 600; }
 
     /* custom stamp cursor (fine pointers only) */
-    .g-cur { position: fixed; z-index: 90; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; pointer-events: none;
+    .g-cur { position: fixed; left: 0; top: 0; z-index: 90; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; pointer-events: none;
       border: 2px solid rgba(41,199,0,.9); background: rgba(41,199,0,.14); display: none; align-items: center; justify-content: center;
-      transition: transform .12s ease, opacity .15s ease; opacity: 0; }
-    .g-cur::after { content: "✚"; color: var(--green); font-size: 1.05rem; font-weight: 700; }
+      transform: translate3d(-100px, -100px, 0); will-change: transform; transition: opacity .15s ease; opacity: 0; }
+    .g-cur::after { content: "✚"; color: var(--green); font-size: 1.05rem; font-weight: 700; transition: transform .12s ease; }
     .g-cur.is-vis { opacity: 1; }
-    .g-cur.is-hit { transform: scale(.72) rotate(-8deg); }
+    .g-cur.is-hit::after { transform: scale(.6) rotate(-10deg); }
     @media (pointer: fine) { .g-card3d { cursor: none; } .g-cur { display: flex; } }
 
     /* 3D confetti */
@@ -146,29 +165,59 @@
     @media (max-width: 560px) {
       .g-stage { width: min(320px, 88vw); }
       .g-sub { font-size: .98rem; padding: 0 14px; }
+      .g-coin { width: calc(62px * var(--s, 1)); }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .g-in { animation: none; opacity: 1; transform: none; }
-      .g-bob, .g-zero, .g-zero i, .g-paper, .g-medal { animation: none; }
-      .g-tilt { transition: none; }
+      .g-bob, .g-zero, .g-zero i, .g-medal, .g-coin, .g-spin, .g-paper i { animation: none; }
       .g-dot.is-on { animation: none; }
       .g-dot.is-on::after { animation: none; opacity: 0; }
+      .g-spot { display: none; }
     }
   </style>
 </head>
 <body class="g-body">
   <a class="skip-link" href="#main">Naar inhoud</a>
 
-  <div class="g-spot" aria-hidden="true"></div>
-  <div class="g-float" aria-hidden="true">
-    <span class="g-paper" style="--x:6%;  --y:16%; --r:-14deg; --s:1;   --dp:.9;  --dur:10s"></span>
-    <span class="g-paper" style="--x:85%; --y:12%; --r:11deg;  --s:.8;  --dp:.7;  --dur:12s"></span>
-    <span class="g-paper" style="--x:12%; --y:66%; --r:8deg;   --s:.7;  --dp:.5;  --dur:14s"></span>
-    <span class="g-paper" style="--x:78%; --y:58%; --r:-7deg;  --s:.95; --dp:.8;  --dur:11s"></span>
-    <span class="g-paper" style="--x:45%; --y:8%;  --r:5deg;   --s:.55; --dp:.4;  --dur:16s"></span>
-    <span class="g-paper" style="--x:92%; --y:78%; --r:-18deg; --s:.6;  --dp:.45; --dur:13s"></span>
-    <span class="g-paper" style="--x:28%; --y:84%; --r:13deg;  --s:.5;  --dp:.35; --dur:15s"></span>
+  <div class="g-spot" id="gspot" aria-hidden="true"></div>
+
+  <div class="g-float" id="gfloat" aria-hidden="true">
+    <!-- 3D stamp-coins: iconen van lokale ondernemers -->
+    <span class="g-obj" style="--x:6%; --y:15%; --dp:.9; --s:1.15; --fd:8.5s; --sd:16s; --tx:14deg">
+      <span class="g-coin"><span class="g-spin">
+        <i class="g-cf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h11v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M15 9h2.4a2.4 2.4 0 0 1 0 4.8H15"/><path d="M7 3.4v1.6M11 3.4v1.6"/></svg></i><i class="g-cb"></i>
+      </span></span>
+    </span>
+    <span class="g-obj" style="--x:86%; --y:12%; --dp:.72; --s:.95; --fd:10s; --sd:22s; --tx:-10deg">
+      <span class="g-coin"><span class="g-spin g-rev">
+        <i class="g-cf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6.4" r="2.3"/><circle cx="6" cy="17.6" r="2.3"/><path d="M8 8l11.5 8M8 16L19.5 8"/></svg></i><i class="g-cb"></i>
+      </span></span>
+    </span>
+    <span class="g-obj" style="--x:9%; --y:62%; --dp:.6; --s:.85; --fd:12s; --sd:26s; --tx:18deg">
+      <span class="g-coin"><span class="g-spin">
+        <i class="g-cf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5C4 9.6 7.2 8 12 8s8 1.6 8 4.5c0 .8-.7 1.5-1.5 1.5h-13C4.7 14 4 13.3 4 12.5Z"/><path d="M5 14v2.5A2.5 2.5 0 0 0 7.5 19h9a2.5 2.5 0 0 0 2.5-2.5V14"/><path d="m9.5 10.6-.8 1.8M12.4 10.4l-.8 1.8M15.3 10.6l-.8 1.8"/></svg></i><i class="g-cb"></i>
+      </span></span>
+    </span>
+    <span class="g-obj" style="--x:84%; --y:56%; --dp:.85; --s:1.05; --fd:9s; --sd:19s; --tx:8deg">
+      <span class="g-coin"><span class="g-spin g-rev">
+        <i class="g-cf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 7.5v9M3.5 9.5v5M17.5 7.5v9M20.5 9.5v5M6.5 12h11"/></svg></i><i class="g-cb"></i>
+      </span></span>
+    </span>
+    <span class="g-obj" style="--x:44%; --y:4%; --dp:.48; --s:.7; --fd:13s; --sd:30s; --tx:12deg">
+      <span class="g-coin"><span class="g-spin">
+        <i class="g-cf"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6.6" r="2.7"/><circle cx="17.4" cy="10.5" r="2.7"/><circle cx="15.3" cy="16.9" r="2.7"/><circle cx="8.7" cy="16.9" r="2.7"/><circle cx="6.6" cy="10.5" r="2.7"/></svg></i><i class="g-cb"></i>
+      </span></span>
+    </span>
+    <span class="g-obj" style="--x:91%; --y:82%; --dp:.55; --s:.78; --fd:11s; --sd:24s; --tx:-14deg">
+      <span class="g-coin"><span class="g-spin g-rev">
+        <i class="g-cf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a2 2 0 0 0 4 0V3"/><path d="M8 11v10"/><path d="M16 3c-1.2 1.2-1.8 3-1.8 5.2 0 1.7.8 3 1.8 3s1.8-1.3 1.8-3c0-2.2-.6-4-1.8-5.2z"/><path d="M16 11.2V21"/></svg></i><i class="g-cb"></i>
+      </span></span>
+    </span>
+    <!-- verloren papieren kaartjes -->
+    <span class="g-paper" style="--x:20%; --y:82%; --dp:.42; --s:.8;  --r:11deg;  --fd:14s"><i></i></span>
+    <span class="g-paper" style="--x:70%; --y:6%;  --dp:.38; --s:.6;  --r:-13deg; --fd:16s"><i></i></span>
+    <span class="g-paper" style="--x:32%; --y:74%; --dp:.5;  --s:.55; --r:7deg;   --fd:15s"><i></i></span>
   </div>
 
   <header class="g-nav">
