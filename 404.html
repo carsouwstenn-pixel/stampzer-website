@@ -91,9 +91,15 @@
     .g-bob { animation: gbob 6.5s ease-in-out infinite; transform-style: preserve-3d; }
     @keyframes gbob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
     .g-tilt { transform-style: preserve-3d; will-change: transform; }
-    .g-card3d { position: relative; transform: rotateY(var(--fy, 0deg)); transition: transform 1.05s cubic-bezier(.72, 0, .18, 1); transform-style: preserve-3d; cursor: pointer; border-radius: 26px; outline: none; }
-    .g-card3d:focus-visible { box-shadow: 0 0 0 3px rgba(41,199,0,.75); }
+    .g-tilt.g-kick { animation: gkick .3s ease-out; }
+    @keyframes gkick { 30% { transform: rotateX(7deg) scale(.985); } }
+    .g-card3d { position: relative; transform: rotateY(var(--fy, 0deg)); transition: transform 1.05s cubic-bezier(.72, 0, .18, 1); transform-style: preserve-3d; border-radius: 26px; }
     .g-card3d.is-press .g-front { transform: scale(.982); }
+
+    /* invisible hit layer — pushed toward the viewer in 3D so it always wins hit-testing */
+    .g-hit { position: absolute; inset: -14px; z-index: 6; transform: translateZ(90px); background: transparent; border: 0; padding: 0; border-radius: 34px; cursor: pointer; }
+    html.g-eng .g-hit { cursor: none; }
+    .g-hit:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(41,199,0,.75); }
 
     .g-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 26px; padding: 24px 22px;
       background: linear-gradient(168deg, #242c17 0%, #1a2010 55%, #151a0c 100%);
@@ -143,14 +149,25 @@
     .g-skip { position: relative; z-index: 2; text-align: center; font-size: .92rem; color: rgba(247,242,231,.45); margin: 26px 0 0; }
     .g-skip a { color: var(--green); font-weight: 600; }
 
-    /* custom stamp cursor (fine pointers only) */
-    .g-cur { position: fixed; left: 0; top: 0; z-index: 90; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; pointer-events: none;
-      border: 2px solid rgba(41,199,0,.9); background: rgba(41,199,0,.14); display: none; align-items: center; justify-content: center;
+    /* custom stamp cursor — only shown when the JS engine confirms it runs (html.g-eng) */
+    .g-cur { position: fixed; left: 0; top: 0; z-index: 90; width: 46px; height: 46px; margin: -23px 0 0 -23px; pointer-events: none;
+      display: none; align-items: center; justify-content: center;
       transform: translate3d(-100px, -100px, 0); will-change: transform; transition: opacity .15s ease; opacity: 0; }
-    .g-cur::after { content: "✚"; color: var(--green); font-size: 1.05rem; font-weight: 700; transition: transform .12s ease; }
+    .g-cur::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(41,199,0,.9); background: rgba(41,199,0,.14); transition: transform .2s cubic-bezier(.3, 2.4, .4, 1); }
+    .g-cur::after { content: "✚"; position: relative; color: var(--green); font-size: 1.05rem; font-weight: 700; transition: transform .2s cubic-bezier(.3, 2.4, .4, 1); }
     .g-cur.is-vis { opacity: 1; }
-    .g-cur.is-hit::after { transform: scale(.6) rotate(-10deg); }
-    @media (pointer: fine) { .g-card3d { cursor: none; } .g-cur { display: flex; } }
+    .g-cur.is-down::before { transform: scale(.58); }
+    .g-cur.is-down::after { transform: scale(.66) rotate(-12deg); }
+    html.g-eng .g-cur { display: flex; }
+
+    /* ink splat + floating +1 at the stamp point */
+    .g-splat { position: fixed; z-index: 95; pointer-events: none; width: 0; height: 0; }
+    .g-splat i { content: ""; position: absolute; left: -24px; top: -24px; width: 48px; height: 48px;
+      border: 3px solid rgba(41,199,0,.85); border-radius: 46% 54% 52% 48% / 52% 46% 54% 48%;
+      animation: gsplat .5s ease-out forwards; }
+    @keyframes gsplat { 0% { opacity: .9; transform: scale(.35) rotate(0); } 100% { opacity: 0; transform: scale(1.75) rotate(26deg); } }
+    .g-plus { position: fixed; z-index: 96; pointer-events: none; font-family: var(--font-display); color: var(--green); font-size: 1.35rem; text-shadow: 0 2px 14px rgba(41,199,0,.55); transform: translate(-50%, -10%); animation: gplus .75s cubic-bezier(.2, .8, .3, 1) forwards; }
+    @keyframes gplus { 0% { opacity: 0; transform: translate(-50%, -10%) scale(.6); } 22% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -170%) scale(1.06); } }
 
     /* 3D confetti */
     .g-conf { position: fixed; inset: 0; pointer-events: none; z-index: 400; perspective: 800px; }
@@ -239,7 +256,7 @@
       <div class="g-stage g-in" style="--del:.5s">
         <div class="g-bob">
           <div class="g-tilt" id="gtilt">
-            <div class="g-card3d" id="gcard" role="button" tabindex="0" aria-label="Stempelkaart: klik of druk op enter om te stempelen">
+            <div class="g-card3d" id="gcard">
               <div class="g-face g-front" id="gfront">
                 <div class="g-head">
                   <div class="g-ava">S</div>
@@ -259,6 +276,7 @@
               </div>
             </div>
           </div>
+          <button type="button" class="g-hit" id="ghit" aria-label="Stempelkaart — klik of druk op enter om te stempelen"></button>
         </div>
         <div class="g-shadow" aria-hidden="true"></div>
       </div>
