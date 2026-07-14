@@ -20,6 +20,9 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - [Digitale klantenkaart in Apple & Google Wallet: hoe werkt het?](https://stampzer.com/gids/digitale-klantenkaart-wallet/): Uitleg over hoe een digitale klantenkaart zonder app in de Wallet komt.
 - [Papieren stempelkaart vs. digitale klantenkaart](https://stampzer.com/gids/papieren-vs-digitale-stempelkaart/): Vergelijking van papier en digitaal op kosten, gemak en klantinzicht.
 - [Klantenbinding voor lokale ondernemers](https://stampzer.com/gids/klantenbinding-lokale-ondernemers/): Zeven manieren om van eenmalige bezoekers vaste klanten te maken.
+- [Wat kost een digitale klantenkaart?](https://stampzer.com/gids/wat-kost-een-klantenkaart/): De kosten van papier, pasjes, apps en digitale wallet-kaarten op een rij, plus wat je terugverdient.
+- [Loyaliteitsprogramma opzetten in 5 stappen](https://stampzer.com/gids/loyaliteitsprogramma-opzetten/): Praktisch stappenplan van beloning kiezen tot lancering.
+- [Klanten belonen: 9 beloningen die werken](https://stampzer.com/gids/klanten-belonen-beloningen-spaarkaart/): Beproefde beloningen voor je spaarkaart, met tips per branche.
 - [Alle gidsen](https://stampzer.com/gids/): De volledige kennisbank over digitale klantenkaarten en klantenbinding.
 
 ## Kernfeiten
