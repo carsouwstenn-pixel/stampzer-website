@@ -759,6 +759,15 @@ a.gidscard:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); bo
 .founder__sign { font-family: var(--font-display); font-size: 1.35rem; color: var(--ink); }
 .founder__role { display: block; font-family: var(--font-body); font-size: .9rem; color: var(--muted); margin-top: 2px; }
 
+/* Article author card (E-E-A-T) */
+.authorcard { display: flex; gap: 16px; align-items: center; margin: 40px 0 8px; padding: 20px 22px; background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius); }
+.authorcard__photo { width: 66px; height: 66px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.authorcard__body strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; color: var(--ink); }
+.authorcard__body > span { display: block; font-size: .85rem; font-weight: 600; letter-spacing: .02em; color: var(--green-900); margin: 2px 0 6px; }
+.authorcard__body p { font-size: .95rem; line-height: 1.55; color: var(--muted); margin: 0; }
+.authorcard__body a { color: var(--green-900); font-weight: 600; white-space: nowrap; }
+@media (max-width: 560px) { .authorcard { flex-direction: column; align-items: flex-start; text-align: left; } }
+
 .pilot-cta-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 38px 32px; box-shadow: var(--shadow); max-width: 540px; margin: 0 auto; }
 .pilot-form { display: grid; gap: 13px; text-align: left; }
 .pilot-form__field { display: grid; gap: 6px; }
