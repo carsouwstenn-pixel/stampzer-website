@@ -182,6 +182,42 @@ return [
     'hubTagline' => 'Spaar voor een gratis brood', 'hubIcon' => 'bread',
   ],
 
+  'restaurant' => [
+    'name' => 'Restaurant',
+    'title' => 'Digitale klantenkaart voor restaurants & horeca | Stampzer',
+    'desc' => 'Dé digitale spaarkaart voor je restaurant of bistro. Gasten sparen bij elk bezoek voor een gerecht, drankje of korting, direct in Apple & Google Wallet — nooit meer kwijt. Meer vaste gasten, vollere stille avonden. Schrijf je in.',
+    'keywords' => 'digitale klantenkaart restaurant, spaarkaart restaurant, loyaliteitsprogramma horeca, klantenkaart horeca, stempelkaart restaurant, vaste gasten restaurant, klantenbinding horeca, restaurant marketing, gastenbinding, spaarsysteem horeca',
+    'eyebrow' => 'Voor restaurants, bistro\'s & horeca',
+    'h1a' => 'Digitale klantenkaart voor restaurants waar gasten ', 'mark' => 'blijven terugkomen', 'h1b' => '.',
+    'sub' => 'Geef je restaurant een eigen digitale spaarkaart in Apple Wallet en Google Wallet. Gasten sparen bij elk bezoek voor een gerecht, drankje of korting — en raken hun kaart nooit meer kwijt. Meer vaste gasten, ook op je rustige avonden.',
+    'pass' => ['theme' => 'restaurant', 'icon' => 'cutlery', 'biz' => 'Bistro Nonna', 'sub' => 'Restaurant · Amsterdam', 'reward' => '10ᵉ hoofdgerecht gratis', 'on' => 6, 'total' => 10, 'progress' => 'Nog 4 diners tot je gratis gerecht'],
+    'trustLabel' => 'Gemaakt voor elke horecazaak',
+    'trust' => ['Restaurants', 'Bistro\'s', 'Eetcafés', 'Pizzeria\'s', 'Grand cafés'],
+    'place' => 'restaurant', 'visit' => 'bezoek',
+    'pains' => [
+      ['Veel gasten, weinig vaste gezichten', 'Zeker op een goede locatie eten mensen waar het uitkomt. Zonder reden om terug te komen blijft het vaak bij één keer.'],
+      ['Je stille avonden blijven stil', 'In het weekend zit je vol, doordeweeks blijven tafels leeg — zonder manier om gasten juist dán te trekken.'],
+      ['Reserveringen zeggen niks over trouw', 'Je boekingssysteem weet wie er komt, maar niet wie blijft terugkomen of wie een bedankje verdient.'],
+      ['Je vaste gasten krijgen niets extra', 'Juist wie elke maand komt is je beste ambassadeur — maar je hebt geen manier om ze te belonen.'],
+    ],
+    'rewards' => [
+      ['cutlery', '10ᵉ hoofdgerecht gratis', 'De klassieker: spaar diners, de tiende is van de zaak.'],
+      ['gift', 'Gratis dessert of aperitief', 'Een kleine attentie die gasten terugbrengt en weinig marge kost.'],
+      ['percent', '10% korting op je volgende diner', 'Beloon trouwe gasten met een vaste korting.'],
+      ['star', 'Gratis fles wijn voor vaste gasten', 'Een gul gebaar voor je trouwste tafels.'],
+    ],
+    'statNum' => '€6.000',
+    'statLine' => '200 vaste gasten die door hun spaarkaart 1× per maand extra komen eten, bij ongeveer €30 per bezoek.',
+    'statSub' => 'Een rekenvoorbeeld van zo\'n €6.000 extra omzet per maand — puur van gasten die anders misschien niet waren teruggekomen. Ruwe inschatting; jouw cijfers bepalen het.',
+    'faq' => [
+      ['Werkt een digitale klantenkaart voor mijn restaurant?', 'Ja. Of je nu een bistro, eetcafé of pizzeria hebt — je stelt je eigen spaarkaart en beloning in. Gasten sparen bij elk bezoek en komen vaker terug, ook op je rustige avonden.'],
+      ['Hebben mijn gasten een app nodig?', 'Nee. De kaart komt in de Apple Wallet of Google Wallet die al op elke telefoon staat. Eén QR-code scannen — bijvoorbeeld op de rekening — en klaar.'],
+      ['Wat voor beloning past bij een restaurant?', 'Alles wat past: een gratis hoofdgerecht na een aantal bezoeken, een dessert of aperitief cadeau, korting op het volgende diner of een fles wijn voor je vaste gasten. Jij bepaalt het en past het elk moment aan.'],
+      ['Werkt het op iPhone én Android?', 'Ja, zowel Apple Wallet als Google Wallet worden ondersteund. Dezelfde QR-code levert automatisch de juiste versie.'],
+    ],
+    'hubTagline' => 'Spaar voor een gratis gerecht', 'hubIcon' => 'cutlery',
+  ],
+
   // Kapper is a standalone static page (/kapper/index.html); listed here only for the hub.
   'kapper' => [
     'name' => 'Kapper', 'hubOnly' => true,

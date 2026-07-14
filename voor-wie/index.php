@@ -1,6 +1,6 @@
 <?php
 $ALL = require __DIR__ . '/../niche/data.php';
-$order = ['kapper', 'koffiebar', 'nagelstudio', 'lunchroom', 'sportschool', 'bakker'];
+$order = ['kapper', 'koffiebar', 'nagelstudio', 'lunchroom', 'sportschool', 'bakker', 'restaurant'];
 
 function e($s) { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 function hub_icon($name) {

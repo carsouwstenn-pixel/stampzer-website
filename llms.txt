@@ -15,6 +15,7 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - [Lunchrooms](https://stampzer.com/lunchroom/): Digitale klantenkaart voor lunchrooms en broodjeszaken.
 - [Sportscholen](https://stampzer.com/sportschool/): Digitale klantenkaart voor sportscholen en studio's.
 - [Bakkers](https://stampzer.com/bakker/): Digitale klantenkaart voor bakkers en bakkerijen.
+- [Restaurants](https://stampzer.com/restaurant/): Digitale klantenkaart voor restaurants, bistro's en horeca.
 
 ## Gids en uitleg
 - [Digitale klantenkaart in Apple & Google Wallet: hoe werkt het?](https://stampzer.com/gids/digitale-klantenkaart-wallet/): Uitleg over hoe een digitale klantenkaart zonder app in de Wallet komt.
