@@ -41,7 +41,7 @@ $steps = [
 $benefits = [
     ['feature--green', 'Meer herhaalbezoek', "Een spaardoel trekt klanten terug naar jouw {$place} — niet die van de concurrent."],
     ['', 'Jouw eigen huisstijl', 'De kaart voelt als die van jouw zaak, met je eigen logo, kleuren en beloning.'],
-    ['', 'Ken je vaste klanten', 'Zie wie er vaak komt, wie bijna een beloning heeft en wie al even niet geweest is.'],
+    ['', 'Ken je vaste klanten', 'Zie wie er vaak komt, wie bijna een beloning heeft en wie al even niet geweest is — simpel klantenbeheer, zonder extra systeem.'],
     ['feature--peach', 'Vul je rustige dagen', 'Stuur klanten een seintje bij een bijna volle kaart en trek ze juist op een stille dag binnen.'],
     ['', 'Niemand speelt vals', 'Alleen jij en je team delen stempels uit — klanten kunnen zichzelf niet stempelen.'],
     ['feature--ink', 'Geen app, nooit kwijt', 'Werkt direct in de Wallet die je klant al heeft. De kaart zit veilig in de telefoon.'],
