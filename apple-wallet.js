@@ -63,3 +63,78 @@
     if (btn) show(btn.getAttribute('data-demo'));
   });
 })();
+
+// ===== "Voeg toe aan Wallet" — zelfspelende animatie-timeline =====
+(function () {
+  var awx = document.getElementById('awx');
+  var stepsWrap = document.getElementById('awxsteps');
+  if (!awx || !stepsWrap) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var labels = stepsWrap.querySelectorAll('button');
+
+  function setLabel(i) {
+    labels.forEach(function (b, idx) { b.classList.toggle('is-active', idx === i); });
+  }
+
+  // reduced motion: toon meteen het eindresultaat, geen film
+  if (reduce) {
+    awx.setAttribute('data-phase', 'stack');
+    awx.classList.add('is-done');
+    setLabel(2);
+    return;
+  }
+
+  var timers = [];
+  var running = false;
+
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+
+  function phaseScan() {
+    awx.className = 'awx';
+    awx.setAttribute('data-phase', 'scan');
+    setLabel(0);
+    later(function () { awx.classList.add('is-found'); }, 1700);
+    later(phaseSheet, 2500);
+  }
+  function phaseSheet() {
+    awx.className = 'awx';
+    awx.setAttribute('data-phase', 'sheet');
+    setLabel(1);
+    later(function () { awx.classList.add('is-add'); }, 1300);
+    later(phaseStack, 2050);
+  }
+  function phaseStack() {
+    awx.className = 'awx';
+    awx.setAttribute('data-phase', 'stack');
+    setLabel(2);
+    later(function () { awx.classList.add('is-done'); }, 700);
+    later(function () { if (running) phaseScan(); }, 3400);
+  }
+
+  var phases = [phaseScan, phaseSheet, phaseStack];
+
+  // speel alleen als de animatie in beeld is
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && !running) { running = true; phaseScan(); }
+        else if (!en.isIntersecting && running) { running = false; clearTimers(); }
+      });
+    }, { threshold: 0.35 });
+    io.observe(awx);
+  } else {
+    running = true;
+    phaseScan();
+  }
+
+  // klik op een fase-knop = spring naar die fase
+  labels.forEach(function (b, i) {
+    b.addEventListener('click', function () {
+      clearTimers();
+      running = true;
+      phases[i]();
+    });
+  });
+})();
