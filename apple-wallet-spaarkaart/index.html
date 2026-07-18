@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spaarkaart in Apple Wallet voor je zaak — zonder app | Stampzer</title>
-  <meta name="description" content="Zet de spaarkaart van jouw zaak in Apple Wallet. Je klant voegt 'm toe met één QR-scan, ziet de kaart op de iPhone en stempels worden live bijgewerkt. Zo werkt het." />
+  <meta name="description" content="Zet de spaarkaart van jouw zaak in Apple Wallet. Je klant voegt 'm toe met één QR-scan, ziet de kaart op de iPhone en stempels worden live bijgewerkt. Probeer de demo." />
   <link rel="canonical" href="https://stampzer.com/apple-wallet-spaarkaart/" />
-  <meta name="keywords" content="apple wallet spaarkaart, spaarkaart iphone, apple wallet klantenkaart, klantenkaart iphone, apple wallet kaart toevoegen zaak, loyaliteitskaart apple wallet, pkpass spaarkaart" />
+  <meta name="keywords" content="apple wallet spaarkaart, spaarkaart iphone, apple wallet klantenkaart, klantenkaart iphone, apple wallet kaart toevoegen zaak, loyaliteitskaart apple wallet, pkpass spaarkaart, apple wallet meldingen" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#181f10" />
 
@@ -14,14 +14,14 @@
   <meta property="og:url" content="https://stampzer.com/apple-wallet-spaarkaart/" />
   <meta property="og:site_name" content="Stampzer" />
   <meta property="og:title" content="Spaarkaart in Apple Wallet voor je zaak — zonder app" />
-  <meta property="og:description" content="Je klant voegt je spaarkaart met één QR-scan toe aan Apple Wallet. Stempels worden live bijgewerkt op de iPhone." />
+  <meta property="og:description" content="Je klant voegt je spaarkaart met één QR-scan toe aan Apple Wallet. Stempels worden live bijgewerkt op de iPhone. Probeer de demo." />
   <meta property="og:image" content="https://stampzer.com/assets/og-apple-wallet-spaarkaart.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="nl_NL" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Spaarkaart in Apple Wallet voor je zaak — zonder app" />
-  <meta name="twitter:description" content="Eén QR-scan en je spaarkaart staat in Apple Wallet. Stempels live bijgewerkt." />
+  <meta name="twitter:description" content="Eén QR-scan en je spaarkaart staat in Apple Wallet. Stempels live bijgewerkt. Probeer de demo." />
   <meta name="twitter:image" content="https://stampzer.com/assets/og-apple-wallet-spaarkaart.png" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
@@ -32,7 +32,42 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-400-latin.woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css" />
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Spaarkaart in Apple Wallet","serviceType":"Digitale klantenkaart voor Apple Wallet","provider":{"@type":"Organization","name":"Stampzer","url":"https://stampzer.com/"},"areaServed":{"@type":"Country","name":"Nederland"},"url":"https://stampzer.com/apple-wallet-spaarkaart/","description":"Digitale spaarkaart voor lokale zaken in Apple Wallet: klanten voegen de kaart met één QR-scan toe op de iPhone, stempels worden live bijgewerkt.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Gratis tijdens de bèta"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stampzer.com/"},{"@type":"ListItem","position":2,"name":"Spaarkaart in Apple Wallet","item":"https://stampzer.com/apple-wallet-spaarkaart/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hoe komt mijn spaarkaart in de Apple Wallet van klanten?","acceptedAnswer":{"@type":"Answer","text":"Je klant scant jouw QR-code met de iPhone-camera. iOS herkent de kaart, toont een voorbeeld en vraagt 'Voeg toe aan Wallet'. Eén tik en de spaarkaart staat tussen de bank- en instapkaarten — zonder app of account."}},{"@type":"Question","name":"Moet mijn klant een app downloaden voor de spaarkaart?","acceptedAnswer":{"@type":"Answer","text":"Nee. Apple Wallet is de standaard-app die op elke iPhone voorgeïnstalleerd staat. De spaarkaart werkt daar direct in — er is niets te downloaden of aan te maken."}},{"@type":"Question","name":"Worden stempels live bijgewerkt op de kaart?","acceptedAnswer":{"@type":"Answer","text":"Ja. Deel jij een stempel uit, dan wordt de kaart in de Wallet van je klant automatisch bijgewerkt. Je klant ziet altijd de actuele stand — inclusief hoeveel stempels er nog tot de beloning zijn."}},{"@type":"Question","name":"Werkt de kaart ook voor klanten met Android?","acceptedAnswer":{"@type":"Answer","text":"Ja. Dezelfde QR-code werkt op beide platformen: iPhone-gebruikers krijgen de kaart in Apple Wallet, Android-gebruikers in Google Wallet. Jij hoeft niets apart in te stellen."}}]}]}</script>
+  <style>
+    /* ===== Apple Wallet page — scoped extras ===== */
+    /* interactive branche-demo */
+    .aw-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 26px 0 34px; }
+    .aw-chips button { font-family: var(--font-body); font-weight: 600; font-size: .93rem; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--line-strong, rgba(24,31,16,.22)); background: #fff; color: var(--text); cursor: pointer; transition: all .18s ease; }
+    .aw-chips button:hover { border-color: var(--green); transform: translateY(-1px); }
+    .aw-chips button.is-active { background: var(--green); border-color: var(--green); color: var(--ink); box-shadow: 0 8px 20px -8px rgba(41,199,0,.55); }
+    .aw-stage { display: flex; justify-content: center; }
+    .aw-stage .pass { width: min(360px, 92vw); transition: transform .18s ease; }
+    .aw-stage .pass.is-pop { animation: awpop .34s cubic-bezier(.2,1.3,.4,1); }
+    @keyframes awpop { 0% { transform: scale(.965); opacity: .6; } 100% { transform: scale(1); opacity: 1; } }
+    .aw-demo-note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 18px; }
+
+    /* lock screen mock */
+    .aw-lockgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .aw-lockcopy h2 { margin-top: 0; }
+    .aw-lockscr { background: linear-gradient(175deg, #1d2413, #10150a); border-radius: 26px; min-height: 430px; padding: 34px 18px 22px; display: flex; flex-direction: column; align-items: center; }
+    .aw-lock-time { font-family: var(--font-display); font-size: 3.6rem; color: #f2f0ea; line-height: 1; }
+    .aw-lock-date { font-size: .88rem; color: rgba(242,240,234,.65); margin-top: 6px; }
+    .aw-notif { margin-top: 30px; width: 100%; background: rgba(255,255,255,.94); border-radius: 16px; padding: 13px 14px; display: flex; gap: 11px; align-items: flex-start; box-shadow: 0 14px 34px -14px rgba(0,0,0,.5); animation: awnotif 5s ease-in-out infinite; }
+    @keyframes awnotif { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    .aw-notif__ic { width: 38px; height: 38px; border-radius: 9px; background: var(--green); display: grid; place-items: center; flex-shrink: 0; }
+    .aw-notif__ic img { width: 14px; height: 27px; }
+    .aw-notif__body { flex: 1; min-width: 0; }
+    .aw-notif__top { display: flex; justify-content: space-between; gap: 8px; }
+    .aw-notif__top strong { font-size: .9rem; color: #181f10; }
+    .aw-notif__top span { font-size: .74rem; color: #8a8f80; }
+    .aw-notif__body p { font-size: .86rem; color: #3a4230; margin: 3px 0 0; line-height: 1.4; }
+    .aw-lock-hint { margin-top: auto; padding-top: 26px; color: rgba(242,240,234,.4); font-size: .8rem; }
+    @media (max-width: 860px) { .aw-lockgrid { grid-template-columns: 1fr; gap: 30px; } .aw-lockscr { min-height: 360px; max-width: 420px; margin: 0 auto; width: 100%; } }
+
+    /* checklist on paper bg tweak */
+    .aw-tech .checklist li strong { display: inline; }
+  </style>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Spaarkaart in Apple Wallet","serviceType":"Digitale klantenkaart voor Apple Wallet","provider":{"@type":"Organization","name":"Stampzer","url":"https://stampzer.com/"},"areaServed":{"@type":"Country","name":"Nederland"},"url":"https://stampzer.com/apple-wallet-spaarkaart/","description":"Digitale spaarkaart voor lokale zaken in Apple Wallet: klanten voegen de kaart met één QR-scan toe op de iPhone, stempels worden live bijgewerkt.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Gratis tijdens de bèta"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stampzer.com/"},{"@type":"ListItem","position":2,"name":"Spaarkaart in Apple Wallet","item":"https://stampzer.com/apple-wallet-spaarkaart/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hoe komt mijn spaarkaart in de Apple Wallet van klanten?","acceptedAnswer":{"@type":"Answer","text":"Je klant scant jouw QR-code met de iPhone-camera. iOS herkent de kaart, toont een voorbeeld en vraagt 'Voeg toe aan Wallet'. Eén tik en de spaarkaart staat tussen de bank- en instapkaarten — zonder app of account."}},{"@type":"Question","name":"Moet mijn klant een app downloaden voor de spaarkaart?","acceptedAnswer":{"@type":"Answer","text":"Nee. Apple Wallet is de standaard-app die op elke iPhone voorgeïnstalleerd staat. De spaarkaart werkt daar direct in — er is niets te downloaden of aan te maken."}},{"@type":"Question","name":"Worden stempels live bijgewerkt op de kaart?","acceptedAnswer":{"@type":"Answer","text":"Ja. Deel jij een stempel uit, dan wordt de kaart in de Wallet van je klant automatisch bijgewerkt. Je klant ziet altijd de actuele stand — inclusief hoeveel stempels er nog tot de beloning zijn."}},{"@type":"Question","name":"Op welke iPhones werkt de spaarkaart?","acceptedAnswer":{"@type":"Answer","text":"Op vrijwel elke iPhone die vandaag in gebruik is: Apple Wallet staat standaard op ieder toestel en spaarkaarten (passes) worden al jaren door iOS ondersteund. Ook op een gekoppelde Apple Watch is de kaart zichtbaar."}},{"@type":"Question","name":"Is een spaarkaart in Apple Wallet veilig en privacyvriendelijk?","acceptedAnswer":{"@type":"Answer","text":"Ja. De kaart bevat alleen de spaarstand en jouw zaakgegevens — geen betaalgegevens en geen toegang tot andere kaarten in de Wallet. Je klant beheert de kaart zelf en kan hem elk moment verwijderen."}},{"@type":"Question","name":"Kan mijn klant de kaart ook op Apple Watch zien?","acceptedAnswer":{"@type":"Answer","text":"Ja. Kaarten in Apple Wallet synchroniseren automatisch met een gekoppelde Apple Watch, dus je klant heeft de spaarkaart letterlijk om de pols."}},{"@type":"Question","name":"Werkt de kaart ook voor klanten met Android?","acceptedAnswer":{"@type":"Answer","text":"Ja. Dezelfde QR-code werkt op beide platformen: iPhone-gebruikers krijgen de kaart in Apple Wallet, Android-gebruikers in Google Wallet. Jij hoeft niets apart in te stellen."}},{"@type":"Question","name":"Wat kost een spaarkaart in Apple Wallet?","acceptedAnswer":{"@type":"Answer","text":"Tijdens de bèta van Stampzer is het gratis. Daarna komt er een eerlijk maandabonnement voor lokale ondernemers, zonder drukkosten en zonder kosten per klant — je maakt onbeperkt digitale kaarten aan."}}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Naar inhoud</a>
@@ -49,8 +84,8 @@
       <a class="nav__logo" href="/" aria-label="stampzer.com home"><img src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" /></a>
       <nav class="nav__links" aria-label="Menu">
         <a href="#hoe-het-werkt">Hoe het werkt</a>
+        <a href="#demo">Demo</a>
         <a href="#voordelen">Voordelen</a>
-        <a href="/spaarkaart-zonder-app/">Zonder app</a>
         <a href="#faq">Vragen</a>
       </nav>
       <a href="#wachtlijst" class="btn btn--green nav__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
@@ -94,9 +129,24 @@
         <div class="float-card float-card--wallet" aria-hidden="true"><span class="float-card__pill">Apple Wallet</span></div>
       </div>
     </div>
+    <div class="container trust">
+      <span class="trust__label">Voor elke lokale zaak met terugkerende klanten</span>
+      <ul class="trust__list"><li><a href="/koffiebar/">Koffiebars</a></li><li><a href="/kapper/">Kappers</a></li><li><a href="/restaurant/">Restaurants</a></li><li><a href="/bakker/">Bakkers</a></li><li><a href="/nagelstudio/">Nagelstudio's</a></li><li><a href="/sportschool/">Sportscholen</a></li><li><a href="/lunchroom/">Lunchrooms</a></li></ul>
+    </div>
   </section>
 
-  <section class="section" id="hoe-het-werkt">
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Even de basis</span>
+        <h2>Wat is Apple Wallet eigenlijk?</h2>
+        <p class="section__lead">Apple Wallet is de standaard-app op elke iPhone waar je klant nu al z'n bankpas, OV-kaart, tickets en instapkaarten bewaart. Niet te verwijderen, altijd binnen handbereik — vaak met één klik vanaf het vergrendelscherm.</p>
+        <p class="section__lead">Precies dáár zet Stampzer jouw spaarkaart. Geen nieuwe gewoonte, geen extra app: je kaart schuift aan tussen de passen die je klant al dagelijks gebruikt. En omdat Apple Wallet-kaarten (zogenoemde <em>passes</em>) een officiële Apple-standaard zijn, werkt het betrouwbaar op elk toestel.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper2" id="hoe-het-werkt">
     <div class="container">
       <div class="section__head reveal">
         <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Hoe het werkt op iPhone</span>
@@ -111,6 +161,39 @@
     </div>
   </section>
 
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Interactieve demo</span>
+        <h2>Zo ziet jouw kaart eruit in Apple Wallet</h2>
+        <p class="section__lead">Kies je branche en zie direct hoe je spaarkaart eruit kan zien — met je eigen kleuren, beloning en stempels. Bij de echte kaart bepaal jij alles zelf.</p>
+      </div>
+      <div class="aw-chips reveal" id="awchips" role="group" aria-label="Kies een branche voor de demo">
+        <button type="button" data-demo="koffiebar" class="is-active">☕ Koffiebar</button>
+        <button type="button" data-demo="kapper">✂️ Kapper</button>
+        <button type="button" data-demo="restaurant">🍽️ Restaurant</button>
+        <button type="button" data-demo="bakker">🥖 Bakker</button>
+        <button type="button" data-demo="nagelstudio">💅 Nagelstudio</button>
+        <button type="button" data-demo="sportschool">🏋️ Sportschool</button>
+        <button type="button" data-demo="lunchroom">🥪 Lunchroom</button>
+      </div>
+      <div class="aw-stage reveal">
+        <div class="pass pass--coffee" id="awpass">
+          <div class="pass__head">
+            <div class="pass__avatar" id="awava">K</div>
+            <div class="pass__biz"><strong id="awbiz">Koffiehoek</strong><span id="awsub">Koffiebar · Utrecht</span></div>
+          </div>
+          <div class="pass__reward"><span class="pass__reward-label">Jouw beloning</span><span class="pass__reward-value" id="awreward">10ᵉ koffie gratis</span></div>
+          <div class="pass__stamps" id="awstamps" data-on="7" data-total="10" data-icon="coffee"></div>
+          <div class="pass__progress" id="awprog">Nog 3 kopjes tot je gratis koffie</div>
+          <div class="pass__barcode" aria-hidden="true"></div>
+          <div class="pass__by"><img src="/assets/stamp-green.png" alt="" width="10" height="20" /> via stampzer</div>
+        </div>
+      </div>
+      <p class="aw-demo-note reveal">Dit is een voorbeeld — jouw kaart krijgt je eigen logo, kleuren en beloning. <a href="/voor-wie/" style="color:var(--green-900);font-weight:600">Bekijk alle branches →</a></p>
+    </div>
+  </section>
+
   <section class="section section--paper2" id="voordelen">
     <div class="container">
       <div class="section__head reveal">
@@ -122,8 +205,39 @@
         <article class="feature reveal"><h3>Stempels live bijgewerkt</h3><p>Jouw stempel verschijnt direct op de kaart van je klant. Altijd de actuele stand, inclusief "nog 2 tot je gratis koffie" — precies de motivatie die terugbrengt.</p></article>
         <article class="feature reveal"><h3>Jouw huisstijl, Apple's kwaliteit</h3><p>De kaart draagt jouw logo, kleuren en beloning — in de strakke pass-vormgeving die iPhone-gebruikers kennen van hun instapkaarten.</p></article>
         <article class="feature feature--peach reveal"><h3>Meldingen die werken</h3><p>Stuur een seintje bij een bijna volle kaart of een rustige dag. Wallet-meldingen verschijnen netjes op het vergrendelscherm — zonder dat je klant een app hoefde te installeren.</p></article>
-        <article class="feature reveal"><h3>Nooit kwijt, altijd mee</h3><p>De kaart verhuist automatisch mee naar een nieuwe iPhone via iCloud. Kwijtraken kan simpelweg niet meer.</p></article>
+        <article class="feature reveal"><h3>Nooit kwijt, altijd mee</h3><p>De kaart verhuist automatisch mee naar een nieuwe iPhone via iCloud — en is ook zichtbaar op een gekoppelde Apple Watch. Kwijtraken kan simpelweg niet meer.</p></article>
         <article class="feature feature--ink reveal"><h3>Ook voor je Android-klanten</h3><p>Dezelfde QR-code zet de kaart bij Android-gebruikers in <a href="/google-wallet-klantenkaart/" style="color:inherit;text-decoration:underline">Google Wallet</a>. Eén systeem voor al je klanten.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="aw-lockgrid">
+        <div class="aw-lockcopy reveal">
+          <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Meldingen op het vergrendelscherm</span>
+          <h2 style="font-family:var(--font-display);font-weight:400;font-size:clamp(1.6rem,3.6vw,2.2rem);color:var(--ink);margin:14px 0 0">Het seintje dat je klant terugbrengt</h2>
+          <p class="section__lead" style="margin-top:14px">Een papieren kaart kan niet praten. Een Wallet-kaart wel: stuur een vriendelijke melding als een kaart bijna vol is, of geef je rustige dinsdag een zetje. De melding verschijnt op het vergrendelscherm — de best bekeken plek van de telefoon.</p>
+          <ul class="checklist aw-tech" style="margin-top:22px">
+            <li><strong>Bijna-vol-seintje</strong> — "nog één stempel tot je beloning" is de sterkste reden om nú langs te komen.</li>
+            <li><strong>Win-back</strong> — klant al even niet gezien? Eén melding brengt je weer in beeld.</li>
+            <li><strong>Rustige-dag-acties</strong> — dubbele stempels op dinsdag, precies wanneer jij het nodig hebt.</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="aw-lockscr" aria-hidden="true">
+            <div class="aw-lock-time">9:41</div>
+            <div class="aw-lock-date">dinsdag 14 juli</div>
+            <div class="aw-notif">
+              <span class="aw-notif__ic"><img src="/assets/stamp-green.png" alt="" width="14" height="27" /></span>
+              <div class="aw-notif__body">
+                <div class="aw-notif__top"><strong>Koffiehoek</strong><span>nu</span></div>
+                <p>Nog 1 stempel tot je gratis koffie ☕ Tot zo?</p>
+              </div>
+            </div>
+            <div class="aw-lock-hint">Wallet-melding · geen app nodig</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -139,6 +253,22 @@
     </div>
   </section>
 
+  <section class="section section--paper2">
+    <div class="container container--narrow">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Technisch gewoon goed geregeld</span>
+        <h2>Betrouwbaar, veilig en privacyvriendelijk</h2>
+        <p class="section__lead">Saai maar belangrijk — en bij ons op orde:</p>
+      </div>
+      <ul class="checklist aw-tech reveal">
+        <li><strong>Officiële Apple-standaard.</strong> Je kaart is een echte Wallet-pass, hetzelfde formaat als instapkaarten van luchtvaartmaatschappijen. Geen omweg, geen gedoe.</li>
+        <li><strong>Werkt op vrijwel elke iPhone in gebruik</strong> — en de kaart synchroniseert automatisch naar een gekoppelde Apple Watch.</li>
+        <li><strong>Alleen de spaarstand op de kaart.</strong> Geen betaalgegevens, geen toegang tot andere passen. Je klant kan de kaart elk moment zelf verwijderen.</li>
+        <li><strong>AVG-vriendelijk.</strong> Sparen kan zonder dat je klant een account aanmaakt of onnodige gegevens afstaat.</li>
+      </ul>
+    </div>
+  </section>
+
   <section class="section" id="faq">
     <div class="container container--narrow">
       <div class="section__head reveal">
@@ -149,7 +279,11 @@
         <details class="faq__item"><summary>Hoe komt mijn spaarkaart in de Apple Wallet van klanten?</summary><p>Je klant scant jouw QR-code met de iPhone-camera. iOS herkent de kaart, toont een voorbeeld en vraagt 'Voeg toe aan Wallet'. Eén tik en de spaarkaart staat tussen de bank- en instapkaarten — zonder app of account.</p></details>
         <details class="faq__item"><summary>Moet mijn klant een app downloaden voor de spaarkaart?</summary><p>Nee. Apple Wallet is de standaard-app die op elke iPhone voorgeïnstalleerd staat. De spaarkaart werkt daar direct in — er is niets te downloaden of aan te maken. Lees ook waarom een <a href="/spaarkaart-zonder-app/">klantenkaart zonder app</a> zoveel beter converteert.</p></details>
         <details class="faq__item"><summary>Worden stempels live bijgewerkt op de kaart?</summary><p>Ja. Deel jij een stempel uit, dan wordt de kaart in de Wallet van je klant automatisch bijgewerkt. Je klant ziet altijd de actuele stand — inclusief hoeveel stempels er nog tot de beloning zijn.</p></details>
+        <details class="faq__item"><summary>Op welke iPhones werkt de spaarkaart?</summary><p>Op vrijwel elke iPhone die vandaag in gebruik is: Apple Wallet staat standaard op ieder toestel en spaarkaarten (passes) worden al jaren door iOS ondersteund. Ook op een gekoppelde Apple Watch is de kaart zichtbaar.</p></details>
+        <details class="faq__item"><summary>Is een spaarkaart in Apple Wallet veilig en privacyvriendelijk?</summary><p>Ja. De kaart bevat alleen de spaarstand en jouw zaakgegevens — geen betaalgegevens en geen toegang tot andere kaarten in de Wallet. Je klant beheert de kaart zelf en kan hem elk moment verwijderen. Zie ook ons <a href="/privacy/">privacybeleid</a>.</p></details>
+        <details class="faq__item"><summary>Kan mijn klant de kaart ook op Apple Watch zien?</summary><p>Ja. Kaarten in Apple Wallet synchroniseren automatisch met een gekoppelde Apple Watch, dus je klant heeft de spaarkaart letterlijk om de pols.</p></details>
         <details class="faq__item"><summary>Werkt de kaart ook voor klanten met Android?</summary><p>Ja. Dezelfde QR-code werkt op beide platformen: iPhone-gebruikers krijgen de kaart in Apple Wallet, Android-gebruikers in <a href="/google-wallet-klantenkaart/">Google Wallet</a>. Jij hoeft niets apart in te stellen.</p></details>
+        <details class="faq__item"><summary>Wat kost een spaarkaart in Apple Wallet?</summary><p>Tijdens de bèta van Stampzer is het gratis. Daarna komt er een eerlijk maandabonnement voor lokale ondernemers, zonder drukkosten en zonder kosten per klant. Lees ook: <a href="/gids/wat-kost-een-klantenkaart/">wat kost een digitale klantenkaart?</a></p></details>
       </div>
     </div>
   </section>
@@ -181,5 +315,6 @@
 
   <script src="/config.js"></script>
   <script src="/motion.js"></script>
+  <script src="/apple-wallet.js"></script>
 </body>
 </html>
