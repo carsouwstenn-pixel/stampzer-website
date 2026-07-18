@@ -31,6 +31,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/seatren.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-400-latin.woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/wallet-anim.css" />
 
   <style>
     /* ===== Apple Wallet page — scoped extras ===== */
@@ -66,82 +67,6 @@
     /* checklist on paper bg tweak */
     .aw-tech .checklist li strong { display: inline; }
 
-    /* ===== "Voeg toe aan Wallet" animatie ===== */
-    .awx-wrap { margin-top: 48px; display: grid; justify-items: center; }
-    .awx-phone { width: 286px; background: var(--ink); border-radius: 42px; padding: 12px; box-shadow: var(--shadow); }
-    .awx { position: relative; height: 442px; border-radius: 31px; overflow: hidden; background: #0c0f07; }
-    .awx-scene { position: absolute; inset: 0; opacity: 0; transition: opacity .45s ease; }
-    .awx[data-phase="scan"] .awx-scene--scan { opacity: 1; }
-    .awx[data-phase="sheet"] .awx-scene--sheet { opacity: 1; }
-    .awx[data-phase="stack"] .awx-scene--stack { opacity: 1; }
-
-    /* scene 1 — QR-scanner */
-    .awx-scene--scan { display: grid; place-items: center; }
-    .awx-qrbox { position: relative; width: 158px; height: 158px; }
-    .awx-qr { width: 100%; height: 100%; border-radius: 12px; background: #f7f2e7; padding: 12px; }
-    .awx-qr svg { width: 100%; height: 100%; display: block; color: #181f10; }
-    .awx-corner { position: absolute; width: 26px; height: 26px; border: 3px solid var(--green); opacity: .9; }
-    .awx-corner:nth-child(2) { top: -12px; left: -12px; border-right: 0; border-bottom: 0; border-radius: 8px 0 0 0; }
-    .awx-corner:nth-child(3) { top: -12px; right: -12px; border-left: 0; border-bottom: 0; border-radius: 0 8px 0 0; }
-    .awx-corner:nth-child(4) { bottom: -12px; left: -12px; border-right: 0; border-top: 0; border-radius: 0 0 0 8px; }
-    .awx-corner:nth-child(5) { bottom: -12px; right: -12px; border-left: 0; border-top: 0; border-radius: 0 0 8px 0; }
-    .awx-scanline { position: absolute; left: 6px; right: 6px; top: 10px; height: 3px; border-radius: 2px; background: var(--green); box-shadow: 0 0 16px rgba(41,199,0,.95); opacity: 0; }
-    .awx[data-phase="scan"] .awx-scanline { opacity: 1; animation: awxscan 1.5s ease-in-out infinite alternate; }
-    @keyframes awxscan { from { top: 10px; } to { top: calc(100% - 12px); } }
-    .awx-found { position: absolute; left: 50%; bottom: -58px; transform: translateX(-50%) scale(.55); display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; background: var(--green); color: var(--ink); font-weight: 700; font-size: .82rem; padding: 8px 15px; border-radius: 999px; opacity: 0; transition: all .3s cubic-bezier(.2,1.4,.4,1); }
-    .awx.is-found .awx-found { opacity: 1; transform: translateX(-50%) scale(1); }
-
-    /* scene 2 — iOS-sheet */
-    .awx-scene--sheet { background: rgba(8, 10, 5, .8); }
-    .awx-sheet { position: absolute; left: 7px; right: 7px; bottom: 7px; top: 72px; background: #f4f1ea; border-radius: 20px 20px 26px 26px; padding: 14px 14px 12px; transform: translateY(112%); transition: transform .55s cubic-bezier(.3, 1.08, .3, 1); }
-    .awx[data-phase="sheet"] .awx-sheet { transform: none; }
-    .awx-sheet__bar { display: flex; justify-content: space-between; align-items: center; font-size: .84rem; }
-    .awx-sheet__bar span:first-child { color: #0a84ff; }
-    .awx-add { position: relative; color: #0a84ff; font-weight: 700; }
-    .awx-add::after { content: ""; position: absolute; inset: -9px -12px; border-radius: 999px; background: rgba(10,132,255,.22); opacity: 0; transform: scale(.5); }
-    .awx.is-add .awx-add::after { animation: awxtap .5s ease-out; }
-    @keyframes awxtap { 0% { opacity: 0; transform: scale(.4); } 35% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.25); } }
-    .awx-sheet__title { text-align: center; font-size: .78rem; color: #6c7458; margin-top: 2px; }
-    .awx-minipass { margin-top: 12px; border-radius: 14px; background: #36261a; color: #f4e8d5; padding: 14px; }
-    .awx-minipass__top { display: flex; align-items: center; gap: 9px; }
-    .awx-minipass__ava { width: 30px; height: 30px; border-radius: 8px; background: #db9b53; color: #36261a; font-weight: 800; display: grid; place-items: center; font-size: .9rem; }
-    .awx-minipass__top strong { font-size: .92rem; }
-    .awx-minipass__top span { display: block; font-size: .68rem; opacity: .65; }
-    .awx-minipass__dots { display: flex; gap: 7px; margin-top: 12px; }
-    .awx-minipass__dots i { width: 20px; height: 20px; border-radius: 50%; border: 1.6px dashed rgba(244,232,213,.4); }
-    .awx-minipass__dots i.on { background: #db9b53; border-style: solid; border-color: #db9b53; }
-    .awx-minipass__rw { margin-top: 12px; font-size: .78rem; background: rgba(244,232,213,.12); border-radius: 8px; padding: 7px 10px; }
-
-    /* scene 3 — Wallet-stapel */
-    .awx-scene--stack { background: linear-gradient(180deg, #161b0e, #0d110a); padding: 16px 13px; }
-    .awx-wtitle { display: flex; justify-content: space-between; color: #eef1ea; font-weight: 700; font-size: .95rem; padding: 2px 4px 10px; }
-    .awx-wtitle span:last-child { opacity: .5; letter-spacing: 2px; }
-    .awx-stack { position: relative; height: 320px; }
-    .awx-card { position: absolute; left: 0; right: 0; height: 158px; border-radius: 15px; padding: 13px 15px; box-shadow: 0 -8px 24px rgba(0,0,0,.35); }
-    .awx-card--bank { top: 0; background: linear-gradient(135deg, #2b3550, #161d31); color: #dfe6f5; }
-    .awx-card--bank .chip { width: 30px; height: 22px; border-radius: 5px; background: linear-gradient(135deg, #d8b64e, #b28f2e); margin-bottom: 26px; }
-    .awx-card--bank .num { letter-spacing: 2px; font-size: .86rem; }
-    .awx-card--bank .lbl { font-size: .68rem; opacity: .6; margin-top: 4px; }
-    .awx-card--board { top: 56px; background: #efe7d3; color: #2a3320; }
-    .awx-card--board .route { font-family: var(--font-display); font-size: 1.2rem; margin-top: 2px; }
-    .awx-card--board .lbl { font-size: .68rem; color: #6c7458; }
-    .awx-card--stz { top: 112px; background: #36261a; color: #f4e8d5; transform: translateY(-360px) scale(1.08); opacity: 0; }
-    .awx[data-phase="stack"] .awx-card--stz { transform: none; opacity: 1; transition: transform .65s cubic-bezier(.3, 1.25, .35, 1), opacity .3s ease; }
-    .awx.is-done .awx-card--bank { animation: awxnudge .45s ease .05s; }
-    .awx.is-done .awx-card--board { animation: awxnudge .45s ease; }
-    @keyframes awxnudge { 40% { transform: translateY(5px); } 100% { transform: translateY(0); } }
-    .awx-toast { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%) translateY(20px); white-space: nowrap; background: var(--green); color: var(--ink); font-weight: 700; font-size: .82rem; padding: 9px 16px; border-radius: 999px; opacity: 0; transition: all .35s cubic-bezier(.2, 1.3, .4, 1) .25s; }
-    .awx.is-done .awx-toast { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-    /* fase-knoppen */
-    .awx-steps { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; justify-content: center; }
-    .awx-steps button { font-family: var(--font-body); font-weight: 600; font-size: .88rem; padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(24,31,16,.2); background: #fff; color: var(--muted); cursor: pointer; transition: all .18s ease; }
-    .awx-steps button b { color: var(--green-700); margin-right: 5px; }
-    .awx-steps button.is-active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-    .awx-steps button.is-active b { color: var(--green); }
-    @media (prefers-reduced-motion: reduce) {
-      .awx-scanline, .awx-add::after { animation: none !important; }
-    }
   </style>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Spaarkaart in Apple Wallet","serviceType":"Digitale klantenkaart voor Apple Wallet","provider":{"@type":"Organization","name":"Stampzer","url":"https://stampzer.com/"},"areaServed":{"@type":"Country","name":"Nederland"},"url":"https://stampzer.com/apple-wallet-spaarkaart/","description":"Digitale spaarkaart voor lokale zaken in Apple Wallet: klanten voegen de kaart met één QR-scan toe op de iPhone, stempels worden live bijgewerkt.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Gratis tijdens de bèta"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stampzer.com/"},{"@type":"ListItem","position":2,"name":"Spaarkaart in Apple Wallet","item":"https://stampzer.com/apple-wallet-spaarkaart/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hoe komt mijn spaarkaart in de Apple Wallet van klanten?","acceptedAnswer":{"@type":"Answer","text":"Je klant scant jouw QR-code met de iPhone-camera. iOS herkent de kaart, toont een voorbeeld en vraagt 'Voeg toe aan Wallet'. Eén tik en de spaarkaart staat tussen de bank- en instapkaarten — zonder app of account."}},{"@type":"Question","name":"Moet mijn klant een app downloaden voor de spaarkaart?","acceptedAnswer":{"@type":"Answer","text":"Nee. Apple Wallet is de standaard-app die op elke iPhone voorgeïnstalleerd staat. De spaarkaart werkt daar direct in — er is niets te downloaden of aan te maken."}},{"@type":"Question","name":"Worden stempels live bijgewerkt op de kaart?","acceptedAnswer":{"@type":"Answer","text":"Ja. Deel jij een stempel uit, dan wordt de kaart in de Wallet van je klant automatisch bijgewerkt. Je klant ziet altijd de actuele stand — inclusief hoeveel stempels er nog tot de beloning zijn."}},{"@type":"Question","name":"Op welke iPhones werkt de spaarkaart?","acceptedAnswer":{"@type":"Answer","text":"Op vrijwel elke iPhone die vandaag in gebruik is: Apple Wallet staat standaard op ieder toestel en spaarkaarten (passes) worden al jaren door iOS ondersteund. Ook op een gekoppelde Apple Watch is de kaart zichtbaar."}},{"@type":"Question","name":"Is een spaarkaart in Apple Wallet veilig en privacyvriendelijk?","acceptedAnswer":{"@type":"Answer","text":"Ja. De kaart bevat alleen de spaarstand en jouw zaakgegevens — geen betaalgegevens en geen toegang tot andere kaarten in de Wallet. Je klant beheert de kaart zelf en kan hem elk moment verwijderen."}},{"@type":"Question","name":"Kan mijn klant de kaart ook op Apple Watch zien?","acceptedAnswer":{"@type":"Answer","text":"Ja. Kaarten in Apple Wallet synchroniseren automatisch met een gekoppelde Apple Watch, dus je klant heeft de spaarkaart letterlijk om de pols."}},{"@type":"Question","name":"Werkt de kaart ook voor klanten met Android?","acceptedAnswer":{"@type":"Answer","text":"Ja. Dezelfde QR-code werkt op beide platformen: iPhone-gebruikers krijgen de kaart in Apple Wallet, Android-gebruikers in Google Wallet. Jij hoeft niets apart in te stellen."}},{"@type":"Question","name":"Wat kost een spaarkaart in Apple Wallet?","acceptedAnswer":{"@type":"Answer","text":"Tijdens de bèta van Stampzer is het gratis. Daarna komt er een eerlijk maandabonnement voor lokale ondernemers, zonder drukkosten en zonder kosten per klant — je maakt onbeperkt digitale kaarten aan."}}]}]}</script>
@@ -236,13 +161,21 @@
         <article class="step reveal"><span class="step__num">03</span><h3>Klaar — en altijd actueel</h3><p>De kaart staat tussen de bankpassen en instapkaarten. Deel jij een stempel uit, dan werkt de kaart zichzelf live bij.</p></article>
       </div>
 
-      <div class="awx-wrap reveal">
-        <div class="awx-phone">
-          <div class="awx" id="awx" data-phase="scan" aria-hidden="true">
+      <div class="wax-wrap reveal" data-wallet-anim>
+        <div class="wax-phone">
+          <div class="wax s-scan">
+            <span class="wax-island" aria-hidden="true"></span>
+            <div class="wax-status" aria-hidden="true"><span>9:41</span><span class="wax-sticons"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div>
 
-            <div class="awx-scene awx-scene--scan">
-              <div class="awx-qrbox">
-                <div class="awx-qr">
+            <div class="wax-bgwallet" aria-hidden="true">
+              <div class="wax-wtitle"><span>Wallet</span><span>•••</span></div>
+              <div class="wax-card wax-cbank"><div class="chip"></div><div class="num">•••• 4212</div><div class="lbl">Bankpas</div></div>
+              <div class="wax-card wax-cboard"><div class="lbl">Instapkaart</div><div class="route">AMS → NCE</div></div>
+            </div>
+
+            <div class="wax-cam" aria-hidden="true">
+              <div class="wax-qrbox">
+                <div class="wax-qr">
                   <svg viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                     <path d="M0 0h3v3H0zM1 1h1v1H1z"/><path d="M8 0h3v3H8zM9 1h1v1H9z"/><path d="M0 8h3v3H0zM1 9h1v1H1z"/>
                     <rect x="5" y="0" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/>
@@ -252,47 +185,29 @@
                     <rect x="5" y="8" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="8" y="9" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/>
                   </svg>
                 </div>
-                <span class="awx-corner" aria-hidden="true"></span><span class="awx-corner" aria-hidden="true"></span><span class="awx-corner" aria-hidden="true"></span><span class="awx-corner" aria-hidden="true"></span>
-                <div class="awx-scanline"></div>
-                <div class="awx-found">✓ Spaarkaart gevonden</div>
+                <span class="wax-corner" aria-hidden="true"></span><span class="wax-corner" aria-hidden="true"></span><span class="wax-corner" aria-hidden="true"></span><span class="wax-corner" aria-hidden="true"></span>
+                <div class="wax-scanline"></div>
+                <div class="wax-found">✓ Spaarkaart gevonden</div>
               </div>
             </div>
 
-            <div class="awx-scene awx-scene--sheet">
-              <div class="awx-sheet">
-                <div class="awx-sheet__bar"><span>Annuleer</span><span class="awx-add">Voeg toe</span></div>
-                <div class="awx-sheet__title">Spaarkaart · Koffiehoek</div>
-                <div class="awx-minipass">
-                  <div class="awx-minipass__top">
-                    <span class="awx-minipass__ava">K</span>
-                    <div><strong>Koffiehoek</strong><span>Koffiebar · Utrecht</span></div>
-                  </div>
-                  <div class="awx-minipass__dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
-                  <div class="awx-minipass__rw">🎁 10ᵉ koffie gratis</div>
-                </div>
-              </div>
+            <div class="wax-sheet" aria-hidden="true">
+              <span class="wax-grab"></span>
+              <div class="wax-sbar"><span>Annuleer</span><span class="wax-add">Voeg toe</span></div>
+              <div class="wax-stitle">Spaarkaart · Koffiehoek</div>
             </div>
 
-            <div class="awx-scene awx-scene--stack">
-              <div class="awx-wtitle"><span>Wallet</span><span>•••</span></div>
-              <div class="awx-stack">
-                <div class="awx-card awx-card--bank"><div class="chip"></div><div class="num">•••• 4212</div><div class="lbl">Bankpas</div></div>
-                <div class="awx-card awx-card--board"><div class="lbl">Instapkaart</div><div class="route">AMS → NCE</div></div>
-                <div class="awx-card awx-card--stz">
-                  <div class="awx-minipass__top">
-                    <span class="awx-minipass__ava">K</span>
-                    <div><strong>Koffiehoek</strong><span>Koffiebar · Utrecht</span></div>
-                  </div>
-                  <div class="awx-minipass__dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
-                  <div class="awx-minipass__rw">🎁 10ᵉ koffie gratis</div>
-                </div>
-                <div class="awx-toast">✓ Toegevoegd aan Wallet</div>
-              </div>
+            <div class="wax-pass" aria-hidden="true">
+              <div class="wax-pass__top"><span class="wax-pass__ava">K</span><div><strong>Koffiehoek</strong><span>Koffiebar · Utrecht</span></div></div>
+              <div class="wax-pass__dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+              <div class="wax-pass__rw">🎁 10ᵉ koffie gratis</div>
             </div>
 
+            <div class="wax-toast">✓ Toegevoegd aan Wallet</div>
+            <div class="wax-cutter" aria-hidden="true"></div>
           </div>
         </div>
-        <div class="awx-steps" id="awxsteps" role="group" aria-label="Animatiefase kiezen">
+        <div class="wax-steps" data-wax-steps role="group" aria-label="Animatiefase kiezen">
           <button type="button" class="is-active"><b>01</b> Scan</button>
           <button type="button"><b>02</b> Voeg toe</button>
           <button type="button"><b>03</b> In je Wallet</button>
@@ -456,5 +371,6 @@
   <script src="/config.js"></script>
   <script src="/motion.js"></script>
   <script src="/apple-wallet.js"></script>
+  <script src="/wallet-anim.js"></script>
 </body>
 </html>
