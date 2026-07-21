@@ -30,6 +30,28 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/seatren.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-400-latin.woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/wallet-anim.css" />
+
+  <style>
+    /* ===== "Hoe het werkt" — tijdlijn + animatie ===== */
+    .hiw-grid { display: grid; grid-template-columns: 1.05fr auto; gap: clamp(32px, 6vw, 76px); align-items: center; margin-top: 44px; }
+    .hiw-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-width: 470px; }
+    .hiw-step { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 18px; padding: 16px 0; }
+    .hiw-step:not(:last-child)::before { content: ""; position: absolute; left: 23px; top: 54px; bottom: -6px; width: 2px; background: var(--line); }
+    .hiw-num { width: 48px; height: 48px; border-radius: 14px; background: var(--paper-2); border: 1px solid var(--line); display: grid; place-items: center; font-family: var(--font-display); font-size: 1.4rem; color: var(--green-900); position: relative; z-index: 1; }
+    .hiw-step.is-hl .hiw-num { background: var(--green); border-color: var(--green); color: var(--ink); box-shadow: 0 10px 24px -8px rgba(41,199,0,.5); }
+    .hiw-step h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.35rem; color: var(--ink); margin: 5px 0 0; }
+    .hiw-step p { color: var(--muted); margin: 6px 0 0; line-height: 1.6; }
+    .hiw-tag { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; font-size: .8rem; font-weight: 600; color: var(--green-900); background: rgba(41,199,0,.12); padding: 4px 12px; border-radius: 999px; }
+    .hiw-visual { display: grid; justify-items: center; }
+    .hiw-cap { text-align: center; color: var(--muted); font-size: .92rem; max-width: 270px; margin: 20px auto 0; line-height: 1.5; }
+    @media (max-width: 900px) {
+      .hiw-grid { grid-template-columns: 1fr; gap: 42px; justify-items: center; }
+      .hiw-visual { order: -1; }
+      .hiw-steps { max-width: 520px; }
+      .hiw-tag { display: none; }
+    }
+  </style>
 
   <script type="application/ld+json">
   {
@@ -213,22 +235,82 @@
         <p class="section__lead">Geen techniek nodig. Jij stelt je kaart samen, je klant voegt 'm toe, jij deelt de stempels uit.</p>
       </div>
 
-      <div class="steps">
-        <article class="step reveal">
-          <span class="step__num">01</span>
-          <h3>Ontwerp je kaart</h3>
-          <p>Stel je spaarkaart samen in je eigen huisstijl: jouw logo, kleuren en de beloning die jij bepaalt — van een gratis koffie tot 10% korting.</p>
-        </article>
-        <article class="step reveal">
-          <span class="step__num">02</span>
-          <h3>Klant voegt 'm toe</h3>
-          <p>Je klant scant één QR-code en de kaart staat meteen in z'n Apple Wallet of Google Wallet. Geen app downloaden, geen account aanmaken.</p>
-        </article>
-        <article class="step reveal">
-          <span class="step__num">03</span>
-          <h3>Stempel bij elk bezoek</h3>
-          <p>Jij of je medewerker zet met één tik een stempel. Klanten kunnen zichzelf niet stempelen — dus geen vals spel. Bij de laatste stempel volgt de beloning.</p>
-        </article>
+      <div class="hiw-grid">
+        <ol class="hiw-steps reveal">
+          <li class="hiw-step">
+            <span class="hiw-num">1</span>
+            <div>
+              <h3>Ontwerp je kaart</h3>
+              <p>Stel je spaarkaart samen in je eigen huisstijl: jouw logo, kleuren en de beloning die jij bepaalt — van een gratis koffie tot 10% korting.</p>
+            </div>
+          </li>
+          <li class="hiw-step is-hl">
+            <span class="hiw-num">2</span>
+            <div>
+              <h3>Klant voegt 'm toe</h3>
+              <p>Je klant scant één QR-code en de kaart staat meteen in z'n Apple Wallet of Google Wallet. Geen app downloaden, geen account aanmaken.</p>
+              <span class="hiw-tag">▶ Zie het gebeuren hiernaast</span>
+            </div>
+          </li>
+          <li class="hiw-step">
+            <span class="hiw-num">3</span>
+            <div>
+              <h3>Stempel bij elk bezoek</h3>
+              <p>Jij of je medewerker zet met één tik een stempel. Klanten kunnen zichzelf niet stempelen — dus geen vals spel. Bij de laatste stempel volgt de beloning.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="hiw-visual reveal">
+          <div class="wax-wrap" data-wallet-anim>
+            <div class="wax-phone">
+              <div class="wax s-scan">
+                <span class="wax-island" aria-hidden="true"></span>
+                <div class="wax-status" aria-hidden="true"><span>9:41</span><span class="wax-sticons"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div>
+
+                <div class="wax-bgwallet" aria-hidden="true">
+                  <div class="wax-wtitle"><span>Wallet</span><span>•••</span></div>
+                  <div class="wax-card wax-cbank"><div class="chip"></div><div class="num">•••• 4212</div><div class="lbl">Bankpas</div></div>
+                  <div class="wax-card wax-cboard"><div class="lbl">Instapkaart</div><div class="route">AMS → NCE</div></div>
+                </div>
+
+                <div class="wax-cam" aria-hidden="true">
+                  <div class="wax-qrbox">
+                    <div class="wax-qr">
+                      <svg viewBox="0 0 11 11" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                        <path d="M0 0h3v3H0zM1 1h1v1H1z"/><path d="M8 0h3v3H8zM9 1h1v1H9z"/><path d="M0 8h3v3H0zM1 9h1v1H1z"/>
+                        <rect x="5" y="0" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/>
+                        <rect x="0" y="5" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/>
+                        <rect x="4" y="4" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="5" y="6" width="1" height="1"/><rect x="4" y="7" width="1" height="1"/>
+                        <rect x="8" y="4" width="1" height="1"/><rect x="10" y="5" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/>
+                        <rect x="5" y="8" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="8" y="9" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/>
+                      </svg>
+                    </div>
+                    <span class="wax-corner" aria-hidden="true"></span><span class="wax-corner" aria-hidden="true"></span><span class="wax-corner" aria-hidden="true"></span><span class="wax-corner" aria-hidden="true"></span>
+                    <div class="wax-scanline"></div>
+                    <div class="wax-found">✓ Spaarkaart gevonden</div>
+                  </div>
+                </div>
+
+                <div class="wax-sheet" aria-hidden="true">
+                  <span class="wax-grab"></span>
+                  <div class="wax-sbar"><span>Annuleer</span><span class="wax-add">Voeg toe</span></div>
+                  <div class="wax-stitle">Spaarkaart · Koffiehoek</div>
+                </div>
+
+                <div class="wax-pass" aria-hidden="true">
+                  <div class="wax-pass__top"><span class="wax-pass__ava">K</span><div><strong>Koffiehoek</strong><span>Koffiebar · Utrecht</span></div></div>
+                  <div class="wax-pass__dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+                  <div class="wax-pass__rw">🎁 10ᵉ koffie gratis</div>
+                </div>
+
+                <div class="wax-toast">✓ Toegevoegd aan Wallet</div>
+                <div class="wax-cutter" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+          <p class="hiw-cap">Eén QR-scan en je kaart staat in de Wallet — zonder app, zonder account.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -565,5 +647,6 @@
 
   <script src="config.js"></script>
   <script src="motion.js"></script>
+  <script src="/wallet-anim.js"></script>
 </body>
 </html>
