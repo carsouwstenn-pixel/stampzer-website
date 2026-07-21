@@ -40,9 +40,9 @@ return [
 
   'nagelstudio' => [
     'name' => 'Nagelstudio',
-    'title' => 'Digitale klantenkaart voor nagelstudio\'s | Stampzer',
-    'desc' => 'Dé digitale spaarkaart voor je nagelstudio. Klanten sparen bij elke behandeling voor een beloning, direct in Apple & Google Wallet. Meer terugkerende klanten, voller geboekt. Schrijf je in.',
-    'keywords' => 'digitale klantenkaart nagelstudio, spaarkaart nagelstudio, stempelkaart nagels, loyaliteitsprogramma nagelsalon, klantenkaart beauty, klantenbinding nagelstudio',
+    'title' => 'Klantenkaart voor nagelstudio\'s: klanten die terugkomen | Stampzer',
+    'desc' => 'Digitale klantenkaart voor je nagelstudio of als nagelstyliste: klanten sparen per behandeling, komen vaker terug en je agenda zit voller. In Apple & Google Wallet, zonder app.',
+    'keywords' => 'klantenkaart nagelstudio, klantenkaart nagelstyliste, digitale klantenkaart nagelstudio, spaarkaart nagelstudio, klantenbeheer nagelsalon, stempelkaart nagels, loyaliteitsprogramma nagelsalon, vaste klanten nagelstudio, klantenbinding nagelstudio',
     'eyebrow' => 'Voor nagelstudio\'s & beautysalons',
     'h1a' => 'Digitale klantenkaart voor nagelstudio\'s waar klanten ', 'mark' => 'blijven terugkomen', 'h1b' => '.',
     'sub' => 'Geef je nagelstudio een eigen digitale spaarkaart in Apple Wallet en Google Wallet. Klanten sparen bij elke behandeling voor een beloning — en raken hun kaart nooit meer kwijt. Een voller geboekte agenda met vaste klanten.',
