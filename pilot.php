@@ -1,6 +1,7 @@
 <?php
 define('STAMPZER_APP', true);
 require __DIR__ . '/api/db.php';
+require __DIR__ . '/api/mail.php';
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -27,6 +28,23 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 try {
     $stmt = db()->prepare("INSERT INTO pilots (email, business, branche, page, user_agent) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$email, $business, $branche, $page, substr((string)($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 255)]);
+
+    notify_signup(
+        'Nieuwe PILOT-aanmelding: ' . ($business !== '' ? $business : $email),
+        [
+            'Er is een nieuwe PILOT-aanmelding op stampzer.com. 🚀',
+            '',
+            'Zaak:     ' . ($business !== '' ? $business : '-'),
+            'Branche:  ' . ($branche !== '' ? $branche : '-'),
+            'E-mail:   ' . $email,
+            'Datum:    ' . date('d-m-Y H:i'),
+            '',
+            'Reageren kan direct op deze mail (gaat naar de aanmelder).',
+            'Alle pilot-aanmeldingen: https://stampzer.com/admin/ (tab Pilots)',
+        ],
+        $email
+    );
+
     echo json_encode(['ok' => true]);
 } catch (Throwable $e) {
     http_response_code(500);
