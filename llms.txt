@@ -34,6 +34,9 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - [Ledenbinding voor je sportschool](https://stampzer.com/gids/ledenbinding-sportschool/): Leden langer behouden en opzeggingen verlagen met sportacties.
 - [Klantenbeheer voor je nagelstudio of salon](https://stampzer.com/gids/klantenbeheer-nagelstudio-salon/): Wat je bijhoudt van salonklanten en hoe dat automatisch kan.
 - [Kaart toevoegen aan Wallet lukt niet?](https://stampzer.com/gids/kaart-toevoegen-wallet-lukt-niet/): Zeven oplossingen als een kaart niet in Apple of Google Wallet wil.
+- [Spaarkaart voor je koffiebar](https://stampzer.com/gids/spaarkaart-koffiebar/): Zo laat je met een digitale spaarkaart in de Wallet je koffiegasten vaker terugkomen.
+- [Klantenkaart voor de kapper](https://stampzer.com/gids/klantenkaart-kapper/): Meer vaste klanten in de stoel met een digitale klantenkaart in de Wallet, zonder app.
+- [Spaarkaart in Apple & Google Wallet zonder app](https://stampzer.com/gids/spaarkaart-apple-google-wallet-zonder-app/): Hoe een spaar- of klantenkaart zonder app in de Wallet komt, voor jou en je klant uitgelegd.
 - [Alle gidsen](https://stampzer.com/gids/): De volledige kennisbank over digitale klantenkaarten en klantenbinding.
 
 ## Kernfeiten
