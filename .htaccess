@@ -6,6 +6,13 @@ ErrorDocument 404 /404.html
 # Disable directory listing
 Options -Indexes
 
+# Canonical host: force non-www (www 301-redirects to non-www)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.stampzer\.com$ [NC]
+  RewriteRule ^(.*)$ https://stampzer.com/$1 [L,R=301]
+</IfModule>
+
 <IfModule mod_headers.c>
   # ===== Caching =====
   # Always revalidate markup, styles and scripts so changes appear immediately.
