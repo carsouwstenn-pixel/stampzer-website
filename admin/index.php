@@ -210,7 +210,7 @@ function lead_page_label($p) {
         <div class="panel">
           <div class="panel__title">Snel bewerkbaar</div>
           <div class="field"><label>Aankondigingsbalk (bovenaan de site)</label><input type="text" value="Stampzer is in besloten bèta — schrijf je gratis in voor vroege toegang" /></div>
-          <div class="field"><label>Contact e-mail</label><input type="email" value="hallo@stampzer.com" /></div>
+          <div class="field"><label>Contact e-mail</label><input type="email" value="hello@stampzer.com" /></div>
           <div class="field--row">
             <div class="field"><label>Instagram</label><input type="url" placeholder="https://instagram.com/stampzer" /></div>
             <div class="field"><label>TikTok</label><input type="url" placeholder="https://tiktok.com/@stampzer" /></div>

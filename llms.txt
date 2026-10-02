@@ -37,6 +37,7 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - [Spaarkaart voor je koffiebar](https://stampzer.com/gids/spaarkaart-koffiebar/): Zo laat je met een digitale spaarkaart in de Wallet je koffiegasten vaker terugkomen.
 - [Klantenkaart voor de kapper](https://stampzer.com/gids/klantenkaart-kapper/): Meer vaste klanten in de stoel met een digitale klantenkaart in de Wallet, zonder app.
 - [Spaarkaart in Apple & Google Wallet zonder app](https://stampzer.com/gids/spaarkaart-apple-google-wallet-zonder-app/): Hoe een spaar- of klantenkaart zonder app in de Wallet komt, voor jou en je klant uitgelegd.
+- [Stocard-alternatief: de beste opties](https://stampzer.com/gids/stocard-alternatief/): wat te gebruiken nu Stocard is veranderd. Apple of Google Wallet voor je eigen pasjes; Stampzer om als ondernemer zelf een spaarkaart uit te geven.
 - [Alle gidsen](https://stampzer.com/gids/): De volledige kennisbank over digitale klantenkaarten en klantenbinding.
 
 ## Kernfeiten
@@ -44,4 +45,4 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - Klanten hoeven geen app te downloaden of account aan te maken — alleen een QR-code scannen.
 - De ondernemer deelt stempels uit via een simpel dashboard; klanten kunnen zichzelf niet stempelen.
 - Gratis tijdens de bèta.
-- Contact: hallo@stampzer.com
+- Contact: hello@stampzer.com
