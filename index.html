@@ -264,16 +264,23 @@
   html.js .reveal{opacity:0;transform:translateY(22px)}
   html.js .reveal.in{opacity:1;transform:none}
 
-  /* Dual-benefit (human illustrations) */
+  /* Dual-benefit (human illustrations) — compact split rows */
   .duo-sec{background:linear-gradient(180deg,var(--peach),var(--paper) 62%)}
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:42px}
-  .duocard{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
-  .duocard__img{aspect-ratio:4/5;background:var(--paper);overflow:hidden}
-  .duocard__img img{width:100%;height:100%;object-fit:cover;display:block}
-  .duocard__b{padding:24px 28px 30px}
-  .duocard__tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-900);background:var(--mint);padding:5px 12px;border-radius:999px}
-  .duocard__b h3{font-size:1.5rem;margin:14px 0 8px}
-  .duocard__b p{color:var(--text)}
+  .splits{display:flex;flex-direction:column;gap:22px;margin-top:40px}
+  .split{display:grid;grid-template-columns:.8fr 1.2fr;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+  .split--rev{grid-template-columns:1.2fr .8fr}
+  .split--rev .split__img{grid-column:2;grid-row:1}
+  .split--rev .split__b{grid-column:1;grid-row:1}
+  .split__img{position:relative;background:var(--paper);min-height:230px}
+  .split__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 34%;display:block}
+  .split__b{padding:30px 36px 32px;align-self:center}
+  .split__tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-900);background:var(--mint);padding:5px 12px;border-radius:999px}
+  .split__b h3{font-size:1.5rem;margin:13px 0 6px}
+  .split__lead{color:var(--muted);margin-bottom:2px}
+  .checks{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:11px}
+  .checks li{position:relative;padding-left:32px;font-size:.98rem;line-height:1.5;color:var(--text)}
+  .checks li::before{content:"✓";position:absolute;left:0;top:1px;width:21px;height:21px;background:var(--mint);color:var(--green-900);border-radius:50%;display:grid;place-items:center;font-size:.76rem;font-weight:800}
+  .checks b{color:var(--ink);font-weight:700}
 
   /* Founder card */
   .founder{display:flex;gap:24px;align-items:center;max-width:780px;margin:38px auto 0;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px 32px;box-shadow:var(--shadow-sm)}
@@ -281,7 +288,10 @@
   .founder__q{font-family:var(--display);font-size:1.32rem;line-height:1.32;color:var(--ink);margin:0 0 12px;font-weight:400}
   .founder__by{font-size:.92rem;color:var(--muted);font-weight:600}
   @media(max-width:760px){
-    .duo{grid-template-columns:1fr;gap:20px}
+    .split{grid-template-columns:1fr}
+    .split__img,.split--rev .split__img{grid-column:1;grid-row:1;min-height:200px}
+    .split__b,.split--rev .split__b{grid-column:1;grid-row:2}
+    .split__b{padding:24px 22px 26px}
     .founder{flex-direction:column;text-align:center;gap:16px;padding:26px 22px}
     .founder__q{font-size:1.18rem}
   }
@@ -507,14 +517,32 @@
 <section class="duo-sec">
   <div class="container">
     <div class="shead shead--center reveal"><span class="eyebrow">Voor jou én je klant</span><h2>Simpel voor jou, vertrouwd voor je klant</h2><p>Geen gedoe aan de balie, geen drempel voor je klant. Zo voelt Stampzer aan allebei de kanten.</p></div>
-    <div class="duo">
-      <div class="duocard reveal">
-        <div class="duocard__img"><img src="/assets/ill-owner.jpg" alt="Ondernemer zet met één tik een stempel via de telefoon" loading="lazy" width="900" height="1125" /></div>
-        <div class="duocard__b"><span class="duocard__tag">Voor jou</span><h3>Eén tik aan de balie</h3><p>Scan de QR-code van je klant en de stempel staat erop. Geen kassakoppeling, geen extra apparatuur — je telefoon of tablet is genoeg.</p></div>
+    <div class="splits">
+      <div class="split reveal">
+        <div class="split__img"><img src="/assets/ill-owner.jpg" alt="Ondernemer zet met één tik een stempel via de telefoon" loading="lazy" width="900" height="1125" /></div>
+        <div class="split__b">
+          <span class="split__tag">Voor jou</span>
+          <h3>Stempelen in één tik</h3>
+          <p class="split__lead">Aan de balie kost het je twee tellen — ook tijdens de drukte.</p>
+          <ul class="checks">
+            <li><b>Scannen en klaar.</b> Scan de QR-code van je klant en de stempel staat erop.</li>
+            <li><b>Geen apparatuur nodig.</b> Geen kassakoppeling of scanner — je telefoon of tablet is genoeg.</li>
+            <li><b>Jij houdt de regie.</b> Eigen logo en beloning, en niemand kan zichzelf stempelen.</li>
+          </ul>
+        </div>
       </div>
-      <div class="duocard reveal">
-        <div class="duocard__img"><img src="/assets/ill-customer.jpg" alt="Klant bekijkt haar bijna volle spaarkaart in de Wallet" loading="lazy" width="900" height="1125" /></div>
-        <div class="duocard__b"><span class="duocard__tag">Voor je klant</span><h3>In de Wallet die ze al hebben</h3><p>Eén keer scannen en de kaart staat in Apple of Google Wallet. Geen app, geen account — gewoon openen en zien hoe vol de kaart is.</p></div>
+      <div class="split split--rev reveal">
+        <div class="split__img"><img src="/assets/ill-customer.jpg" alt="Klant bekijkt haar bijna volle spaarkaart in de Wallet" loading="lazy" width="900" height="1125" /></div>
+        <div class="split__b">
+          <span class="split__tag">Voor je klant</span>
+          <h3>Sparen zonder app</h3>
+          <p class="split__lead">Je klant hoeft niets te installeren of te onthouden.</p>
+          <ul class="checks">
+            <li><b>In de Wallet die ze al hebben.</b> Eén scan en de kaart staat in Apple of Google Wallet.</li>
+            <li><b>Geen app, geen account.</b> Gewoon openen en zien hoe vol de kaart al is.</li>
+            <li><b>Automatisch een seintje.</b> Bij een bijna volle kaart krijgt je klant een melding.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
