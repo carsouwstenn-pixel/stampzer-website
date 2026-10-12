@@ -264,6 +264,28 @@
   html.js .reveal{opacity:0;transform:translateY(22px)}
   html.js .reveal.in{opacity:1;transform:none}
 
+  /* Dual-benefit (human illustrations) */
+  .duo-sec{background:linear-gradient(180deg,var(--peach),var(--paper) 62%)}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:42px}
+  .duocard{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+  .duocard__img{aspect-ratio:4/5;background:var(--paper);overflow:hidden}
+  .duocard__img img{width:100%;height:100%;object-fit:cover;display:block}
+  .duocard__b{padding:24px 28px 30px}
+  .duocard__tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-900);background:var(--mint);padding:5px 12px;border-radius:999px}
+  .duocard__b h3{font-size:1.5rem;margin:14px 0 8px}
+  .duocard__b p{color:var(--text)}
+
+  /* Founder card */
+  .founder{display:flex;gap:24px;align-items:center;max-width:780px;margin:38px auto 0;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px 32px;box-shadow:var(--shadow-sm)}
+  .founder__img{flex:0 0 auto;width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--mint)}
+  .founder__q{font-family:var(--display);font-size:1.32rem;line-height:1.32;color:var(--ink);margin:0 0 12px;font-weight:400}
+  .founder__by{font-size:.92rem;color:var(--muted);font-weight:600}
+  @media(max-width:760px){
+    .duo{grid-template-columns:1fr;gap:20px}
+    .founder{flex-direction:column;text-align:center;gap:16px;padding:26px 22px}
+    .founder__q{font-size:1.18rem}
+  }
+
   @media(max-width:920px){
     .hero{padding:46px 0 54px}
     .hero__grid,.roi__grid{grid-template-columns:1fr;gap:34px}
@@ -481,6 +503,23 @@
   </div>
 </section>
 
+<!-- VOOR JOU EN JE KLANT -->
+<section class="duo-sec">
+  <div class="container">
+    <div class="shead shead--center reveal"><span class="eyebrow">Voor jou én je klant</span><h2>Simpel voor jou, vertrouwd voor je klant</h2><p>Geen gedoe aan de balie, geen drempel voor je klant. Zo voelt Stampzer aan allebei de kanten.</p></div>
+    <div class="duo">
+      <div class="duocard reveal">
+        <div class="duocard__img"><img src="/assets/ill-owner.jpg" alt="Ondernemer zet met één tik een stempel via de telefoon" loading="lazy" width="900" height="1125" /></div>
+        <div class="duocard__b"><span class="duocard__tag">Voor jou</span><h3>Eén tik aan de balie</h3><p>Scan de QR-code van je klant en de stempel staat erop. Geen kassakoppeling, geen extra apparatuur — je telefoon of tablet is genoeg.</p></div>
+      </div>
+      <div class="duocard reveal">
+        <div class="duocard__img"><img src="/assets/ill-customer.jpg" alt="Klant bekijkt haar bijna volle spaarkaart in de Wallet" loading="lazy" width="900" height="1125" /></div>
+        <div class="duocard__b"><span class="duocard__tag">Voor je klant</span><h3>In de Wallet die ze al hebben</h3><p>Eén keer scannen en de kaart staat in Apple of Google Wallet. Geen app, geen account — gewoon openen en zien hoe vol de kaart is.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EXAMPLES -->
 <section style="background:var(--paper-2)">
   <div class="container">
@@ -563,10 +602,12 @@
       <div class="badge hovr reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM12 7v5l3 2"/></svg></div><b>Opzegbaar</b><small>Maandelijks, geen verplichtingen</small></div>
       <div class="badge hovr reveal"><div class="badge__ic">🇳🇱</div><b>Nederlands</b><small>Gemaakt in NL, support in het Nederlands</small></div>
     </div>
-    <div class="quotes">
-      <div class="quote reveal"><span class="ph">Placeholder — echte quote</span><p>"Hier komt een korte, echte ervaring van een pilot-klant."</p><footer>— Naam, Zaak · Plaats</footer></div>
-      <div class="quote reveal"><span class="ph">Placeholder — echte quote</span><p>"Vervang door een resultaat in cijfers, bv. meer terugkerende klanten."</p><footer>— Naam, Zaak · Plaats</footer></div>
-      <div class="quote reveal"><span class="ph">Placeholder — echte quote</span><p>"Een quote over gebruiksgemak werkt hier goed."</p><footer>— Naam, Zaak · Plaats</footer></div>
+    <div class="founder reveal">
+      <img class="founder__img" src="/assets/founder-stenn.jpg" alt="Stenn Carsouw, oprichter van Stampzer" width="96" height="96" loading="lazy" />
+      <div>
+        <p class="founder__q">"Lokale zaken verdienen hun vaste klanten — maar papieren kaartjes raken kwijt en losse apps zijn te duur en te veel gedoe. Daarom bouwde ik Stampzer: de spaarkaart gewoon in de Wallet die je klant al heeft. Eerlijk geprijsd en gemaakt voor de ondernemer."</p>
+        <div class="founder__by">Stenn Carsouw · oprichter van Stampzer</div>
+      </div>
     </div>
   </div>
 </section>
