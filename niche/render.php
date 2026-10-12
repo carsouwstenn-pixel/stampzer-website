@@ -107,7 +107,7 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
   <div class="announce">
     <div class="container announce__inner">
       <span class="announce__dot" aria-hidden="true"></span>
-      Speciaal voor <?= e(strtolower($n['name'])) ?>s — gratis tijdens de bèta. <a href="#wachtlijst">Schrijf je in voor vroege toegang →</a>
+      Speciaal voor <?= e(strtolower($n['name'])) ?>s — nu gratis te proberen. <a href="https://app.stampzer.com">Start vandaag gratis →</a>
     </div>
   </div>
 
@@ -115,11 +115,12 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
     <div class="container nav__inner">
       <a class="nav__logo" href="/" aria-label="stampzer.com home"><img src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" /></a>
       <nav class="nav__links" aria-label="Menu">
-        <a href="#hoe-het-werkt">Hoe het werkt</a>
-        <a href="#voordelen">Voordelen</a>
-        <a href="#faq">Vragen</a>
+        <a href="/#hoe-het-werkt">Hoe het werkt</a>
+        <a href="/voor-wie/">Voor wie</a>
+        <a href="/gids/">Gids</a>
+        <a href="/prijzen/">Prijzen</a>
       </nav>
-      <a href="#wachtlijst" class="btn btn--green nav__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
+      <a href="https://app.stampzer.com" class="btn btn--green nav__cta">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a>
     </div>
   </header>
 
@@ -131,12 +132,10 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
         <span class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> <?= e($n['eyebrow']) ?></span>
         <h1 class="hero__title"><?= e($n['h1a']) ?><span class="mark"><?= e($n['mark']) ?></span><?= e($n['h1b']) ?></h1>
         <p class="hero__sub"><?= e($n['sub']) ?></p>
-        <form class="waitlist-form" novalidate>
-          <label class="sr-only" for="n-email-hero">E-mailadres</label>
-          <input class="waitlist-form__input" type="email" id="n-email-hero" name="email" placeholder="jouw@zaak.nl" required autocomplete="email" />
-          <button class="btn btn--green" type="submit">Zet mij op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></button>
-          <p class="waitlist-form__note" role="status">Gratis tijdens de bèta · iOS &amp; Android · Geen app nodig</p>
-        </form>
+        <div class="hero__cta">
+          <a class="btn btn--green" href="https://app.stampzer.com">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <p class="waitlist-form__note" role="status">Gratis · iOS &amp; Android · Geen app nodig</p>
+        </div>
       </div>
       <div class="hero__visual">
         <div class="blob" aria-hidden="true"></div>
@@ -210,6 +209,23 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
     </div>
   </section>
 
+  <section class="atmos">
+    <div class="container atmos__grid">
+      <div class="atmos__art reveal">
+        <img class="hand-cut" src="/assets/hand/<?= e($slug) ?>-scene.webp" width="1100" height="817" loading="lazy" alt="Handgetekende illustratie van een <?= e($place) ?> in de sfeer van Stampzer" />
+      </div>
+      <div class="atmos__copy reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Zo voelt het</span>
+        <h2>Een <?= e($place) ?> waar klanten graag terugkomen</h2>
+        <ul class="atmos__points">
+          <li><span class="tick" aria-hidden="true">&#10003;</span> Je klanten sparen voor een beloning die jij zelf kiest.</li>
+          <li><span class="tick" aria-hidden="true">&#10003;</span> De kaart zit in hun Apple of Google Wallet &mdash; geen app, nooit kwijt.</li>
+          <li><span class="tick" aria-hidden="true">&#10003;</span> Jij ziet wie je vaste klanten zijn en wie bijna een volle kaart heeft.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--paper2">
     <div class="container">
       <div class="section__head reveal">
@@ -270,16 +286,11 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
     </div>
   </section>
 
-  <section class="cta reveal" id="wachtlijst">
+  <section class="cta reveal" id="start-gratis">
     <div class="container cta__inner">
       <h2>Klaar voor meer vaste klanten?</h2>
-      <p>Schrijf je <?= e(strtolower($n['name'])) ?> in op de wachtlijst en krijg als eerste toegang tot stampzer — plus een introkorting bij de lancering.</p>
-      <form class="waitlist-form waitlist-form--center" novalidate>
-        <label class="sr-only" for="n-email-cta">E-mailadres</label>
-        <input class="waitlist-form__input" type="email" id="n-email-cta" name="email" placeholder="jouw@zaak.nl" required autocomplete="email" />
-        <button class="btn btn--ink" type="submit">Zet mij op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></button>
-        <p class="waitlist-form__note" role="status">We mailen je zodra we live gaan. Geen spam, beloofd.</p>
-      </form>
+      <p>Stampzer is nu gratis te proberen — zonder app en zonder creditcard. Zet vandaag je eerste spaarkaart klaar.</p>
+      <a href="https://app.stampzer.com" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a>
     </div>
   </section>
 
@@ -288,9 +299,9 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand"><img src="/assets/logo-cream.png" alt="stampzer.com" width="150" height="54" /><p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p></div>
-      <nav class="footer__col" aria-label="Product"><h4>Product</h4><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/spaarkaart-zonder-app/">Zonder app</a><a href="/apple-wallet-spaarkaart/">Apple Wallet</a><a href="/google-wallet-klantenkaart/">Google Wallet</a><a href="/gids/">Gids</a><a href="/over-ons/">Over ons</a><a href="/dashboard.html">Dashboard</a><a href="/#wachtlijst">Wachtlijst</a><a href="/privacy/">Privacybeleid</a></nav>
+      <nav class="footer__col" aria-label="Product"><h4>Product</h4><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/spaarkaart-zonder-app/">Zonder app</a><a href="/apple-wallet-spaarkaart/">Apple Wallet</a><a href="/google-wallet-klantenkaart/">Google Wallet</a><a href="/gids/">Gids</a><a href="/over-ons/">Over ons</a><a href="/dashboard.html">Dashboard</a><a href="https://app.stampzer.com">Start gratis</a><a href="/privacy/">Privacybeleid</a></nav>
       <nav class="footer__col" aria-label="Voor wie"><h4>Voor wie</h4><a href="/voor-wie/">Alle branches</a><a href="/kapper/">Kappers</a><a href="/koffiebar/">Koffiebars</a></nav>
-      <div class="footer__col"><h4>Blijf op de hoogte</h4><a href="mailto:hello@stampzer.com">hello@stampzer.com</a><a href="#wachtlijst" class="btn btn--green footer__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+      <div class="footer__col"><h4>Blijf op de hoogte</h4><a href="mailto:hello@stampzer.com">hello@stampzer.com</a><a href="https://app.stampzer.com" class="btn btn--green footer__cta">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a></div>
     </div>
     <div class="container footer__bottom"><span>© 2026 stampzer.com — Alle rechten voorbehouden.</span><span>Gemaakt in Nederland 🇳🇱</span></div>
   </footer>

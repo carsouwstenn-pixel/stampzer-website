@@ -7,7 +7,6 @@
   <meta name="description" content="Dé digitale spaarkaart voor je koffiebar of café. Klanten sparen voor een gratis koffie, direct in Apple &amp; Google Wallet — nooit meer kwijt. Meer terugkerende klanten. Schrijf je in." />
   <link rel="canonical" href="https://stampzer.com/koffiebar/" />
   <meta name="keywords" content="digitale klantenkaart koffiebar, stempelkaart café, spaarkaart koffie, koffie spaarkaart app, loyaliteitsprogramma koffiebar, gratis koffie sparen" />
-  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#181f10" />
 
   <meta property="og:type" content="website" />
@@ -21,7 +20,7 @@
   <meta property="og:locale" content="nl_NL" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Digitale klantenkaart voor koffiebars — Stampzer" />
-  <meta name="twitter:description" content="Geef je koffiebar een eigen digitale spaarkaart in Apple Wallet en Google Wallet. Klanten sparen bij elk kopje voor een gratis koffie — en raken hun kaart nooit meer kwijt." />
+  <meta name="twitter:description" content="Geef je koffiebar een eigen digitale spaarkaart in Apple Wallet en Google Wallet. Klanten sparen bij elk kopje voor een gratis koffie — en raken hun kaart nooit meer kwijt. Meer vaste klanten, ook op rustige momenten." />
   <meta name="twitter:image" content="https://stampzer.com/assets/og-koffiebar.png" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
@@ -32,82 +31,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-400-latin.woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css" />
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Digitale klantenkaart voor koffiebars | Stampzer","serviceType":"Digitale klantenkaart en loyaliteitsprogramma","provider":{"@type":"Organization","name":"Stampzer","url":"https://stampzer.com/"},"areaServed":{"@type":"Country","name":"Nederland"},"url":"https://stampzer.com/koffiebar/","description":"Dé digitale spaarkaart voor je koffiebar of café. Klanten sparen voor een gratis koffie, direct in Apple & Google Wallet — nooit meer kwijt. Meer terugkerende klanten.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Gratis tijdens de bèta"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stampzer.com/"},{"@type":"ListItem","position":2,"name":"Voor wie","item":"https://stampzer.com/voor-wie/"},{"@type":"ListItem","position":3,"name":"Voor Koffiebars","item":"https://stampzer.com/koffiebar/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Werkt een digitale klantenkaart voor mijn koffiebar?","acceptedAnswer":{"@type":"Answer","text":"Ja. Of je nu een espressobar, café of koffie-to-go hebt — je stelt je eigen spaarkaart en beloning in. Klanten sparen bij elk kopje en komen vaker terug."}},{"@type":"Question","name":"Hebben mijn klanten een app nodig?","acceptedAnswer":{"@type":"Answer","text":"Nee. De kaart komt in de Apple Wallet of Google Wallet die al op elke telefoon staat. Eén QR-code scannen en klaar."}},{"@type":"Question","name":"Wat voor beloning kan ik instellen?","acceptedAnswer":{"@type":"Answer","text":"Alles wat past: een gratis koffie na een aantal stempels, korting, een gratis gebakje of een to-go beker. Jij bepaalt het."}},{"@type":"Question","name":"Werkt het op iPhone én Android?","acceptedAnswer":{"@type":"Answer","text":"Ja, zowel Apple Wallet als Google Wallet worden ondersteund."}}]}]}</script>
-
-  <style>
-    /* ===== Hand-drawn integration ===== */
-    /* Site is always cream (no dark theme), so multiply blends the paper into the bg regardless of OS theme.
-       The soft radial mask fades the rectangular edges into the paper so the art dissolves in
-       instead of reading as a pasted rectangle. */
-    .hand { display:block; width:100%; height:auto; mix-blend-mode:multiply;
-      -webkit-mask-image: radial-gradient(92% 90% at 50% 47%, #000 64%, transparent 95%);
-              mask-image: radial-gradient(92% 90% at 50% 47%, #000 64%, transparent 95%); }
-
-    /* soft hand-drawn underline under the hero mark */
-    .hero__title .mark{ position:relative; }
-    .hero__title .mark::after{
-      content:""; position:absolute; left:-2%; right:-2%; bottom:-.12em; height:.34em;
-      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='16' viewBox='0 0 240 16'><path d='M3 11 C 60 3, 120 3, 180 8 S 236 12, 237 9' fill='none' stroke='%2329c700' stroke-width='4' stroke-linecap='round'/></svg>") no-repeat center/100% 100%;
-      opacity:.85; z-index:-1;
-    }
-
-    /* Atmosphere / story band */
-    .atmos{ background:var(--paper); padding: clamp(52px,7vw,104px) 0; overflow:hidden; }
-    .atmos__grid{ display:grid; grid-template-columns:1.02fr .98fr; gap:clamp(28px,5vw,76px); align-items:center; }
-    .atmos__art{ position:relative; }
-    .atmos__art img{ border-radius:16px; }
-    .atmos__art .stamp-badge{
-      position:absolute; right:6%; bottom:-18px; background:var(--green); color:#08260a;
-      font-family:var(--font-display); font-size:.98rem; padding:12px 18px; border-radius:14px;
-      box-shadow:0 12px 30px rgba(17,79,10,.22); transform:rotate(-3deg);
-    }
-    .atmos__copy h2{ margin:14px 0 16px; }
-    .atmos__points{ list-style:none; padding:0; margin:22px 0 0; display:grid; gap:14px; }
-    .atmos__points li{ display:flex; gap:12px; align-items:flex-start; font-size:1.02rem; color:var(--ink); }
-    .atmos__points .tick{ flex:0 0 auto; width:24px; height:24px; border-radius:50%; background:var(--green); color:#08260a;
-      display:grid; place-items:center; font-size:.8rem; font-weight:700; margin-top:1px; }
-
-    /* Illustrated sections: bigger, asymmetric bleed + hand-drawn doodles */
-    .section--illus{ overflow:clip; }               /* contain the bleed so the page never scrolls sideways */
-    .doodle{ position:absolute; z-index:3; color:#2f3a22; pointer-events:none; }
-    .doodle--g{ color:var(--green-700,#1f9b00); }
-
-    /* HOW IT WORKS */
-    .hiw2{ display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(20px,4vw,52px); align-items:center; }
-    .hiw2__art{ position:relative; }
-    .hiw2__art .hand{ width:122%; max-width:none; margin-left:-18%; mix-blend-mode:normal;
-      -webkit-mask-image:none; mask-image:none; }   /* transparent cut-out — bold, roomy left bleed */
-    .hiw2__steps{ position:relative; display:grid; gap:22px; padding-left:6px; }
-    .hiw2__connector{ position:absolute; left:22px; top:36px; height:calc(100% - 72px); width:16px;
-      color:var(--green-700,#1f9b00); opacity:.5; z-index:0; }
-    .hiw2__step{ position:relative; z-index:1; display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start; }
-    .hiw2__num{ width:46px; height:46px; border-radius:14px; background:var(--ink); color:var(--paper);
-      font-family:var(--font-display); font-size:1.15rem; display:grid; place-items:center; }
-    .hiw2__step h3{ margin:2px 0 5px; font-size:1.16rem; }
-    .hiw2__step p{ margin:0; color:var(--ink-60,#4b5340); }
-
-    /* REWARDS */
-    .rewards2{ display:grid; grid-template-columns:1.22fr .78fr; gap:clamp(20px,4vw,52px); align-items:center; }
-    .rewards2__art{ position:relative; }
-    .rewards2__art .hand{ width:126%; max-width:none; margin-left:-22%; mix-blend-mode:normal;
-      -webkit-mask-image:none; mask-image:none; }  /* transparent cut-out — bold, roomy left bleed */
-    .rewards2__list{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    .rewardcard{ background:var(--paper); border:1px solid rgba(24,31,16,.10); border-radius:16px; padding:18px 18px 16px; }
-    .rewardcard .ic{ width:34px; height:34px; color:var(--green-700,#1f9b00); }
-    .rewardcard strong{ display:block; margin:8px 0 4px; font-size:1rem; }
-    .rewardcard span{ font-size:.9rem; color:var(--ink-60,#4b5340); }
-
-    @media (max-width:860px){
-      .atmos__grid, .hiw2, .rewards2{ grid-template-columns:1fr; }
-      .atmos__art, .hiw2__art{ order:-1; }
-      .hiw2__art .hand, .rewards2__art .hand{ width:100%; margin-left:0; }   /* reset bleed on mobile */
-      .hiw2__connector{ display:none; }
-      .rewards2__list{ grid-template-columns:1fr 1fr; }
-    }
-    @media (max-width:480px){
-      .rewards2__list{ grid-template-columns:1fr; }
-    }
-  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Digitale klantenkaart voor koffiebars | Stampzer","serviceType":"Digitale klantenkaart en loyaliteitsprogramma","provider":{"@type":"Organization","name":"Stampzer","url":"https://stampzer.com/"},"areaServed":{"@type":"Country","name":"Nederland"},"url":"https://stampzer.com/koffiebar/","description":"Dé digitale spaarkaart voor je koffiebar of café. Klanten sparen voor een gratis koffie, direct in Apple & Google Wallet — nooit meer kwijt. Meer terugkerende klanten. Schrijf je in.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Gratis tijdens de bèta"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stampzer.com/"},{"@type":"ListItem","position":2,"name":"Voor wie","item":"https://stampzer.com/voor-wie/"},{"@type":"ListItem","position":3,"name":"Voor Koffiebars","item":"https://stampzer.com/koffiebar/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Werkt een digitale klantenkaart voor mijn koffiebar?","acceptedAnswer":{"@type":"Answer","text":"Ja. Of je nu een espressobar, café of koffie-to-go hebt — je stelt je eigen spaarkaart en beloning in. Klanten sparen bij elk kopje en komen vaker terug."}},{"@type":"Question","name":"Hebben mijn klanten een app nodig?","acceptedAnswer":{"@type":"Answer","text":"Nee. De kaart komt in de Apple Wallet of Google Wallet die al op elke telefoon staat. Eén QR-code scannen en klaar."}},{"@type":"Question","name":"Wat voor beloning kan ik instellen?","acceptedAnswer":{"@type":"Answer","text":"Alles wat past: een gratis koffie na een aantal stempels, korting, een gratis gebakje of een to-go beker. Jij bepaalt het."}},{"@type":"Question","name":"Werkt het op iPhone én Android?","acceptedAnswer":{"@type":"Answer","text":"Ja, zowel Apple Wallet als Google Wallet worden ondersteund."}}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Naar inhoud</a>
@@ -115,38 +39,32 @@
   <div class="announce">
     <div class="container announce__inner">
       <span class="announce__dot" aria-hidden="true"></span>
-      Speciaal voor koffiebars — gratis tijdens de bèta. <a href="#wachtlijst">Schrijf je in voor vroege toegang →</a>
+      Speciaal voor koffiebars — gratis tijdens de bèta. <a href="https://app.stampzer.com">Schrijf je in voor vroege toegang →</a>
     </div>
   </div>
 
   <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a class="nav__logo" href="/" aria-label="stampzer.com home"><img src="/assets/logo-dark.png" alt="Stampzer" width="150" height="55" /></a>
+      <a class="nav__logo" href="/" aria-label="stampzer.com home"><img src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" /></a>
       <nav class="nav__links" aria-label="Menu">
-        <a href="#hoe-het-werkt">Hoe het werkt</a>
-        <a href="#voordelen">Voordelen</a>
-        <a href="#beloningen">Beloningen</a>
-        <a href="#faq">Vragen</a>
+        <a href="/#hoe-het-werkt">Hoe het werkt</a>
+        <a href="/voor-wie/">Voor wie</a>
+        <a href="/gids/">Gids</a>
+        <a href="/prijzen/">Prijzen</a>
       </nav>
-      <a href="#wachtlijst" class="btn btn--green nav__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a>
+      <a href="https://app.stampzer.com" class="btn btn--green nav__cta">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a>
     </div>
   </header>
 
   <main id="main">
 
-  <!-- HERO -->
   <section class="hero" id="top">
     <div class="container hero__grid">
       <div class="hero__copy">
         <span class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> Voor koffiebars &amp; cafés</span>
-        <h1 class="hero__title">De spaarkaart voor je koffiebar die klanten <span class="mark">terug laat komen</span>.</h1>
+        <h1 class="hero__title">Digitale klantenkaart voor koffiebars die klanten <span class="mark">terug laat komen</span>.</h1>
         <p class="hero__sub">Geef je koffiebar een eigen digitale spaarkaart in Apple Wallet en Google Wallet. Klanten sparen bij elk kopje voor een gratis koffie — en raken hun kaart nooit meer kwijt. Meer vaste klanten, ook op rustige momenten.</p>
-        <form class="waitlist-form" novalidate>
-          <label class="sr-only" for="k-email-hero">E-mailadres</label>
-          <input class="waitlist-form__input" type="email" id="k-email-hero" name="email" placeholder="jouw@koffiebar.nl" required autocomplete="email" />
-          <button class="btn btn--green" type="submit">Zet mijn koffiebar op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></button>
-          <p class="waitlist-form__note" role="status">Gratis tijdens de bèta · iOS &amp; Android · Geen app nodig</p>
-        </form>
+        <a href="https://app.stampzer.com" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
       </div>
       <div class="hero__visual">
         <div class="blob" aria-hidden="true"></div>
@@ -176,156 +94,131 @@
     </div>
   </section>
 
-  <!-- ATMOSPHERE / STORY BAND -->
-  <section class="atmos">
-    <div class="container atmos__grid">
-      <div class="atmos__art reveal">
-        <img class="hand" src="/assets/hand/koffie-scene.webp" width="1200" height="800" loading="lazy"
-             alt="Handgetekende illustratie van een koffiebar met espressomachine, cappuccino en koffiebonen" />
-        <span class="stamp-badge" aria-hidden="true">☕ Nog 3 tot gratis</span>
-      </div>
-      <div class="atmos__copy reveal">
-        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Voor de koffiezaak om de hoek</span>
-        <h2>Je beste klant zit vandaag aan de bar. Geef 'm een reden voor morgen.</h2>
-        <p class="section__lead" style="margin:0">Koffie haal je waar het uitkomt — tenzij je ergens spaart. Een eigen spaarkaart maakt van dat ene kopje een gewoonte, en van een voorbijganger een vaste klant die juist bij jóu binnenloopt.</p>
-        <ul class="atmos__points">
-          <li><span class="tick" aria-hidden="true">✓</span> Een spaardoel dat klanten terugtrekt naar jouw bar, niet die van de keten verderop.</li>
-          <li><span class="tick" aria-hidden="true">✓</span> Warme, eigen huisstijl — jouw logo en kleuren, geen kille app.</li>
-          <li><span class="tick" aria-hidden="true">✓</span> Zie wie je stamgasten zijn en geef ze op een stille dinsdag een zetje.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAINS -->
   <section class="section">
     <div class="container">
       <div class="section__head reveal">
         <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Herken je dit?</span>
         <h2>De uitdaging: klanten die terugkomen</h2>
-        <p class="section__lead">Het verschil zit niet in je koffie, maar in wie er volgende week weer binnenloopt. Dit kost je nu klanten:</p>
+        <p class="section__lead">Het verschil zit niet in wat je verkoopt, maar in wie er volgende week weer binnenloopt. Dit kost je nu klanten:</p>
       </div>
       <div class="pains">
-        <article class="feature reveal"><h3>Klanten halen koffie waar het uitkomt</h3><p>Zonder reden om terug te komen pakken ze hun cappuccino net zo makkelijk bij de zaak om de hoek.</p></article>
-        <article class="feature reveal"><h3>Papieren stempelkaartjes raken zoek</h3><p>Verkreukeld in een tas of allang weg. Een kaart die je klant kwijt is, levert niks op.</p></article>
-        <article class="feature reveal"><h3>Je weet niet wie je vaste klanten zijn</h3><p>Je kent de gezichten, maar mist namen, cijfers en overzicht van wie er dagelijks komt.</p></article>
-        <article class="feature reveal"><h3>Rustige uren blijven rustig</h3><p>Tussen de spitsen door staat het stil, zonder manier om klanten juist dan binnen te trekken.</p></article>
-      </div>
+                <article class="feature reveal"><h3>Klanten halen koffie waar het uitkomt</h3><p>Zonder reden om terug te komen pakken ze hun cappuccino net zo makkelijk bij de zaak om de hoek.</p></article>
+                <article class="feature reveal"><h3>Papieren stempelkaartjes raken zoek</h3><p>Verkreukeld in een tas of allang weg. Een kaart die je klant kwijt is, levert niks op.</p></article>
+                <article class="feature reveal"><h3>Je weet niet wie je vaste klanten zijn</h3><p>Je kent de gezichten, maar mist namen, cijfers en overzicht van wie er dagelijks komt.</p></article>
+                <article class="feature reveal"><h3>Rustige uren blijven rustig</h3><p>Tussen de spitsen door staat het stil, zonder manier om klanten juist dan binnen te trekken.</p></article>
+              </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS (illustrated) -->
-  <section class="section section--paper2 section--illus" id="hoe-het-werkt">
+  <section class="section section--paper2" id="hoe-het-werkt">
     <div class="container">
       <div class="section__head reveal">
         <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Hoe het werkt</span>
         <h2>Een spaarkaart voor je koffiebar in drie stappen</h2>
         <p class="section__lead">Geen techniek nodig. Jij stelt je kaart samen, je klant voegt 'm toe, jij deelt de stempels uit.</p>
       </div>
-      <div class="hiw2">
-        <div class="hiw2__art reveal">
-          <img class="hand" src="/assets/hand/koffie-kaart-cut.webp" width="996" height="996" loading="lazy"
-               alt="Handgetekende koffie-spaarkaart met stempels naast een koffie to-go beker" />
-          <svg class="doodle" style="top:-5%;right:14%;width:30px;height:auto" viewBox="0 0 34 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M13 46c-7-8 6-12 0-21s6-12 1-21"/><path d="M25 42c-5-6 5-10 0-16s4-8 3-13" opacity=".65"/></svg>
-          <svg class="doodle doodle--g" style="bottom:10%;left:3%;width:26px;height:auto" viewBox="0 0 28 22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><ellipse cx="14" cy="11" rx="12" ry="7.6" transform="rotate(-18 14 11)"/><path d="M9 6c3.5 3.5 3.5 7.5 0 11"/></svg>
-          <svg class="doodle" style="bottom:3%;left:18%;width:22px;height:auto" viewBox="0 0 28 22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><ellipse cx="14" cy="11" rx="12" ry="7.6" transform="rotate(14 14 11)"/><path d="M9 6c3.5 3.5 3.5 7.5 0 11"/></svg>
-          <svg class="doodle doodle--g" style="top:11%;right:1%;width:22px;height:auto" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1.1 6.2 5.6 10.7 12 12-6.4 1.3-10.9 5.8-12 12-1.1-6.2-5.6-10.7-12-12 6.4-1.3 10.9-5.8 12-12z"/></svg>
-        </div>
-        <div class="hiw2__steps reveal">
-          <svg class="hiw2__connector" viewBox="0 0 16 200" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="2 12" aria-hidden="true"><path d="M8 4 C 2 46, 14 74, 8 104 S 2 162, 8 196"/></svg>
-          <div class="hiw2__step"><span class="hiw2__num">01</span><div><h3>Ontwerp je kaart</h3><p>Stel je spaarkaart samen in de huisstijl van je koffiebar: jouw logo, kleuren en de beloning die jij kiest.</p></div></div>
-          <div class="hiw2__step"><span class="hiw2__num">02</span><div><h3>Klant voegt 'm toe</h3><p>Na het kopje scant je klant één QR-code en de kaart staat meteen in z'n Apple of Google Wallet. Geen app, geen gedoe.</p></div></div>
-          <div class="hiw2__step"><span class="hiw2__num">03</span><div><h3>Stempel bij elk kopje</h3><p>Bij elke koffie zet jij met één tik een stempel. Volle kaart? Tijd voor de gratis koffie — en een goede reden om terug te komen.</p></div></div>
-        </div>
-      </div>
+      <div class="steps">
+                <article class="step reveal"><span class="step__num">01</span><h3>Ontwerp je kaart</h3><p>Stel je spaarkaart samen in de huisstijl van je koffiebar: jouw logo, kleuren en de beloning die jij kiest.</p></article>
+                <article class="step reveal"><span class="step__num">02</span><h3>Klant voegt &#039;m toe</h3><p>Na het bezoek scant je klant één QR-code en de kaart staat meteen in z&#039;n Apple of Google Wallet. Geen app, geen gedoe.</p></article>
+                <article class="step reveal"><span class="step__num">03</span><h3>Stempel bij elke kopje koffie</h3><p>Bij elke kopje koffie zet jij of een collega met één tik een stempel. Volle kaart? Tijd voor de beloning — en een goede reden om terug te komen.</p></article>
+              </div>
     </div>
   </section>
 
-  <!-- REWARDS (illustrated) -->
-  <section class="section section--illus" id="beloningen">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Beloningen</span>
-        <h2>Kies een beloning die past bij je koffiebar</h2>
-        <p class="section__lead">Van de klassieke gratis koffie tot een hebbeding voor je trouwste klanten — jij bepaalt waar ze voor sparen.</p>
-      </div>
-      <div class="rewards2">
-        <div class="rewards2__art reveal">
-          <img class="hand" src="/assets/hand/koffie-rewards-cut.webp" width="1002" height="925" loading="lazy"
-               alt="Handgetekende koffiebeloningen: cappuccino, croissant, koffie to-go en muffin" />
-          <svg class="doodle doodle--g" style="top:4%;left:1%;width:24px;height:auto" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c1.1 6.2 5.6 10.7 12 12-6.4 1.3-10.9 5.8-12 12-1.1-6.2-5.6-10.7-12-12 6.4-1.3 10.9-5.8 12-12z"/></svg>
-          <svg class="doodle" style="top:-4%;right:20%;width:28px;height:auto" viewBox="0 0 34 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M13 46c-7-8 6-12 0-21s6-12 1-21"/><path d="M25 42c-5-6 5-10 0-16s4-8 3-13" opacity=".65"/></svg>
-          <svg class="doodle doodle--g" style="bottom:5%;right:5%;width:18px;height:auto" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1c.9 5 4.5 8.6 10 10-5.5 1.4-9.1 5-10 10-.9-5-4.5-8.6-10-10 5.5-1.4 9.1-5 10-10z"/></svg>
-          <svg class="doodle" style="bottom:7%;left:5%;width:24px;height:auto" viewBox="0 0 28 22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><ellipse cx="14" cy="11" rx="12" ry="7.6" transform="rotate(-14 14 11)"/><path d="M9 6c3.5 3.5 3.5 7.5 0 11"/></svg>
-        </div>
-        <div class="rewards2__list reveal">
-          <article class="rewardcard"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h11v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M15 9h2.4a2.4 2.4 0 0 1 0 4.8H15"/><path d="M7 3.4v1.6M11 3.4v1.6"/></svg><strong>10ᵉ koffie gratis</strong><span>De klassieker — spaar 9, de 10e is van de zaak.</span></article>
-          <article class="rewardcard"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg><strong>Tweede koffie halve prijs</strong><span>Beloon wie vaker langskomt met korting.</span></article>
-          <article class="rewardcard"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8C12 5 9 3 7.5 4.5S9 8 12 8zM12 8c0-3 3-5 4.5-3.5S15 8 12 8z"/></svg><strong>Gratis gebakje na 6 stempels</strong><span>Koppel koffie aan iets lekkers erbij.</span></article>
-          <article class="rewardcard"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 17.5 7.1 21.2 8 15.7l-4-3.9 5.5-.8z"/></svg><strong>Gratis to-go beker</strong><span>Een hebbeding voor je trouwste klanten.</span></article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BENEFITS -->
-  <section class="section section--paper2" id="voordelen">
+  <section class="section" id="voordelen">
     <div class="container">
       <div class="section__head reveal">
         <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Voordelen</span>
-        <h2>Waarom koffiebars voor Stampzer kiezen</h2>
+        <h2>Gemaakt voor jouw koffiebar</h2>
       </div>
       <div class="features">
-        <article class="feature feature--green reveal"><h3>Meer herhaalbezoek</h3><p>Een spaardoel trekt klanten terug naar jouw koffiebar — niet die van de concurrent.</p></article>
-        <article class="feature reveal"><h3>Jouw eigen huisstijl</h3><p>De kaart voelt als die van jouw zaak, met je eigen logo, kleuren en beloning.</p></article>
-        <article class="feature reveal"><h3>Ken je vaste klanten</h3><p>Zie wie er vaak komt, wie bijna een beloning heeft en wie al even niet geweest is — simpel klantenbeheer, zonder extra systeem.</p></article>
-        <article class="feature feature--peach reveal"><h3>Vul je rustige dagen</h3><p>Stuur klanten een seintje bij een bijna volle kaart en trek ze juist op een stille dag binnen.</p></article>
-        <article class="feature reveal"><h3>Niemand speelt vals</h3><p>Alleen jij en je team delen stempels uit — klanten kunnen zichzelf niet stempelen.</p></article>
-        <article class="feature feature--ink reveal"><h3>Geen app, nooit kwijt</h3><p>Werkt direct in de Wallet die je klant al heeft. De kaart zit veilig in de telefoon.</p></article>
-      </div>
+                <article class="feature feature--green reveal"><h3>Meer herhaalbezoek</h3><p>Een spaardoel trekt klanten terug naar jouw koffiebar — niet die van de concurrent.</p></article>
+                <article class="feature  reveal"><h3>Jouw eigen huisstijl</h3><p>De kaart voelt als die van jouw zaak, met je eigen logo, kleuren en beloning.</p></article>
+                <article class="feature  reveal"><h3>Ken je vaste klanten</h3><p>Zie wie er vaak komt, wie bijna een beloning heeft en wie al even niet geweest is — simpel klantenbeheer, zonder extra systeem.</p></article>
+                <article class="feature feature--peach reveal"><h3>Vul je rustige dagen</h3><p>Stuur klanten een seintje bij een bijna volle kaart en trek ze juist op een stille dag binnen.</p></article>
+                <article class="feature  reveal"><h3>Niemand speelt vals</h3><p>Alleen jij en je team delen stempels uit — klanten kunnen zichzelf niet stempelen.</p></article>
+                <article class="feature feature--ink reveal"><h3>Geen app, nooit kwijt</h3><p>Werkt direct in de Wallet die je klant al heeft. De kaart zit veilig in de telefoon.</p></article>
+              </div>
     </div>
   </section>
 
-  <!-- STAT BAND -->
+  <section class="section section--paper2">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Inspiratie</span>
+        <h2>Populaire beloningen</h2>
+        <p class="section__lead">Kies wat bij jouw zaak past — je past het elk moment aan.</p>
+      </div>
+      <div class="rewardlist reveal">
+                <div class="reward-chip"><span class="reward-chip__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h11v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M15 9h2.4a2.4 2.4 0 0 1 0 4.8H15"/><path d="M7 3.4v1.6M11 3.4v1.6"/></svg></span><strong>10ᵉ koffie gratis</strong><span>De klassieker — spaar 9, de 10e is van de zaak.</span></div>
+                <div class="reward-chip"><span class="reward-chip__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><strong>Tweede koffie halve prijs</strong><span>Beloon wie vaker langskomt met korting.</span></div>
+                <div class="reward-chip"><span class="reward-chip__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8C12 5 9 3 7.5 4.5S9 8 12 8zM12 8c0-3 3-5 4.5-3.5S15 8 12 8z"/></svg></span><strong>Gratis gebakje na 6 stempels</strong><span>Koppel koffie aan iets lekkers erbij.</span></div>
+                <div class="reward-chip"><span class="reward-chip__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 17.5 7.1 21.2 8 15.7l-4-3.9 5.5-.8z"/></svg></span><strong>Gratis to-go beker</strong><span>Een hebbeding voor je trouwste klanten.</span></div>
+              </div>
+    </div>
+  </section>
+
   <section class="statband reveal">
     <div class="container statband__grid">
       <div class="statband__num">€5.000</div>
       <div class="statband__body">
-        <h2>Een rekenvoorbeeld dat de moeite laat zien.</h2>
-        <p>300 vaste klanten die door hun spaarkaart 1× per week extra langskomen, bij €4 per koffie — dat is zo'n €5.000 extra omzet per maand, alleen van klanten die anders misschien niet waren teruggekomen. Ruwe inschatting; jouw cijfers bepalen het.</p>
-        <ul class="chips"><li>Meer herhaalbezoek</li><li>Voller op rustige dagen</li><li>Zonder app</li></ul>
+        <h2>300 vaste klanten die door hun spaarkaart 1× per week extra langskomen, bij €4 per koffie.</h2>
+        <p>Dat is een rekenvoorbeeld van zo&#039;n €5.000 extra omzet per maand — alleen van klanten die anders misschien niet waren teruggekomen. Ruwe inschatting; jouw cijfers bepalen het.</p>
+        <ul class="chips"><li>iOS &amp; Android</li><li>Geen app nodig</li><li>Klaar in 2 minuten</li><li>Eigen huisstijl</li></ul>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="section" id="faq">
     <div class="container container--narrow">
       <div class="section__head reveal">
         <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Veelgestelde vragen</span>
-        <h2>Digitale klantenkaart voor je koffiebar</h2>
+        <h2>Digitale klantenkaart voor koffiebars — goed om te weten</h2>
       </div>
       <div class="faq reveal">
-        <details class="faq__item"><summary>Werkt een digitale klantenkaart voor mijn koffiebar?</summary><p>Ja. Of je nu een espressobar, café of koffie-to-go hebt — je stelt je eigen spaarkaart en beloning in. Klanten sparen bij elk kopje en komen vaker terug.</p></details>
-        <details class="faq__item"><summary>Hebben mijn klanten een app nodig?</summary><p>Nee. De kaart komt in de Apple Wallet of Google Wallet die al op elke telefoon staat. Eén QR-code scannen en klaar.</p></details>
-        <details class="faq__item"><summary>Wat voor beloning kan ik instellen?</summary><p>Alles wat past: een gratis koffie na een aantal stempels, korting, een gratis gebakje of een to-go beker. Jij bepaalt het.</p></details>
-        <details class="faq__item"><summary>Werkt het op iPhone én Android?</summary><p>Ja, zowel Apple Wallet als Google Wallet worden ondersteund.</p></details>
-      </div>
-      <p style="margin-top:1.4rem;">Wil je dieper duiken? Lees onze gids: <a href="/gids/spaarkaart-koffiebar/">spaarkaart voor je koffiebar — zo laat je klanten terugkomen</a>.</p>
+                <details class="faq__item"><summary>Werkt een digitale klantenkaart voor mijn koffiebar?</summary><p>Ja. Of je nu een espressobar, café of koffie-to-go hebt — je stelt je eigen spaarkaart en beloning in. Klanten sparen bij elk kopje en komen vaker terug.</p></details>
+                <details class="faq__item"><summary>Hebben mijn klanten een app nodig?</summary><p>Nee. De kaart komt in de Apple Wallet of Google Wallet die al op elke telefoon staat. Eén QR-code scannen en klaar.</p></details>
+                <details class="faq__item"><summary>Wat voor beloning kan ik instellen?</summary><p>Alles wat past: een gratis koffie na een aantal stempels, korting, een gratis gebakje of een to-go beker. Jij bepaalt het.</p></details>
+                <details class="faq__item"><summary>Werkt het op iPhone én Android?</summary><p>Ja, zowel Apple Wallet als Google Wallet worden ondersteund.</p></details>
+              </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta reveal" id="wachtlijst">
+  <section class="section section--paper2">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Verder lezen</span>
+        <h2>Meer weten over digitale klantenkaarten?</h2>
+        <p class="section__lead">Praktische uitleg en tips uit onze gids — helder en zonder jargon.</p>
+      </div>
+      <div class="gids-grid reveal">
+                <a class="gidscard" href="/gids/digitale-klantenkaart-wallet/">
+          <span class="gidscard__cat">Uitleg · 6 min</span>
+          <strong>Digitale klantenkaart in Apple &amp; Google Wallet: hoe werkt het?</strong>
+          <span class="gidscard__excerpt">Wat een digitale klantenkaart is, hoe hij zonder app in de Wallet komt en waarom klanten hem niet meer kwijtraken.</span>
+          <span class="gidscard__go">Lees de gids &rarr;</span>
+        </a>
+                <a class="gidscard" href="/gids/papieren-vs-digitale-stempelkaart/">
+          <span class="gidscard__cat">Vergelijking · 7 min</span>
+          <strong>Papieren stempelkaart vs. digitale klantenkaart</strong>
+          <span class="gidscard__excerpt">Kosten, gebruiksgemak, klantinzicht en herhaalbezoek van papier en digitaal, eerlijk naast elkaar in één tabel.</span>
+          <span class="gidscard__go">Lees de gids &rarr;</span>
+        </a>
+                <a class="gidscard" href="/gids/klantenbinding-lokale-ondernemers/">
+          <span class="gidscard__cat">Strategie · 8 min</span>
+          <strong>Klantenbinding: 7 manieren die écht werken</strong>
+          <span class="gidscard__excerpt">Zeven concrete manieren om van eenmalige bezoekers vaste klanten te maken — en hoe je meet wat werkt.</span>
+          <span class="gidscard__go">Lees de gids &rarr;</span>
+        </a>
+              </div>
+    </div>
+  </section>
+
+  <section class="cta reveal" id="start-gratis">
     <div class="container cta__inner">
-      <h2>Zet je koffiebar op de wachtlijst</h2>
-      <p>Schrijf je in en krijg als eerste toegang tot Stampzer — of test 'm gratis als een van onze eerste pilots.</p>
-      <form class="waitlist-form waitlist-form--center" novalidate>
-        <label class="sr-only" for="k-email-cta">E-mailadres</label>
-        <input class="waitlist-form__input" type="email" id="k-email-cta" name="email" placeholder="jouw@koffiebar.nl" required autocomplete="email" />
-        <button class="btn btn--ink" type="submit">Zet mij op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></button>
-        <p class="waitlist-form__note" role="status">We mailen je zodra we live gaan. Geen spam, beloofd.</p>
-      </form>
+      <h2>Klaar voor meer vaste klanten?</h2>
+      <p>Stampzer is nu gratis te proberen &mdash; zonder app en zonder creditcard. Zet vandaag je eerste spaarkaart klaar.</p>
+      <a href="https://app.stampzer.com" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
@@ -333,12 +226,12 @@
 
   <footer class="footer">
     <div class="container footer__grid">
-      <div class="footer__brand"><img src="/assets/logo-cream.png" alt="Stampzer" width="150" height="55" /><p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p></div>
-      <nav class="footer__col" aria-label="Product"><h4>Product</h4><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/digitale-stempelkaart/">Digitale stempelkaart</a><a href="/spaarkaart-zonder-app/">Zonder app</a><a href="/apple-wallet-spaarkaart/">Apple Wallet</a><a href="/google-wallet-klantenkaart/">Google Wallet</a><a href="/gids/">Gids</a></nav>
-      <nav class="footer__col" aria-label="Bedrijf"><h4>Bedrijf</h4><a href="/over-ons/">Over ons</a><a href="/voor-wie/">Voor wie</a><a href="/privacy/">Privacybeleid</a><a href="/voorwaarden/">Voorwaarden</a><a href="/contact/">Contact</a></nav>
-      <div class="footer__col"><h4>Blijf op de hoogte</h4><a href="mailto:hello@stampzer.com">hello@stampzer.com</a><a href="#wachtlijst" class="btn btn--green footer__cta">Op de wachtlijst <span class="btn__arrow" aria-hidden="true">→</span></a></div>
+      <div class="footer__brand"><img src="/assets/logo-cream.png" alt="stampzer.com" width="150" height="54" /><p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p></div>
+      <nav class="footer__col" aria-label="Product"><h4>Product</h4><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#kaarten">Voorbeelden</a><a href="/spaarkaart-zonder-app/">Zonder app</a><a href="/apple-wallet-spaarkaart/">Apple Wallet</a><a href="/google-wallet-klantenkaart/">Google Wallet</a><a href="/gids/">Gids</a><a href="/over-ons/">Over ons</a><a href="/dashboard.html">Dashboard</a><a href="https://app.stampzer.com">Start gratis</a><a href="/privacy/">Privacybeleid</a></nav>
+      <nav class="footer__col" aria-label="Voor wie"><h4>Voor wie</h4><a href="/voor-wie/">Alle branches</a><a href="/kapper/">Kappers</a><a href="/koffiebar/">Koffiebars</a></nav>
+      <div class="footer__col"><h4>Blijf op de hoogte</h4><a href="mailto:hello@stampzer.com">hello@stampzer.com</a><a href="https://app.stampzer.com" class="btn btn--green footer__cta">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a></div>
     </div>
-    <div class="container footer__bottom"><span>© 2026 stampzer.com — Alle rechten voorbehouden.</span><span class="footer__credit">Ontworpen door <a href="https://studioclear.nl" target="_blank" rel="noopener">Studio Clear</a></span><span>Gemaakt in Nederland 🇳🇱</span></div>
+    <div class="container footer__bottom"><span>© 2026 stampzer.com — Alle rechten voorbehouden.</span><span>Gemaakt in Nederland 🇳🇱</span></div>
   </footer>
 
   <script src="/config.js"></script>
