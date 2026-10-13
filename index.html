@@ -105,7 +105,8 @@
   .segs{padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
   .segs__in{display:flex;align-items:center;gap:12px 28px;flex-wrap:wrap;justify-content:center}
   .segs__lbl{font-size:.82rem;font-weight:600;color:var(--muted)}
-  .segs__item{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:1.05rem;color:var(--ink);opacity:.85}
+  .segs__item{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:1.05rem;color:var(--ink);opacity:.85;text-decoration:none;transition:opacity .2s ease,color .2s ease}
+  a.segs__item:hover{opacity:1;color:var(--green-900)}
   .segs__item svg{width:20px;height:20px;color:var(--green-700)}
 
   /* sections */
@@ -121,7 +122,7 @@
 
   /* voor wie — branche cards */
   .brgrid{margin-top:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .brcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .brcard{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-decoration:none;color:inherit}
   .brcard__ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;margin-bottom:16px;background:linear-gradient(135deg,var(--green),var(--green-700));color:#fff;box-shadow:0 10px 22px -10px rgba(31,155,0,.6)}
   .brcard h3{font-size:1.25rem}
   .brcard p{margin-top:8px;font-size:.95rem;color:var(--text)}
@@ -411,11 +412,10 @@
   <div class="container nav__in">
     <a class="nav__logo" href="/" aria-label="Stampzer"><img src="https://stampzer.com/assets/logo-dark.png" alt="Stampzer" /></a>
     <nav class="nav__links" aria-label="Menu">
-      <a href="#voor-wie">Voor wie</a>
-      <a href="#hoe">Hoe het werkt</a>
-      <a href="#dashboard">Jouw dashboard</a>
-      <a href="#opbrengst">Opbrengst</a>
-      <a href="#prijs">Prijzen</a>
+      <a href="/#hoe-het-werkt">Hoe het werkt</a>
+      <a href="/voor-wie/">Voor wie</a>
+      <a href="/gids/">Gids</a>
+      <a href="/prijzen/">Prijzen</a>
     </nav>
     <div class="nav__cta">
       <a class="btn btn--green" href="https://app.stampzer.com">Start gratis <span class="arrow">→</span></a>
@@ -466,11 +466,11 @@
 <!-- SEGMENTS -->
 <div class="segs"><div class="container segs__in">
   <span class="segs__lbl">Gemaakt voor lokale zaken:</span>
-  <span class="segs__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 3v2M10.5 3v2"/></svg>Koffiebars</span>
-  <span class="segs__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/></svg>Kappers</span>
-  <span class="segs__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10c2-4 14-4 16 0 1 2 0 9-2 10H6c-2-1-3-8-2-10z"/><path d="M8 10V7M12 10V6M16 10V7"/></svg>Bakkers</span>
-  <span class="segs__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3l2 8H7z"/><path d="M9 11v10"/><path d="M15 3c2 0 3 2 3 5s-1 4-3 4V3z"/><path d="M15 12v9"/></svg>Lunchrooms</span>
-  <span class="segs__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg>Sportscholen</span>
+  <a class="segs__item" href="/koffiebar/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 3v2M10.5 3v2"/></svg>Koffiebars</a>
+  <a class="segs__item" href="/kapper/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/></svg>Kappers</a>
+  <a class="segs__item" href="/bakker/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10c2-4 14-4 16 0 1 2 0 9-2 10H6c-2-1-3-8-2-10z"/><path d="M8 10V7M12 10V6M16 10V7"/></svg>Bakkers</a>
+  <a class="segs__item" href="/lunchroom/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3l2 8H7z"/><path d="M9 11v10"/><path d="M15 3c2 0 3 2 3 5s-1 4-3 4V3z"/><path d="M15 12v9"/></svg>Lunchrooms</a>
+  <a class="segs__item" href="/sportschool/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg>Sportscholen</a>
 </div></div>
 
 <!-- VOOR WIE -->
@@ -478,12 +478,12 @@
   <div class="container">
     <div class="shead reveal"><span class="eyebrow">Voor wie</span><h2>Eén slim systeem, in jouw branche vertaald</h2><p>Draait je zaak op klanten die terugkomen? Dan verdient een spaarkaart zich snel terug. Zo ziet dat er in de praktijk uit.</p></div>
     <div class="brgrid">
-      <div class="brcard hovr reveal"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 3v2M10.5 3v2"/></svg></div><h3>Koffiebar &amp; café</h3><p>De dagelijkse koffie is pure gewoonte. Een volle kaart geeft net dat zetje om bij jóu te blijven halen.</p><span class="brcard__reward">🎁 Bijv. 10ᵉ koffie gratis</span></div>
-      <div class="brcard hovr reveal"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/></svg></div><h3>Kapper &amp; barbershop</h3><p>Tussen twee knipbeurten zit zomaar zes weken. Een spaarkaart houdt je zaak top-of-mind.</p><span class="brcard__reward">🎁 Bijv. 6ᵉ knipbeurt halve prijs</span></div>
-      <div class="brcard hovr reveal"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10c2-4 14-4 16 0 1 2 0 9-2 10H6c-2-1-3-8-2-10z"/><path d="M8 10V7M12 10V6M16 10V7"/></svg></div><h3>Bakker &amp; lunchroom</h3><p>Veel bezoeken, kleine bonnen. Laat sparen per bezoek en zie je vaste klanten vaker langskomen.</p><span class="brcard__reward">🎁 Bijv. gratis broodje of gebak</span></div>
-      <div class="brcard hovr reveal"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4l6 2-2 6-5-2z"/><path d="M13 10L4 19a2 2 0 0 0 0 3h0a2 2 0 0 0 3 0l9-9"/></svg></div><h3>Nagelstudio &amp; salon</h3><p>Behandelingen op afspraak lenen zich perfect voor sparen. Beloon trouw met een gratis extra.</p><span class="brcard__reward">🎁 Bijv. gratis behandeling</span></div>
-      <div class="brcard hovr reveal"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg></div><h3>Sportschool &amp; studio</h3><p>Binding is alles. Beloon wie vaak traint en houd leden gemotiveerd en betrokken.</p><span class="brcard__reward">🎁 Bijv. gratis maand of les</span></div>
-      <div class="brcard hovr reveal"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h16M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M7 11v8M17 11v8"/></svg></div><h3>Restaurant &amp; afhaal</h3><p>Van vaste lunchplek tot favoriete afhaal: geef gasten een reden om steeds terug te kiezen.</p><span class="brcard__reward">🎁 Bijv. 10ᵉ bezoek gratis gerecht</span></div>
+      <a class="brcard hovr reveal" href="/koffiebar/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 3v2M10.5 3v2"/></svg></div><h3>Koffiebar &amp; café</h3><p>De dagelijkse koffie is pure gewoonte. Een volle kaart geeft net dat zetje om bij jóu te blijven halen.</p><span class="brcard__reward">🎁 Bijv. 10ᵉ koffie gratis</span></a>
+      <a class="brcard hovr reveal" href="/kapper/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/></svg></div><h3>Kapper &amp; barbershop</h3><p>Tussen twee knipbeurten zit zomaar zes weken. Een spaarkaart houdt je zaak top-of-mind.</p><span class="brcard__reward">🎁 Bijv. 6ᵉ knipbeurt halve prijs</span></a>
+      <a class="brcard hovr reveal" href="/bakker/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10c2-4 14-4 16 0 1 2 0 9-2 10H6c-2-1-3-8-2-10z"/><path d="M8 10V7M12 10V6M16 10V7"/></svg></div><h3>Bakker &amp; lunchroom</h3><p>Veel bezoeken, kleine bonnen. Laat sparen per bezoek en zie je vaste klanten vaker langskomen.</p><span class="brcard__reward">🎁 Bijv. gratis broodje of gebak</span></a>
+      <a class="brcard hovr reveal" href="/nagelstudio/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4l6 2-2 6-5-2z"/><path d="M13 10L4 19a2 2 0 0 0 0 3h0a2 2 0 0 0 3 0l9-9"/></svg></div><h3>Nagelstudio &amp; salon</h3><p>Behandelingen op afspraak lenen zich perfect voor sparen. Beloon trouw met een gratis extra.</p><span class="brcard__reward">🎁 Bijv. gratis behandeling</span></a>
+      <a class="brcard hovr reveal" href="/sportschool/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg></div><h3>Sportschool &amp; studio</h3><p>Binding is alles. Beloon wie vaak traint en houd leden gemotiveerd en betrokken.</p><span class="brcard__reward">🎁 Bijv. gratis maand of les</span></a>
+      <a class="brcard hovr reveal" href="/restaurant/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h16M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M7 11v8M17 11v8"/></svg></div><h3>Restaurant &amp; afhaal</h3><p>Van vaste lunchplek tot favoriete afhaal: geef gasten een reden om steeds terug te kiezen.</p><span class="brcard__reward">🎁 Bijv. 10ᵉ bezoek gratis gerecht</span></a>
     </div>
   </div>
 </section>
@@ -502,7 +502,7 @@
 </section>
 
 <!-- HOW -->
-<section id="hoe">
+<section id="hoe-het-werkt">
   <div class="container">
     <div class="shead reveal"><span class="eyebrow">Hoe het werkt</span><h2>In drie stappen live</h2><p>Jij stelt je kaart samen, je klant voegt 'm toe, jij deelt de stempels uit. Geen techniek nodig.</p></div>
     <div class="steps">
@@ -692,7 +692,7 @@
   <div class="container">
     <div class="footer__grid">
       <div><img src="https://stampzer.com/assets/logo-cream.png" alt="Stampzer" /><p style="max-width:24em">Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p></div>
-      <div><h4>Product</h4><a href="#voor-wie">Voor wie</a><a href="#hoe">Hoe het werkt</a><a href="#dashboard">Jouw dashboard</a><a href="#prijs">Prijzen</a><a href="https://app.stampzer.com">Inloggen</a></div>
+      <div><h4>Product</h4><a href="/voor-wie/">Voor wie</a><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#dashboard">Jouw dashboard</a><a href="/prijzen/">Prijzen</a><a href="https://app.stampzer.com">Inloggen</a></div>
       <div><h4>Gids</h4><a href="https://stampzer.com/gids/">Alle gidsen</a><a href="https://stampzer.com/gids/digitale-klantenkaart-wallet/">Hoe werkt de Wallet-kaart</a><a href="https://stampzer.com/gids/papieren-vs-digitale-stempelkaart/">Papier vs. digitaal</a></div>
       <div><h4>Bedrijf</h4><a href="https://stampzer.com/over-ons/">Over ons</a><a href="https://stampzer.com/privacy/">Privacybeleid</a><a href="mailto:hello@stampzer.com">Contact</a></div>
     </div>
