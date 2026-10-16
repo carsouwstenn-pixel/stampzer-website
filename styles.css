@@ -796,3 +796,14 @@ a.gidscard:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); bo
   .pilot-cta-card { padding: 30px 22px; }
   .painlist li { font-size: 1.02rem; }
 }
+/* Hand-drawn illustration sections (2026-10) */
+.hand-cut{display:block;width:100%;height:auto}
+.atmos{background:var(--paper);padding:clamp(52px,7vw,104px) 0;overflow:clip}
+.atmos__grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(28px,5vw,76px);align-items:center}
+.atmos__art{position:relative}
+.atmos__art .hand-cut{width:112%;max-width:none;margin-left:-6%}
+.atmos__copy h2{margin:10px 0 14px}
+.atmos__points{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:13px}
+.atmos__points li{display:flex;gap:12px;align-items:flex-start;font-size:1.02rem;color:var(--ink)}
+.atmos__points .tick{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--green);color:#08260a;display:grid;place-items:center;font-size:.8rem;font-weight:700;margin-top:1px}
+@media(max-width:760px){.atmos__grid{grid-template-columns:1fr}.atmos__art{order:-1;max-width:520px;margin:0 auto}.atmos__art .hand-cut{width:100%;margin-left:0}}
