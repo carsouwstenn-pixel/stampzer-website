@@ -1,13 +1,14 @@
 # Stampzer
 
-> Stampzer zet de spaarkaart van lokale ondernemers direct in de Apple Wallet en Google Wallet van hun klanten — zonder app. Klanten raken hun kaart nooit meer kwijt en komen vaker terug. Gemaakt in Nederland, momenteel in besloten bèta.
+> Stampzer zet de spaarkaart van lokale ondernemers direct in de Apple Wallet en Google Wallet van hun klanten — zonder app. Klanten raken hun kaart nooit meer kwijt en komen vaker terug. Gemaakt in Nederland, nu gratis te proberen.
 
 Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyaliteitsprogramma's voor lokale ondernemers. Een ondernemer ontwerpt een spaarkaart in de eigen huisstijl; klanten voegen die met één QR-code toe aan de Wallet-app die al op hun telefoon staat (Apple Wallet op iPhone, Google Wallet op Android). Bij elk bezoek deelt de ondernemer een digitale stempel uit; een volle kaart geeft een zelfgekozen beloning. Zo krijgen lokale zaken meer terugkerende klanten, inzicht in wie hun vaste klanten zijn, en de mogelijkheid om klanten een herinnering te sturen.
 
 ## Belangrijkste pagina's
-- [Homepage](https://stampzer.com/): Wat Stampzer is, hoe het werkt en inschrijven voor de wachtlijst.
+- [Homepage](https://stampzer.com/): Wat Stampzer is, wat het oplevert en gratis beginnen.
+- [Hoe het werkt](https://stampzer.com/hoe-het-werkt/): Stap voor stap: kaart maken, QR-code op de balie, stempelen met je telefoon, en wat je klant ziet.
 - [Voor wie is Stampzer](https://stampzer.com/voor-wie/): Overzicht van branches waarvoor Stampzer geschikt is.
-- [Prijzen](https://stampzer.com/prijzen/): Wat Stampzer kost — Starter €29 en Pro €49 per maand, gratis tijdens de bèta.
+- [Prijzen](https://stampzer.com/prijzen/): Wat Stampzer kost — Starter €29 en Pro €49 per maand, gratis te proberen.
 
 ## Voor welke branches
 - [Koffiebars](https://stampzer.com/koffiebar/): Digitale klantenkaart voor koffiezaken en koffiebars.

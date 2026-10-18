@@ -50,13 +50,6 @@ document.documentElement.classList.add('js');
   ids.forEach(function(i){if(r[i])r[i].addEventListener('input',update);});update();
 })();
 
-// Mobile burger menu
-(function(){
-  var nav=document.querySelector('.nav'),b=document.querySelector('.nav__burger');if(!b)return;
-  b.addEventListener('click',function(){nav.classList.toggle('open');});
-  document.querySelectorAll('.nav__links a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');});});
-})();
-
 // Reveal on scroll
 (function(){
   if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(x){x.classList.add('in');});return;}

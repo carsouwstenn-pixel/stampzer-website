@@ -28,20 +28,29 @@
   <link rel="stylesheet" href="/styles.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"QR-code klantenkaart: klanten werven vanaf je balie","description":"Zo werf je met een QR-code klantenkaart meer vaste klanten: waar je de QR plaatst, wat je aan de balie zegt en hoe je meet. Probeer Stampzer gratis.","inLanguage":"nl-NL","datePublished":"2026-10-16","dateModified":"2026-10-16","author":{"@type":"Person","name":"Stenn Carsouw","url":"https://stampzer.com/over-ons/","jobTitle":"Oprichter","worksFor":{"@type":"Organization","name":"Stampzer","url":"https://stampzer.com/"}},"publisher":{"@type":"Organization","name":"Stampzer","logo":{"@type":"ImageObject","url":"https://stampzer.com/assets/logo.png"}},"mainEntityOfPage":"https://stampzer.com/gids/qr-code-balie-klanten-werven/","image":"https://stampzer.com/assets/og-image.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stampzer.com/"},{"@type":"ListItem","position":2,"name":"Gids","item":"https://stampzer.com/gids/"},{"@type":"ListItem","position":3,"name":"QR-code op de balie: zo werf je klanten voor je spaarkaart","item":"https://stampzer.com/gids/qr-code-balie-klanten-werven/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Waar plaats ik de QR-code het beste in mijn zaak?","acceptedAnswer":{"@type":"Answer","text":"Op de plek waar de klant al even stilstaat: bij de kassa of balie, op tafel of bij de spiegel. Zet er één zin bij, zoals 'Scan en spaar voor je gratis koffie', en zorg dat de code minimaal 4 bij 4 centimeter groot is zodat hij snel scant."}},{"@type":"Question","name":"Moet de klant een app downloaden om de QR-code te gebruiken?","acceptedAnswer":{"@type":"Answer","text":"Nee. De klant scant de QR-code met de gewone camera, tikt op Toevoegen en de kaart staat in Apple Wallet of Google Wallet. Er is geen app en geen account nodig."}},{"@type":"Question","name":"Hoeveel klanten scannen de QR-code echt?","acceptedAnswer":{"@type":"Answer","text":"Dat hangt af van of je erom vraagt. Staat de code alleen op een poster, dan scant vaak maar een klein deel. Vraagt je team bij het afrekenen actief of de klant wil sparen, dan loopt dat in de praktijk op naar een groot deel van je vaste klanten. Het persoonlijke aanbod maakt het verschil."}},{"@type":"Question","name":"Werkt een QR-code ook als mijn klant geen goed bereik heeft in de winkel?","acceptedAnswer":{"@type":"Answer","text":"Meestal wel: het toevoegen aan de Wallet kost maar een paar seconden. Heeft de klant even geen bereik, geef dan een kaartje of sticker mee met dezelfde QR-code, dan scant hij thuis alsnog."}}]}]}</script>
   <script src="/config.js" defer></script>
+  <script src="/site.js" defer></script>
   <script src="/motion.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Naar inhoud</a>
   <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a class="nav__logo" href="/" aria-label="stampzer.com home"><img src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" /></a>
-      <nav class="nav__links" aria-label="Menu">
-        <a href="/#hoe-het-werkt">Hoe het werkt</a>
+      <a class="nav__logo" href="/" aria-label="Stampzer, naar de homepage"><img src="/assets/logo-dark.png" alt="Stampzer" width="150" height="54" /></a>
+      <nav class="nav__links" id="nav-menu" aria-label="Hoofdmenu">
+        <a href="/hoe-het-werkt/">Hoe het werkt</a>
         <a href="/voor-wie/">Voor wie</a>
-        <a href="/gids/">Gids</a>
+        <a href="/gids/" aria-current="true">Gids</a>
         <a href="/prijzen/">Prijzen</a>
+        <a class="nav__menu-login" href="https://app.stampzer.com">Inloggen</a>
       </nav>
-      <a href="https://app.stampzer.com" class="btn btn--green nav__cta">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+      <div class="nav__actions">
+        <a class="nav__login" href="https://app.stampzer.com">Inloggen</a>
+        <a class="btn btn--green nav__cta" href="https://app.stampzer.com/registreren">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <button class="nav__burger" type="button" aria-label="Menu openen" aria-controls="nav-menu" aria-expanded="false">
+          <svg class="nav__icon-open" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="nav__icon-close" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -146,7 +155,7 @@
               <li><strong>Het team niet meenemen.</strong> Als alleen jij de vraag stelt, scant niemand op de dagen dat je er niet bent.</li>
               <li><strong>Alleen online delen.</strong> Een QR-code is een fysiek hulpmiddel; de kracht zit in het moment aan de balie.</li>
             </ul>
-            <p>Wil je zien hoe dit er van begin tot eind uitziet, van kaart maken tot eerste stempel? <a href="/#hoe-het-werkt">Zo werkt Stampzer</a>.</p>
+            <p>Wil je zien hoe dit er van begin tot eind uitziet, van kaart maken tot eerste stempel? <a href="/hoe-het-werkt/">Zo werkt Stampzer</a>.</p>
           </section>
         </div>
 
@@ -216,39 +225,55 @@
       <div class="container cta__inner">
         <h2>Klaar om klanten vanaf je balie aan je te binden?</h2>
         <p>Stampzer is nu gratis te proberen, zonder app en zonder creditcard. Zet vandaag je eerste spaarkaart klaar.</p>
-        <a href="https://app.stampzer.com" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="https://app.stampzer.com/registreren" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <img src="/assets/logo-cream.png" alt="stampzer.com" width="150" height="54" />
-        <p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p>
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="/" aria-label="Stampzer, naar de homepage"><img src="/assets/logo-cream.png" alt="Stampzer" width="150" height="54" loading="lazy" /></a>
+          <p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p>
+          <a class="footer__mail" href="mailto:hello@stampzer.com">hello@stampzer.com</a>
+        </div>
+        <nav class="footer__col" aria-label="Product">
+          <h2 class="footer__h">Product</h2>
+          <a href="/hoe-het-werkt/">Hoe het werkt</a>
+          <a href="/digitale-stempelkaart/">Digitale stempelkaart</a>
+          <a href="/apple-wallet-spaarkaart/">Apple Wallet</a>
+          <a href="/google-wallet-klantenkaart/">Google Wallet</a>
+          <a href="/spaarkaart-zonder-app/">Zonder app</a>
+          <a href="/prijzen/">Prijzen</a>
+        </nav>
+        <nav class="footer__col" aria-label="Voor wie">
+          <h2 class="footer__h">Voor wie</h2>
+          <a href="/voor-wie/">Alle branches</a>
+          <a href="/koffiebar/">Koffiebars</a>
+          <a href="/lunchroom/">Lunchrooms</a>
+          <a href="/restaurant/">Restaurants</a>
+          <a href="/bakker/">Bakkers</a>
+          <a href="/kapper/">Kappers</a>
+          <a href="/nagelstudio/">Nagelstudio's</a>
+          <a href="/sportschool/">Sportscholen</a>
+        </nav>
+        <nav class="footer__col" aria-label="Stampzer">
+          <h2 class="footer__h">Stampzer</h2>
+          <a href="/gids/">Gids</a>
+          <a href="/over-ons/">Over ons</a>
+          <a href="/contact/">Contact</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/voorwaarden/">Voorwaarden</a>
+          <a href="https://app.stampzer.com">Inloggen</a>
+        </nav>
       </div>
-      <nav class="footer__col" aria-label="Product">
-        <h4>Product</h4>
-        <a href="/#hoe-het-werkt">Hoe het werkt</a>
-        <a href="/voor-wie/">Voor wie</a>
-        <a href="/gids/">Gids</a>
-        <a href="/prijzen/">Prijzen</a>
-      </nav>
-      <nav class="footer__col" aria-label="Bedrijf">
-        <h4>Bedrijf</h4>
-        <a href="/over-ons/">Over ons</a>
-        <a href="/privacy/">Privacybeleid</a>
-        <a href="mailto:hello@stampzer.com">Contact</a>
-      </nav>
-      <div class="footer__col">
-        <h4>Blijf op de hoogte</h4>
-        <a href="mailto:hello@stampzer.com">hello@stampzer.com</a>
-        <a href="https://app.stampzer.com" class="btn btn--green footer__cta">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Stampzer</span>
+        <span>Ontworpen door <a href="https://studioclear.nl" target="_blank" rel="noopener">Studio Clear</a></span>
+        <span>Gemaakt in Nederland</span>
+        <button class="footer__cookies" type="button" data-cookie-settings>Cookie-instellingen</button>
       </div>
-    </div>
-    <div class="container footer__bottom">
-      <span>&copy; 2026 stampzer.com — Alle rechten voorbehouden.</span>
-      <span>Gemaakt in Nederland 🇳🇱</span>
     </div>
   </footer>
 </body>

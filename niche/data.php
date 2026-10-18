@@ -5,7 +5,7 @@ return [
   'koffiebar' => [
     'name' => 'Koffiebar',
     'title' => 'Digitale klantenkaart voor koffiebars | Stampzer',
-    'desc' => 'Dé digitale spaarkaart voor je koffiebar of café. Klanten sparen voor een gratis koffie, direct in Apple & Google Wallet — nooit meer kwijt. Meer terugkerende klanten. Schrijf je in.',
+    'desc' => 'Dé digitale spaarkaart voor je koffiebar of café. Klanten sparen voor een gratis koffie, direct in Apple & Google Wallet — nooit meer kwijt. Meer terugkerende klanten. Probeer het gratis.',
     'keywords' => 'digitale klantenkaart koffiebar, stempelkaart café, spaarkaart koffie, koffie spaarkaart app, loyaliteitsprogramma koffiebar, gratis koffie sparen',
     'eyebrow' => 'Voor koffiebars & cafés',
     'h1a' => 'Digitale klantenkaart voor koffiebars die klanten ', 'mark' => 'terug laat komen', 'h1b' => '.',
@@ -77,7 +77,7 @@ return [
   'lunchroom' => [
     'name' => 'Lunchroom',
     'title' => 'Digitale klantenkaart voor lunchrooms | Stampzer',
-    'desc' => 'Dé digitale spaarkaart voor je lunchroom. Klanten sparen bij elke lunch voor een beloning, direct in Apple & Google Wallet — nooit meer kwijt. Meer vaste gasten. Schrijf je in.',
+    'desc' => 'Dé digitale spaarkaart voor je lunchroom. Klanten sparen bij elke lunch voor een beloning, direct in Apple & Google Wallet — nooit meer kwijt. Meer vaste gasten. Probeer het gratis.',
     'keywords' => 'digitale klantenkaart lunchroom, spaarkaart lunchroom, stempelkaart lunch, loyaliteitsprogramma horeca, klantenkaart broodjeszaak, klantenbinding lunchroom',
     'eyebrow' => 'Voor lunchrooms & broodjeszaken',
     'h1a' => 'Digitale klantenkaart voor lunchrooms waar gasten ', 'mark' => 'vaker terugkomen', 'h1b' => '.',
@@ -113,7 +113,7 @@ return [
   'sportschool' => [
     'name' => 'Sportschool',
     'title' => 'Digitale klantenkaart voor sportscholen | Stampzer',
-    'desc' => 'Dé digitale spaarkaart voor je sportschool of gym. Leden sparen voor beloningen en blijven gemotiveerd, direct in Apple & Google Wallet. Meer betrokken leden, minder opzeggingen. Schrijf je in.',
+    'desc' => 'Dé digitale spaarkaart voor je sportschool of gym. Leden sparen voor beloningen en blijven gemotiveerd, direct in Apple & Google Wallet. Meer betrokken leden, minder opzeggingen. Probeer het gratis.',
     'keywords' => 'digitale klantenkaart sportschool, spaarkaart gym, loyaliteitsprogramma sportschool, ledenbinding sportschool, klantenkaart fitness, stempelkaart sportschool',
     'eyebrow' => 'Voor sportscholen, gyms & studio\'s',
     'h1a' => 'Digitale klantenkaart voor sportscholen die leden ', 'mark' => 'gemotiveerd houdt', 'h1b' => '.',
@@ -149,7 +149,7 @@ return [
   'bakker' => [
     'name' => 'Bakker',
     'title' => 'Digitale klantenkaart voor bakkers | Stampzer',
-    'desc' => 'Dé digitale spaarkaart voor je bakkerij. Klanten sparen bij elke aankoop voor een gratis brood of gebakje, direct in Apple & Google Wallet — nooit meer kwijt. Meer vaste klanten. Schrijf je in.',
+    'desc' => 'Dé digitale spaarkaart voor je bakkerij. Klanten sparen bij elke aankoop voor een gratis brood of gebakje, direct in Apple & Google Wallet — nooit meer kwijt. Meer vaste klanten. Probeer het gratis.',
     'keywords' => 'digitale klantenkaart bakker, spaarkaart bakkerij, stempelkaart bakker, loyaliteitsprogramma bakkerij, klantenkaart bakkerij, klantenbinding bakker',
     'eyebrow' => 'Voor bakkers & bakkerijen',
     'h1a' => 'Digitale klantenkaart voor bakkers waar klanten ', 'mark' => 'blijven terugkomen', 'h1b' => '.',
@@ -185,7 +185,7 @@ return [
   'restaurant' => [
     'name' => 'Restaurant',
     'title' => 'Digitale klantenkaart voor restaurants & horeca | Stampzer',
-    'desc' => 'Dé digitale spaarkaart voor je restaurant of bistro. Gasten sparen bij elk bezoek voor een gerecht, drankje of korting, direct in Apple & Google Wallet — nooit meer kwijt. Meer vaste gasten, vollere stille avonden. Schrijf je in.',
+    'desc' => 'Dé digitale spaarkaart voor je restaurant of bistro. Gasten sparen bij elk bezoek voor een gerecht, drankje of korting, direct in Apple & Google Wallet — nooit meer kwijt. Meer vaste gasten, vollere stille avonden. Probeer het gratis.',
     'keywords' => 'digitale klantenkaart restaurant, spaarkaart restaurant, loyaliteitsprogramma horeca, klantenkaart horeca, stempelkaart restaurant, vaste gasten restaurant, klantenbinding horeca, restaurant marketing, gastenbinding, spaarsysteem horeca',
     'eyebrow' => 'Voor restaurants, bistro\'s & horeca',
     'h1a' => 'Digitale klantenkaart voor restaurants waar gasten ', 'mark' => 'blijven terugkomen', 'h1b' => '.',

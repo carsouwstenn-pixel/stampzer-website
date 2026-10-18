@@ -22,6 +22,8 @@
 <meta name="twitter:description" content="De spaarkaart van jouw zaak in Apple &amp; Google Wallet. Meer terugkerende klanten, zonder app." />
 <meta name="twitter:image" content="https://stampzer.com/assets/og-image.png?v=3" />
 <link rel="icon" type="image/png" href="https://stampzer.com/assets/favicon-64.png" />
+<script src="/config.js" defer></script>
+<script src="/site.js" defer></script>
 <script src="/home.js" defer></script>
 <style>
   @font-face{font-family:'Seatren';src:url('/assets/fonts/seatren.woff2') format('woff2');font-weight:400 800;font-display:swap}
@@ -54,16 +56,6 @@
   .btn--ghost:hover{background:var(--ink);color:var(--paper)}
   .btn--big{padding:17px 30px;font-size:1.06rem}
   .arrow{transition:transform .2s ease}.btn:hover .arrow{transform:translateX(4px)}
-
-  /* nav */
-  .nav{position:sticky;top:0;z-index:50;background:rgba(247,242,231,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  .nav__in{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}
-  .nav__logo img{height:30px;display:block}
-  .nav__links{display:flex;gap:26px}
-  .nav__links a{font-weight:500;font-size:.95rem;color:var(--ink-2);transition:color .15s}
-  .nav__links a:hover{color:var(--green-900)}
-  .nav__cta{display:flex;gap:10px;align-items:center}
-  .nav__burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
 
   /* hero */
   .hero{position:relative;overflow:hidden;padding:72px 0 80px}
@@ -248,15 +240,6 @@
   .final p{margin:16px auto 0;max-width:32em;font-size:1.1rem;color:var(--text)}
   .final .hero__cta{justify-content:center;margin-top:28px}
 
-  /* footer */
-  .footer{background:var(--ink);color:rgba(247,242,231,.7);padding:56px 0 30px}
-  .footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
-  .footer img{height:30px;margin-bottom:14px}
-  .footer h4{color:#fff;font-family:var(--body);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
-  .footer a{display:block;color:rgba(247,242,231,.7);font-size:.92rem;padding:4px 0}
-  .footer a:hover{color:#fff}
-  .footer__bottom{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.84rem;color:rgba(247,242,231,.55)}
-
   /* reveal */
   .reveal{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
   html.js .reveal{opacity:0;transform:translateY(22px)}
@@ -303,12 +286,6 @@
     .brgrid,.ownergrid,.steps,.exgrid{grid-template-columns:1fr 1fr}
     .trust__badges{grid-template-columns:1fr 1fr}
     .quotes{grid-template-columns:1fr}
-    .footer__grid{grid-template-columns:1fr 1fr}
-    .nav__links{display:none}
-    .nav__burger{display:grid;place-items:center;color:var(--ink)}
-    .nav__cta .btn--green{padding:11px 15px;font-size:.88rem}
-    .nav.open .nav__links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);padding:6px 0}
-    .nav.open .nav__links a{padding:13px 6vw;font-size:1rem}
     section{padding:64px 0}
   }
   @media(max-width:600px){ .toast{display:none} .wcard__name{font-size:.98rem;white-space:nowrap} }
@@ -321,15 +298,80 @@
     .hero__cta .btn{width:100%;justify-content:center}
     .shead h2{font-size:1.72rem}
     .cmp{font-size:.82rem}.cmp th,.cmp td{padding:11px 10px}
-    .footer__grid{grid-template-columns:1fr}
     section{padding:52px 0}
     .roi__panel,.roi__out{padding:22px}
     .roi__big{font-size:3rem}
     .roi__sub{gap:16px}
     .pcard{padding:26px 20px}
-    .nav__logo img{height:26px}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none;transition:none}.roi__fill{transition:none}}
+/* chrome:start · menu, footer en cookiemelding. Gegenereerd door tools/chrome.mjs: pas het daar aan, niet hier. */
+html{scroll-padding-top:88px}
+.skip-link{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+.btn__arrow{display:inline-block;transition:transform .18s ease}
+.btn:hover .btn__arrow{transform:translateX(4px)}
+.nav{position:sticky;top:0;z-index:100;background:rgba(247,242,231,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(24,31,16,.12);font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.2}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;gap:20px;height:70px}
+.nav__logo{display:block;flex:0 0 auto}
+.nav__logo img{display:block;width:auto;height:30px}
+.nav__links{display:flex;align-items:center;gap:28px}
+.nav__links a,.nav__login{font-size:.95rem;font-weight:500;color:var(--ink-2);text-decoration:none;transition:color .15s}
+.nav__links a{padding:8px 0}
+.nav__links a:hover,.nav__login:hover{color:var(--green-900)}
+.nav__links a[aria-current]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:9px}
+.nav__menu-login{display:none}
+.nav__actions{display:flex;align-items:center;gap:20px}
+.nav .nav__cta{gap:8px;padding:12px 20px;border-width:2px;font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.95rem;font-weight:600;line-height:1;white-space:nowrap}
+.nav .nav__cta:hover{color:var(--ink);transform:none}
+.nav__burger{display:none;place-items:center;width:44px;height:44px;margin-right:-10px;padding:0;background:none;border:0;border-radius:10px;color:var(--ink);cursor:pointer}
+.nav__links a:focus-visible,.nav__login:focus-visible,.nav__burger:focus-visible{outline:2px solid var(--green-700);outline-offset:3px}
+.nav__burger[aria-expanded="true"] .nav__icon-open,.nav__burger:not([aria-expanded="true"]) .nav__icon-close{display:none}
+@media (max-width:920px){
+  .nav__inner{height:64px}
+  .nav__links,.nav__login{display:none}
+  .nav__burger{display:grid}
+  .nav .nav__cta{padding:10px 16px;font-size:.9rem}
+  .nav.open .nav__links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:6px 0 12px;background:var(--paper);border-bottom:1px solid rgba(24,31,16,.12);box-shadow:0 18px 30px -18px rgba(24,31,16,.35)}
+  .nav.open .nav__links a{display:block;padding:14px 4vw;font-size:1.05rem;text-underline-offset:6px}
+  .nav.open .nav__links .nav__menu-login{margin-top:6px;border-top:1px solid rgba(24,31,16,.12)}
+}
+@media (max-width:560px){
+  .nav__logo img{height:26px}
+  .nav.open .nav__links a{padding-left:4.5vw;padding-right:4.5vw}
+}
+.footer{background:var(--ink);color:rgba(247,242,231,.7);padding:56px 0 30px;font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+.footer__brand img{display:block;width:auto;height:30px;margin-bottom:14px}
+.footer__brand p{max-width:24em;margin:0;font-size:.92rem;line-height:1.6}
+.footer__mail{display:inline-block;margin-top:12px}
+.footer__h{margin:0 0 12px;font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.8rem;font-weight:600;line-height:1.3;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.footer a{color:rgba(247,242,231,.72);font-size:.92rem;text-decoration:none;transition:color .15s}
+.footer__col a{display:block;padding:4px 0}
+.footer a:hover,.footer__cookies:hover{color:#fff}
+.footer a:focus-visible,.footer__cookies:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.footer__bottom{display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:.84rem;color:rgba(247,242,231,.55)}
+.footer__bottom a{font-size:inherit;color:inherit;text-decoration:underline;text-underline-offset:2px}
+.footer__cookies{margin-left:auto;padding:0;background:none;border:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+@media (max-width:920px){.footer__grid{grid-template-columns:1fr 1fr}.footer__brand{grid-column:1/-1}}
+@media (max-width:560px){.footer__cookies{margin-left:0}}
+.cookie{position:fixed;z-index:300;left:16px;right:16px;bottom:16px;max-width:720px;margin:0 auto;padding:20px 24px;background:var(--ink);color:var(--paper);border-radius:18px;box-shadow:0 28px 60px -28px rgba(24,31,16,.45);font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;transform:translateY(160%);transition:transform .5s cubic-bezier(.16,.84,.44,1)}
+.cookie.is-in{transform:none}
+.cookie__inner{display:flex;flex-wrap:wrap;align-items:center;gap:22px}
+.cookie__text{flex:1;min-width:240px}
+.cookie__text strong{display:block;margin-bottom:5px;font-family:"Seatren",Georgia,serif;font-size:1.2rem;font-weight:400;color:#fff}
+.cookie__text p{margin:0;font-size:.9rem;line-height:1.55;color:rgba(247,242,231,.78)}
+.cookie__text a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
+.cookie__actions{display:flex;flex-shrink:0;gap:10px}
+.cookie__btn{padding:11px 22px;border:1px solid transparent;border-radius:999px;font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;transition:background .16s ease,border-color .16s ease,transform .16s ease}
+.cookie__btn:active{transform:translateY(1px)}
+.cookie__btn--accept{background:var(--green);color:var(--ink)}
+.cookie__btn--accept:hover{background:#34e000}
+.cookie__btn--deny{background:transparent;color:var(--paper);border-color:rgba(247,242,231,.32)}
+.cookie__btn--deny:hover{border-color:rgba(247,242,231,.6)}
+@media (max-width:560px){.cookie{padding:18px}.cookie__actions{width:100%}.cookie__btn{flex:1}}
+@media (prefers-reduced-motion:reduce){.cookie,.btn__arrow{transition:none}}
+/* chrome:end */
 </style>
 <script type="application/ld+json">
 {
@@ -405,21 +447,26 @@
 <body>
 
 <!-- NAV -->
-<header class="nav">
-  <div class="container nav__in">
-    <a class="nav__logo" href="/" aria-label="Stampzer"><img src="https://stampzer.com/assets/logo-dark.png" alt="Stampzer" /></a>
-    <nav class="nav__links" aria-label="Menu">
-      <a href="/#hoe-het-werkt">Hoe het werkt</a>
-      <a href="/voor-wie/">Voor wie</a>
-      <a href="/gids/">Gids</a>
-      <a href="/prijzen/">Prijzen</a>
-    </nav>
-    <div class="nav__cta">
-      <a class="btn btn--green" href="https://app.stampzer.com">Start gratis <span class="arrow">→</span></a>
-      <button class="nav__burger" aria-label="Menu"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="/" aria-label="Stampzer, naar de homepage"><img src="/assets/logo-dark.png" alt="Stampzer" width="150" height="54" /></a>
+      <nav class="nav__links" id="nav-menu" aria-label="Hoofdmenu">
+        <a href="/hoe-het-werkt/">Hoe het werkt</a>
+        <a href="/voor-wie/">Voor wie</a>
+        <a href="/gids/">Gids</a>
+        <a href="/prijzen/">Prijzen</a>
+        <a class="nav__menu-login" href="https://app.stampzer.com">Inloggen</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="nav__login" href="https://app.stampzer.com">Inloggen</a>
+        <a class="btn btn--green nav__cta" href="https://app.stampzer.com/registreren">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <button class="nav__burger" type="button" aria-label="Menu openen" aria-controls="nav-menu" aria-expanded="false">
+          <svg class="nav__icon-open" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="nav__icon-close" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
 <!-- HERO -->
 <section class="hero">
@@ -433,7 +480,7 @@
       <h1>Meer <span class="mark">vaste klanten</span>. Zonder app, zonder kaartjes.</h1>
       <p class="hero__sub">Stampzer zet de spaarkaart van jouw zaak in de Wallet op de telefoon van je klant. Aan de balie scan je de kaart voor een stempel, en in je dashboard zie je wie er vaak terugkomt.</p>
       <div class="hero__cta">
-        <a class="btn btn--green btn--big" href="https://app.stampzer.com">Start gratis <span class="arrow">→</span></a>
+        <a class="btn btn--green btn--big" href="https://app.stampzer.com/registreren">Start gratis <span class="arrow">→</span></a>
         <a class="btn btn--ghost btn--big" href="#opbrengst">Reken uit wat het oplevert</a>
       </div>
       <p class="hero__trust">Gratis proberen, zonder creditcard. Daarna €24 per maand, maandelijks opzegbaar.</p>
@@ -494,7 +541,7 @@
       <div class="ocard hovr reveal"><img src="/assets/db-passen.webp" alt="Klanten stempelen via QR" loading="lazy" /><div class="ocard__b"><h3>Stempel met één tik</h3><p>Scan de QR van je klant en de stempel staat erop. Klaar in twee tellen, aan de balie.</p></div></div>
       <div class="ocard hovr reveal"><img src="/assets/db-statistieken.webp" alt="Statistieken en klantinzicht" loading="lazy" /><div class="ocard__b"><h3>Zie wie terugkomt</h3><p>Stempels per dag, je drukste momenten en je trouwste klanten, per vestiging.</p></div></div>
     </div>
-    <div class="ownercta reveal"><a class="btn btn--green btn--big" href="https://app.stampzer.com">Probeer het dashboard gratis <span class="arrow">→</span></a></div>
+    <div class="ownercta reveal"><a class="btn btn--green btn--big" href="https://app.stampzer.com/registreren">Probeer het dashboard gratis <span class="arrow">→</span></a></div>
   </div>
 </section>
 
@@ -595,7 +642,7 @@
           <div class="roi__barrow"><span>Met&nbsp;Stampzer</span><div class="roi__track"><div class="roi__fill roi__fill--us" id="bar_us" style="width:84%">+ extra</div></div></div>
         </div>
         <div class="roi__sub"><div><b id="out_month">€1.800</b><span>extra per maand</span></div><div><b id="out_visits">180</b><span>extra bezoeken / maand</span></div></div>
-        <a class="btn btn--green roi__cta" href="https://app.stampzer.com">Start gratis <span class="arrow">→</span></a>
+        <a class="btn btn--green roi__cta" href="https://app.stampzer.com/registreren">Start gratis <span class="arrow">→</span></a>
         <div class="roi__note">Ruwe inschatting op basis van je eigen cijfers. Echte resultaten verschillen per zaak.</div>
       </div>
     </div>
@@ -635,7 +682,7 @@
         <li><svg class="tick" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg> Je eigen huisstijl: logo, kleuren, beloning</li>
         <li><svg class="tick" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg> Klantinzicht en meerdere vestigingen</li>
       </ul>
-      <a class="btn btn--green btn--big" style="width:100%;justify-content:center" href="https://app.stampzer.com">Start gratis <span class="arrow">→</span></a>
+      <a class="btn btn--green btn--big" style="width:100%;justify-content:center" href="https://app.stampzer.com/registreren">Start gratis <span class="arrow">→</span></a>
       <div class="price__note">Probeer gratis · geen creditcard nodig</div>
     </div>
   </div>
@@ -663,7 +710,7 @@
     <h2>Probeer het met je eigen zaak</h2>
     <p>Je eerste spaarkaart staat in een paar minuten klaar. Gratis proberen, zonder creditcard.</p>
     <div class="hero__cta">
-      <a class="btn btn--green btn--big" href="https://app.stampzer.com">Start gratis <span class="arrow">→</span></a>
+      <a class="btn btn--green btn--big" href="https://app.stampzer.com/registreren">Start gratis <span class="arrow">→</span></a>
       <a class="btn btn--ghost btn--big" href="https://stampzer.com/gids/">Lees eerst de gids</a>
     </div>
   </div>
@@ -671,16 +718,51 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div><img src="https://stampzer.com/assets/logo-cream.png" alt="Stampzer" /><p style="max-width:24em">Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p></div>
-      <div><h4>Product</h4><a href="/voor-wie/">Voor wie</a><a href="/#hoe-het-werkt">Hoe het werkt</a><a href="/#dashboard">Jouw dashboard</a><a href="/prijzen/">Prijzen</a><a href="https://app.stampzer.com">Inloggen</a></div>
-      <div><h4>Gids</h4><a href="https://stampzer.com/gids/">Alle gidsen</a><a href="https://stampzer.com/gids/digitale-klantenkaart-wallet/">Hoe werkt de Wallet-kaart</a><a href="https://stampzer.com/gids/papieren-vs-digitale-stempelkaart/">Papier vs. digitaal</a></div>
-      <div><h4>Bedrijf</h4><a href="https://stampzer.com/over-ons/">Over ons</a><a href="https://stampzer.com/privacy/">Privacybeleid</a><a href="mailto:hello@stampzer.com">Contact</a></div>
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="/" aria-label="Stampzer, naar de homepage"><img src="/assets/logo-cream.png" alt="Stampzer" width="150" height="54" loading="lazy" /></a>
+          <p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p>
+          <a class="footer__mail" href="mailto:hello@stampzer.com">hello@stampzer.com</a>
+        </div>
+        <nav class="footer__col" aria-label="Product">
+          <h2 class="footer__h">Product</h2>
+          <a href="/hoe-het-werkt/">Hoe het werkt</a>
+          <a href="/digitale-stempelkaart/">Digitale stempelkaart</a>
+          <a href="/apple-wallet-spaarkaart/">Apple Wallet</a>
+          <a href="/google-wallet-klantenkaart/">Google Wallet</a>
+          <a href="/spaarkaart-zonder-app/">Zonder app</a>
+          <a href="/prijzen/">Prijzen</a>
+        </nav>
+        <nav class="footer__col" aria-label="Voor wie">
+          <h2 class="footer__h">Voor wie</h2>
+          <a href="/voor-wie/">Alle branches</a>
+          <a href="/koffiebar/">Koffiebars</a>
+          <a href="/lunchroom/">Lunchrooms</a>
+          <a href="/restaurant/">Restaurants</a>
+          <a href="/bakker/">Bakkers</a>
+          <a href="/kapper/">Kappers</a>
+          <a href="/nagelstudio/">Nagelstudio's</a>
+          <a href="/sportschool/">Sportscholen</a>
+        </nav>
+        <nav class="footer__col" aria-label="Stampzer">
+          <h2 class="footer__h">Stampzer</h2>
+          <a href="/gids/">Gids</a>
+          <a href="/over-ons/">Over ons</a>
+          <a href="/contact/">Contact</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/voorwaarden/">Voorwaarden</a>
+          <a href="https://app.stampzer.com">Inloggen</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Stampzer</span>
+        <span>Ontworpen door <a href="https://studioclear.nl" target="_blank" rel="noopener">Studio Clear</a></span>
+        <span>Gemaakt in Nederland</span>
+        <button class="footer__cookies" type="button" data-cookie-settings>Cookie-instellingen</button>
+      </div>
     </div>
-    <div class="footer__bottom"><span>© 2026 Stampzer</span><span>Gemaakt in Nederland</span></div>
-  </div>
-</footer>
+  </footer>
 
 
 </body>

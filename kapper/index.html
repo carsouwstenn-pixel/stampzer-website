@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Klantenkaart voor de kapper & kapsalon | Stampzer</title>
-  <meta name="description" content="Dé digitale stempelkaart & spaarkaart voor jouw kapsalon. Klanten sparen bij elke knipbeurt voor een beloning — direct in Apple Wallet & Google Wallet, nooit meer kwijt. Meer terugkerende klanten. Schrijf je in voor vroege toegang." />
+  <meta name="description" content="Dé digitale stempelkaart & spaarkaart voor jouw kapsalon. Klanten sparen bij elke knipbeurt voor een beloning — direct in Apple Wallet & Google Wallet, nooit meer kwijt. Meer terugkerende klanten. Probeer het gratis." />
   <link rel="canonical" href="https://stampzer.com/kapper/" />
   <meta name="keywords" content="digitale klantenkaart kapper, stempelkaart kapper, spaarkaart kapsalon, klantenkaart kapsalon, coupons kapper, loyaliteitsprogramma kapper, klantenbinding kapper, barbershop spaarkaart" />
   <meta name="theme-color" content="#181f10" />
@@ -107,25 +107,24 @@
 
   <a class="skip-link" href="#main">Naar inhoud</a>
 
-  <div class="announce">
-    <div class="container announce__inner">
-      <span class="announce__dot" aria-hidden="true"></span>
-      Speciaal voor kappers — gratis tijdens de bèta. <a href="https://app.stampzer.com">Schrijf je in voor vroege toegang →</a>
-    </div>
-  </div>
-
   <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a class="nav__logo" href="/" aria-label="stampzer.com home">
-        <img src="/assets/logo-dark.png" alt="Stampzer" width="150" height="55" />
-      </a>
-      <nav class="nav__links" aria-label="Menu">
-        <a href="/#hoe-het-werkt">Hoe het werkt</a>
-        <a href="/voor-wie/">Voor wie</a>
+      <a class="nav__logo" href="/" aria-label="Stampzer, naar de homepage"><img src="/assets/logo-dark.png" alt="Stampzer" width="150" height="54" /></a>
+      <nav class="nav__links" id="nav-menu" aria-label="Hoofdmenu">
+        <a href="/hoe-het-werkt/">Hoe het werkt</a>
+        <a href="/voor-wie/" aria-current="true">Voor wie</a>
         <a href="/gids/">Gids</a>
         <a href="/prijzen/">Prijzen</a>
+        <a class="nav__menu-login" href="https://app.stampzer.com">Inloggen</a>
       </nav>
-      <a href="https://app.stampzer.com" class="btn btn--green nav__cta">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a>
+      <div class="nav__actions">
+        <a class="nav__login" href="https://app.stampzer.com">Inloggen</a>
+        <a class="btn btn--green nav__cta" href="https://app.stampzer.com/registreren">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <button class="nav__burger" type="button" aria-label="Menu openen" aria-controls="nav-menu" aria-expanded="false">
+          <svg class="nav__icon-open" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="nav__icon-close" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -141,7 +140,7 @@
           Geef je kapsalon een eigen digitale spaarkaart in Apple&nbsp;Wallet en Google&nbsp;Wallet. Je klanten sparen bij elke knipbeurt voor een beloning — en raken hun kaart nooit meer kwijt. Het resultaat: een vollere agenda met vaste klanten.
         </p>
 
-        <a href="https://app.stampzer.com" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a href="https://app.stampzer.com/registreren" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
       </div>
 
       <div class="hero__visual">
@@ -337,45 +336,61 @@
     <div class="container cta__inner">
       <h2>Klaar om je kappersstoel vaker vol te krijgen?</h2>
       <p>Stampzer is nu gratis te proberen &mdash; zonder app en zonder creditcard. Zet vandaag je eerste spaarkaart klaar.</p>
-      <a href="https://app.stampzer.com" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="https://app.stampzer.com/registreren" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
   </main>
 
   <footer class="footer">
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <img src="/assets/logo-cream.png" alt="Stampzer" width="150" height="55" />
-        <p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p>
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="/" aria-label="Stampzer, naar de homepage"><img src="/assets/logo-cream.png" alt="Stampzer" width="150" height="54" loading="lazy" /></a>
+          <p>Digitale klantenkaarten in de Wallet van je klant. Meer terugkerende klanten, zonder app.</p>
+          <a class="footer__mail" href="mailto:hello@stampzer.com">hello@stampzer.com</a>
+        </div>
+        <nav class="footer__col" aria-label="Product">
+          <h2 class="footer__h">Product</h2>
+          <a href="/hoe-het-werkt/">Hoe het werkt</a>
+          <a href="/digitale-stempelkaart/">Digitale stempelkaart</a>
+          <a href="/apple-wallet-spaarkaart/">Apple Wallet</a>
+          <a href="/google-wallet-klantenkaart/">Google Wallet</a>
+          <a href="/spaarkaart-zonder-app/">Zonder app</a>
+          <a href="/prijzen/">Prijzen</a>
+        </nav>
+        <nav class="footer__col" aria-label="Voor wie">
+          <h2 class="footer__h">Voor wie</h2>
+          <a href="/voor-wie/">Alle branches</a>
+          <a href="/koffiebar/">Koffiebars</a>
+          <a href="/lunchroom/">Lunchrooms</a>
+          <a href="/restaurant/">Restaurants</a>
+          <a href="/bakker/">Bakkers</a>
+          <a href="/kapper/">Kappers</a>
+          <a href="/nagelstudio/">Nagelstudio's</a>
+          <a href="/sportschool/">Sportscholen</a>
+        </nav>
+        <nav class="footer__col" aria-label="Stampzer">
+          <h2 class="footer__h">Stampzer</h2>
+          <a href="/gids/">Gids</a>
+          <a href="/over-ons/">Over ons</a>
+          <a href="/contact/">Contact</a>
+          <a href="/privacy/">Privacy</a>
+          <a href="/voorwaarden/">Voorwaarden</a>
+          <a href="https://app.stampzer.com">Inloggen</a>
+        </nav>
       </div>
-      <nav class="footer__col" aria-label="Product">
-        <h4>Product</h4>
-        <a href="/#hoe-het-werkt">Hoe het werkt</a>
-        <a href="/#kaarten">Voorbeelden</a>
-        <a href="/dashboard.html">Dashboard</a>
-        <a href="https://app.stampzer.com">Start gratis</a>
-      </nav>
-      <nav class="footer__col" aria-label="Voor wie">
-        <h4>Voor wie</h4>
-        <a href="/kapper/">Kappers</a>
-        <a href="/#faq">Veelgestelde vragen</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <div class="footer__col">
-        <h4>Blijf op de hoogte</h4>
-        <a href="mailto:hello@stampzer.com">hello@stampzer.com</a>
-        <a href="https://app.stampzer.com" class="btn btn--green footer__cta">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Stampzer</span>
+        <span>Ontworpen door <a href="https://studioclear.nl" target="_blank" rel="noopener">Studio Clear</a></span>
+        <span>Gemaakt in Nederland</span>
+        <button class="footer__cookies" type="button" data-cookie-settings>Cookie-instellingen</button>
       </div>
-    </div>
-    <div class="container footer__bottom">
-      <span>© 2026 stampzer.com — Alle rechten voorbehouden.</span>
-      <span class="footer__credit">Ontworpen door <a href="https://studioclear.nl" target="_blank" rel="noopener">Studio Clear</a></span>
-      <span>Gemaakt in Nederland 🇳🇱</span>
     </div>
   </footer>
 
   <script src="/config.js"></script>
+  <script src="/site.js"></script>
   <script src="/motion.js"></script>
 </body>
 </html>
