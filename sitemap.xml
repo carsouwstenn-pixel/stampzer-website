@@ -31,6 +31,8 @@
   <url><loc>https://stampzer.com/spaarkaart-zonder-app/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://stampzer.com/apple-wallet-spaarkaart/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://stampzer.com/google-wallet-klantenkaart/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://stampzer.com/voorwaarden/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://stampzer.com/verwerkersovereenkomst/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://stampzer.com/privacy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://stampzer.com/over-ons/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://stampzer.com/prijzen/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
