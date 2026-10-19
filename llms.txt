@@ -61,5 +61,5 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - Werkt op zowel Apple Wallet (iPhone) als Google Wallet (Android).
 - Klanten hoeven geen app te downloaden of account aan te maken — alleen een QR-code scannen.
 - De ondernemer deelt stempels uit via een simpel dashboard; klanten kunnen zichzelf niet stempelen.
-- Gratis tijdens de bèta.
+- Eerst gratis te proberen; daarna Starter €29 of Pro €49 per maand (bij jaarbetaling €24 of €41 per maand).
 - Contact: hello@stampzer.com

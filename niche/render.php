@@ -58,7 +58,7 @@ foreach ($n['faq'] as $f) {
     $faqLd[] = ['@type' => 'Question', 'name' => $f[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f[1]]];
 }
 $ld = ['@context' => 'https://schema.org', '@graph' => [
-    ['@type' => 'Service', 'name' => $n['title'], 'serviceType' => 'Digitale klantenkaart en loyaliteitsprogramma', 'provider' => ['@type' => 'Organization', 'name' => 'Stampzer', 'url' => 'https://stampzer.com/'], 'areaServed' => ['@type' => 'Country', 'name' => 'Nederland'], 'url' => $url, 'description' => $n['desc'], 'offers' => ['@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'EUR', 'description' => 'Gratis tijdens de bèta']],
+    ['@type' => 'Service', 'name' => $n['title'], 'serviceType' => 'Digitale klantenkaart en loyaliteitsprogramma', 'provider' => ['@type' => 'Organization', 'name' => 'Stampzer', 'url' => 'https://stampzer.com/'], 'areaServed' => ['@type' => 'Country', 'name' => 'Nederland'], 'url' => $url, 'description' => $n['desc'], 'offers' => ['@type' => 'AggregateOffer', 'lowPrice' => '24', 'highPrice' => '49', 'priceCurrency' => 'EUR', 'offerCount' => '2', 'description' => 'Starter of Pro, per maand of voordeliger per jaar. Eerst gratis proberen, zonder creditcard.']],
     ['@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => 'https://stampzer.com/'],
         ['@type' => 'ListItem', 'position' => 2, 'name' => 'Voor wie', 'item' => 'https://stampzer.com/voor-wie/'],
