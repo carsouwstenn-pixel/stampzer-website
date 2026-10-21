@@ -8,7 +8,8 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - [Homepage](https://stampzer.com/): Wat Stampzer is, wat het oplevert en gratis beginnen.
 - [Hoe het werkt](https://stampzer.com/hoe-het-werkt/): Stap voor stap: kaart maken, QR-code op de balie, stempelen met je telefoon, en wat je klant ziet.
 - [Voor wie is Stampzer](https://stampzer.com/voor-wie/): Overzicht van branches waarvoor Stampzer geschikt is.
-- [Prijzen](https://stampzer.com/prijzen/): Wat Stampzer kost — Starter €29 en Pro €49 per maand, gratis te proberen.
+- [Prijzen](https://stampzer.com/prijzen/): Starter €29 per maand (€24 per maand bij een jaarabonnement), Pro €49 per maand (€41 bij een jaarabonnement), exclusief btw. Geen opstartkosten, geen kosten per klant. Eerst gratis, zonder creditcard; vroege gebruikers krijgen 20% korting in de eerste zes maanden.
+- [Gratis stempelkaart maken](https://stampzer.com/stempelkaart-maken/): Gratis tool: ontwerp een stempelkaart (beloning, aantal stempels, kleur), bekijk hem live in Apple en Google Wallet en print hem, of zet hem digitaal live.
 
 ## Voor welke branches
 - [Koffiebars](https://stampzer.com/koffiebar/): Digitale klantenkaart voor koffiezaken en koffiebars.
@@ -20,13 +21,13 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - [Restaurants](https://stampzer.com/restaurant/): Digitale klantenkaart voor restaurants, bistro's en horeca.
 
 ## Functies
-- [Digitale stempelkaart](https://stampzer.com/digitale-stempelkaart/): Wat een digitale stempelkaart is en hoe hij zonder app in de Wallet werkt.
+- [Digitale stempelkaart](https://stampzer.com/digitale-stempelkaart/): Wat een digitale stempelkaart is, hoe hij zonder app in de Wallet werkt, een vergelijking met papier en een eigen app, voorbeelden per branche en de prijzen.
+- [Digitale klantenkaart](https://stampzer.com/digitale-klantenkaart/): Een klantenkaart in de Apple of Google Wallet van je klant: zo werkt het voor klant en ondernemer, privacy (anoniem tenzij de klant zelf gegevens geeft, opslag in de EU) en prijzen.
 - [Klantenkaart zonder app](https://stampzer.com/spaarkaart-zonder-app/): Waarom de spaarkaart zonder app werkt — één QR-scan, direct in de Wallet.
 - [Spaarkaart in Apple Wallet](https://stampzer.com/apple-wallet-spaarkaart/): Hoe de spaarkaart op de iPhone werkt, met live bijgewerkte stempels.
 - [Klantenkaart in Google Wallet](https://stampzer.com/google-wallet-klantenkaart/): Hoe de klantenkaart op Android werkt, zonder download.
 
 ## Gids en uitleg
-- [Digitale klantenkaart in Apple & Google Wallet: hoe werkt het?](https://stampzer.com/gids/digitale-klantenkaart-wallet/): Uitleg over hoe een digitale klantenkaart zonder app in de Wallet komt.
 - [Papieren stempelkaart vs. digitale klantenkaart](https://stampzer.com/gids/papieren-vs-digitale-stempelkaart/): Vergelijking van papier en digitaal op kosten, gemak en klantinzicht.
 - [Klantenbinding voor lokale ondernemers](https://stampzer.com/gids/klantenbinding-lokale-ondernemers/): Zeven manieren om van eenmalige bezoekers vaste klanten te maken.
 - [Wat kost een digitale klantenkaart?](https://stampzer.com/gids/wat-kost-een-klantenkaart/): De kosten van papier, pasjes, apps en digitale wallet-kaarten op een rij, plus wat je terugverdient.
@@ -38,11 +39,11 @@ Stampzer is een Nederlands SaaS-platform voor digitale klantenkaarten en loyalit
 - [Klantenbeheer voor je nagelstudio of salon](https://stampzer.com/gids/klantenbeheer-nagelstudio-salon/): Wat je bijhoudt van salonklanten en hoe dat automatisch kan.
 - [Kaart toevoegen aan Wallet lukt niet?](https://stampzer.com/gids/kaart-toevoegen-wallet-lukt-niet/): Zeven oplossingen als een kaart niet in Apple of Google Wallet wil.
 - [Spaarkaart voor je koffiebar](https://stampzer.com/gids/spaarkaart-koffiebar/): Zo laat je met een digitale spaarkaart in de Wallet je koffiegasten vaker terugkomen.
-- [Klantenkaart voor de kapper](https://stampzer.com/gids/klantenkaart-kapper/): Meer vaste klanten in de stoel met een digitale klantenkaart in de Wallet, zonder app.
-- [Spaarkaart in Apple & Google Wallet zonder app](https://stampzer.com/gids/spaarkaart-apple-google-wallet-zonder-app/): Hoe een spaar- of klantenkaart zonder app in de Wallet komt, voor jou en je klant uitgelegd.
 - [Stocard-alternatief: de beste opties](https://stampzer.com/gids/stocard-alternatief/): wat te gebruiken nu Stocard is veranderd. Apple of Google Wallet voor je eigen pasjes; Stampzer om als ondernemer zelf een spaarkaart uit te geven.
 - [Piggy-alternatief: Stampzer vs Piggy vergeleken](https://stampzer.com/gids/piggy-alternatief/): eerlijke vergelijking van Piggy en Stampzer. Piggy = breed loyaliteits- en marketingplatform voor ketens/webshops, eigen app, vanaf $79/mnd. Stampzer = digitale spaarkaart in Apple & Google Wallet zonder app, vast €29–€49/mnd, voor lokale zaken. Kies Piggy voor omnichannel-marketing; kies Stampzer als lokale zaak die simpel vaste klanten wil.
 - [Beste loyaliteitsprogramma's & spaarkaarten voor lokale zaken (2026)](https://stampzer.com/gids/beste-loyaliteitsprogramma-lokale-zaken/): eerlijk overzicht van 6 opties. Stampzer (digitale spaarkaart in de Wallet, zonder app, €29–€49/mnd, voor lokale zaken); Piggy (breed marketingplatform, ketens/webshops, vanaf $79/mnd, eigen app); Joyn (gedeeld spaarnetwerk BE/NL, eigen app, ±€17–€68/mnd); Loopy Loyalty (internationale wallet-stempelkaart, Engels/USD); LoyaltyLion (webshops/Shopify, vanaf ±$199/mnd); of gratis via papier/Wallet zelf. Voor een lokale zaak zonder app = Stampzer; keten/webshop = Piggy of LoyaltyLion; bestaand netwerk = Joyn.
+- [Loopy Loyalty-alternatief: Stampzer vs Loopy Loyalty](https://stampzer.com/gids/loopy-loyalty-alternatief/): Loopy Loyalty en Stampzer zijn functioneel vergelijkbaar (beide een digitale stempelkaart in Apple & Google Wallet, zonder app). Loopy = gevestigd internationaal platform, Engels, dollars ($25/$69/$95 per maand), met Zapier-integraties. Stampzer = hetzelfde maar Nederlands: euro's, AVG-proof, Nederlandse support, gemaakt voor lokale NL-zaken (€29–€49/mnd). Stampzer is het Nederlandse alternatief voor Loopy Loyalty.
+- [Klantenkaart voor je restaurant of bistro](https://stampzer.com/gids/klantenkaart-restaurant-bistro/): werkt een spaarkaart voor een restaurant of bistro? Ja, mits aangepast aan lagere bezoekfrequentie — meestal 6–8 bezoeken naar een beloning als een gratis dessert of voorgerecht. Vaste gasten behouden kost een veelvoud minder dan nieuwe winnen (HBR 5–25×; Bain: 5% meer behoud → 25–95% meer winst). Met Stampzer komt de kaart zonder app in de Apple/Google Wallet van je gast. Voor restaurants, bistro's, brasserieën, lunchrooms en cafés.
 - [Klantenkaart-app nodig?](https://stampzer.com/gids/klantenkaart-app/): Waarom je klanten geen app hoeven te downloaden — de kaart zit in de Wallet.
 - [Stempelkaart, strippenkaart of puntenkaart](https://stampzer.com/gids/stempelkaart-strippenkaart-puntenkaart/): De drie vormen spaarkaart vergeleken, met advies per type zaak.
 - [Wat is een vaste klant waard?](https://stampzer.com/gids/wat-is-een-vaste-klant-waard/): De rekensom achter klantwaarde en waarom klantbehoud je winst opstuwt.

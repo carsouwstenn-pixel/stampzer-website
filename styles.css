@@ -763,6 +763,138 @@ a.gidscard:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); bo
 .atmos__points .tick{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--green);color:#08260a;display:grid;place-items:center;font-size:.8rem;font-weight:700;margin-top:1px}
 @media(max-width:760px){.atmos__grid{grid-template-columns:1fr}.atmos__art{order:-1;max-width:520px;margin:0 auto}.atmos__art .hand-cut{width:100%;margin-left:0}}
 
+/* ===== Wallet-kaart: dezelfde opbouw en beelden als de preview in de app (2026-10) ===== */
+.wcard { width: 300px; max-width: 100%; border-radius: 20px; overflow: hidden; background: #fff; box-shadow: var(--shadow); font-family: var(--font-body); text-align: left; line-height: 1.3; }
+.wcard__num { display: inline-block; }
+.wcard__qr { width: 92px; height: 92px; }
+.wcard__powered { font-size: .64rem; letter-spacing: .02em; color: #5f6368; }
+.wcard--google { padding: 16px 16px 0; }
+.wg__kop { display: flex; align-items: center; gap: 10px; }
+.wg__logo { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; display: grid; place-items: center; }
+.wg__logomerk, .wa__merk { -webkit-mask: url('/assets/merk/stempel-masker.png') center / contain no-repeat; mask: url('/assets/merk/stempel-masker.png') center / contain no-repeat; }
+.wg__logomerk { width: 60%; height: 60%; }
+.wg__issuer { font-size: .8rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wg__prog { margin-top: 12px; font-size: 1.12rem; font-weight: 600; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wg__points { display: flex; gap: 26px; margin-top: 12px; }
+.wg__pt { display: flex; flex-direction: column; }
+.wg__pt small { font-size: .68rem; }
+.wg__pt b { font-size: 1.25rem; font-weight: 600; }
+.wg__qr { margin: 16px auto 0; width: fit-content; background: #fff; border-radius: 14px; padding: 12px 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.wg__hero { margin: 6px -16px 0; line-height: 0; }
+.wg__hero svg, .wa__strook svg { display: block; width: 100%; height: auto; }
+.wcard--apple { padding: 14px 15px 16px; }
+.wa__head { display: flex; align-items: center; gap: 9px; }
+.wa__merk { width: 18px; height: 22px; flex: 0 0 18px; }
+.wa__logotext { font-size: .82rem; font-weight: 600; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wa__field { display: flex; flex-direction: column; }
+.wa__field small { font-size: .6rem; letter-spacing: .08em; }
+.wa__field b { font-size: .9rem; font-weight: 600; }
+.wa__field--head, .wa__field--rechts { text-align: right; }
+.wa__strook { margin: 12px -15px 0; line-height: 0; }
+.wa__sec { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.wa__barcode { margin-top: 16px; background: #fff; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.wa__barcode .wcard__qr { width: 84px; height: 84px; }
+
+/* Twee kaarten naast elkaar, licht gedraaid: zo zie je Apple en Google Wallet tegelijk. */
+.kaartduo { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; padding-top: 10px; }
+.kaartduo > .wcard { flex: 0 0 auto; width: 270px; position: relative; }
+.kaartduo > .wcard:first-child { transform: rotate(-4deg); margin-top: 28px; z-index: 1; }
+.kaartduo > .wcard:last-child { transform: rotate(3deg); margin-left: -40px; z-index: 2; }
+.kaartduo__label { flex-basis: 100%; margin: 26px 0 0; text-align: center; font-size: .84rem; color: var(--muted); }
+/* Op de landingspagina's staat op mobiel eerst de tekst, dan de kaarten. */
+@media (max-width: 920px) { .hero--tekst-eerst .hero__visual { order: 0; } }
+@media (max-width: 720px) {
+  .kaartduo > .wcard { width: 190px; }
+  .kaartduo > .wcard:last-child { margin-left: -46px; }
+}
+.hub-grid--vier { grid-template-columns: repeat(4, 1fr); max-width: none; }
+.hubcard--anders { background: var(--paper-2); border-style: dashed; }
+@media (max-width: 1020px) { .hub-grid--vier { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .hub-grid--vier { grid-template-columns: 1fr; } }
+
+/* ===== Gratis stempelkaart-maker (/stempelkaart-maken/) ===== */
+.maker { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 44px; align-items: start; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 34px; box-shadow: var(--shadow-sm); }
+.maker__velden { display: grid; gap: 22px; min-width: 0; }
+.maker__veld { display: grid; gap: 9px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.maker__label, .maker__veld legend { display: flex; justify-content: space-between; gap: 12px; font-weight: 600; font-size: .95rem; color: var(--ink); padding: 0; }
+.maker__label output { font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; color: var(--green-700); }
+.maker__invoer { font: inherit; font-size: 1rem; width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--paper); color: var(--ink); }
+.maker__invoer:focus-visible { outline: 3px solid rgba(41, 199, 0, .35); outline-offset: 1px; border-color: var(--green-700); }
+.maker__hint { font-size: .82rem; color: var(--muted); margin: 0; }
+.maker__keuzes { display: flex; flex-wrap: wrap; gap: 8px; }
+.maker__keuze { position: relative; }
+.maker__keuze input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.maker__keuze span { display: inline-block; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--paper); font-size: .88rem; color: var(--text); transition: background .15s ease, color .15s ease; }
+.maker__keuze input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.maker__keuze input:focus-visible + span { outline: 3px solid rgba(41, 199, 0, .45); outline-offset: 2px; }
+.maker__schuif { width: 100%; accent-color: var(--green-700); }
+.maker__schaal { display: flex; justify-content: space-between; font-size: .78rem; color: var(--muted); }
+.maker__kleuren { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.maker__kleur { position: relative; width: 34px; height: 34px; }
+.maker__kleur input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.maker__kleur span { display: block; width: 34px; height: 34px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(24, 31, 16, .18); }
+.maker__kleur input:checked + span { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--ink); }
+.maker__kleur input:focus-visible + span { outline: 3px solid rgba(41, 199, 0, .5); outline-offset: 4px; }
+.maker__eigen { display: inline-flex; align-items: center; gap: 8px; font-size: .86rem; color: var(--muted); }
+.maker__eigen input { width: 38px; height: 34px; border: 0; padding: 0; background: none; cursor: pointer; }
+.maker__preview { position: sticky; top: 96px; display: grid; justify-items: center; gap: 14px; }
+.maker__toggle { display: inline-flex; background: var(--paper-2); border-radius: 999px; padding: 4px; border: 0; margin: 0; }
+.maker__toggle .maker__keuze span { border: 0; background: transparent; padding: 7px 14px; font-size: .84rem; }
+.maker__toggle .maker__keuze input:checked + span { background: #fff; color: var(--ink); font-weight: 600; box-shadow: var(--shadow-sm); }
+.maker__kaart { width: 300px; max-width: 100%; min-height: 440px; display: flex; justify-content: center; align-items: flex-start; }
+.maker__rij { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; align-items: center; }
+.maker__stempel { font: inherit; font-size: .9rem; font-weight: 600; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--ink); background: #fff; color: var(--ink); cursor: pointer; }
+.maker__stempel:hover { background: var(--ink); color: var(--paper); }
+.maker__reset { font: inherit; font-size: .86rem; background: none; border: 0; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.maker__status { font-size: .84rem; color: var(--muted); margin: 0; min-height: 1.3em; text-align: center; }
+.maker__acties { display: grid; gap: 10px; width: 100%; }
+.maker__acties .btn { width: 100%; justify-content: center; }
+.maker__note { font-size: .8rem; color: var(--muted); margin: 0; text-align: center; }
+.maker:not(.maker--actief) .maker__alleenjs { display: none; }
+@media (max-width: 900px) {
+  .maker { grid-template-columns: 1fr; gap: 28px; padding: 20px; }
+  .maker__preview { position: static; order: -1; }
+  .maker__kaart { min-height: 0; }
+  .maker__kaart > .wcard { zoom: .84; }
+}
+.maker-print { display: none; }
+@media print {
+  body > *:not(.maker-print) { display: none !important; }
+  .maker-print { display: block !important; }
+  .maker-print__vel { display: grid; grid-template-columns: 85mm 85mm; gap: 1.5mm 6mm; justify-content: center; }
+  .maker-print__kaart { width: 85mm; height: 55mm; break-inside: avoid; outline: .2mm dashed #c8c8c8; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .maker-print__kaart svg { display: block; width: 85mm; height: 55mm; }
+  @page { size: A4; margin: 7mm; }
+}
+
+/* ===== Landingspagina's (2026-10): prijsblok, tabelinleiding, kleine tabellen ===== */
+.pricebox { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 760px; }
+.pricebox__plan { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; }
+.pricebox__plan h3 { font-size: 1.4rem; }
+.pricebox__prijs { font-family: var(--font-display); font-size: 2.4rem; color: var(--ink); line-height: 1; margin: 12px 0 4px; }
+.pricebox__prijs small { font-family: var(--font-body); font-size: .9rem; color: var(--muted); }
+.pricebox__plan p { color: var(--muted); font-size: .95rem; }
+.pricebox__noot { margin-top: 18px; color: var(--muted); font-size: .95rem; max-width: 62ch; }
+.lp-tabel { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; font-size: .95rem; }
+.lp-tabel th, .lp-tabel td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.lp-tabel thead th { background: var(--paper-2); font-weight: 600; color: var(--ink); }
+.lp-tabel tbody tr:last-child td { border-bottom: 0; }
+.lp-tabel td:first-child { font-weight: 600; color: var(--ink); }
+.lp-tabel .ja { color: var(--green-900); font-weight: 600; }
+.lp-tabel .nee { color: #8a3b1e; }
+.lp-tabelwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.lp-tekst { max-width: 68ch; }
+.lp-tekst p + p { margin-top: 14px; }
+.lp-tekst p, .lp-tekst li { color: var(--text); font-size: 1.05rem; line-height: 1.65; }
+.lp-tekst ul { margin: 14px 0 0 1.2em; }
+.lp-tekst li + li { margin-top: 6px; }
+.lp-tekst a, .lp-links a { color: var(--green-900); text-decoration: underline; text-underline-offset: 3px; }
+.lp-ondernemer { margin: 28px 0; padding: 20px 22px; border-radius: var(--radius); background: var(--paper-2); border: 1px solid var(--line); }
+.lp-ondernemer strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.25rem; color: var(--ink); margin-bottom: 6px; }
+.lp-ondernemer p { margin: 0; color: var(--text); }
+.lp-ondernemer a { color: var(--green-900); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 720px) { .pricebox { grid-template-columns: 1fr; } }
+
 /* chrome:start · menu, footer en cookiemelding. Gegenereerd door tools/chrome.mjs: pas het daar aan, niet hier. */
 html{scroll-padding-top:88px}
 .skip-link{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:0 0 8px 0}

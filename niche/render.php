@@ -36,33 +36,51 @@ $visit = $n['visit'];
 $steps = [
     ['Ontwerp je kaart', "Stel je spaarkaart samen in de huisstijl van je {$place}: jouw logo, kleuren en de beloning die jij kiest."],
     ["Klant voegt 'm toe", "Na het bezoek scant je klant één QR-code en de kaart staat meteen in z'n Apple of Google Wallet. Geen app, geen gedoe."],
-    ["Stempel bij elke {$visit}", "Bij elke {$visit} zet jij of een collega met één tik een stempel. Volle kaart? Tijd voor de beloning — en een goede reden om terug te komen."],
+    ["Stempel bij elke {$visit}", "Bij elke {$visit} zet jij of een collega met één tik een stempel. Volle kaart? Tijd voor de beloning, en een goede reden om terug te komen."],
 ];
 $benefits = [
-    ['feature--green', 'Meer herhaalbezoek', "Een spaardoel trekt klanten terug naar jouw {$place} — niet die van de concurrent."],
+    ['feature--green', 'Meer herhaalbezoek', "Een spaardoel trekt klanten terug naar jouw {$place}, niet naar die van de concurrent."],
     ['', 'Jouw eigen huisstijl', 'De kaart voelt als die van jouw zaak, met je eigen logo, kleuren en beloning.'],
-    ['', 'Ken je vaste klanten', 'Zie wie er vaak komt, wie bijna een beloning heeft en wie al even niet geweest is — simpel klantenbeheer, zonder extra systeem.'],
+    ['', 'Ken je vaste klanten', 'Zie wie er vaak komt, wie bijna een beloning heeft en wie al even niet geweest is. Simpel klantenbeheer, zonder extra systeem.'],
     ['feature--peach', 'Vul je rustige dagen', 'Stuur klanten een seintje bij een bijna volle kaart en trek ze juist op een stille dag binnen.'],
-    ['', 'Niemand speelt vals', 'Alleen jij en je team delen stempels uit — klanten kunnen zichzelf niet stempelen.'],
+    ['', 'Niemand speelt vals', 'Alleen jij en je team delen stempels uit. Klanten kunnen zichzelf niet stempelen.'],
     ['feature--ink', 'Geen app, nooit kwijt', 'Werkt direct in de Wallet die je klant al heeft. De kaart zit veilig in de telefoon.'],
 ];
 
-$gidsPosts = [
-    ['digitale-klantenkaart-wallet', 'Uitleg · 6 min', 'Digitale klantenkaart in Apple & Google Wallet: hoe werkt het?', 'Wat een digitale klantenkaart is, hoe hij zonder app in de Wallet komt en waarom klanten hem niet meer kwijtraken.'],
-    ['papieren-vs-digitale-stempelkaart', 'Vergelijking · 7 min', 'Papieren stempelkaart vs. digitale klantenkaart', 'Kosten, gebruiksgemak, klantinzicht en herhaalbezoek van papier en digitaal, eerlijk naast elkaar in één tabel.'],
-    ['klantenbinding-lokale-ondernemers', 'Strategie · 8 min', 'Klantenbinding: 7 manieren die écht werken', 'Zeven concrete manieren om van eenmalige bezoekers vaste klanten te maken — en hoe je meet wat werkt.'],
+// Gidsen die bij een branche horen (data.php: 'gids'); zonder lijst de algemene drie.
+$GIDS = [
+    'spaarkaart-koffiebar' => ['Branche · 6 min', 'Spaarkaart voor je koffiebar', 'Van losse koffiedrinkers naar vaste klanten, met een kaart in de Wallet.'],
+    'meer-stamgasten-cafe' => ['Strategie · 6 min', 'Meer stamgasten in je café', 'Zo maak je van een losse bezoeker een vaste gast.'],
+    'vaste-gasten-horeca' => ['Strategie · 7 min', 'Vaste gasten in de horeca', 'Zo bouw je aan gasten die steeds terugkomen.'],
+    'klantenkaart-voor-nagelstylisten' => ['Branche · 6 min', 'Klantenkaart voor nagelstylisten', 'Meer vaste klanten en minder gaten in je agenda, ook als je aan huis werkt.'],
+    'klantenbeheer-nagelstudio-salon' => ['Praktisch · 6 min', 'Klantenbeheer voor je nagelsalon', 'Wat je bijhoudt over je vaste klanten, en wat niet.'],
+    'meer-klanten-nagelstudio' => ['Strategie · 7 min', 'Meer klanten in je nagelstudio', 'Van eerste afspraak tot vaste klant.'],
+    'klantenkaart-lunchroom' => ['Branche · 6 min', 'Klantenkaart voor je lunchroom', 'Waarop je laat sparen en welke beloning echt rendeert.'],
+    'voller-terras-meer-klanten' => ['Strategie · 5 min', 'Voller terras, meer klanten', 'Hoe je gasten vaker laat terugkomen, ook buiten het seizoen.'],
+    'ledenbinding-sportschool' => ['Branche · 6 min', 'Ledenbinding voor je sportschool', 'Zo blijven leden langer en zeggen ze minder snel op.'],
+    'klanten-belonen-beloningen-spaarkaart' => ['Beloningen · 7 min', 'Klanten belonen: beloningen die werken', 'Welke beloning past bij jouw zaak, met voorbeelden.'],
+    'wat-is-een-vaste-klant-waard' => ['Rekensom · 5 min', 'Wat is een vaste klant waard?', 'De rekensom achter klantwaarde en klantbehoud.'],
+    'spaarkaart-bakkerij' => ['Branche · 6 min', 'Spaarkaart voor de bakkerij', 'Meer vaste klanten voor je brood en gebak.'],
+    'papieren-vs-digitale-stempelkaart' => ['Vergelijking · 7 min', 'Papieren stempelkaart of digitaal?', 'Kosten, gemak en klantinzicht eerlijk naast elkaar.'],
+    'klantenbinding-lokale-ondernemers' => ['Strategie · 8 min', 'Klantenbinding voor lokale ondernemers', 'Zeven manieren om van bezoekers vaste klanten te maken.'],
 ];
+$gidsSlugs = $n['gids'] ?? ['papieren-vs-digitale-stempelkaart', 'klanten-belonen-beloningen-spaarkaart', 'klantenbinding-lokale-ondernemers'];
+$gidsPosts = [];
+foreach ($gidsSlugs as $g) {
+    if (isset($GIDS[$g])) $gidsPosts[] = array_merge([$g], $GIDS[$g]);
+}
+$alleFaq = array_merge($n['faq'], $n['extraFaq'] ?? []);
 
 $faqLd = [];
-foreach ($n['faq'] as $f) {
+foreach ($alleFaq as $f) {
     $faqLd[] = ['@type' => 'Question', 'name' => $f[0], 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f[1]]];
 }
 $ld = ['@context' => 'https://schema.org', '@graph' => [
-    ['@type' => 'Service', 'name' => $n['title'], 'serviceType' => 'Digitale klantenkaart en loyaliteitsprogramma', 'provider' => ['@type' => 'Organization', 'name' => 'Stampzer', 'url' => 'https://stampzer.com/'], 'areaServed' => ['@type' => 'Country', 'name' => 'Nederland'], 'url' => $url, 'description' => $n['desc'], 'offers' => ['@type' => 'AggregateOffer', 'lowPrice' => '24', 'highPrice' => '49', 'priceCurrency' => 'EUR', 'offerCount' => '2', 'description' => 'Starter of Pro, per maand of voordeliger per jaar. Eerst gratis proberen, zonder creditcard.']],
+    ['@type' => 'Service', 'name' => $n['title'], 'serviceType' => 'Digitale klantenkaart en loyaliteitsprogramma', 'provider' => ['@type' => 'Organization', 'name' => 'Stampzer', 'url' => 'https://stampzer.com/'], 'areaServed' => [['@type' => 'Country', 'name' => 'Nederland'], ['@type' => 'Country', 'name' => 'België']], 'url' => $url, 'description' => $n['desc'], 'offers' => ['@type' => 'AggregateOffer', 'lowPrice' => '24', 'highPrice' => '49', 'priceCurrency' => 'EUR', 'offerCount' => '2', 'description' => 'Starter of Pro, per maand of voordeliger per jaar. Eerst gratis proberen, zonder creditcard.']],
     ['@type' => 'BreadcrumbList', 'itemListElement' => [
         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => 'https://stampzer.com/'],
         ['@type' => 'ListItem', 'position' => 2, 'name' => 'Voor wie', 'item' => 'https://stampzer.com/voor-wie/'],
-        ['@type' => 'ListItem', 'position' => 3, 'name' => 'Voor ' . $n['name'] . 's', 'item' => $url],
+        ['@type' => 'ListItem', 'position' => 3, 'name' => 'Voor ' . $n['meervoud'], 'item' => $url],
     ]],
     ['@type' => 'FAQPage', 'mainEntity' => $faqLd],
 ]];
@@ -80,14 +98,14 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
   <meta property="og:type" content="website" />
   <meta property="og:url" content="<?= e($url) ?>" />
   <meta property="og:site_name" content="Stampzer" />
-  <meta property="og:title" content="<?= e('Digitale klantenkaart voor ' . strtolower($n['name']) . 's — Stampzer') ?>" />
+  <meta property="og:title" content="<?= e('Digitale klantenkaart voor ' . $n['meervoud'] . ' | Stampzer') ?>" />
   <meta property="og:description" content="<?= e($n['sub']) ?>" />
   <meta property="og:image" content="https://stampzer.com/assets/og-<?= e($slug) ?>.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="nl_NL" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="<?= e('Digitale klantenkaart voor ' . strtolower($n['name']) . 's — Stampzer') ?>" />
+  <meta name="twitter:title" content="<?= e('Digitale klantenkaart voor ' . $n['meervoud'] . ' | Stampzer') ?>" />
   <meta name="twitter:description" content="<?= e($n['sub']) ?>" />
   <meta name="twitter:image" content="https://stampzer.com/assets/og-<?= e($slug) ?>.png" />
 
@@ -135,6 +153,7 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
         <p class="hero__sub"><?= e($n['sub']) ?></p>
         <div class="hero__cta">
           <a class="btn btn--green" href="https://app.stampzer.com/registreren">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="/stempelkaart-maken/?branche=<?= e($slug) ?>">Ontwerp je kaart</a>
           <p class="waitlist-form__note" role="status">Gratis · iOS &amp; Android · Geen app nodig</p>
         </div>
       </div>
@@ -220,7 +239,7 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
         <h2>Een <?= e($place) ?> waar klanten graag terugkomen</h2>
         <ul class="atmos__points">
           <li><span class="tick" aria-hidden="true">&#10003;</span> Je klanten sparen voor een beloning die jij zelf kiest.</li>
-          <li><span class="tick" aria-hidden="true">&#10003;</span> De kaart zit in hun Apple of Google Wallet &mdash; geen app, nooit kwijt.</li>
+          <li><span class="tick" aria-hidden="true">&#10003;</span> De kaart zit in hun Apple of Google Wallet: geen app, nooit kwijt.</li>
           <li><span class="tick" aria-hidden="true">&#10003;</span> Jij ziet wie je vaste klanten zijn en wie bijna een volle kaart heeft.</li>
         </ul>
       </div>
@@ -232,7 +251,7 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
       <div class="section__head reveal">
         <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Inspiratie</span>
         <h2>Populaire beloningen</h2>
-        <p class="section__lead">Kies wat bij jouw zaak past — je past het elk moment aan.</p>
+        <p class="section__lead">Kies wat bij jouw zaak past. Je past het elk moment aan.</p>
       </div>
       <div class="rewardlist reveal">
         <?php foreach ($n['rewards'] as $r): ?>
@@ -253,26 +272,36 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
     </div>
   </section>
 
-  <section class="section" id="faq">
+  <section class="section">
+    <div class="container">
+      <div class="lp-tekst reveal">
+        <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:16px">Klantenkaart, stempelkaart of spaarkaart voor je <?= e($place) ?>?</h2>
+        <p>Het heeft veel namen: klantenkaart, stempelkaart, spaarkaart of klantenpas. Het idee is hetzelfde. Bij elke <?= e($visit) ?> krijgt je klant een stempel, en een volle kaart levert een beloning op. Met Stampzer staat die kaart in de Apple Wallet of Google Wallet van je klant, in plaats van in een portemonnee.</p>
+        <p>Wil je eerst zien hoe jouw kaart eruitziet? <a href="/stempelkaart-maken/?branche=<?= e($slug) ?>">Ontwerp hem gratis met de stempelkaart-maker</a>, of lees hoe de <a href="/digitale-stempelkaart/">digitale stempelkaart</a> werkt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper2" id="faq">
     <div class="container container--narrow">
       <div class="section__head reveal">
         <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Veelgestelde vragen</span>
-        <h2>Digitale klantenkaart voor <?= e(strtolower($n['name'])) ?>s — goed om te weten</h2>
+        <h2>Vragen over de klantenkaart voor <?= e($n['meervoud']) ?></h2>
       </div>
       <div class="faq reveal">
-        <?php foreach ($n['faq'] as $f): ?>
+        <?php foreach ($alleFaq as $f): ?>
         <details class="faq__item"><summary><?= e($f[0]) ?></summary><p><?= e($f[1]) ?></p></details>
         <?php endforeach; ?>
       </div>
     </div>
   </section>
 
-  <section class="section section--paper2">
+  <section class="section">
     <div class="container">
       <div class="section__head reveal">
         <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Verder lezen</span>
         <h2>Meer weten over digitale klantenkaarten?</h2>
-        <p class="section__lead">Praktische uitleg en tips uit onze gids — helder en zonder jargon.</p>
+        <p class="section__lead">Praktische uitleg en tips uit onze gids, helder en zonder jargon.</p>
       </div>
       <div class="gids-grid reveal">
         <?php foreach ($gidsPosts as $g): ?>
@@ -290,7 +319,7 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
   <section class="cta reveal" id="start-gratis">
     <div class="container cta__inner">
       <h2>Klaar voor meer vaste klanten?</h2>
-      <p>Stampzer is nu gratis te proberen — zonder app en zonder creditcard. Zet vandaag je eerste spaarkaart klaar.</p>
+      <p>Stampzer is nu gratis te proberen, zonder app en zonder creditcard. Zet vandaag je eerste spaarkaart klaar.</p>
       <a href="https://app.stampzer.com/registreren" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">→</span></a>
     </div>
   </section>
@@ -309,6 +338,8 @@ $ld = ['@context' => 'https://schema.org', '@graph' => [
           <h2 class="footer__h">Product</h2>
           <a href="/hoe-het-werkt/">Hoe het werkt</a>
           <a href="/digitale-stempelkaart/">Digitale stempelkaart</a>
+          <a href="/digitale-klantenkaart/">Digitale klantenkaart</a>
+          <a href="/stempelkaart-maken/">Stempelkaart maken</a>
           <a href="/apple-wallet-spaarkaart/">Apple Wallet</a>
           <a href="/google-wallet-klantenkaart/">Google Wallet</a>
           <a href="/spaarkaart-zonder-app/">Zonder app</a>

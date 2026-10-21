@@ -19,19 +19,20 @@ function hub_icon($name) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voor wie is stampzer? Digitale klantenkaarten per branche | Stampzer</title>
-  <meta name="description" content="Stampzer maakt digitale klantenkaarten voor lokale ondernemers. Bekijk de pagina voor jouw branche — kappers, koffiebars, nagelstudio's, lunchrooms, sportscholen en meer." />
+  <title>Voor wie is Stampzer? Klantenkaart per branche | Stampzer</title>
+  <meta name="description" content="Stampzer werkt voor elke zaak met vaste klanten: koffiebars, lunchrooms, bakkers, restaurants, kappers, nagelstudio's en sportscholen. Bekijk wat bij jouw zaak past." />
   <link rel="canonical" href="https://stampzer.com/voor-wie/" />
   <meta name="theme-color" content="#181f10" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://stampzer.com/voor-wie/" />
-  <meta property="og:title" content="Voor wie is stampzer? Digitale klantenkaarten per branche" />
+  <meta property="og:title" content="Voor wie is Stampzer? Klantenkaart per branche" />
   <meta property="og:description" content="Bekijk de stampzer-pagina voor jouw branche en zie wat een digitale klantenkaart voor je zaak doet." />
   <meta property="og:image" content="https://stampzer.com/assets/og-image.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/seatren.woff2" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-400-latin.woff2" crossorigin />
   <link rel="stylesheet" href="/styles.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"Voor wie is Stampzer?","url":"https://stampzer.com/voor-wie/","inLanguage":"nl-NL","description":"Stampzer werkt voor elke zaak met vaste klanten: koffiebars, lunchrooms, bakkers, restaurants, kappers, nagelstudio's en sportscholen. Bekijk wat bij jouw zaak past.","isPartOf":{"@type":"WebSite","name":"Stampzer","url":"https://stampzer.com/"}},{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://stampzer.com/kapper/","name":"Klantenkaart voor kappers"},{"@type":"ListItem","position":2,"url":"https://stampzer.com/koffiebar/","name":"Klantenkaart voor koffiebars"},{"@type":"ListItem","position":3,"url":"https://stampzer.com/nagelstudio/","name":"Klantenkaart voor nagelstudio's"},{"@type":"ListItem","position":4,"url":"https://stampzer.com/lunchroom/","name":"Klantenkaart voor lunchrooms"},{"@type":"ListItem","position":5,"url":"https://stampzer.com/sportschool/","name":"Klantenkaart voor sportscholen"},{"@type":"ListItem","position":6,"url":"https://stampzer.com/bakker/","name":"Klantenkaart voor bakkers"},{"@type":"ListItem","position":7,"url":"https://stampzer.com/restaurant/","name":"Klantenkaart voor restaurants"}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://stampzer.com/"},{"@type":"ListItem","position":2,"name":"Voor wie","item":"https://stampzer.com/voor-wie/"}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Naar inhoud</a>
@@ -57,29 +58,63 @@ function hub_icon($name) {
   </header>
 
   <main id="main">
-    <section class="section">
+    <section class="section" style="padding-top:48px">
       <div class="container">
-        <div class="section__head" style="text-align:center;max-width:720px;margin:0 auto 52px">
+        <nav class="breadcrumb" aria-label="Kruimelpad"><a href="/">Home</a> <span aria-hidden="true">/</span> <span>Voor wie</span></nav>
+        <div class="section__head" style="max-width:760px;margin-bottom:40px">
           <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Voor wie</span>
-          <h2>Een digitale klantenkaart voor jouw branche</h2>
-          <p class="section__lead" style="margin-left:auto;margin-right:auto">Stampzer werkt voor elke zaak met vaste klanten. Kies je branche en zie precies wat een digitale spaarkaart voor jou doet.</p>
+          <h1 class="hero__title" style="font-size:clamp(2.4rem,5.4vw,3.9rem);margin-top:10px">Een digitale klantenkaart voor jouw branche</h1>
+          <p class="section__lead">Stampzer werkt voor elke zaak waar klanten vaker dan &eacute;&eacute;n keer komen. Per branche verschilt vooral de beloning en het aantal stempels. Kies je branche en zie wat bij jouw zaak past.</p>
         </div>
         <div class="hub-grid">
           <?php foreach ($order as $slug): $x = $ALL[$slug]; ?>
           <a class="hubcard" href="/<?= e($slug) ?>/">
             <span class="hubcard__ic"><?= hub_icon($x['hubIcon']) ?></span>
-            <strong>Voor <?= e(strtolower($x['name'])) ?>s</strong>
+            <strong>Voor <?= e($x['meervoud'] ?? strtolower($x['name']) . 's') ?></strong>
             <span class="hubcard__tag"><?= e($x['hubTagline']) ?></span>
-            <span class="hubcard__go">Bekijk pagina <span aria-hidden="true">→</span></span>
+            <span class="hubcard__go">Bekijk pagina <span aria-hidden="true">&rarr;</span></span>
           </a>
           <?php endforeach; ?>
           <div class="hubcard hubcard--soon">
             <span class="hubcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
             <strong>Jouw branche</strong>
-            <span class="hubcard__tag">Bakker, bloemist, wasstraat of iets anders? Stampzer werkt voor elke zaak met vaste klanten.</span>
-            <a class="hubcard__go" href="https://app.stampzer.com/registreren">Start gratis <span aria-hidden="true">→</span></a>
+            <span class="hubcard__tag">Bloemist, slager, wasstraat of studio? Stampzer werkt voor elke zaak met vaste klanten.</span>
+            <a class="hubcard__go" href="/stempelkaart-maken/">Ontwerp je kaart <span aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section section--paper2">
+      <div class="container">
+        <div class="section__head">
+          <span class="eyebrow eyebrow--dark"><span class="eyebrow__dot" aria-hidden="true"></span> Instellingen</span>
+          <h2>Welke beloning past bij jouw zaak?</h2>
+          <p class="section__lead">Hoe vaker klanten komen, hoe meer stempels je kunt vragen. Hiermee beginnen de meeste zaken; aanpassen kan altijd.</p>
+        </div>
+        <div class="lp-tabelwrap">
+          <table class="lp-tabel">
+            <thead><tr><th>Branche</th><th>Hoe vaak komt een klant?</th><th>Stempels</th><th>Beloning</th></tr></thead>
+            <tbody>
+              <tr><td><a href="/koffiebar/">Koffiebar</a></td><td>Een paar keer per week</td><td>10</td><td>Gratis koffie</td></tr>
+              <tr><td><a href="/bakker/">Bakker</a></td><td>Een of meer keer per week</td><td>10</td><td>Gratis brood</td></tr>
+              <tr><td><a href="/lunchroom/">Lunchroom</a></td><td>Wekelijks</td><td>8</td><td>Gratis lunch</td></tr>
+              <tr><td><a href="/sportschool/">Sportschool</a></td><td>Per les of training</td><td>10</td><td>Gratis les</td></tr>
+              <tr><td><a href="/restaurant/">Restaurant</a></td><td>Een of twee keer per maand</td><td>8</td><td>Gratis dessert</td></tr>
+              <tr><td><a href="/nagelstudio/">Nagelstudio</a></td><td>Eens per drie tot vier weken</td><td>8</td><td>Gratis behandeling</td></tr>
+              <tr><td><a href="/kapper/">Kapper</a></td><td>Eens per vier tot zes weken</td><td>6</td><td>Halve prijs op je knipbeurt</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="lp-links" style="margin-top:18px">Wil je zien hoe dat eruitziet? Probeer het met de <a href="/stempelkaart-maken/">gratis stempelkaart-maker</a>, of lees hoe de <a href="/digitale-stempelkaart/">digitale stempelkaart</a> werkt.</p>
+      </div>
+    </section>
+
+    <section class="cta" id="start-gratis">
+      <div class="container cta__inner">
+        <h2>Jouw zaak, jouw kaart</h2>
+        <p>Zet vandaag je eerste spaarkaart klaar. Geen app, geen creditcard, en je eerste klant spaart binnen een paar minuten.</p>
+        <a href="https://app.stampzer.com/registreren" class="btn btn--green">Start gratis <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
       </div>
     </section>
   </main>
@@ -96,6 +131,8 @@ function hub_icon($name) {
           <h2 class="footer__h">Product</h2>
           <a href="/hoe-het-werkt/">Hoe het werkt</a>
           <a href="/digitale-stempelkaart/">Digitale stempelkaart</a>
+          <a href="/digitale-klantenkaart/">Digitale klantenkaart</a>
+          <a href="/stempelkaart-maken/">Stempelkaart maken</a>
           <a href="/apple-wallet-spaarkaart/">Apple Wallet</a>
           <a href="/google-wallet-klantenkaart/">Google Wallet</a>
           <a href="/spaarkaart-zonder-app/">Zonder app</a>

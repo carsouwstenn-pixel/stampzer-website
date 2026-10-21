@@ -97,6 +97,8 @@ const FOOTER = `<footer class="footer">
           <h2 class="footer__h">Product</h2>
           <a href="/hoe-het-werkt/">Hoe het werkt</a>
           <a href="/digitale-stempelkaart/">Digitale stempelkaart</a>
+          <a href="/digitale-klantenkaart/">Digitale klantenkaart</a>
+          <a href="/stempelkaart-maken/">Stempelkaart maken</a>
           <a href="/apple-wallet-spaarkaart/">Apple Wallet</a>
           <a href="/google-wallet-klantenkaart/">Google Wallet</a>
           <a href="/spaarkaart-zonder-app/">Zonder app</a>
@@ -208,7 +210,12 @@ const LINKS = [
   ['href="index.html#kaarten"', 'href="/hoe-het-werkt/#voorbeelden"'],
   ['href="index.html#faq"', 'href="/hoe-het-werkt/#vragen"'],
   ['href="index.html"', 'href="/"'],
-  ['href="dashboard.html"', 'href="/dashboard.html"'],
+  ['href="dashboard.html"', 'href="/hoe-het-werkt/#dashboard"'],
+  ['href="/dashboard.html"', 'href="/hoe-het-werkt/#dashboard"'],
+  // Samengevoegde pagina's (SEO-plan oktober 2026, met 301 in .htaccess)
+  ['href="/gids/digitale-klantenkaart-wallet/"', 'href="/digitale-klantenkaart/"'],
+  ['href="/gids/klantenkaart-kapper/"', 'href="/gids/klantenkaart-kapper-barbershop/"'],
+  ['href="/gids/spaarkaart-apple-google-wallet-zonder-app/"', 'href="/spaarkaart-zonder-app/"'],
 ]
 
 function pagina(rel, html) {
