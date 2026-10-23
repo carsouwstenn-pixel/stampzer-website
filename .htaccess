@@ -6,11 +6,26 @@ ErrorDocument 404 /404.html
 # Disable directory listing
 Options -Indexes
 
+# Mappen tonen hun index.html. index.php alleen waar geen HTML-pagina is (het beheer onder /admin/),
+# zodat oude PHP-pagina's die nog op de server staan nooit meer voorrang krijgen.
+DirectoryIndex index.html index.php
+
 # Canonical host: force non-www (www 301-redirects to non-www)
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTP_HOST} ^www\.stampzer\.com$ [NC]
   RewriteRule ^(.*)$ https://stampzer.com/$1 [L,R=301]
+
+  # PHP alleen waar het echt nodig is (oktober 2026, na PHP2Shell: CVE-2026-109618 en -109619).
+  # De site is statische HTML. PHP draait nog voor het pilotformulier en het beheer; elk ander
+  # .php-adres (oude bestanden op de server, testbestanden, admin/setup.php) krijgt een 403.
+  RewriteCond %{REQUEST_URI} \.(php[0-9]?|phtml|phar|pht|phps)$ [NC]
+  RewriteCond %{REQUEST_URI} !^/pilot\.php$
+  RewriteCond %{REQUEST_URI} !^/admin/(index|login|logout)\.php$
+  RewriteRule ^ - [F]
+  # Mappen en verborgen bestanden die nooit publiek horen te zijn (.well-known blijft bereikbaar).
+  RewriteRule ^(api|niche|tools|seo|design|_ogfont|_fontsrc)(/|$) - [F]
+  RewriteRule (^|/)\.(?!well-known/) - [F]
 
   # SEO-plan oktober 2026: oude en dubbele pagina's naar de pagina die het onderwerp nu draagt.
   RewriteRule ^dashboard\.html$ /hoe-het-werkt/ [R=301,L]
@@ -56,6 +71,6 @@ Options -Indexes
 </IfModule>
 
 # Block direct access to non-web / sensitive file types (defense in depth).
-<FilesMatch "\.(py|ps1|sql|log|sh|ini|lock|bak|old|inc)$">
+<FilesMatch "\.(py|ps1|sql|log|sh|ini|lock|bak|old|inc|md|mjs|ts|json|patch|diff|env|ya?ml|conf|cfg|dist|swp|zip|tar|gz|tgz|7z|rar)$">
   Require all denied
 </FilesMatch>

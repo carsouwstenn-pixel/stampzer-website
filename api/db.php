@@ -34,5 +34,11 @@ function db() {
         password_hash VARCHAR(255) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+    // Alleen tijdstippen van mislukte beheer-logins (geen e-mail of IP), voor de rem in admin/auth.php.
+    $pdo->exec("CREATE TABLE IF NOT EXISTS admin_login_failures (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        KEY created_at (created_at)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
     return $pdo;
 }

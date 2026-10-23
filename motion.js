@@ -121,10 +121,12 @@ document.querySelectorAll('.pilot-form').forEach((form) => {
     const emailEl = form.querySelector('[name="email"]');
     const bizEl = form.querySelector('[name="business"]');
     const brancheEl = form.querySelector('[name="branche"]');
+    const hpEl = form.querySelector('[name="website"]'); // honeypot: mensen zien dit veld niet
     const note = form.querySelector('.pilot-form__note');
     const email = (emailEl && emailEl.value || '').trim();
     const business = (bizEl && bizEl.value || '').trim();
     const branche = (brancheEl && brancheEl.value || '').trim();
+    const website = (hpEl && hpEl.value || '').trim();
 
     if (!business) { bizEl.focus(); bizEl.style.borderColor = '#e0552d'; if (note) note.textContent = 'Vul de naam van je zaak in.'; return; }
     if (!isValidEmail(email)) { emailEl.focus(); emailEl.style.borderColor = '#e0552d'; if (note) note.textContent = 'Vul een geldig e-mailadres in.'; return; }
@@ -137,7 +139,7 @@ document.querySelectorAll('.pilot-form').forEach((form) => {
         const res = await fetch(PILOT_ENDPOINT, {
           method: 'POST',
           headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, business, branche, page: location.pathname }),
+          body: JSON.stringify({ email, business, branche, page: location.pathname, website }),
         });
         if (!res.ok) throw new Error('bad response');
       } catch (err) {

@@ -8,18 +8,23 @@ if (admin_logged_in()) { header('Location: /admin/'); exit; }
 
 $err = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim((string)($_POST['email'] ?? ''));
-    $pass  = (string)($_POST['password'] ?? '');
-    $stmt = db()->prepare("SELECT * FROM admin_users WHERE email = ? LIMIT 1");
-    $stmt->execute([$email]);
-    $u = $stmt->fetch();
-    if ($u && password_verify($pass, $u['password_hash'])) {
-        session_regenerate_id(true);
-        $_SESSION['admin_id'] = $u['id'];
-        header('Location: /admin/');
-        exit;
+    if (admin_login_locked()) {
+        $err = 'Te veel mislukte pogingen. Probeer het over een kwartier opnieuw.';
+    } else {
+        $email = trim((string)($_POST['email'] ?? ''));
+        $pass  = (string)($_POST['password'] ?? '');
+        $stmt = db()->prepare("SELECT * FROM admin_users WHERE email = ? LIMIT 1");
+        $stmt->execute([$email]);
+        $u = $stmt->fetch();
+        if ($u && password_verify($pass, $u['password_hash'])) {
+            session_regenerate_id(true);
+            $_SESSION['admin_id'] = $u['id'];
+            header('Location: /admin/');
+            exit;
+        }
+        admin_login_failed();
+        $err = 'Onjuiste inloggegevens. Probeer het opnieuw.';
     }
-    $err = 'Onjuiste inloggegevens. Probeer het opnieuw.';
 }
 ?><!DOCTYPE html>
 <html lang="nl">

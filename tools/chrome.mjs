@@ -58,7 +58,6 @@ function actief(url) {
 function urlVan(rel, html) {
   const canon = html.match(/<link rel="canonical" href="https:\/\/stampzer\.com(\/[^"<]*)"/)
   if (canon) return canon[1]
-  if (rel === 'niche/render.php') return '/koffiebar/'
   return '/' + rel.replace(/index\.(html|php)$/, '')
 }
 
@@ -267,7 +266,8 @@ function bestanden() {
     }
   }
   loop(ROOT)
-  lijst.push(path.join(ROOT, 'niche/render.php'), path.join(ROOT, 'voor-wie/index.php'))
+  // Sinds oktober 2026 zijn alle publieke pagina's gewone HTML (tools/branches/bouw.mjs maakt de
+  // branchepagina's en /voor-wie/); er is geen PHP-sjabloon meer om bij te werken.
   return lijst.concat(EXTRA.map((p) => path.resolve(p)))
 }
 
