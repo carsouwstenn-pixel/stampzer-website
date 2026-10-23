@@ -143,7 +143,15 @@ document.querySelectorAll('.pilot-form').forEach((form) => {
         });
         if (!res.ok) throw new Error('bad response');
       } catch (err) {
-        if (note) note.textContent = 'Er ging iets mis. Probeer het later opnieuw.';
+        // Lukt het versturen niet, dan kan de aanmelding altijd nog per mail (vooraf ingevuld).
+        if (note) {
+          const mail = document.createElement('a');
+          mail.href = 'mailto:hello@stampzer.com?subject=' + encodeURIComponent('Pilotplek Stampzer') +
+            '&body=' + encodeURIComponent('Zaak: ' + business + '\nBranche: ' + (branche || '-') + '\nE-mail: ' + email);
+          mail.textContent = 'hello@stampzer.com';
+          note.textContent = 'Aanmelden lukt nu even niet. Mail ons op ';
+          note.append(mail, ', dan zetten we je plek klaar.');
+        }
         if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label; }
         return;
       }
