@@ -33,7 +33,7 @@ if (!$exists && $_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="adm-auth">
     <div class="adm-auth__card">
-      <img class="adm-auth__logo" src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" />
+      <img class="adm-auth__logo" src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="55" />
       <?php if ($exists): ?>
         <h1>Al ingesteld</h1>
         <p>Er is al een beheerder. <a href="/admin/login.php" style="color:var(--green-700);font-weight:600">Ga naar inloggen →</a></p>

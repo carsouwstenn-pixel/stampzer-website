@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="adm-auth">
     <div class="adm-auth__card">
-      <img class="adm-auth__logo" src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="54" />
+      <img class="adm-auth__logo" src="/assets/logo-dark.png" alt="stampzer.com" width="150" height="55" />
       <h1>CEO dashboard</h1>
       <p>Log in om verder te gaan.</p>
       <?php if ($err): ?><div class="adm-auth__err"><?= adm_h($err) ?></div><?php endif; ?>

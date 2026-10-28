@@ -35,7 +35,7 @@ function lead_page_label($p) {
   <div class="adm">
 
     <aside class="adm-side">
-      <div class="adm-logo"><img src="/assets/logo-cream.png" alt="stampzer" width="130" height="47" /></div>
+      <div class="adm-logo"><img src="/assets/logo-cream.png" alt="stampzer" width="130" height="48" /></div>
       <nav class="adm-nav" aria-label="Dashboard">
         <button data-section="overzicht" class="is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Overzicht</span></button>
         <button data-section="leads"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5M21 20a6 6 0 0 0-5-5.9"/></svg><span>Leads</span></button>
