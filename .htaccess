@@ -16,11 +16,6 @@ DirectoryIndex index.html index.php
   RewriteCond %{HTTP_HOST} ^www\.stampzer\.com$ [NC]
   RewriteRule ^(.*)$ https://stampzer.com/$1 [L,R=301]
 
-  # TIJDELIJK (23 oktober 2026): de PHP-versies van Hostinger hebben de PHP2Shell-fix nog niet
-  # (8.4.26; de fix zit in 8.4.27). Tot die er is draait hier helemaal geen PHP, ook niet voor het
-  # pilotformulier en het beheer. Deze twee regels weghalen zodra PHP 8.4.27 of nieuwer actief is.
-  RewriteRule \.(php[0-9]?|phtml|phar|pht|phps)$ - [F,NC]
-  RewriteRule ^admin(/|$) - [F]
   # Geen multipart-verzoeken (bestandsuploads): deze site neemt nooit bestanden aan, en volgens
   # meerdere bronnen zit PHP2Shell juist in de verwerking daarvan.
   RewriteCond %{HTTP:Content-Type} ^multipart/ [NC]
