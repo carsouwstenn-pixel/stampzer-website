@@ -311,6 +311,173 @@
     .pcard{padding:26px 20px}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none;transition:none}.roi__fill{transition:none}}
+  /* ===== Redesign oktober 2026: echte foto's, het filmpje en meer vertrouwen ===== */
+  /* hero: foto van een zaak, met de telefoon en de stempelmelding erover */
+  .hero__photo{position:relative;justify-self:center;width:min(100%,440px)}
+  .hero__photo>img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+  .hero__photo .phone{position:absolute;left:-70px;bottom:-46px;width:206px;z-index:2}
+  .hero__photo .phone__screen>*{zoom:.71}
+  .hero__photo .toast{left:auto;right:-24px;top:30px;z-index:3}
+  .hero__checks{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;font-size:.92rem;font-weight:500;color:var(--text)}
+  .hero__checks li{display:flex;align-items:center;gap:7px}
+  .hero__checks svg{color:var(--green-700);flex:0 0 auto}
+
+  /* vertrouwensbalk onder de hero */
+  .trustbar{padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .trustbar__in{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 32px}
+  .trustbar__item{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600;color:var(--ink-2)}
+  .trustbar__item svg{width:19px;height:19px;color:var(--green-700);flex:0 0 auto}
+
+  /* filmpje "zo werkt het": een tijdlijn van 20 seconden in de telefoon (home.js) */
+  .film{margin-top:44px;position:relative;overflow:hidden;display:grid;grid-template-columns:auto minmax(0,1fr);gap:56px;align-items:center;background:var(--ink);color:var(--paper);border-radius:32px;padding:48px 56px}
+  .film::before{content:"";position:absolute;left:-170px;top:50%;width:580px;height:580px;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,rgba(41,199,0,.3),rgba(41,199,0,0) 65%);pointer-events:none}
+  .film__stage{position:relative;z-index:1;justify-self:center}
+  .film .phone__screen{background:#000;padding:0}
+  .film .phone__screen::before,.film .phone__screen::after{z-index:6}
+  .fs{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .5s ease,visibility 0s linear .5s}
+  .film[data-scene="0"] .fs--scan,.film[data-scene="1"] .fs--scan,.film[data-scene="1"] .fs--add,.film[data-scene="2"] .fs--wallet,.film[data-scene="3"] .fs--wallet{opacity:1;visibility:visible;transition:opacity .5s ease}
+  /* scène 1: de camera ziet de QR-code op de balie */
+  .cam__bg{position:absolute;inset:-14px;width:calc(100% + 28px);height:calc(100% + 28px);max-width:none;object-fit:cover;filter:blur(3px) brightness(.6) saturate(1.05)}
+  .cam__qr{position:absolute;left:50%;top:41%;width:46%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(-4deg);background:#fff;border-radius:14px;padding:9%;box-shadow:0 22px 40px -18px rgba(0,0,0,.75)}
+  .cam__qr svg{display:block;width:100%;height:100%}
+  .cam__kader{position:absolute;left:50%;top:41%;width:60%;aspect-ratio:1;transform:translate(-50%,-50%) scale(1.14);opacity:0;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .3s ease}
+  .cam__kader i{position:absolute;width:22%;height:22%;border:3px solid #ffd60a}
+  .cam__kader .k1{left:0;top:0;border-right:0;border-bottom:0;border-radius:10px 0 0 0}
+  .cam__kader .k2{right:0;top:0;border-left:0;border-bottom:0;border-radius:0 10px 0 0}
+  .cam__kader .k3{left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 10px}
+  .cam__kader .k4{right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 10px 0}
+  .film.lock .cam__kader{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .cam__pill{position:absolute;left:50%;top:67%;transform:translate(-50%,10px);opacity:0;display:flex;align-items:center;gap:7px;white-space:nowrap;background:#ffd60a;color:#1a1a1a;font-size:.66rem;font-weight:600;padding:8px 12px;border-radius:12px;box-shadow:0 10px 24px -10px rgba(0,0,0,.6);transition:opacity .35s ease,transform .35s ease}
+  .film.pill .cam__pill{opacity:1;transform:translate(-50%,0)}
+  .cam__modus{position:absolute;left:0;right:0;bottom:19%;text-align:center;font-size:.58rem;font-weight:700;letter-spacing:.14em;color:#ffd60a}
+  .cam__knop{position:absolute;left:50%;bottom:6.5%;width:17%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:#fff;box-shadow:0 0 0 3px #000,0 0 0 6px #fff}
+  /* tikje van de vinger */
+  .tik{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 0 2px rgba(255,255,255,.85);opacity:0;pointer-events:none;z-index:5}
+  .tik.aan{animation:tik .7s ease-out}
+  @keyframes tik{0%{opacity:0;transform:scale(.4)}25%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+  .tik--pill{left:50%;top:69%}
+  .tik--add{left:84%;top:19.3%}
+  /* scène 2: het venster "toevoegen aan Wallet" schuift omhoog */
+  .fs--add{background:rgba(0,0,0,.42)}
+  .sheet{position:absolute;left:0;right:0;bottom:0;height:83%;background:#f2f2f7;color:#111;border-radius:20px 20px 0 0;padding:16px 16px 0;transform:translateY(100%);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+  .film[data-scene="1"] .sheet{transform:none}
+  .sheet__bar{display:flex;justify-content:space-between;align-items:center;font-size:.74rem;margin-bottom:26px;color:#0a84ff}
+  .sheet__bar b{font-weight:700}
+  .sheet .wcard{box-shadow:0 18px 34px -16px rgba(0,0,0,.35)}
+  .sheet__tekst{margin-top:18px;text-align:center;font-size:.66rem;line-height:1.45;color:#6e6e73}
+  /* scène 3 en 4: de kaart in de Wallet, stempels en meldingen */
+  .fs--wallet{background:#000;padding:52px 12px 0}
+  .wal__kop{display:flex;justify-content:space-between;align-items:center;color:#fff;margin:0 4px 12px}
+  .wal__kop b{font-family:var(--display);font-weight:400;font-size:1.35rem}
+  .wal__kop span{display:flex;gap:6px}
+  .wal__kop i{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;font-style:normal;font-size:.7rem;color:#fff}
+  .fs--wallet .wcard{position:relative;z-index:2;transition:box-shadow .5s ease}
+  .film[data-scene="3"] .fs--wallet .wcard{box-shadow:0 0 0 3px var(--mint),0 22px 50px -12px rgba(41,199,0,.75)}
+  .wal__pas{position:relative;z-index:1;height:58px;margin-top:-26px;border-radius:14px}
+  .wal__pas--bank{background:linear-gradient(135deg,#2d4b8e,#1b2f5e)}
+  .wal__pas--ov{background:linear-gradient(135deg,#f1b400,#d79a00);margin-top:-30px}
+  .wal__later{position:absolute;left:0;right:0;bottom:13%;text-align:center;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);opacity:0;transition:opacity .3s ease}
+  .film.later .wal__later{opacity:1}
+  .noti{position:absolute;left:8px;right:8px;top:44px;z-index:4;display:flex;gap:9px;align-items:center;background:rgba(242,242,247,.94);color:#111;border-radius:16px;padding:9px 11px;box-shadow:0 14px 30px -12px rgba(0,0,0,.7);transform:translateY(-140%);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
+  .film.noti-aan .noti{transform:none;opacity:1}
+  .noti__ic{width:30px;height:30px;border-radius:8px;background:var(--green);color:var(--ink);display:grid;place-items:center;font-family:var(--display);font-size:.95rem;flex:0 0 30px}
+  .noti__t{min-width:0}
+  .noti__t b,.noti__t span{display:block;font-size:.64rem;line-height:1.3}
+  .noti__t span{color:#333}
+  .noti small{align-self:flex-start;margin-left:auto;font-size:.55rem;color:#777}
+  .feest{position:absolute;left:0;right:0;top:150px;height:0;pointer-events:none;z-index:3}
+  .feest i{position:absolute;left:50%;top:0;width:7px;height:12px;border-radius:2px;background:var(--c,#29c700);opacity:0}
+  .film.feest-aan .feest i{animation:confetti 1.7s cubic-bezier(.2,.7,.4,1) var(--d,0s) forwards}
+  @keyframes confetti{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r))}}
+  /* rechts: de vier stappen als hoofdstukken */
+  .film__side{position:relative;z-index:1}
+  .film__steps{list-style:none;display:grid;gap:10px}
+  .film__step button{width:100%;text-align:left;display:grid;grid-template-columns:auto 1fr;gap:3px 14px;align-items:start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:15px 18px;color:inherit;font:inherit;cursor:pointer;transition:background .25s ease,border-color .25s ease}
+  .film__step button:hover{background:rgba(255,255,255,.07)}
+  .film__step button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  .film__step.is-on button{background:rgba(41,199,0,.12);border-color:rgba(174,243,160,.45)}
+  .film__n{grid-row:span 2;width:34px;height:34px;border-radius:11px;background:rgba(255,255,255,.08);display:grid;place-items:center;font-family:var(--display);font-size:1.05rem;color:var(--mint)}
+  .film__step.is-on .film__n{background:var(--green);color:var(--ink)}
+  .film__step b{font-family:var(--display);font-weight:400;font-size:1.2rem;color:#fff;line-height:1.15}
+  .film__step span.film__uitleg{font-size:.92rem;color:rgba(247,242,231,.74);line-height:1.5}
+  .film__bar{grid-column:1/-1;display:block;height:3px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:10px}
+  .film__bar i{display:block;height:100%;width:0;background:var(--green);border-radius:3px}
+  .film__ctrl{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .film__play{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font:inherit;font-weight:600;font-size:.9rem;padding:9px 16px;border-radius:999px;cursor:pointer}
+  .film__play:hover{background:rgba(255,255,255,.14)}
+  .film__play:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  .film__tijd{font-size:.84rem;color:rgba(247,242,231,.6);font-variant-numeric:tabular-nums}
+  .film__try{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+  .film__try p{width:100%;font-size:.95rem;color:rgba(247,242,231,.82)}
+  .film__try a{display:block;line-height:0;border-radius:10px}
+  .film__try a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  .film__try img{display:block;height:44px;width:auto}
+
+  /* voor wie: kaarten met een foto van een echte zaak */
+  .brcard--foto{padding:0;overflow:hidden;display:flex;flex-direction:column}
+  .brcard--foto img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+  .brcard__b{padding:20px 22px 24px}
+  .brmore{margin-top:28px;text-align:center}
+  .brmore a{font-weight:600;color:var(--green-900);text-decoration:underline;text-underline-offset:4px}
+
+  /* waarom Stampzer */
+  .why{background:var(--paper-2)}
+  .whygrid{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .why__item{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .why__item .badge__ic{margin:0 0 14px}
+  .why__item h3{font-size:1.25rem}
+  .why__item p{margin-top:8px;font-size:.95rem;color:var(--text)}
+  .why__item a,.why__vgl a{font-weight:600;color:var(--green-900);text-decoration:underline;text-underline-offset:3px}
+  .why__vgl{margin-top:30px;text-align:center;font-size:.95rem;color:var(--text)}
+  .why__vgl a{white-space:nowrap}
+
+  /* in drie stappen live: met een foto van het stempelmoment */
+  .howgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .steps.steps--lijst{grid-template-columns:1fr;gap:22px;margin-top:34px}
+  .steps--lijst .step{display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+  .steps--lijst .step__n{grid-row:span 2}
+  .steps--lijst .step h3{margin-top:2px}
+  .howfoto{position:relative;margin:0}
+  .howfoto img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+  .howfoto figcaption{position:absolute;left:18px;bottom:18px;display:flex;align-items:center;gap:8px;background:#fff;color:var(--ink);font-size:.86rem;font-weight:600;padding:9px 14px;border-radius:999px;box-shadow:var(--shadow-sm)}
+  .howfoto figcaption::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
+
+  /* oprichter, zekerheden en de pilot */
+  .founder--groot{max-width:860px;padding:34px 38px;gap:30px;margin-top:40px}
+  .founder--groot .founder__img{width:140px;height:140px}
+  .founder__links{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
+  .founder__links a{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;color:var(--ink);background:var(--paper-2);border:1px solid var(--line);padding:8px 14px;border-radius:999px;transition:border-color .2s ease,color .2s ease}
+  .founder__links a:hover{border-color:var(--green-700);color:var(--green-900)}
+  .pilotband{margin:30px auto 0;max-width:860px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px 24px;background:var(--mint);border-radius:var(--radius-lg);padding:22px 28px}
+  .pilotband b{display:block;font-family:var(--display);font-weight:400;font-size:1.25rem;color:var(--ink)}
+  .pilotband span{display:block;margin-top:4px;font-size:.95rem;color:var(--ink-2);max-width:36em}
+  .pilotband .btn{flex:0 0 auto}
+
+  /* slot: een straat vol lokale zaken */
+  .final--foto{color:#fff;padding:120px 0;background:var(--ink)}
+  .final__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .final--foto::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(15,20,10,.56),rgba(15,20,10,.78))}
+  .final--foto h2{color:#fff}
+  .final--foto p{color:rgba(247,242,231,.9)}
+  .final--foto .btn--ghost{color:#fff;border-color:rgba(255,255,255,.75)}
+  .final--foto .btn--ghost:hover{background:#fff;color:var(--ink)}
+
+  @media(max-width:920px){
+    .hero__photo{width:min(100%,400px);margin-bottom:30px}
+    .hero__photo .phone{left:-10px;bottom:-34px;width:150px}
+    .hero__photo .phone__screen>*{zoom:.517}
+    .film{grid-template-columns:1fr;gap:30px;padding:34px 22px}
+    .film .fs{zoom:.862}
+    .whygrid{grid-template-columns:1fr 1fr}
+    .howgrid{grid-template-columns:1fr;gap:34px}
+    .founder--groot{padding:28px 24px}
+  }
+  @media(max-width:560px){
+    .whygrid{grid-template-columns:1fr}
+    .trustbar__in{justify-content:flex-start;gap:10px 22px}
+    .film{border-radius:24px}
+    .final--foto{padding:84px 0}
+  }
 /* chrome:start · menu, footer en cookiemelding. Gegenereerd door tools/chrome.mjs: pas het daar aan, niet hier. */
 html{scroll-padding-top:88px}
 .skip-link{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:0 0 8px 0}
@@ -437,13 +604,18 @@ html{scroll-padding-top:88px}
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Moeten mijn klanten een app downloaden?", "acceptedAnswer": { "@type": "Answer", "text": "Nee. Je klant scant een QR-code en tikt op Toevoegen. De kaart komt in de Apple Wallet of Google Wallet die al op hun telefoon staat. Geen app, geen account." } },
-        { "@type": "Question", "name": "Werkt het op iPhone én Android?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Stampzer werkt in Apple Wallet (iPhone) en Google Wallet (Android). Je klant gebruikt gewoon de Wallet die al op z'n toestel staat." } },
-        { "@type": "Question", "name": "Hoe deel ik stempels uit?", "acceptedAnswer": { "@type": "Answer", "text": "Je scant met je telefoon of tablet de QR-code op de kaart van je klant. Eén tik en de stempel staat erop. Klanten kunnen zichzelf niet stempelen." } },
-        { "@type": "Question", "name": "Heb ik speciale apparatuur nodig?", "acceptedAnswer": { "@type": "Answer", "text": "Nee. Een telefoon of tablet met een camera is genoeg. Geen scanners, geen kassakoppeling." } },
-        { "@type": "Question", "name": "Vinden oudere klanten een digitale kaart niet lastig?", "acceptedAnswer": { "@type": "Answer", "text": "De drempel is laag: één QR scannen en op Toevoegen tikken. Wie een pinpas of OV op de telefoon heeft, kan dit ook. Je kunt papier en digitaal gerust een tijd naast elkaar aanbieden." } },
-        { "@type": "Question", "name": "Wat gebeurt er als een kaart vol is?", "acceptedAnswer": { "@type": "Answer", "text": "Je klant krijgt de beloning die jij hebt ingesteld. Daarna begint de kaart automatisch opnieuw, zodat het sparen gewoon doorloopt." } },
-        { "@type": "Question", "name": "Wat kost het?", "acceptedAnswer": { "@type": "Answer", "text": "Starter kost €29 per maand en is maandelijks opzegbaar, of €24 per maand bij een jaarabonnement. Je krijgt één zaak met onbeperkt klanten en stempels. Meerdere vestigingen? Dan is er Pro, vanaf €41 per maand. Je kunt eerst gratis proberen, zonder creditcard." } }
+        {"@type": "Question", "name": "Moeten mijn klanten een app downloaden?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Je klant scant een QR-code en tikt op Toevoegen. De kaart komt in de Apple Wallet of Google Wallet die al op hun telefoon staat. Geen app, geen account."}},
+        {"@type": "Question", "name": "Werkt het op iPhone én Android?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Stampzer werkt in Apple Wallet (iPhone) en Google Wallet (Android). Je klant gebruikt gewoon de Wallet die al op z'n toestel staat."}},
+        {"@type": "Question", "name": "Hoe snel staat mijn kaart live?", "acceptedAnswer": {"@type": "Answer", "text": "In een paar minuten. Je maakt een account, ontwerpt je kaart en zet de QR-code bij de kassa. Daarna kunnen klanten meteen sparen."}},
+        {"@type": "Question", "name": "Hoe deel ik stempels uit?", "acceptedAnswer": {"@type": "Answer", "text": "Je scant met je telefoon of tablet de QR-code op de kaart van je klant. Eén tik en de stempel staat erop. Klanten kunnen zichzelf niet stempelen."}},
+        {"@type": "Question", "name": "Heb ik speciale apparatuur nodig?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Een telefoon of tablet met een camera is genoeg. Geen scanners, geen kassakoppeling."}},
+        {"@type": "Question", "name": "Kan ik mijn eigen logo en kleuren gebruiken?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Je uploadt je logo en kiest je kleuren. Je kaart in de Wallet en je poster met de QR-code krijgen dezelfde huisstijl."}},
+        {"@type": "Question", "name": "Welke gegevens van mijn klanten zie ik?", "acceptedAnswer": {"@type": "Answer", "text": "Een spaarkaart is anoniem: je ziet hoeveel stempels erop staan en wanneer ze zijn gezet, maar geen naam of telefoonnummer, tenzij je klant zelf iets deelt. Alle gegevens staan op servers in de EU, volgens de AVG."}},
+        {"@type": "Question", "name": "Vinden oudere klanten een digitale kaart niet lastig?", "acceptedAnswer": {"@type": "Answer", "text": "De drempel is laag: één QR scannen en op Toevoegen tikken. Wie een pinpas of OV op de telefoon heeft, kan dit ook. Je kunt papier en digitaal gerust een tijd naast elkaar aanbieden."}},
+        {"@type": "Question", "name": "Wat gebeurt er als een kaart vol is?", "acceptedAnswer": {"@type": "Answer", "text": "Je klant krijgt de beloning die jij hebt ingesteld. Daarna begint de kaart automatisch opnieuw, zodat het sparen gewoon doorloopt."}},
+        {"@type": "Question", "name": "Wat is het verschil met andere aanbieders, zoals OnMe?", "acceptedAnswer": {"@type": "Answer", "text": "Net als OnMe zet Stampzer je spaarkaart in de Apple of Google Wallet, zonder app. Stampzer werkt voor elke lokale zaak (niet alleen horeca), je zet het zelf op en de prijs staat gewoon op de site: vanaf €24 per maand. Lees de eerlijke vergelijking."}},
+        {"@type": "Question", "name": "Kan ik meerdere vestigingen beheren?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Met Pro beheer je al je vestigingen in één dashboard en zie je per locatie wie er terugkomt."}},
+        {"@type": "Question", "name": "Wat kost het?", "acceptedAnswer": {"@type": "Answer", "text": "Starter kost €29 per maand en is maandelijks opzegbaar, of €24 per maand bij een jaarabonnement. Je krijgt één zaak met onbeperkt klanten en stempels. Meerdere vestigingen? Dan is er Pro, vanaf €41 per maand. Je kunt eerst gratis proberen, zonder creditcard."}}
       ]
     }
   ]
@@ -487,14 +659,19 @@ html{scroll-padding-top:88px}
       <p class="hero__sub">Stampzer zet de spaarkaart van jouw zaak in de Wallet op de telefoon van je klant. Aan de balie scan je de kaart voor een stempel, en in je dashboard zie je wie er vaak terugkomt.</p>
       <div class="hero__cta">
         <a class="btn btn--green btn--big" href="https://app.stampzer.com/registreren">Start gratis <span class="arrow">→</span></a>
-        <a class="btn btn--ghost btn--big" href="#opbrengst">Reken uit wat het oplevert</a>
+        <a class="btn btn--ghost btn--big" href="#zo-werkt-het">Bekijk hoe het werkt</a>
       </div>
-      <p class="hero__trust">Gratis proberen, zonder creditcard. Daarna vanaf €24 per maand.</p>
+      <ul class="hero__checks">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 6"/></svg>Gratis proberen, zonder creditcard</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 6"/></svg>Maandelijks opzegbaar</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 6"/></svg>Daarna vanaf €24 per maand</li>
+      </ul>
     </div>
-    <div class="stage">
-      <div class="phone">
+    <div class="hero__photo">
+      <img src="/assets/foto/hero-koffiebar.webp" alt="Barista geeft een cappuccino aan een klant in een buurtcafé" width="928" height="1152" fetchpriority="high" decoding="async" />
+      <div class="phone" aria-hidden="true">
         <div class="phone__screen">
-          <div class="phone__bar"><span>Wallet</span><span aria-hidden="true">•••</span></div>
+          <div class="phone__bar"><span>Wallet</span><span>•••</span></div>
           <div class="wcard">
             <div class="wcard__top"><div class="wcard__logo">K</div><div><div class="wcard__name">Koffiebar De Hoek</div><div class="wcard__loc">Koffiebar · Utrecht</div></div></div>
             <div class="wcard__reward">JOUW BELONING</div>
@@ -505,7 +682,7 @@ html{scroll-padding-top:88px}
           <div class="via">VIA STAMPZER</div>
         </div>
       </div>
-      <div class="toast">
+      <div class="toast" aria-hidden="true">
         <span class="toast__ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 6"/></svg></span>
         <span><b>Stempel toegevoegd</b><small>Koffiebar De Hoek · zojuist</small></span>
       </div>
@@ -513,28 +690,94 @@ html{scroll-padding-top:88px}
   </div>
 </section>
 
-<!-- SEGMENTS -->
-<div class="segs"><div class="container segs__in">
-  <span class="segs__lbl">Gemaakt voor lokale zaken:</span>
-  <a class="segs__item" href="/koffiebar/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 3v2M10.5 3v2"/></svg>Koffiebars</a>
-  <a class="segs__item" href="/kapper/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/></svg>Kappers</a>
-  <a class="segs__item" href="/bakker/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10c2-4 14-4 16 0 1 2 0 9-2 10H6c-2-1-3-8-2-10z"/><path d="M8 10V7M12 10V6M16 10V7"/></svg>Bakkers</a>
-  <a class="segs__item" href="/lunchroom/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3l2 8H7z"/><path d="M9 11v10"/><path d="M15 3c2 0 3 2 3 5s-1 4-3 4V3z"/><path d="M15 12v9"/></svg>Lunchrooms</a>
-  <a class="segs__item" href="/sportschool/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg>Sportscholen</a>
+<!-- ZEKERHEDEN -->
+<div class="trustbar"><div class="container trustbar__in">
+  <span class="trustbar__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18M16 14.5h2"/></svg>Werkt in Apple Wallet en Google Wallet</span>
+  <span class="trustbar__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>AVG-proof, je data staat in de EU</span>
+  <span class="trustbar__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 6.5A6.5 6.5 0 1 0 17 17.5"/><path d="M4 10.5h9M4 13.5h9"/></svg>Vaste prijs, geen kosten per klant</span>
+  <span class="trustbar__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Gemaakt in Nederland</span>
 </div></div>
+
+<!-- FILMPJE: ZO WERKT HET -->
+<section class="film-sec" id="zo-werkt-het">
+  <div class="container">
+    <div class="shead shead--center reveal"><h2>Zo werkt het, in 20 seconden</h2><p>Van de QR-code aan de balie tot een gratis koffie. Zo ziet je klant het op de telefoon: geen app, geen account.</p></div>
+    <div class="film reveal" data-film data-scene="0" role="region" aria-label="Filmpje: zo werkt Stampzer voor je klant">
+      <div class="film__stage" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="fs fs--scan">
+              <img class="cam__bg" src="/assets/foto/koffiebar.webp" alt="" width="760" height="570" loading="lazy" decoding="async" />
+              <div class="cam__qr"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><path stroke="#181f10" d="M0 0.5h7m4 0h2m5 0h3m1 0h2m2 0h7M0 1.5h1m5 0h1m2 0h1m2 0h1m2 0h1m2 0h1m3 0h1m3 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h4m2 0h1m1 0h1m2 0h6m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h2m8 0h2m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h3m1 0h5m3 0h2m1 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m1 0h5m2 0h3m1 0h2m1 0h1m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h4m2 0h1m1 0h1m2 0h3m2 0h1M0 8.5h1m1 0h5m2 0h3m1 0h2m2 0h1m1 0h1m2 0h2m2 0h5M0 9.5h1m4 0h1m1 0h2m4 0h1m2 0h4m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1M3 10.5h1m2 0h3m2 0h7m3 0h2m1 0h1m3 0h1m1 0h2M0 11.5h2m2 0h2m1 0h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h3m2 0h1m1 0h3m1 0h1M3 12.5h1m2 0h2m1 0h3m2 0h1m1 0h1m3 0h1m1 0h3m3 0h2m1 0h1M1 13.5h1m2 0h1m2 0h1m2 0h4m1 0h1m1 0h2m2 0h1m1 0h1m2 0h1m2 0h4M2 14.5h2m2 0h3m1 0h3m1 0h4m2 0h2m3 0h2m4 0h1M0 15.5h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m1 0h1m5 0h2m2 0h3m1 0h2M0 16.5h2m1 0h1m1 0h2m1 0h4m2 0h2m1 0h1m2 0h1m1 0h4m1 0h2m3 0h1M1 17.5h1m1 0h3m5 0h1m1 0h1m2 0h1m1 0h3m2 0h2m1 0h2m1 0h2m1 0h1M1 18.5h2m2 0h2m4 0h2m2 0h2m1 0h1m1 0h1m3 0h5m1 0h2M1 19.5h2m2 0h1m1 0h6m3 0h1m3 0h3m1 0h2m1 0h6M1 20.5h2m2 0h2m1 0h2m1 0h1m1 0h2m3 0h1m2 0h1m2 0h2m1 0h3m1 0h2M0 21.5h6m3 0h1m1 0h1m2 0h4m2 0h1m2 0h2m1 0h1m5 0h1M0 22.5h1m1 0h5m5 0h1m1 0h1m4 0h1m1 0h2m4 0h5M0 23.5h1m1 0h1m1 0h1m4 0h2m2 0h1m2 0h1m2 0h4m2 0h1m1 0h1m1 0h4M0 24.5h1m2 0h1m1 0h2m1 0h3m2 0h1m3 0h3m2 0h1m1 0h5m2 0h2M8 25.5h3m1 0h1m1 0h1m1 0h5m1 0h3m3 0h1m1 0h1m1 0h1M0 26.5h7m8 0h1m1 0h1m4 0h3m1 0h1m1 0h1m1 0h2M0 27.5h1m5 0h1m1 0h1m1 0h2m1 0h2m2 0h3m3 0h2m3 0h5M0 28.5h1m1 0h3m1 0h1m1 0h3m2 0h2m1 0h1m2 0h4m1 0h6m2 0h1M0 29.5h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h1m1 0h2m2 0h1m2 0h2m2 0h3m1 0h1M0 30.5h1m1 0h3m1 0h1m1 0h1m2 0h2m2 0h3m2 0h2m2 0h4m1 0h2M0 31.5h1m5 0h1m4 0h2m2 0h1m5 0h1m3 0h1m2 0h3M0 32.5h7m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m1 0h3m2 0h1m3 0h1"/></svg></div>
+              <div class="cam__kader"><i class="k1"></i><i class="k2"></i><i class="k3"></i><i class="k4"></i></div>
+              <div class="cam__pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18"/></svg>Spaarkaart van Koffiebar De Hoek</div>
+              <div class="cam__modus">FOTO</div>
+              <div class="cam__knop"></div>
+              <span class="tik tik--pill"></span>
+            </div>
+            <div class="fs fs--add">
+              <div class="sheet">
+                <div class="sheet__bar"><span>Annuleer</span><b>Voeg toe</b></div>
+                <div class="wcard">
+                  <div class="wcard__top"><div class="wcard__logo">K</div><div><div class="wcard__name">Koffiebar De Hoek</div><div class="wcard__loc">Koffiebar · Utrecht</div></div></div>
+                  <div class="wcard__reward">JOUW BELONING</div>
+                  <div class="wcard__beloning">Gratis koffie</div>
+                  <div class="stamps" data-film-leeg></div>
+                  <div class="wcard__foot">Nog 10 stempels tot je gratis koffie</div>
+                </div>
+                <p class="sheet__tekst">Koffiebar De Hoek wil deze kaart aan je Wallet toevoegen.</p>
+              </div>
+              <span class="tik tik--add"></span>
+            </div>
+            <div class="fs fs--wallet">
+              <div class="wal__kop"><b>Wallet</b><span><i>+</i><i>•••</i></span></div>
+              <div class="wcard">
+                <div class="wcard__top"><div class="wcard__logo">K</div><div><div class="wcard__name">Koffiebar De Hoek</div><div class="wcard__loc">Koffiebar · Utrecht</div></div></div>
+                <div class="wcard__reward">JOUW BELONING</div>
+                <div class="wcard__beloning">Gratis koffie</div>
+                <div class="stamps" data-film-stempels></div>
+                <div class="wcard__foot" data-film-voet>Nog 10 stempels tot je gratis koffie</div>
+              </div>
+              <div class="wal__pas wal__pas--bank"></div>
+              <div class="wal__pas wal__pas--ov"></div>
+              <div class="wal__later">Een paar bezoeken later</div>
+              <div class="noti"><span class="noti__ic">K</span><span class="noti__t"><b>Koffiebar De Hoek</b><span data-film-noti>Stempel erbij! Je staat nu op 1/10</span></span><small>nu</small></div>
+              <div class="feest"><i style="--x:-96px;--y:120px;--r:220deg;--c:#29c700"></i><i style="--x:-60px;--y:170px;--r:-180deg;--c:#aef3a0;--d:.05s"></i><i style="--x:-28px;--y:140px;--r:300deg;--c:#ffd60a;--d:.1s"></i><i style="--x:4px;--y:190px;--r:-260deg;--c:#f3d8c9"></i><i style="--x:36px;--y:130px;--r:200deg;--c:#29c700;--d:.08s"></i><i style="--x:70px;--y:175px;--r:-220deg;--c:#ffd60a;--d:.03s"></i><i style="--x:100px;--y:115px;--r:280deg;--c:#aef3a0;--d:.12s"></i><i style="--x:-80px;--y:60px;--r:160deg;--c:#ffd60a;--d:.15s"></i><i style="--x:82px;--y:55px;--r:-150deg;--c:#29c700;--d:.18s"></i><i style="--x:-12px;--y:80px;--r:240deg;--c:#aef3a0;--d:.2s"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="film__side">
+        <ol class="film__steps">
+          <li class="film__step is-on"><button type="button" data-stap="0" aria-current="step"><span class="film__n">1</span><b>Scan de QR-code</b><span class="film__uitleg">Aan de balie, op de bon of op tafel. Je klant gebruikt gewoon de camera.</span><span class="film__bar"><i></i></span></button></li>
+          <li class="film__step"><button type="button" data-stap="1"><span class="film__n">2</span><b>Kaart in de Wallet</b><span class="film__uitleg">Eén tik op Voeg toe. Werkt in Apple Wallet en Google Wallet.</span><span class="film__bar"><i></i></span></button></li>
+          <li class="film__step"><button type="button" data-stap="2"><span class="film__n">3</span><b>Sparen bij elk bezoek</b><span class="film__uitleg">Jij scant de kaart en de stempel staat er meteen op. Bijna vol? Dan krijgt je klant een seintje.</span><span class="film__bar"><i></i></span></button></li>
+          <li class="film__step"><button type="button" data-stap="3"><span class="film__n">4</span><b>De beloning</b><span class="film__uitleg">Kaart vol? Dan is de koffie van jou. Daarna begint de kaart gewoon opnieuw.</span><span class="film__bar"><i></i></span></button></li>
+        </ol>
+        <div class="film__ctrl"><button class="film__play" type="button" data-film-play>Pauzeer</button><span class="film__tijd" data-film-tijd aria-hidden="true">0:00 / 0:20</span></div>
+        <div class="film__try">
+          <p>Probeer het zelf: zet de demokaart in je eigen Wallet.</p>
+          <a href="https://app.stampzer.com/join/koffiebar-de-hoek" title="Zet de demokaart in je Apple Wallet"><img src="/assets/badges/apple-wallet-nl.svg" alt="Voeg toe aan Apple Wallet" width="151" height="48" loading="lazy" /></a>
+          <a href="https://app.stampzer.com/join/koffiebar-de-hoek" title="Zet de demokaart in je Google Wallet"><img src="/assets/badges/google-wallet-nl.svg" alt="Toevoegen aan Google Wallet" width="174" height="48" loading="lazy" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- VOOR WIE -->
 <section id="voor-wie">
   <div class="container">
     <div class="shead reveal"><h2>Voor zaken waar klanten vaak terugkomen</h2><p>Hoe vaker iemand langskomt, hoe sneller een spaarkaart zich terugverdient. Zo pakt het per branche uit.</p></div>
     <div class="brgrid">
-      <a class="brcard hovr reveal" href="/koffiebar/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 3v2M10.5 3v2"/></svg></div><h3>Koffiebar &amp; café</h3><p>De dagelijkse koffie is pure gewoonte. Een volle kaart geeft net dat zetje om bij jóu te blijven halen.</p><span class="brcard__reward">Bijv. 10ᵉ koffie gratis</span></a>
-      <a class="brcard hovr reveal" href="/kapper/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8.5L20 20M8.5 15.5L20 4"/></svg></div><h3>Kapper &amp; barbershop</h3><p>Tussen twee knipbeurten zit zomaar zes weken. Met een spaarkaart denkt je klant eerder aan jou.</p><span class="brcard__reward">Bijv. 6ᵉ knipbeurt halve prijs</span></a>
-      <a class="brcard hovr reveal" href="/bakker/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10c2-4 14-4 16 0 1 2 0 9-2 10H6c-2-1-3-8-2-10z"/><path d="M8 10V7M12 10V6M16 10V7"/></svg></div><h3>Bakker &amp; lunchroom</h3><p>Veel bezoeken, kleine bonnen. Laat sparen per bezoek en zie je vaste klanten vaker langskomen.</p><span class="brcard__reward">Bijv. gratis broodje of gebak</span></a>
-      <a class="brcard hovr reveal" href="/nagelstudio/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4l6 2-2 6-5-2z"/><path d="M13 10L4 19a2 2 0 0 0 0 3h0a2 2 0 0 0 3 0l9-9"/></svg></div><h3>Nagelstudio &amp; salon</h3><p>Behandelingen op afspraak lenen zich perfect voor sparen. Beloon trouw met een gratis extra.</p><span class="brcard__reward">Bijv. gratis behandeling</span></a>
-      <a class="brcard hovr reveal" href="/sportschool/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg></div><h3>Sportschool &amp; studio</h3><p>Beloon wie vaak komt trainen. Dat houdt leden gemotiveerd.</p><span class="brcard__reward">Bijv. gratis maand of les</span></a>
-      <a class="brcard hovr reveal" href="/restaurant/"><div class="brcard__ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h16M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M7 11v8M17 11v8"/></svg></div><h3>Restaurant &amp; afhaal</h3><p>Van vaste lunchplek tot favoriete afhaal: geef gasten een reden om steeds terug te kiezen.</p><span class="brcard__reward">Bijv. 10ᵉ bezoek gratis gerecht</span></a>
+      <a class="brcard brcard--foto hovr reveal" href="/koffiebar/"><img src="/assets/foto/koffiebar.webp" alt="Vaste klant lacht met de barista aan de bar van een koffiebar" width="760" height="570" loading="lazy" decoding="async" /><div class="brcard__b"><h3>Koffiebar &amp; café</h3><p>De dagelijkse koffie is pure gewoonte. Een volle kaart geeft net dat zetje om bij jóu te blijven halen.</p><span class="brcard__reward">Bijv. 10ᵉ koffie gratis</span></div></a>
+      <a class="brcard brcard--foto hovr reveal" href="/kapper/"><img src="/assets/foto/kapper.webp" alt="Barbier knipt de baard van een lachende klant" width="760" height="570" loading="lazy" decoding="async" /><div class="brcard__b"><h3>Kapper &amp; barbershop</h3><p>Tussen twee knipbeurten zit zomaar zes weken. Met een spaarkaart denkt je klant eerder aan jou.</p><span class="brcard__reward">Bijv. 6ᵉ knipbeurt halve prijs</span></div></a>
+      <a class="brcard brcard--foto hovr reveal" href="/bakker/"><img src="/assets/foto/bakker.webp" alt="Bakker geeft een zak vers brood aan een vaste klant" width="760" height="570" loading="lazy" decoding="async" /><div class="brcard__b"><h3>Bakker &amp; lunchroom</h3><p>Veel bezoeken, kleine bonnen. Laat sparen per bezoek en zie je vaste klanten vaker langskomen.</p><span class="brcard__reward">Bijv. gratis broodje of gebak</span></div></a>
+      <a class="brcard brcard--foto hovr reveal" href="/nagelstudio/"><img src="/assets/foto/nagelstudio.webp" alt="Nagelstyliste lakt de nagels van een klant in een lichte studio" width="760" height="570" loading="lazy" decoding="async" /><div class="brcard__b"><h3>Nagelstudio &amp; salon</h3><p>Behandelingen op afspraak lenen zich perfect voor sparen. Beloon trouw met een gratis extra.</p><span class="brcard__reward">Bijv. gratis behandeling</span></div></a>
+      <a class="brcard brcard--foto hovr reveal" href="/sportschool/"><img src="/assets/foto/sportschool.webp" alt="Trainer geeft een lid een high five na de training" width="760" height="570" loading="lazy" decoding="async" /><div class="brcard__b"><h3>Sportschool &amp; studio</h3><p>Beloon wie vaak komt trainen. Dat houdt leden gemotiveerd.</p><span class="brcard__reward">Bijv. gratis maand of les</span></div></a>
+      <a class="brcard brcard--foto hovr reveal" href="/restaurant/"><img src="/assets/foto/restaurant.webp" alt="Ober serveert een dessert aan twee gasten in een bistro" width="760" height="570" loading="lazy" decoding="async" /><div class="brcard__b"><h3>Restaurant &amp; afhaal</h3><p>Van vaste lunchplek tot favoriete afhaal: geef gasten een reden om steeds terug te kiezen.</p><span class="brcard__reward">Bijv. 10ᵉ bezoek gratis gerecht</span></div></a>
     </div>
+    <p class="brmore reveal"><a href="/voor-wie/">Bekijk alle branches</a></p>
   </div>
 </section>
 
@@ -551,15 +794,34 @@ html{scroll-padding-top:88px}
   </div>
 </section>
 
+<!-- WAAROM STAMPZER -->
+<section class="why">
+  <div class="container">
+    <div class="shead reveal"><h2>Waarom ondernemers voor Stampzer kiezen</h2><p>Een spaarkaart in de Wallet, net als bij andere aanbieders. Maar met een prijs die gewoon op de site staat, en gemaakt voor elke lokale zaak.</p></div>
+    <div class="whygrid">
+      <div class="why__item reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 6.5A6.5 6.5 0 1 0 17 17.5"/><path d="M4 10.5h9M4 13.5h9"/></svg></div><h3>Een eerlijke, vaste prijs</h3><p>Vanaf €24 per maand, gewoon op de site. Geen opstartkosten, geen kosten per klant en geen verrassingen.</p></div>
+      <div class="why__item reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v10h16V10"/><path d="M3 10l2-6h14l2 6"/><path d="M9 20v-6h6v6"/></svg></div><h3>Voor elke lokale zaak</h3><p>Niet alleen voor horeca. Stampzer werkt net zo goed voor kappers, nagelstudio's, bakkers, sportscholen en winkels.</p></div>
+      <div class="why__item reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Vandaag nog live</h3><p>Je zet je kaart zelf op, in een paar minuten. Loop je ergens tegenaan? Dan mail je direct met de oprichter.</p></div>
+      <div class="why__item reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3>Privacy voorop</h3><p>Een spaarkaart is anoniem, tenzij je klant zelf iets deelt. Alle gegevens staan in de EU, volgens de AVG.</p></div>
+      <div class="why__item reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div><h3>Nergens aan vast</h3><p>Eerst gratis proberen, zonder creditcard. Daarna maandelijks opzegbaar.</p></div>
+      <div class="why__item reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18"/><path d="M12 8c0-3-2.5-5-4-3.5S9 8 12 8zM12 8c0-3 2.5-5 4-3.5S15 8 12 8z"/></svg></div><h3>Gratis hulpmiddelen</h3><p>Ontwerp je kaart met de <a href="/stempelkaart-maken/">stempelkaart-maker</a> en print een poster met je eigen QR-code, in je eigen huisstijl.</p></div>
+    </div>
+    <p class="why__vgl reveal">Twijfel je tussen aanbieders? Lees de eerlijke vergelijkingen: <a href="/gids/onme-alternatief/">Stampzer vs OnMe</a> · <a href="/gids/loopy-loyalty-alternatief/">Loopy Loyalty</a> · <a href="/gids/piggy-alternatief/">Piggy</a> · <a href="/gids/stocard-alternatief/">Stocard</a></p>
+  </div>
+</section>
+
 <!-- HOW -->
 <section id="hoe-het-werkt">
-  <div class="container">
-    <div class="shead reveal"><h2>In drie stappen live</h2><p>Jij stelt je kaart samen, je klant voegt 'm toe, jij deelt de stempels uit. Geen techniek nodig.</p></div>
-    <div class="steps">
-      <div class="step reveal"><div class="step__n">1</div><h3>Ontwerp je kaart</h3><p>Stel je spaarkaart samen in je eigen huisstijl: logo, kleuren en de beloning die jij bepaalt, van een gratis koffie tot 10% korting.</p></div>
-      <div class="step reveal"><div class="step__n">2</div><h3>Klant voegt 'm toe</h3><p>Je klant scant één QR-code en de kaart staat meteen in z'n Apple of Google Wallet. Geen app, geen account.</p></div>
-      <div class="step reveal"><div class="step__n">3</div><h3>Stempel bij elk bezoek</h3><p>Jij of je medewerker zet met één tik een stempel. Bij de laatste stempel volgt automatisch de beloning.</p></div>
+  <div class="container howgrid">
+    <div>
+      <div class="shead reveal"><h2>In drie stappen live</h2><p>Jij stelt je kaart samen, je klant voegt 'm toe, jij deelt de stempels uit. Geen techniek nodig.</p></div>
+      <div class="steps steps--lijst">
+        <div class="step reveal"><div class="step__n">1</div><h3>Ontwerp je kaart</h3><p>Stel je spaarkaart samen in je eigen huisstijl: logo, kleuren en de beloning die jij bepaalt, van een gratis koffie tot 10% korting.</p></div>
+        <div class="step reveal"><div class="step__n">2</div><h3>Klant voegt 'm toe</h3><p>Je klant scant één QR-code en de kaart staat meteen in z'n Apple of Google Wallet. Geen app, geen account.</p></div>
+        <div class="step reveal"><div class="step__n">3</div><h3>Stempel bij elk bezoek</h3><p>Jij of je medewerker zet met één tik een stempel. Bij de laatste stempel volgt automatisch de beloning.</p></div>
+      </div>
     </div>
+    <figure class="howfoto reveal"><img src="/assets/foto/scan.webp" alt="Ondernemer scant met haar telefoon de spaarkaart op de telefoon van een klant" width="1200" height="800" loading="lazy" decoding="async" /><figcaption>Een stempel geven kost twee tellen</figcaption></figure>
   </div>
 </section>
 
@@ -658,19 +920,27 @@ html{scroll-padding-top:88px}
 <!-- TRUST -->
 <section>
   <div class="container">
-    <div class="shead shead--center reveal"><h2>Gebouwd voor lokale ondernemers in Nederland</h2></div>
+    <div class="shead shead--center reveal"><h2>Gemaakt door een ondernemer, voor ondernemers</h2><p>Geen groot bedrijf met een callcenter, maar iemand die je mailt en die ook echt terugmailt.</p></div>
+    <div class="founder founder--groot reveal">
+      <img class="founder__img" src="/assets/founder-stenn.jpg" alt="Stenn Carsouw, oprichter van Stampzer" width="140" height="140" loading="lazy" />
+      <div>
+        <p class="founder__q">"Lokale zaken verdienen hun vaste klanten. Maar papieren kaartjes raken kwijt en losse apps zijn te duur en te veel gedoe. Daarom bouwde ik Stampzer: de spaarkaart gewoon in de Wallet die je klant al heeft. Eerlijk geprijsd en gemaakt voor de ondernemer."</p>
+        <div class="founder__by">Stenn Carsouw · oprichter van Stampzer</div>
+        <div class="founder__links">
+          <a href="mailto:hello@stampzer.com"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>hello@stampzer.com</a>
+          <a href="https://www.instagram.com/stampzercom/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>@stampzercom</a>
+        </div>
+      </div>
+    </div>
     <div class="trust__badges">
       <div class="badge hovr reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div><b>AVG-proof</b><small>Je data staat in de EU</small></div>
       <div class="badge hovr reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="6" y="3" width="12" height="18" rx="3"/></svg></div><b>Geen app</b><small>Werkt in de Wallet die je klant al heeft</small></div>
       <div class="badge hovr reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM12 7v5l3 2"/></svg></div><b>Opzegbaar</b><small>Maandelijks, geen verplichtingen</small></div>
       <div class="badge hovr reveal"><div class="badge__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 5h16v11H9l-5 4z"/></svg></div><b>Nederlands</b><small>Gemaakt in NL, support in het Nederlands</small></div>
     </div>
-    <div class="founder reveal">
-      <img class="founder__img" src="/assets/founder-stenn.jpg" alt="Stenn Carsouw, oprichter van Stampzer" width="96" height="96" loading="lazy" />
-      <div>
-        <p class="founder__q">"Lokale zaken verdienen hun vaste klanten. Maar papieren kaartjes raken kwijt en losse apps zijn te duur en te veel gedoe. Daarom bouwde ik Stampzer: de spaarkaart gewoon in de Wallet die je klant al heeft. Eerlijk geprijsd en gemaakt voor de ondernemer."</p>
-        <div class="founder__by">Stenn Carsouw · oprichter van Stampzer</div>
-      </div>
+    <div class="pilotband reveal">
+      <div><b>We bouwen Stampzer samen met lokale ondernemers</b><span>De eerste zaken doen mee in onze pilot en denken mee over nieuwe functies. Wil jij ook meedenken?</span></div>
+      <a class="btn btn--ghost" href="/pilot/">Meedoen met de pilot <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -702,23 +972,29 @@ html{scroll-padding-top:88px}
     <div class="faq reveal">
       <details><summary>Moeten mijn klanten een app downloaden?</summary><p>Nee. Je klant scant een QR-code en tikt op Toevoegen. De kaart komt in de Apple Wallet of Google Wallet die al op hun telefoon staat. Geen app, geen account.</p></details>
       <details><summary>Werkt het op iPhone én Android?</summary><p>Ja. Stampzer werkt in Apple Wallet (iPhone) en Google Wallet (Android). Je klant gebruikt gewoon de Wallet die al op z'n toestel staat.</p></details>
+      <details><summary>Hoe snel staat mijn kaart live?</summary><p>In een paar minuten. Je maakt een account, ontwerpt je kaart en zet de QR-code bij de kassa. Daarna kunnen klanten meteen sparen.</p></details>
       <details><summary>Hoe deel ik stempels uit?</summary><p>Je scant met je telefoon of tablet de QR-code op de kaart van je klant. Eén tik en de stempel staat erop. Klanten kunnen zichzelf niet stempelen.</p></details>
       <details><summary>Heb ik speciale apparatuur nodig?</summary><p>Nee. Een telefoon of tablet met een camera is genoeg. Geen scanners, geen kassakoppeling.</p></details>
+      <details><summary>Kan ik mijn eigen logo en kleuren gebruiken?</summary><p>Ja. Je uploadt je logo en kiest je kleuren. Je kaart in de Wallet en je poster met de QR-code krijgen dezelfde huisstijl.</p></details>
+      <details><summary>Welke gegevens van mijn klanten zie ik?</summary><p>Een spaarkaart is anoniem: je ziet hoeveel stempels erop staan en wanneer ze zijn gezet, maar geen naam of telefoonnummer, tenzij je klant zelf iets deelt. Alle gegevens staan op servers in de EU, volgens de AVG.</p></details>
       <details><summary>Vinden oudere klanten een digitale kaart niet lastig?</summary><p>De drempel is laag: één QR scannen en op Toevoegen tikken. Wie een pinpas of OV op de telefoon heeft, kan dit ook. Je kunt papier en digitaal gerust een tijd naast elkaar aanbieden.</p></details>
       <details><summary>Wat gebeurt er als een kaart vol is?</summary><p>Je klant krijgt de beloning die jij hebt ingesteld. Daarna begint de kaart automatisch opnieuw, zodat het sparen gewoon doorloopt.</p></details>
+      <details><summary>Wat is het verschil met andere aanbieders, zoals OnMe?</summary><p>Net als OnMe zet Stampzer je spaarkaart in de Apple of Google Wallet, zonder app. Stampzer werkt voor elke lokale zaak (niet alleen horeca), je zet het zelf op en de prijs staat gewoon op de site: vanaf €24 per maand. Lees de <a href="/gids/onme-alternatief/" style="color:var(--green-900);text-decoration:underline;text-underline-offset:2px">eerlijke vergelijking</a>.</p></details>
+      <details><summary>Kan ik meerdere vestigingen beheren?</summary><p>Ja. Met Pro beheer je al je vestigingen in één dashboard en zie je per locatie wie er terugkomt.</p></details>
       <details><summary>Wat kost het?</summary><p>Starter kost €29 per maand en is maandelijks opzegbaar, of €24 per maand bij een jaarabonnement. Je krijgt één zaak met onbeperkt klanten en stempels. Meerdere vestigingen? Dan is er Pro, vanaf €41 per maand. Je kunt eerst gratis proberen, zonder creditcard.</p></details>
     </div>
   </div>
 </section>
 
 <!-- FINAL -->
-<section class="final">
+<section class="final final--foto">
+  <img class="final__bg" src="/assets/foto/straat.webp" alt="" width="1376" height="768" loading="lazy" decoding="async" />
   <div class="container final__in reveal">
-    <h2>Probeer het met je eigen zaak</h2>
+    <h2>Jouw zaak verdient vaste klanten</h2>
     <p>Je eerste spaarkaart staat in een paar minuten klaar. Gratis proberen, zonder creditcard.</p>
     <div class="hero__cta">
       <a class="btn btn--green btn--big" href="https://app.stampzer.com/registreren">Start gratis <span class="arrow">→</span></a>
-      <a class="btn btn--ghost btn--big" href="https://stampzer.com/gids/">Lees eerst de gids</a>
+      <a class="btn btn--ghost btn--big" href="/gids/">Lees eerst de gids</a>
     </div>
   </div>
 </section>
