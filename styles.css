@@ -143,9 +143,19 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero__visual { position: relative; display: flex; justify-content: center; align-items: center; min-height: 480px; perspective: 1300px; }
 .blob { position: absolute; width: 118%; padding-bottom: 118%; height: 0; border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%; background: var(--peach); z-index: 0; animation: blob-spin 28s linear infinite; }
 @keyframes blob-spin { to { transform: rotate(360deg); } }
-.phone { position: relative; z-index: 2; width: 286px; background: var(--ink); border-radius: 42px; padding: 12px; box-shadow: var(--shadow); transform-style: preserve-3d; transition: transform .35s cubic-bezier(.2, .7, .2, 1); will-change: transform; }
-.phone::before { content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 72px; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, .2); }
-.phone__screen { background: #eef1ea; border-radius: 31px; padding: 30px 15px 16px; }
+/* Telefoon: een echte iPhone-mockup (assets/iphone-frame.webp, met een doorzichtig scherm) en het Wallet-scherm
+   als HTML erachter, zodat de stempels en het kantelen blijven werken. Maten in % van de mockup (885 × 1835);
+   het scherm loopt een pixel onder de rand door, zodat er geen naadje te zien is. */
+.phone { position: relative; z-index: 2; width: 264px; aspect-ratio: 885 / 1835; transform-style: preserve-3d; transition: transform .35s cubic-bezier(.2, .7, .2, 1); will-change: transform; filter: drop-shadow(0 26px 30px rgba(24, 31, 16, .26)); }
+.phone::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: url("/assets/iphone-frame.webp") center / 100% 100% no-repeat; }
+/* Home-balk onderin het scherm, zoals op elke iPhone zonder thuisknop. */
+.phone::before { content: ""; position: absolute; z-index: 3; left: 50%; bottom: 2.1%; width: 32%; height: .62%; transform: translateX(-50%); border-radius: 99px; background: var(--phone-home, rgba(24, 31, 16, .82)); pointer-events: none; }
+.phone__screen { position: absolute; z-index: 1; left: 3%; top: 1.01%; width: 94%; height: 97.98%; border-radius: 16.3% / 7.6%; overflow: hidden; container-type: size; background: #eef1ea; color: #181f10; padding: 16.5% 5.2% 4.5%; }
+.phone__screen > * { zoom: .95; }
+/* Statusbalk naast het eiland: tijd links, bereik, wifi en batterij rechts, in de tekstkleur van het scherm. */
+.phone__screen::before, .phone__screen::after { position: absolute; top: 3.33%; transform: translate(-50%, -50%); pointer-events: none; }
+.phone__screen::before { content: "9:41"; left: 21.7%; font: 600 4.7cqw/1 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif; letter-spacing: -.01em; }
+.phone__screen::after { content: ""; left: 78.5%; width: 19cqw; height: 3.3cqw; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 12'%3E%3Crect x='0' y='8' width='3' height='4' rx='.8'/%3E%3Crect x='4.6' y='5.8' width='3' height='6.2' rx='.8'/%3E%3Crect x='9.2' y='3.4' width='3' height='8.6' rx='.8'/%3E%3Crect x='13.8' y='1' width='3' height='11' rx='.8'/%3E%3Cpath d='M29.5 2.6a10.4 10.4 0 0 1 14 0l-1.5 1.6a8.2 8.2 0 0 0-11 0z'/%3E%3Cpath d='M32.2 5.5a6.4 6.4 0 0 1 8.6 0l-1.5 1.6a4.2 4.2 0 0 0-5.6 0z'/%3E%3Cpath d='M34.9 8.4a2.4 2.4 0 0 1 3.2 0L36.5 10z'/%3E%3Crect x='49.5' y='1' width='17.5' height='10' rx='3' fill='none' stroke='black' stroke-opacity='.45' stroke-width='1'/%3E%3Crect x='51.2' y='2.7' width='14.1' height='6.6' rx='1.7'/%3E%3Cpath d='M68.4 4.4v3.2c.8-.3 1.3-.9 1.3-1.6s-.5-1.3-1.3-1.6z' fill-opacity='.45'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 12'%3E%3Crect x='0' y='8' width='3' height='4' rx='.8'/%3E%3Crect x='4.6' y='5.8' width='3' height='6.2' rx='.8'/%3E%3Crect x='9.2' y='3.4' width='3' height='8.6' rx='.8'/%3E%3Crect x='13.8' y='1' width='3' height='11' rx='.8'/%3E%3Cpath d='M29.5 2.6a10.4 10.4 0 0 1 14 0l-1.5 1.6a8.2 8.2 0 0 0-11 0z'/%3E%3Cpath d='M32.2 5.5a6.4 6.4 0 0 1 8.6 0l-1.5 1.6a4.2 4.2 0 0 0-5.6 0z'/%3E%3Cpath d='M34.9 8.4a2.4 2.4 0 0 1 3.2 0L36.5 10z'/%3E%3Crect x='49.5' y='1' width='17.5' height='10' rx='3' fill='none' stroke='black' stroke-opacity='.45' stroke-width='1'/%3E%3Crect x='51.2' y='2.7' width='14.1' height='6.6' rx='1.7'/%3E%3Cpath d='M68.4 4.4v3.2c.8-.3 1.3-.9 1.3-1.6s-.5-1.3-1.3-1.6z' fill-opacity='.45'/%3E%3C/svg%3E") center / contain no-repeat; }
 .wallet-top { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-display); color: #6a7268; font-size: .95rem; padding: 0 4px 12px; }
 .wallet-top__dots { letter-spacing: 2px; }
 
@@ -188,7 +198,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .float-card { position: absolute; z-index: 3; background: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: 11px 14px; font-size: .82rem; animation: floaty 5.5s ease-in-out infinite; }
 @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.float-card--toast { top: 30px; left: -8px; display: flex; align-items: center; gap: 10px; animation-delay: -1.2s; }
+.float-card--toast { top: 96px; left: -8px; display: flex; align-items: center; gap: 10px; animation-delay: -1.2s; }
 .float-card--toast strong { display: block; font-weight: 600; color: var(--ink); }
 .float-card--toast span { color: var(--muted); }
 .float-card__check { display: grid; place-items: center; flex: 0 0 26px; height: 26px; background: var(--green); color: var(--ink); border-radius: 50%; font-weight: 700; }
@@ -278,6 +288,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 920px) {
   .hero__grid { grid-template-columns: 1fr; gap: 36px; }
   .hero__visual { order: -1; min-height: 0; }
+  .phone { width: 240px; }
+  .phone__screen > * { zoom: .864; }
   .hero__sub { max-width: none; }
   .statband__grid { grid-template-columns: 1fr; gap: 18px; }
   .steps, .features, .showcase { grid-template-columns: 1fr; }
