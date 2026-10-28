@@ -69,7 +69,9 @@ document.documentElement.classList.add('js');
   knoppen.forEach(function(k,i){k.addEventListener('click',function(){t=rustig||gepauzeerd?STIL[i]:START[i];render();});});
   if(rustig){t=STIL[0];gepauzeerd=true;}
   else if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!gepauzeerd)start();}else stop();});},{threshold:.35}).observe(film);
+    // Let op de telefoon zelf: op mobiel is het hele blok hoger dan het scherm. De drempel staat in de
+    // voorwaarde, want isIntersecting is al waar bij de eerste pixel in beeld.
+    new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>=.6){if(!gepauzeerd)start();}else stop();});},{threshold:[0,.6]}).observe(film.querySelector('.film__stage')||film);
   }else start();
   render();knop();
 })();
