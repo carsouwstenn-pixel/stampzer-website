@@ -111,6 +111,24 @@ document.documentElement.classList.add('js');
   ids.forEach(function(i){if(r[i])r[i].addEventListener('input',update);});update();
 })();
 
+// Teller bij Café Lisi: zodra hij in beeld komt loopt het getal op en groeien de ring en de stempels
+// mee (CSS, klasse is-aan). In de HTML staat het eindgetal, voor wie geen JS of animatie heeft.
+(function(){
+  var el=document.querySelector('[data-teller]');if(!el)return;
+  var doel=+el.getAttribute('data-teller'),getal=el.querySelector('[data-teller-getal]');
+  var rustig=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if(rustig||!('IntersectionObserver' in window)){el.classList.add('is-aan');return;}
+  getal.textContent='0';
+  var io=new IntersectionObserver(function(es){
+    if(!es.some(function(e){return e.isIntersecting;}))return;
+    io.disconnect();el.classList.add('is-aan');
+    var t0=null,duur=1600;
+    function fr(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/duur,1);getal.textContent=Math.round(doel*(1-Math.pow(1-p,3))).toLocaleString('nl-NL');if(p<1)requestAnimationFrame(fr);}
+    requestAnimationFrame(fr);
+  },{threshold:.4});
+  io.observe(el);
+})();
+
 // Reveal on scroll
 (function(){
   if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(x){x.classList.add('in');});return;}
