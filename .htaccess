@@ -69,7 +69,7 @@ DirectoryIndex index.html index.php
   # Disable the legacy, buggy XSS auditor.
   Header always set X-XSS-Protection "0"
   # Content Security Policy — 'self' plus Microsoft Clarity (loads only after consent).
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://*.clarity.ms; connect-src 'self' https://*.clarity.ms; img-src 'self' data: https://*.clarity.ms; style-src 'self' 'unsafe-inline'; font-src 'self'; upgrade-insecure-requests"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' https://*.clarity.ms; connect-src 'self' https://*.clarity.ms https://himnfrdlpxjhtxnidazu.supabase.co; img-src 'self' data: https://*.clarity.ms; style-src 'self' 'unsafe-inline'; font-src 'self'; upgrade-insecure-requests"
   # Don't advertise the tech stack.
   Header unset X-Powered-By
   Header always unset X-Powered-By

@@ -479,43 +479,62 @@
     .final--foto{padding:84px 0}
   }
 
-  /* BEWIJS · Café Lisi en de teller: de ring en de stempels groeien mee terwijl het getal oploopt.
-     De beginstand (lege ring, kleiner) geldt alleen met JS; zonder JS staat er meteen het eindbeeld. */
+  /* BEWIJS · Café Lisi en de live teller. Het getal komt uit Stampzer (functie stampzer_teller); de ring
+     en de stempels vullen zich tot de volgende mijlpaal, als een spaarkaart. De beginstand (lege ring,
+     kleiner) geldt alleen met JS; zonder JS staat er meteen het eindbeeld met het getal uit de HTML. */
   .bewijs{background:var(--paper-2)}
   .bewijs__in{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
   .bewijs__kop{display:flex;align-items:center;flex-wrap:wrap;gap:12px 16px}
   .bewijs__logo{display:inline-flex;background:#fff;border-radius:var(--radius);padding:16px 22px;box-shadow:var(--shadow-sm)}
   .bewijs__logo img{display:block;width:210px;height:auto}
-  .bewijs__live{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600;color:var(--green-900)}
-  .bewijs__live i{width:9px;height:9px;border-radius:50%;background:var(--green);animation:bewijsPuls 2s ease-out infinite}
+  .bewijs__sinds{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;color:var(--green-900)}
+  .bewijs__sinds svg{color:var(--green-700)}
   .bewijs h2{margin-top:22px;font-size:clamp(2rem,3.6vw,2.9rem);text-wrap:balance}
   .bewijs__tekst{margin-top:14px;font-size:1.08rem;color:var(--text);max-width:34em}
   .bewijs__feiten{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px}
   .bewijs__feiten li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2)}
   .bewijs__feiten svg{flex:0 0 20px;margin-top:3px;color:var(--green-700)}
-  .bewijs__teller{position:relative;width:min(100%,320px);aspect-ratio:1;margin:0 auto;display:grid;place-items:center;text-align:center;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .bewijs__rechts{display:flex;flex-direction:column;align-items:center;gap:14px}
+  .bewijs__teller{position:relative;width:min(100%,320px);aspect-ratio:1;display:grid;place-items:center;text-align:center;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
   .bewijs__teller::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none}
   .bewijs__teller.is-aan::after{animation:bewijsGroei 3s 1.8s ease-out infinite}
   .bewijs__ring{position:absolute;inset:0;width:100%;height:100%}
   .bewijs__vlak{fill:var(--ink)}
   .bewijs__baan{fill:none;stroke:rgba(247,242,231,.14);stroke-width:6}
-  .bewijs__boog{fill:none;stroke:var(--green);stroke-width:6;stroke-linecap:round;stroke-dasharray:553;transform:rotate(-90deg);transform-origin:100px 100px;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1)}
-  .bewijs__stip{fill:var(--paper);stroke:var(--green);stroke-width:2;transform-box:fill-box;transform-origin:center;transition:opacity .3s ease,transform .45s cubic-bezier(.3,1.6,.5,1)}
+  .bewijs__boog{fill:none;stroke:var(--green);stroke-width:6;stroke-linecap:round;stroke-dasharray:553;stroke-dashoffset:var(--rest,0);transform:rotate(-90deg);transform-origin:100px 100px;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1)}
+  .bewijs__stip{fill:var(--ink);stroke:rgba(247,242,231,.32);stroke-width:2;transform-box:fill-box;transform-origin:center;transition:opacity .3s ease,transform .45s cubic-bezier(.3,1.6,.5,1),fill .3s ease,stroke .3s ease}
+  .bewijs__stip--vol{fill:var(--paper);stroke:var(--green)}
   .js .bewijs__teller:not(.is-aan){transform:scale(.86)}
   .js .bewijs__teller:not(.is-aan) .bewijs__boog{stroke-dashoffset:553}
   .js .bewijs__teller:not(.is-aan) .bewijs__stip{opacity:0;transform:scale(.2)}
-  .bewijs__midden{position:relative;padding:0 17%;color:var(--paper)}
-  .bewijs__getal{font-family:var(--display);font-size:clamp(3.6rem,7vw,4.8rem);line-height:1;color:var(--green)}
-  .bewijs__getal small{font-size:.55em;vertical-align:.5em;margin-left:.04em}
-  .bewijs__label{margin-top:8px;font-size:.98rem;line-height:1.35;color:rgba(247,242,231,.86)}
+  .bewijs__midden{position:relative;padding:0 16%;color:var(--paper)}
+  .bewijs__getal{font-family:var(--display);font-size:clamp(3.4rem,6.4vw,4.6rem);line-height:1;color:var(--green);font-variant-numeric:tabular-nums}
+  .bewijs__label{margin-top:8px;font-size:.98rem;line-height:1.35;color:rgba(247,242,231,.88)}
+  .bewijs__doel{display:inline-block;margin-top:12px;padding:4px 11px;border-radius:999px;background:rgba(41,199,0,.14);color:var(--green);font-size:.8rem;font-weight:600}
+  .bewijs__live:not([hidden]){display:inline-flex;align-items:center;gap:8px;margin:0;font-size:.86rem;font-weight:600;color:var(--green-900)}
+  .bewijs__live i{width:9px;height:9px;border-radius:50%;background:var(--green);animation:bewijsPuls 2s ease-out infinite}
+  .bewijs__week:not([hidden]){display:block;margin:0;font-size:.95rem;color:var(--ink-2);text-align:center}
+  .bewijs__week b{color:var(--green-900)}
   .bewijs__duw{margin-top:44px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px 28px;background:var(--ink);border-radius:var(--radius-lg);padding:26px 30px}
   .bewijs__duw b{display:block;font-family:var(--display);font-weight:400;font-size:1.45rem;color:#fff;text-wrap:balance}
   .bewijs__duw span{display:block;margin-top:6px;color:rgba(247,242,231,.8);max-width:40em}
-  .bewijs__duw .btn{flex:0 0 auto}
+  .bewijs__actie{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 auto}
+  .bewijs__actie small{font-size:.8rem;color:rgba(247,242,231,.72);text-align:center;text-wrap:balance}
+  .bewijs__duw .btn:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  /* Schuifbalken van de opbrengstcalculator: zichtbare focus voor wie met het toetsenbord werkt */
+  .rng:focus-visible{outline:2px solid var(--green-700);outline-offset:4px}
   @keyframes bewijsPuls{0%{box-shadow:0 0 0 0 rgba(41,199,0,.55)}70%{box-shadow:0 0 0 9px rgba(41,199,0,0)}100%{box-shadow:0 0 0 0 rgba(41,199,0,0)}}
   @keyframes bewijsGroei{0%{box-shadow:0 0 0 0 rgba(41,199,0,.35)}80%,100%{box-shadow:0 0 0 22px rgba(41,199,0,0)}}
-  @media(max-width:920px){.bewijs__in{grid-template-columns:1fr;gap:38px}}
-  @media(max-width:560px){.bewijs__logo img{width:170px}.bewijs__duw{padding:22px}}
+  @media(max-width:920px){.bewijs__in{grid-template-columns:1fr;gap:34px}}
+  @media(max-width:560px){
+    .bewijs__logo img{width:170px}
+    .bewijs__teller{width:min(100%,256px)}
+    .bewijs__getal{font-size:3.3rem}
+    .bewijs__label{font-size:.92rem}
+    .bewijs__duw{margin-top:34px;padding:22px}
+    .bewijs__actie{width:100%}
+    .bewijs__actie .btn{width:100%;justify-content:center}
+  }
   @media(prefers-reduced-motion:reduce){.bewijs__teller,.bewijs__boog,.bewijs__stip{transition:none}}
 /* chrome:start · menu, footer en cookiemelding. Gegenereerd door tools/chrome.mjs: pas het daar aan, niet hier. */
 html{scroll-padding-top:88px}
@@ -811,7 +830,7 @@ html{scroll-padding-top:88px}
       <div class="reveal">
         <div class="bewijs__kop">
           <span class="bewijs__logo"><img src="/assets/klanten/cafe-lisi.webp" alt="Café Lisi" width="901" height="255" loading="lazy" decoding="async" /></span>
-          <span class="bewijs__live"><i aria-hidden="true"></i>Live sinds oktober 2026</span>
+          <span class="bewijs__sinds"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Klant sinds oktober 2026</span>
         </div>
         <h2>Bij Café Lisi sparen de gasten al volop</h2>
         <p class="bewijs__tekst">In oktober begon Café Lisi met Stampzer. Gasten scannen de QR-code, zetten de spaarkaart in hun Wallet en sparen bij elk bezoek. Zonder app en zonder papieren kaartjes.</p>
@@ -820,33 +839,41 @@ html{scroll-padding-top:88px}
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Hun tips zitten al in Stampzer: een poster in eigen huisstijl en de scanknop meteen op het eerste scherm</li>
         </ul>
       </div>
-      <div class="bewijs__teller" data-teller="100" role="img" aria-label="Meer dan 100 gasten spaarden binnen 12 dagen bij Café Lisi">
-        <svg class="bewijs__ring" viewBox="0 0 200 200" aria-hidden="true">
-          <circle class="bewijs__vlak" cx="100" cy="100" r="100"/>
-          <circle class="bewijs__baan" cx="100" cy="100" r="88"/>
-          <circle class="bewijs__boog" cx="100" cy="100" r="88"/>
-          <circle class="bewijs__stip" cx="100" cy="12" r="5" style="transition-delay:.15s"/>
-          <circle class="bewijs__stip" cx="144" cy="23.79" r="5" style="transition-delay:.2s"/>
-          <circle class="bewijs__stip" cx="176.21" cy="56" r="5" style="transition-delay:.24s"/>
-          <circle class="bewijs__stip" cx="188" cy="100" r="5" style="transition-delay:.3s"/>
-          <circle class="bewijs__stip" cx="176.21" cy="144" r="5" style="transition-delay:.35s"/>
-          <circle class="bewijs__stip" cx="144" cy="176.21" r="5" style="transition-delay:.41s"/>
-          <circle class="bewijs__stip" cx="100" cy="188" r="5" style="transition-delay:.48s"/>
-          <circle class="bewijs__stip" cx="56" cy="176.21" r="5" style="transition-delay:.55s"/>
-          <circle class="bewijs__stip" cx="23.79" cy="144" r="5" style="transition-delay:.64s"/>
-          <circle class="bewijs__stip" cx="12" cy="100" r="5" style="transition-delay:.74s"/>
-          <circle class="bewijs__stip" cx="23.79" cy="56" r="5" style="transition-delay:.87s"/>
-          <circle class="bewijs__stip" cx="56" cy="23.79" r="5" style="transition-delay:1.05s"/>
-        </svg>
-        <div class="bewijs__midden" aria-hidden="true">
-          <div class="bewijs__getal"><span data-teller-getal>100</span><small>+</small></div>
-          <div class="bewijs__label">gasten spaarden<br />binnen 12 dagen</div>
+      <div class="bewijs__rechts">
+        <div class="bewijs__teller" data-teller data-teller-statisch="113" role="img" aria-label="113 mensen sparen al met een Stampzer-pas">
+          <svg class="bewijs__ring" viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="bewijs__vlak" cx="100" cy="100" r="100"/>
+            <circle class="bewijs__baan" cx="100" cy="100" r="88"/>
+            <circle class="bewijs__boog" cx="100" cy="100" r="88" style="--rest:136.4"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="100" cy="12" r="5" style="transition-delay:0.15s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="144" cy="23.79" r="5" style="transition-delay:0.2s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="176.21" cy="56" r="5" style="transition-delay:0.24s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="188" cy="100" r="5" style="transition-delay:0.3s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="176.21" cy="144" r="5" style="transition-delay:0.35s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="144" cy="176.21" r="5" style="transition-delay:0.41s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="100" cy="188" r="5" style="transition-delay:0.48s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="56" cy="176.21" r="5" style="transition-delay:0.55s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="23.79" cy="144" r="5" style="transition-delay:0.64s"/>
+            <circle class="bewijs__stip bewijs__stip--vol" cx="12" cy="100" r="5" style="transition-delay:0.74s"/>
+            <circle class="bewijs__stip" cx="23.79" cy="56" r="5" style="transition-delay:0.87s"/>
+            <circle class="bewijs__stip" cx="56" cy="23.79" r="5" style="transition-delay:1.05s"/>
+          </svg>
+          <div class="bewijs__midden" aria-hidden="true">
+            <div class="bewijs__getal" data-teller-getal>113</div>
+            <div class="bewijs__label">mensen sparen al<br />met een Stampzer-pas</div>
+            <div class="bewijs__doel" data-teller-doel>op weg naar 150</div>
+          </div>
         </div>
+        <p class="bewijs__live" data-teller-live hidden><i aria-hidden="true"></i><span data-teller-tijd>Live uit Stampzer</span></p>
+        <p class="bewijs__week" data-teller-week hidden><b data-teller-weekgetal>+0</b> nieuwe spaarders in de afgelopen 7 dagen</p>
       </div>
     </div>
     <div class="bewijs__duw reveal">
-      <div><b>Stampzer is net begonnen. Wees er vroeg bij.</b><span>De eerste zaken bouwen nu hun vaste klantenkring op in de Wallet van hun gasten. Begin vandaag, voordat de zaak om de hoek het doet. Gratis proberen, zonder creditcard.</span></div>
-      <a class="btn btn--green btn--big" href="https://app.stampzer.com/registreren">Start gratis <span class="arrow">→</span></a>
+      <div><b>Stampzer groeit snel. Wees er vroeg bij.</b><span>De eerste zaken bouwen nu hun vaste klantenkring op in de Wallet van hun gasten. Begin vandaag, voordat de zaak om de hoek het doet.</span></div>
+      <div class="bewijs__actie">
+        <a class="btn btn--green btn--big" href="https://app.stampzer.com/registreren">Start gratis <span class="arrow">→</span></a>
+        <small>Gratis proberen, zonder creditcard. Maandelijks opzegbaar.</small>
+      </div>
     </div>
   </div>
 </section>

@@ -111,20 +111,51 @@ document.documentElement.classList.add('js');
   ids.forEach(function(i){if(r[i])r[i].addEventListener('input',update);});update();
 })();
 
-// Teller bij Café Lisi: zodra hij in beeld komt loopt het getal op en groeien de ring en de stempels
-// mee (CSS, klasse is-aan). In de HTML staat het eindgetal, voor wie geen JS of animatie heeft.
+// Live teller bij Café Lisi: haalt het actuele aantal spaarders op uit Stampzer (functie stampzer_teller, alleen
+// totalen) en laat het getal, de ring en de stempels groeien tot de volgende mijlpaal. Ophalen gebeurt meteen bij het
+// laden; optellen pas als de teller in beeld komt. Lukt het ophalen niet, dan blijft het getal uit de HTML staan en
+// zeggen we niet dat het live is.
 (function(){
-  var el=document.querySelector('[data-teller]');if(!el)return;
-  var doel=+el.getAttribute('data-teller'),getal=el.querySelector('[data-teller-getal]');
-  var rustig=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
-  if(rustig||!('IntersectionObserver' in window)){el.classList.add('is-aan');return;}
-  getal.textContent='0';
+  var el=document.querySelector("[data-teller]");if(!el)return;
+  var BRON="https://himnfrdlpxjhtxnidazu.supabase.co/rest/v1/rpc/stampzer_teller";
+  var SLEUTEL="sb_publishable_GafEPJNUQcVR4mf8PpSIHA_-xT0z3ww"; // publieke sleutel: geeft alleen toegang tot wat voor iedereen openstaat
+  var getal=el.querySelector("[data-teller-getal]"),doel=el.querySelector("[data-teller-doel]"),boog=el.querySelector(".bewijs__boog");
+  var stippen=[].slice.call(el.querySelectorAll(".bewijs__stip"));
+  var live=document.querySelector("[data-teller-live]"),tijd=document.querySelector("[data-teller-tijd]");
+  var week=document.querySelector("[data-teller-week]"),weekGetal=document.querySelector("[data-teller-weekgetal]");
+  var rustig=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+  var stand=+el.getAttribute("data-teller-statisch")||0,nu=0,zichtbaar=false;
+  function nl(n){return Math.round(n).toLocaleString("nl-NL");}
+  // Volgende mijlpaal: 150, 200, 250 … (onder de 200), daarna per 100, 500 en 1000.
+  function mijlpaal(n){var stap=n<200?50:n<1000?100:n<5000?500:1000;return (Math.floor(n/stap)+1)*stap;}
+  function zetVorm(n){
+    var m=mijlpaal(n),vul=Math.min(1,n/m),vol=Math.min(12,Math.floor(12*vul)+1); // een stempel is vol zodra de boog hem bereikt
+    boog.style.setProperty("--rest",(553*(1-vul)).toFixed(1));
+    stippen.forEach(function(s,i){s.classList.toggle("bewijs__stip--vol",i<vol);});
+    doel.textContent="op weg naar "+nl(m);
+    el.setAttribute("aria-label",nl(n)+" mensen sparen al met een Stampzer-pas");
+  }
+  function telNaar(n){
+    var van=nu,t0=null;
+    if(rustig){nu=n;getal.textContent=nl(n);return;}
+    function fr(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/1600,1);nu=van+(n-van)*(1-Math.pow(1-p,3));getal.textContent=nl(nu);if(p<1)requestAnimationFrame(fr);else nu=n;}
+    requestAnimationFrame(fr);
+  }
+  function start(){zichtbaar=true;el.classList.add("is-aan");telNaar(stand);}
+  fetch(BRON,{headers:{apikey:SLEUTEL}}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+    if(!d||typeof d.spaarders!=="number"||d.spaarders<1)return;
+    stand=d.spaarders;zetVorm(stand);if(zichtbaar)telNaar(stand);
+    var op=new Date(d.bijgewerkt||Date.now());
+    tijd.textContent="Live uit Stampzer · bijgewerkt om "+op.toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"});
+    live.hidden=false;
+    if(d.week>=10){weekGetal.textContent="+"+nl(d.week);week.hidden=false;}
+  }).catch(function(){});
+  zetVorm(stand);
+  if(rustig||!("IntersectionObserver" in window)){nu=stand;getal.textContent=nl(stand);start();return;}
+  getal.textContent="0";
   var io=new IntersectionObserver(function(es){
     if(!es.some(function(e){return e.isIntersecting;}))return;
-    io.disconnect();el.classList.add('is-aan');
-    var t0=null,duur=1600;
-    function fr(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/duur,1);getal.textContent=Math.round(doel*(1-Math.pow(1-p,3))).toLocaleString('nl-NL');if(p<1)requestAnimationFrame(fr);}
-    requestAnimationFrame(fr);
+    io.disconnect();start();
   },{threshold:.4});
   io.observe(el);
 })();
