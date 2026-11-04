@@ -536,6 +536,23 @@
     .bewijs__actie .btn{width:100%;justify-content:center}
   }
   @media(prefers-reduced-motion:reduce){.bewijs__teller,.bewijs__boog,.bewijs__stip{transition:none}}
+
+  /* Klantcitaat · echte testimonial, herbruikbaar (wit kaartje dat opvalt op de crème sectie) */
+  .citaat{position:relative;max-width:820px;margin:44px auto 0;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:46px 48px 36px;box-shadow:var(--shadow)}
+  .citaat::before{content:"\201C";position:absolute;top:10px;left:30px;font-family:var(--display);font-weight:400;font-size:5.4rem;line-height:1;color:var(--green)}
+  .citaat__q{margin:0;position:relative;padding-top:20px;font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2.5vw,1.7rem);line-height:1.42;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+  .citaat__q mark{background:linear-gradient(transparent 58%,rgba(41,199,0,.38) 0);color:inherit;padding:0 .04em}
+  .citaat__by{display:flex;align-items:center;gap:15px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+  .citaat__logo{display:inline-flex;align-items:center;background:var(--paper-2);border-radius:10px;padding:8px 13px}
+  .citaat__logo img{display:block;height:22px;width:auto}
+  .citaat__wie{display:flex;flex-direction:column;line-height:1.3}
+  .citaat__wie b{font-size:1rem;font-weight:700;color:var(--ink)}
+  .citaat__wie small{font-size:.86rem;color:var(--muted)}
+  @media(max-width:560px){
+    .citaat{padding:34px 24px 26px}
+    .citaat::before{font-size:4.2rem;left:18px;top:8px}
+    .citaat__q{font-size:1.2rem;padding-top:16px}
+  }
 /* chrome:start · menu, footer en cookiemelding. Gegenereerd door tools/chrome.mjs: pas het daar aan, niet hier. */
 html{scroll-padding-top:88px}
 .skip-link{position:absolute;left:-999px;top:0;z-index:200;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:0 0 8px 0}
@@ -868,6 +885,14 @@ html{scroll-padding-top:88px}
         <p class="bewijs__week" data-teller-week hidden><b data-teller-weekgetal>+0</b> nieuwe spaarders in de afgelopen 7 dagen</p>
       </div>
     </div>
+    <figure class="citaat reveal">
+      <blockquote class="citaat__q">Wij zijn superenthousiast over de digitale stempelkaart van Stampzer! Een makkelijke en leuke manier om onze gasten te belonen voor hun bezoek, <mark>zonder gedoe met losse kaartjes</mark>. Wat we daarnaast heel fijn vinden, is dat Stampzer openstaat voor tips en ideeën. Zo maken we het samen steeds een beetje beter.</blockquote>
+      <figcaption class="citaat__by">
+        <span class="citaat__logo"><img src="/assets/klanten/cafe-lisi.webp" alt="" width="901" height="255" loading="lazy" decoding="async" /></span>
+        <span class="citaat__wie"><b>Café Lisi</b><small>Café in Son en Breugel</small></span>
+      </figcaption>
+    </figure>
+
     <div class="bewijs__duw reveal">
       <div><b>Stampzer groeit snel. Wees er vroeg bij.</b><span>De eerste zaken bouwen nu hun vaste klantenkring op in de Wallet van hun gasten. Begin vandaag, voordat de zaak om de hoek het doet.</span></div>
       <div class="bewijs__actie">
