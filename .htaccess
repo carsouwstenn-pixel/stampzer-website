@@ -34,9 +34,11 @@ DirectoryIndex index.html index.php
 
   # SEO-plan oktober 2026: oude en dubbele pagina's naar de pagina die het onderwerp nu draagt.
   RewriteRule ^dashboard\.html$ /hoe-het-werkt/ [R=301,L]
-  RewriteRule ^gids/klantenkaart-kapper/?$ /gids/klantenkaart-kapper-barbershop/ [R=301,L]
+  RewriteRule ^gids/klantenkaart-kapper/?$ /kapper/ [R=301,L]
   RewriteRule ^gids/spaarkaart-apple-google-wallet-zonder-app/?$ /spaarkaart-zonder-app/ [R=301,L]
   RewriteRule ^gids/digitale-klantenkaart-wallet/?$ /digitale-klantenkaart/ [R=301,L]
+  # November 2026: de restaurant-gids concurreerde met /restaurant/ op dezelfde zoektermen.
+  RewriteRule ^gids/klantenkaart-restaurant-bistro/?$ /restaurant/ [R=301,L]
   # "index.html" in de adresbalk naar de nette map-URL (alleen als de bezoeker het zelf zo opvroeg).
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
   RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
